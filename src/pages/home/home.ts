@@ -29,7 +29,7 @@ export class HomePage {
     }).on('locationfound', (e) => {
       let markerGroup = leaflet.featureGroup();
       let marker: any = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
-        alert('Marker clicked');
+        alert('Vous êtes ici !');
       })
       markerGroup.addLayer(marker);
       this.map.addLayer(markerGroup);
