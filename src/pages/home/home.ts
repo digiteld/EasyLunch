@@ -1,21 +1,30 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import leaflet from 'leaflet';
+// import L from 'leaflet';
+import { RestProvider } from '../../providers/rest/rest';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
-  constructor(public navCtrl: NavController) {
+  restaurant: any;
+  errorMessage: string;
+
+  constructor(public navCtrl: NavController, public rest: RestProvider) {
 
   }
 
   ionViewDidEnter() {
     this.loadmap();
+  }
 
+  ionViewDidLoad() {
+    this.getRestaurants();
   }
 
   loadmap() {
@@ -37,10 +46,22 @@ export class HomePage {
       })
       markerGroup.addLayer(marker);
       this.map.addLayer(markerGroup);
-      }).on('locationerror', (err) => {
-        alert(err.message);
-      })
+    }).on('locationerror', (err) => {
+      alert(err.message);
+    })
+  }
+
+  // L.marker([property.lat, property.long]).addTo(this.map)
+
+  getRestaurants() {
+    console.log(this.restaurant);
+    this.rest.getRestaurants()
+      .subscribe(
+      restaurant => this.restaurant = restaurant,
+      error => this.errorMessage = <any>error);
   }
 
 }
+
+
 

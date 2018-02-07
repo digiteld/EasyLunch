@@ -7,7 +7,6 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'about.html'
 })
 
-// Code qui ne fonctionne pas 
 export class AboutPage {
 
   restaurant: any;
@@ -18,38 +17,14 @@ export class AboutPage {
   }
 
   ionViewDidLoad() {
-    this.getRestaurant();
+    this.getRestaurants();
   }
 
-  getRestaurant() {
-    this.rest.getRestaurant()
-       .subscribe(
-         restaurant => this.restaurant = restaurant,
-         error =>  this.errorMessage = <any>error);
+  getRestaurants() {
+    this.rest.getRestaurants()
+      .subscribe(
+      restaurant => this.restaurant = restaurant,
+      error => this.errorMessage = <any>error);
   }
 
 }
-
-// Code qui fonctionne
-
-// export class AboutPage {
-
-//   countries: any;
-//   errorMessage: string;
-
-//   constructor(public navCtrl: NavController, public rest: RestProvider) {
-
-//   }
-
-//   ionViewDidLoad() {
-//     this.getCountries();
-//   }
-
-//   getCountries() {
-//     this.rest.getCountries()
-//        .subscribe(
-//          countries => this.countries = countries,
-//          error =>  this.errorMessage = <any>error);
-//   }
-
-// }
