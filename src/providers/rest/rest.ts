@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
+// import { HomePage } from '../../pages/home/home';
 
 /*
   Generated class for the RestProvider provider.
@@ -25,8 +26,18 @@ export class RestProvider {
     );
   }
 
+  private loginUrl = 'https://easy-lunch.herokuapp.com/login';
+
+  addLogin(username: string, password: string): Observable<{}> {
+    return this.http.post(this.loginUrl, {username:"j", password:"j"}, {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
+    })
+
+  }
+
+
   private extractData(res: Response) {
-    
+
     let body = (<any>res).data; // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
     return body || {};
   }
