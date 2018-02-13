@@ -7,20 +7,25 @@
 </ion-header>
 
 <ion-content>
-  <!-- <div ion-fixed style="height: 100%; width: 100%"> -->
-      
+  <div id="map" style="height:100%;"> 
+
+    <div class="btn">
       <ion-grid>
-        <ion-row>
+        <ion-row style="z-index:999">
+
           <ion-col>
-              <button class="btn" ion-button color="blue"> Pour combien ? </button>
+            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>
           </ion-col>
+
           <ion-col>
-              <button class="btn" ion-button color="blue"> A quelle heure ? </button>
+            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>
           </ion-col>
           
         </ion-row>
       </ion-grid>
-      <div id="map" style="width:100%; height:100%;"></div>
+    </div>
+
+  </div>
   <!-- </div> -->
 </ion-content>
 

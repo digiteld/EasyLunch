@@ -24,7 +24,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import { HomePage } from '../../pages/home/home';
 /*
   Generated class for the RestProvider provider.
 
@@ -38,6 +37,7 @@ var RestProvider = (function () {
         this.loginUrl = 'https://easy-lunch.herokuapp.com/login';
         console.log('Hello RestProvider Provider');
     }
+    ////    Function to get the restaurants from the API
     RestProvider.prototype.getRestaurants = function () {
         return this.http.get(this.apiUrl).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["map"])(this.extractData), Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(this.handleError));
     };
@@ -64,9 +64,10 @@ var RestProvider = (function () {
     };
     RestProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], RestProvider);
     return RestProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=rest.js.map
@@ -262,12 +263,13 @@ var HomePage = (function () {
     HomePage.prototype.ionViewDidLoad = function () {
         this.getRestaurants();
     };
+    ////     Function to initialize map   -   we using leaflet with mapbox 
     HomePage.prototype.loadmap = function () {
         var _this = this;
         if (this.map) {
             this.map.remove();
         }
-        this.map = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map("map").fitWorld();
+        this.map = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map("map");
         __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
@@ -276,18 +278,13 @@ var HomePage = (function () {
             setView: true,
             maxZoom: 10
         }).on('locationfound', function (e) {
-            // let markerGroup = leaflet.featureGroup();
             var marker = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([e.latitude, e.longitude]).bindPopup("Vous êtes ici").openPopup();
-            // .on('click', () => {
-            // //   alert('Vous êtes ici !');
-            // })
-            // markerGroup.addLayer(marker);
             _this.map.addLayer(marker);
         }).on('locationerror', function (err) {
             alert(err.message);
         });
     };
-    // L.marker([property.lat, property.long]).addTo(this.map)
+    ////     Create a function for calling the restaurants from the provider
     HomePage.prototype.getRestaurants = function () {
         var _this = this;
         this.rest.getRestaurants()
@@ -296,9 +293,10 @@ var HomePage = (function () {
             _this.formatData();
         }, function (error) { return _this.errorMessage = error; });
     };
+    ////    Function to display marker restaurant on the map
     HomePage.prototype.formatData = function () {
         var _this = this;
-        console.log("Is it work ? " + this.restaurant);
+        console.log("All the restaurants" + this.restaurant);
         this.restaurant.forEach(function (element) {
             __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([element.lat, element.lon]).addTo(_this.map).bindPopup(element.name, element.description, element.address, element.picture);
             console.log("lat --> " + element.lat);
@@ -307,15 +305,18 @@ var HomePage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], HomePage.prototype, "mapContainer", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <!-- <div ion-fixed style="height: 100%; width: 100%"> -->\n      \n      <ion-grid>\n        <ion-row>\n          <ion-col>\n              <button class="btn" ion-button color="blue"> Pour combien ? </button>\n          </ion-col>\n          <ion-col>\n              <button class="btn" ion-button color="blue"> A quelle heure ? </button>\n          </ion-col>\n          \n        </ion-row>\n      </ion-grid>\n      <div id="map" style="width:100%; height:100%;"></div>\n  <!-- </div> -->\n</ion-content>\n\n\n<!-- <ion-list>\n  <ion-item *ngFor="let r of restaurant">\n    <h2>{{r.name}}</h2>\n    <p>{{r.address}}</p>\n  </ion-item>\n</ion-list> -->'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */]])
+            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map" style="height:100%;"> \n\n    <div class="btn">\n      <ion-grid>\n        <ion-row style="z-index:999">\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>\n          </ion-col>\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>\n          </ion-col>\n          \n        </ion-row>\n      </ion-grid>\n    </div>\n\n  </div>\n  <!-- </div> -->\n</ion-content>\n\n\n<!-- <ion-list>\n  <ion-item *ngFor="let r of restaurant">\n    <h2>{{r.name}}</h2>\n    <p>{{r.address}}</p>\n  </ion-item>\n</ion-list> -->'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
+        })
+        ////////        Display Data in view        ////////
+        ,
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */]) === "function" && _c || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
-// import { HomePage } from '../../pages/home/home';
 
 /*
   Generated class for the RestProvider provider.
@@ -19,6 +18,9 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
+
+////    Function to get the restaurants from the API
+  
   getRestaurants(): Observable<{}> {
     return this.http.get(this.apiUrl).pipe(
       map(this.extractData),
@@ -35,10 +37,9 @@ export class RestProvider {
 
   }
 
-
   private extractData(res: Response) {
 
-    let body = (<any>res).data; // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
+    let body = (<any>res).data;  // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
     return body || {};
   }
 
