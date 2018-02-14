@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <div id="map" style="height:100%;"> 
+  <div id="map" style="height:100%;">
 
     <div class="btn">
       <ion-grid>
@@ -20,19 +20,21 @@
           <ion-col>
             <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>
           </ion-col>
-          
+
         </ion-row>
       </ion-grid>
     </div>
 
+      <ion-card *ngFor="let r of restaurant" style="position:absolute; z-index:999; bottom:0px">
+        <ion-card-content>
+          <ion-card-title>
+            <h2>{{r.name}}</h2>
+            <h3>{{r.description}}</h3>
+          </ion-card-title>
+          <p>{{r.address}}</p>
+        </ion-card-content>
+      </ion-card>
+
+    
   </div>
-  <!-- </div> -->
 </ion-content>
-
-
-<!-- <ion-list>
-  <ion-item *ngFor="let r of restaurant">
-    <h2>{{r.name}}</h2>
-    <p>{{r.address}}</p>
-  </ion-item>
-</ion-list> -->
