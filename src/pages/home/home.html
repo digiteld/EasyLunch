@@ -25,16 +25,21 @@
       </ion-grid>
     </div>
 
-      <ion-card *ngFor="let r of restaurant" style="position:absolute; z-index:999; bottom:0px">
-        <ion-card-content>
-          <ion-card-title>
-            <h2>{{r.name}}</h2>
-            <h3>{{r.description}}</h3>
-          </ion-card-title>
-          <p>{{r.address}}</p>
-        </ion-card-content>
-      </ion-card>
-
+    <ion-slides style="position:absolute; z-index:999; bottom:0px">
+      <ion-slide *ngFor="let r of restaurant">
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              <h2>{{r.name}}</h2>
+              <h3>{{r.description}}</h3>
+            </ion-card-title>
+            <p>{{r.address}}</p>
+            <img src="'{{displayImage}}" />  
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+      
     
   </div>
 </ion-content>

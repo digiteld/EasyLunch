@@ -182,7 +182,7 @@ var AboutPage = (function () {
     };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let r of restaurant">\n      <h2>{{r.name}}</h2>\n      <p>{{r.email}}</p>\n    </ion-item>\n  </ion-list>\n</ion-content> \n'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<!-- <ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let r of restaurant">\n      <h2>{{r.name}}</h2>\n      <p>{{r.email}}</p>\n    </ion-item>\n  </ion-list>\n</ion-content>  -->'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/about/about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
     ], AboutPage);
@@ -238,6 +238,7 @@ var ContactPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -251,11 +252,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(navCtrl, rest) {
+    function HomePage(navCtrl, rest, sanitizer) {
         this.navCtrl = navCtrl;
         this.rest = rest;
+        this.sanitizer = sanitizer;
     }
+    HomePage.prototype.profilePicture = function (binImage) {
+        if (binImage != null) {
+            var imageData = btoa(binImage);
+            console.log("Base64 Image: ", imageData);
+            this.displayImage = this.sanitizer.bypassSecurityTrustUrl("data:Image/*;base64," + imageData);
+        }
+    };
     HomePage.prototype.ionViewDidEnter = function () {
         this.loadmap();
     };
@@ -318,18 +328,18 @@ var HomePage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], HomePage.prototype, "mapContainer", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map" style="height:100%;">\n\n    <div class="btn">\n      <ion-grid>\n        <ion-row style="z-index:999">\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>\n          </ion-col>\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    </div>\n\n      <ion-card *ngFor="let r of restaurant" style="position:absolute; z-index:999; bottom:0px">\n        <ion-card-content>\n          <ion-card-title>\n            <h2>{{r.name}}</h2>\n            <h3>{{r.description}}</h3>\n          </ion-card-title>\n          <p>{{r.address}}</p>\n        </ion-card-content>\n      </ion-card>\n\n    \n  </div>\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map" style="height:100%;">\n\n    <div class="btn">\n      <ion-grid>\n        <ion-row style="z-index:999">\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>\n          </ion-col>\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    </div>\n\n    <ion-slides style="position:absolute; z-index:999; bottom:0px">\n      <ion-slide *ngFor="let r of restaurant">\n        <ion-card>\n          <ion-card-content>\n            <ion-card-title>\n              <h2>{{r.name}}</h2>\n              <h3>{{r.description}}</h3>\n            </ion-card-title>\n            <p>{{r.address}}</p>\n            <img src="\'{{displayImage}}" />  \n          </ion-card-content>\n        </ion-card>\n      </ion-slide>\n    </ion-slides>\n      \n    \n  </div>\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
         })
         ////////        Display Data in view        ////////
+        // @Pipe({ name: 'safeHtml' })   
         ,
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["c" /* DomSanitizer */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -356,7 +366,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(303);
