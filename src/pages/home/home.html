@@ -7,11 +7,11 @@
 </ion-header>
 
 <ion-content>
-  <div id="map" style="height:100%;">
+  <div id="map">
 
     <div class="btn">
       <ion-grid>
-        <ion-row style="z-index:999">
+        <ion-row class="z-index">
 
           <ion-col>
             <button ion-button color="blue" style="width:100%"> Pour combien ? </button>
@@ -25,21 +25,35 @@
       </ion-grid>
     </div>
 
-    <ion-slides style="position:absolute; z-index:999; bottom:0px">
-      <ion-slide *ngFor="let r of restaurant">
-        <ion-card>
-          <ion-card-content>
-            <ion-card-title>
-              <h2>{{r.name}}</h2>
-              <h3>{{r.description}}</h3>
-            </ion-card-title>
-            <p>{{r.address}}</p>
-            <img src="'{{displayImage}}" />  
-          </ion-card-content>
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
-      
     
+
   </div>
+
+  <div id="slides">
+      <ion-grid>
+        <ion-row class="z-index">
+          
+          <ion-col>
+            <ion-slides>
+              <ion-slide *ngFor="let r of restaurant">
+
+                <ion-card>
+                  <ion-card-content>
+                    <ion-card-title>
+                      <h2>{{r.name}}</h2>
+                      <h3>{{r.description}}</h3>
+                    </ion-card-title>
+                      <p>{{r.address}}</p>
+                      <img src="../../assets/imgs/food.jpg" />           <!-- "'{{displayImage}}" -->
+                  </ion-card-content>
+                </ion-card>
+
+              </ion-slide>
+            </ion-slides>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+    </div>
+
 </ion-content>

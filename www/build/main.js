@@ -136,7 +136,7 @@ var TabsPage = (function () {
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Accueil" tabIcon="home" color = "blue"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Commandes" tabIcon="paper" color = "blue"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Compte" tabIcon="contact" color = "blue"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Accueil" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Commandes" tabIcon="paper"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Compte" tabIcon="contact"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/tabs/tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -259,13 +259,6 @@ var HomePage = (function () {
         this.rest = rest;
         this.sanitizer = sanitizer;
     }
-    HomePage.prototype.profilePicture = function (binImage) {
-        if (binImage != null) {
-            var imageData = btoa(binImage);
-            console.log("Base64 Image: ", imageData);
-            this.displayImage = this.sanitizer.bypassSecurityTrustUrl("data:Image/*;base64," + imageData);
-        }
-    };
     HomePage.prototype.ionViewDidEnter = function () {
         this.loadmap();
     };
@@ -279,7 +272,7 @@ var HomePage = (function () {
             this.map.remove();
         }
         ////     Create map object and add base map tiles from Leaflet and attribution info to 'map' div
-        this.map = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map("map");
+        this.map = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map("map", { zoomControl: false });
         __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
@@ -288,27 +281,11 @@ var HomePage = (function () {
             setView: true,
             maxZoom: 10
         }).on('locationfound', function (e) {
-            var marker = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([e.latitude, e.longitude], { icon: firefoxIcon }).bindPopup("Vous êtes ici").openPopup();
+            var marker = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([e.latitude, e.longitude]).bindPopup("Vous êtes ici").openPopup();
             _this.map.addLayer(marker);
         }).on('locationerror', function (err) {
             alert(err.message);
         });
-        ////      Create custom icon
-        var firefoxIcon = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.icon({
-            iconUrl: '../../assets/imgs/pin.png',
-            // iconSize: [38, 95], // size of the icon
-            popupAnchor: [0, -15]
-        });
-        // create popup contents
-        var customPopup = "Mozilla Toronto Offices<br/><img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
-        // specify popup options 
-        //  var customOptions =
-        //  {
-        //  'maxWidth': '500',
-        //  'className' : 'custom'
-        //    }
-        // create marker object, pass custom icon as option, pass content and options to popup, add to map
-        //  L.marker([43.64701, -79.39425], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
     };
     ////     Create a function for calling the restaurants from the provider
     HomePage.prototype.getRestaurants = function () {
@@ -321,9 +298,16 @@ var HomePage = (function () {
     };
     ////    Function to display marker restaurant on the map
     HomePage.prototype.formatData = function () {
+        ///  Create custom icon
         var _this = this;
+        var customIcon = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.icon({
+            iconUrl: '../../assets/imgs/pin.png',
+            // iconSize: [38, 95], // size of the icon
+            popupAnchor: [0, -15]
+        });
+        ///   Diplay marker on map
         this.restaurant.forEach(function (element) {
-            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([element.lat, element.lon]).addTo(_this.map).bindPopup(element.name, element.description, element.address, element.picture);
+            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([element.lat, element.lon], { icon: customIcon }).addTo(_this.map).bindPopup(element.name, element.description, element.address, element.picture);
         });
     };
     __decorate([
@@ -332,7 +316,7 @@ var HomePage = (function () {
     ], HomePage.prototype, "mapContainer", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map" style="height:100%;">\n\n    <div class="btn">\n      <ion-grid>\n        <ion-row style="z-index:999">\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>\n          </ion-col>\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    </div>\n\n    <ion-slides style="position:absolute; z-index:999; bottom:0px">\n      <ion-slide *ngFor="let r of restaurant">\n        <ion-card>\n          <ion-card-content>\n            <ion-card-title>\n              <h2>{{r.name}}</h2>\n              <h3>{{r.description}}</h3>\n            </ion-card-title>\n            <p>{{r.address}}</p>\n            <img src="\'{{displayImage}}" />  \n          </ion-card-content>\n        </ion-card>\n      </ion-slide>\n    </ion-slides>\n      \n    \n  </div>\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map">\n\n    <div class="btn">\n      <ion-grid>\n        <ion-row class="z-index">\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>\n          </ion-col>\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    </div>\n\n    \n\n  </div>\n\n  <div id="slides">\n      <ion-grid>\n        <ion-row class="z-index">\n          \n          <ion-col>\n            <ion-slides>\n              <ion-slide *ngFor="let r of restaurant">\n\n                <ion-card>\n                  <ion-card-content>\n                    <ion-card-title>\n                      <h2>{{r.name}}</h2>\n                      <h3>{{r.description}}</h3>\n                    </ion-card-title>\n                      <p>{{r.address}}</p>\n                      <img src="../../assets/imgs/food.jpg" />           <!-- "\'{{displayImage}}" -->\n                  </ion-card-content>\n                </ion-card>\n\n              </ion-slide>\n            </ion-slides>\n\n          </ion-col>\n        </ion-row>\n      </ion-grid> \n    </div>\n\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
         })
         ////////        Display Data in view        ////////
         // @Pipe({ name: 'safeHtml' })   

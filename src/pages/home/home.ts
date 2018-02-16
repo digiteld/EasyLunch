@@ -48,7 +48,7 @@ export class HomePage {
 
 ////     Create map object and add base map tiles from Leaflet and attribution info to 'map' div
 
-    this.map = new L.map("map", { zoomControl:false });
+    this.map = L.map("map", { zoomControl:false });
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
       attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       maxZoom: 18
@@ -57,29 +57,27 @@ export class HomePage {
       setView: true,
       maxZoom: 10
     }).on('locationfound', (e) => {
-      let marker: any = new L.marker([e.latitude, e.longitude]).bindPopup("Vous êtes ici").openPopup(); 
+      let marker: any = L.marker([e.latitude, e.longitude]).bindPopup("Vous êtes ici").openPopup(); 
       this.map.addLayer(marker);
     }).on('locationerror', (err) => {
       alert(err.message);
+
       })
      
   }
 
 
-
-  
 ////     Create a function for calling the restaurants from the provider
   
   getRestaurants() {
    
     this.rest.getRestaurants()
       .subscribe(
-      restaurant => {
-        this.restaurant = restaurant;
-        this.formatData();
-      },
+        restaurant => {
+          this.restaurant = restaurant;
+          this.formatData();
+        },
       error => this.errorMessage = <any>error);
-    
   }
 
 
@@ -99,7 +97,7 @@ export class HomePage {
   ///   Diplay marker on map
     
     this.restaurant.forEach(element => {
-      L.marker([element.lat, element.lon],{icon: customIcon}).addTo(this.map).bindPopup(element.name, element.description, element.address, element.picture);
+      L.marker([element.lat, element.lon],{icon: customIcon}).addTo(this.map).bindPopup(element.name);
 });
 
   }

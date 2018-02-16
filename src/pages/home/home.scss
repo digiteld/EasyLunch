@@ -1,3 +1,21 @@
 page-home {
 
+    #map {
+        height: 100%;
+    }
+
+    .z-index {
+        z-index:999;
+    }
+
+    #slides {
+        position: absolute; 
+        bottom: 10px;
+    }
+
+    #slides img {
+        width: 100px;
+        height: 89px;
+    }
+
 }

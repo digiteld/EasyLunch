@@ -27971,3 +27971,21 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-bottom));
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
+
+page-home #map {
+  height: 100%;
+}
+
+page-home .z-index {
+  z-index: 999;
+}
+
+page-home #slides {
+  position: absolute;
+  bottom: 10px;
+}
+
+page-home #slides img {
+  width: 100px;
+  height: 89px;
+}
