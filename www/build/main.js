@@ -238,7 +238,6 @@ var ContactPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -252,12 +251,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var HomePage = (function () {
-    function HomePage(navCtrl, rest, sanitizer) {
+    function HomePage(navCtrl, rest) {
         this.navCtrl = navCtrl;
         this.rest = rest;
-        this.sanitizer = sanitizer;
     }
     HomePage.prototype.ionViewDidEnter = function () {
         this.loadmap();
@@ -272,7 +269,7 @@ var HomePage = (function () {
             this.map.remove();
         }
         ////     Create map object and add base map tiles from Leaflet and attribution info to 'map' div
-        this.map = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map("map", { zoomControl: false });
+        this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map("map", { zoomControl: false });
         __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
@@ -281,7 +278,7 @@ var HomePage = (function () {
             setView: true,
             maxZoom: 10
         }).on('locationfound', function (e) {
-            var marker = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([e.latitude, e.longitude]).bindPopup("Vous êtes ici").openPopup();
+            var marker = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([e.latitude, e.longitude]).bindPopup("Vous êtes ici").openPopup();
             _this.map.addLayer(marker);
         }).on('locationerror', function (err) {
             alert(err.message);
@@ -307,23 +304,24 @@ var HomePage = (function () {
         });
         ///   Diplay marker on map
         this.restaurant.forEach(function (element) {
-            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([element.lat, element.lon], { icon: customIcon }).addTo(_this.map).bindPopup(element.name, element.description, element.address, element.picture);
+            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([element.lat, element.lon], { icon: customIcon }).addTo(_this.map).bindPopup(element.name);
         });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], HomePage.prototype, "mapContainer", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map">\n\n    <div class="btn">\n      <ion-grid>\n        <ion-row class="z-index">\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>\n          </ion-col>\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    </div>\n\n    \n\n  </div>\n\n  <div id="slides">\n      <ion-grid>\n        <ion-row class="z-index">\n          \n          <ion-col>\n            <ion-slides>\n              <ion-slide *ngFor="let r of restaurant">\n\n                <ion-card>\n                  <ion-card-content>\n                    <ion-card-title>\n                      <h2>{{r.name}}</h2>\n                      <h3>{{r.description}}</h3>\n                    </ion-card-title>\n                      <p>{{r.address}}</p>\n                      <img src="../../assets/imgs/food.jpg" />           <!-- "\'{{displayImage}}" -->\n                  </ion-card-content>\n                </ion-card>\n\n              </ion-slide>\n            </ion-slides>\n\n          </ion-col>\n        </ion-row>\n      </ion-grid> \n    </div>\n\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map">\n\n    <div class="btn">\n      <ion-grid>\n        <ion-row class="z-index">\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>\n          </ion-col>\n\n          <ion-col>\n            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    </div>\n\n    \n\n  </div>\n\n  <div id="slides">\n      <ion-grid>\n        <ion-row class="z-index">\n          \n          <ion-col>\n            <ion-slides>\n              <ion-slide *ngFor="let r of restaurant">\n\n                <ion-card>\n                  <ion-card-content>\n                    <ion-card-title>\n                      <h2>{{r.name}}</h2>\n                      <h3>{{r.description}}</h3>\n                    </ion-card-title>\n                      <p>{{r.address}}</p>\n                      <img src= {{r.picture}}/>\n                  </ion-card-content>\n                </ion-card>\n\n              </ion-slide>\n            </ion-slides>\n\n          </ion-col>\n        </ion-row>\n      </ion-grid> \n    </div>\n\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/
         })
         ////////        Display Data in view        ////////
         // @Pipe({ name: 'safeHtml' })   
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["c" /* DomSanitizer */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */]) === "function" && _c || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map

@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import L from 'leaflet';
 import { RestProvider } from '../../providers/rest/rest';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'page-home',
@@ -24,7 +23,7 @@ export class HomePage {
   bgImage: any;
   
   
-  constructor(public navCtrl: NavController, public rest: RestProvider, private sanitizer:DomSanitizer) {
+  constructor(public navCtrl: NavController, public rest: RestProvider) {
 
   }
 
