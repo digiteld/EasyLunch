@@ -5,6 +5,12 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  src: url('../assets/fonts/montserrat/montserrat-regular.ttf')
+}
+
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:

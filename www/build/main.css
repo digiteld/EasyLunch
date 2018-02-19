@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  src: url("../assets/fonts/montserrat/montserrat-regular.ttf");
+}
+
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -27972,6 +27978,14 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-home {
+  font-family: "Montserrat" !important;
+}
+
+page-home h1, page-home h2, page-home button {
+  font-family: "Montserrat" !important;
+}
+
 page-home #map {
   height: 100%;
 }
@@ -27988,4 +28002,19 @@ page-home #slides {
 page-home #slides img {
   width: 100px;
   height: 89px;
+}
+
+page-home .leaflet-marker-icon {
+  color: red;
+}
+
+page-home .animated-icon {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 4px white;
+  box-shadow: 0px 0px 4px white;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }

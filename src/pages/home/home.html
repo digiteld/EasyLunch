@@ -25,35 +25,49 @@
       </ion-grid>
     </div>
 
-    
+
 
   </div>
 
   <div id="slides">
-      <ion-grid>
-        <ion-row class="z-index">
-          
-          <ion-col>
-            <ion-slides>
-              <ion-slide *ngFor="let r of restaurant">
+    <ion-grid>
+      <ion-row class="z-index">
 
-                <ion-card>
-                  <ion-card-content>
+        <!-- <ion-col> -->
+        <ion-slides>
+          <ion-slide *ngFor="let r of restaurant">
+
+            <ion-card>
+              <ion-card-content>
+                <ion-row>
+                  <ion-col col-4>
+                    <img src={{r.picture}}/>
+                  </ion-col>
+
+                  <ion-col col-8>
                     <ion-card-title>
-                      <h2>{{r.name}}</h2>
-                      <h3>{{r.description}}</h3>
+                      <ion-row>
+                        <h2>{{r.name}}</h2>
+                      </ion-row>
+                      <ion-row>
+                        <h3>{{r.description}}</h3>
+                      </ion-row>
                     </ion-card-title>
+                    <ion-row>
                       <p>{{r.address}}</p>
-                      <img src= {{r.picture}}/>
-                  </ion-card-content>
-                </ion-card>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
 
-              </ion-slide>
-            </ion-slides>
+              </ion-card-content>
+            </ion-card>
 
-          </ion-col>
-        </ion-row>
-      </ion-grid> 
-    </div>
+          </ion-slide>
+        </ion-slides>
+
+        <!-- </ion-col> -->
+      </ion-row>
+    </ion-grid>
+  </div>
 
 </ion-content>
