@@ -53,8 +53,8 @@ export class HomePage {
     iconAnchor: [15, 15],
     popupAnchor: [10, 0],
     shadowSize: [0, 0],
-    className: 'animated-icon my-icon',
-    html: ''
+    className: 'css-icon',
+    html: '<div id="c" <div class="s"></div> </div>'
   }); 
 
     
@@ -67,50 +67,46 @@ export class HomePage {
       setView: true,
       maxZoom: 10
     }).on('locationfound', (e) => {
-      let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon }).bindPopup("Vous êtes ici").openPopup();
-      marker.on('add', () => {
-        console.log("coucou")
-        this.doAnimations()
-        // putting this in setInterval so it runs forever
-        setInterval(() => {
-          this.doAnimations()
-        }, 5000)
-      })
+      let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon });
+      // marker.on('add', () => {
+      //   console.log("coucou")
+      //   this.doAnimations()
+      //   // putting this in setInterval so it runs forever
+      //   setInterval(() => {
+      //     this.doAnimations()
+      //   }, 5000)
+      // })
         
       this.map.addLayer(marker);
     }).on('locationerror', (err) => {
       alert(err.message);
       })
-    
-    
      
   }
 
-  doAnimations() {
-    console.log("coucou")
-     var myIcon: any = document.querySelector('.my-icon')
+  // doAnimations() {
+  //    var myIcon: any = document.querySelector('.my-icon')
     
-    setTimeout(function () {
-       
-        myIcon.style.width = '50px'
-        myIcon.style.height = '50px'
-        myIcon.style.marginLeft = '-25px'
-        myIcon.style.marginTop = '-25px'
-      }, 1000)
+  //   setTimeout(function () {
+  //       myIcon.style.width = '50px'
+  //       myIcon.style.height = '50px'
+  //       myIcon.style.marginLeft = '-25px'
+  //       myIcon.style.marginTop = '-25px'
+  //     }, 1000)
   
-      setTimeout(function(){
-        myIcon.style.borderRadius = '10%'
-        myIcon.style.backgroundColor = 'skyblue'
-      }, 2000)
+  //     setTimeout(function(){
+  //       myIcon.style.borderRadius = '10%'
+  //       myIcon.style.backgroundColor = 'skyblue'
+  //     }, 2000)
   
-      setTimeout(function(){
-        myIcon.style.width = '30px'
-        myIcon.style.height = '30px'
-        myIcon.style.borderRadius = '50%'
-        myIcon.style.marginLeft = '-15px'
-        myIcon.style.marginTop = '-15px'
-      }, 3000)
-  }
+  //     setTimeout(function(){
+  //       myIcon.style.width = '30px'
+  //       myIcon.style.height = '30px'
+  //       myIcon.style.borderRadius = '50%'
+  //       myIcon.style.marginLeft = '-15px'
+  //       myIcon.style.marginTop = '-15px'
+  //     }, 3000)
+  // }
 
 
 ////     Create a function for calling the restaurants from the provider
@@ -143,8 +139,9 @@ export class HomePage {
   ///   Diplay marker on map
     
     this.restaurant.forEach(element => {
-      L.marker([element.lat, element.lon],{icon: forkIcon}).addTo(this.map).bindPopup(element.name);
-});
+      L.marker([element.lat, element.lon], { icon: forkIcon }).addTo(this.map).bindPopup(element.name);
+    
+    });
 
   }
   

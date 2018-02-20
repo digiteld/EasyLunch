@@ -275,8 +275,8 @@ var HomePage = (function () {
             iconAnchor: [15, 15],
             popupAnchor: [10, 0],
             shadowSize: [0, 0],
-            className: 'animated-icon my-icon',
-            html: ''
+            className: 'css-icon',
+            html: '<div id="c" <div class="s"></div> </div>'
         });
         this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map("map", { zoomControl: false });
         __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
@@ -287,41 +287,40 @@ var HomePage = (function () {
             setView: true,
             maxZoom: 10
         }).on('locationfound', function (e) {
-            var marker = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([e.latitude, e.longitude], { icon: pulsingIcon }).bindPopup("Vous êtes ici").openPopup();
-            marker.on('add', function () {
-                console.log("coucou");
-                _this.doAnimations();
-                // putting this in setInterval so it runs forever
-                setInterval(function () {
-                    _this.doAnimations();
-                }, 5000);
-            });
+            var marker = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.marker([e.latitude, e.longitude], { icon: pulsingIcon });
+            // marker.on('add', () => {
+            //   console.log("coucou")
+            //   this.doAnimations()
+            //   // putting this in setInterval so it runs forever
+            //   setInterval(() => {
+            //     this.doAnimations()
+            //   }, 5000)
+            // })
             _this.map.addLayer(marker);
         }).on('locationerror', function (err) {
             alert(err.message);
         });
     };
-    HomePage.prototype.doAnimations = function () {
-        console.log("coucou");
-        var myIcon = document.querySelector('.my-icon');
-        setTimeout(function () {
-            myIcon.style.width = '50px';
-            myIcon.style.height = '50px';
-            myIcon.style.marginLeft = '-25px';
-            myIcon.style.marginTop = '-25px';
-        }, 1000);
-        setTimeout(function () {
-            myIcon.style.borderRadius = '10%';
-            myIcon.style.backgroundColor = 'skyblue';
-        }, 2000);
-        setTimeout(function () {
-            myIcon.style.width = '30px';
-            myIcon.style.height = '30px';
-            myIcon.style.borderRadius = '50%';
-            myIcon.style.marginLeft = '-15px';
-            myIcon.style.marginTop = '-15px';
-        }, 3000);
-    };
+    // doAnimations() {
+    //    var myIcon: any = document.querySelector('.my-icon')
+    //   setTimeout(function () {
+    //       myIcon.style.width = '50px'
+    //       myIcon.style.height = '50px'
+    //       myIcon.style.marginLeft = '-25px'
+    //       myIcon.style.marginTop = '-25px'
+    //     }, 1000)
+    //     setTimeout(function(){
+    //       myIcon.style.borderRadius = '10%'
+    //       myIcon.style.backgroundColor = 'skyblue'
+    //     }, 2000)
+    //     setTimeout(function(){
+    //       myIcon.style.width = '30px'
+    //       myIcon.style.height = '30px'
+    //       myIcon.style.borderRadius = '50%'
+    //       myIcon.style.marginLeft = '-15px'
+    //       myIcon.style.marginTop = '-15px'
+    //     }, 3000)
+    // }
     ////     Create a function for calling the restaurants from the provider
     HomePage.prototype.getRestaurants = function () {
         var _this = this;

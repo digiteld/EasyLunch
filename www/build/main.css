@@ -28004,17 +28004,46 @@ page-home #slides img {
   height: 89px;
 }
 
-page-home .leaflet-marker-icon {
-  color: red;
+page-home .s {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
-page-home .animated-icon {
-  width: 20px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 4px white;
-  box-shadow: 0px 0px 4px white;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+page-home .s:nth-child(1) {
+  background: #33ffbb;
+  -webkit-animation: r0 2s 0s ease-out infinite;
+  animation: r0 2s 0s ease-out infinite;
+}
+
+@-webkit-keyframes r0 {
+  0% {
+    -webkit-box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
+    box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
+  }
+  10% {
+    -webkit-box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px #333, 0 0 12px 14px #1affb3;
+    box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px #333, 0 0 12px 14px #1affb3;
+  }
+  100% {
+    -webkit-box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
+    box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
+  }
+}
+
+@keyframes r0 {
+  0% {
+    -webkit-box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px rgba(242, 242, 242, 0.5), 0 0 0px 0px rgba(26, 255, 179, 0);
+    box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px rgba(242, 242, 242, 0.5), 0 0 0px 0px rgba(26, 255, 179, 0);
+  }
+  10% {
+    -webkit-box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px rgba(242, 242, 242, 0.5), 0 0 12px 14px #1affb3;
+    box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px rgba(242, 242, 242, 0.5), 0 0 12px 14px #1affb3;
+  }
+  100% {
+    -webkit-box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px rgba(242, 242, 242, 0.5), 0 0 0px 40px rgba(26, 255, 179, 0);
+    box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px rgba(242, 242, 242, 0.5), 0 0 0px 40px rgba(26, 255, 179, 0);
+  }
 }

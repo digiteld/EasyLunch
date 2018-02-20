@@ -27,6 +27,8 @@
     "@ionic/storage": "2.1.3",
     "btoa": "^1.1.2",
     "cordova-plugin-geolocation": "^4.0.1",
+    "dynamics": "^1.0.0",
+    "dynamics.js": "^1.1.5",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "leaflet": "^1.3.1",
