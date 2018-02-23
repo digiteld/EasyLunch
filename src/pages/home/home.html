@@ -15,6 +15,7 @@
 
           <ion-col>
             <button ion-button color="blue" style="width:100%"> Pour combien ? </button>
+            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->
           </ion-col>
 
           <ion-col>
@@ -36,7 +37,6 @@
         <!-- <ion-col> -->
         <ion-slides>
           <ion-slide *ngFor="let r of restaurant">
-
             <ion-card>
               <ion-card-content>
                 <ion-row>

@@ -3,14 +3,36 @@ import { NavController } from 'ionic-angular';
 import L from 'leaflet';
 import { RestProvider } from '../../providers/rest/rest';
 
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
+// import 'leaflet.bouncemarker';
+// import dynamics from 'dynamics.js'
+
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  animations: [
+
+    //Animation here ...
+  //   trigger('elementState', [
+  //     state('inactive', style({
+  //       backgroundColor: '#eee',
+  //       transform: 'scale(1)'
+  //     })),
+  //     state('active', style({
+  //       backgroundColor: '#cfd8dc',
+  //       transform: 'scale(1.1)'
+  //     })),
+  //     transition('inactive => active', animate('100ms ease-in')),
+  //     transition('active => inactive', animate('100ms ease-out'))
+  //   ])
+
+  // ]
 })
 
 ////////        Display Data in view        ////////
 
-
+  
 export class HomePage {
 
   @ViewChild('map') mapContainer: ElementRef;
@@ -20,13 +42,21 @@ export class HomePage {
   restaurant: any;
   errorMessage: string;
   bgImage: any;
+ 
+  state = 'opaque';
   
-  
+  makeInactive() {
+    this.state = 'inactive';
+  }
+
+  makeActive() {
+    this.state = 'active';
+  }
+
   constructor(public navCtrl: NavController, public rest: RestProvider) {
 
   }
 
-  
   ionViewDidEnter() {
     this.loadmap();
   }
@@ -81,34 +111,10 @@ export class HomePage {
     }).on('locationerror', (err) => {
       alert(err.message);
       })
-     
+  
   }
 
-  // doAnimations() {
-  //    var myIcon: any = document.querySelector('.my-icon')
-    
-  //   setTimeout(function () {
-  //       myIcon.style.width = '50px'
-  //       myIcon.style.height = '50px'
-  //       myIcon.style.marginLeft = '-25px'
-  //       myIcon.style.marginTop = '-25px'
-  //     }, 1000)
   
-  //     setTimeout(function(){
-  //       myIcon.style.borderRadius = '10%'
-  //       myIcon.style.backgroundColor = 'skyblue'
-  //     }, 2000)
-  
-  //     setTimeout(function(){
-  //       myIcon.style.width = '30px'
-  //       myIcon.style.height = '30px'
-  //       myIcon.style.borderRadius = '50%'
-  //       myIcon.style.marginLeft = '-15px'
-  //       myIcon.style.marginTop = '-15px'
-  //     }, 3000)
-  // }
-
-
 ////     Create a function for calling the restaurants from the provider
   
   getRestaurants() {
@@ -125,6 +131,7 @@ export class HomePage {
 
 ////    Function to display marker restaurant on the map
 
+
   formatData() {
 
   ///  Create custom icon
@@ -137,13 +144,27 @@ export class HomePage {
     
     
   ///   Diplay marker on map
-    
+  // setInterval(() => {
     this.restaurant.forEach(element => {
-      L.marker([element.lat, element.lon], { icon: forkIcon }).addTo(this.map).bindPopup(element.name);
-    
-    });
+      
+        L.marker([element.lat, element.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 100, height: 100 } }).addTo(this.map)
+     
+        //   .on('add', (e) => {
+        //   this.mapPin.set(e.target._leaflet_id,element.id);
 
+        // })
+        //   .on("click", function (event) { 
+        //     console.log("ID RESTO --> "+this.mapPin.get(event.target._leaflet_id));
+        //    })
+        // }, 400);
+      
+    });
+   
   }
+
+  slideToResto(e) {
+    console.log('tu as cliqué '+e._leaflet_id);
+}
   
 }
 

@@ -12,7 +12,8 @@ import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class RestProvider {
-  private apiUrl = 'https://easy-lunch.herokuapp.com/api/restaurants';
+  // private apiUrl = 'https://easy-lunch.herokuapp.com/api/restaurants';
+  private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
