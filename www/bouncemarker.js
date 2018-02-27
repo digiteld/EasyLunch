@@ -27,7 +27,7 @@
 
 
 (function () {
-console.log('hello toi')
+console.log('coucou toi')
   // Retain the value of the original onAdd and onRemove functions
   var originalOnAdd = L.Marker.prototype.onAdd;
   var originalOnRemove = L.Marker.prototype.onRemove;
@@ -156,7 +156,7 @@ console.log('hello toi')
     },
 
     onAdd: function (map) {
-      console.log("alors tu bounce ou quoi");
+      console.log("Alors, tu bounces ou quoi ?");
       this._map = map;
       // Keep original latitude and longitude
       this._origLatlng = this._latlng;

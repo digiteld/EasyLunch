@@ -1,17 +1,21 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import L from 'leaflet';
+
 import { RestProvider } from '../../providers/rest/rest';
+import L from 'leaflet';
+// import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/observable/interval';
 
-import { trigger, state, style, transition, animate } from '@angular/animations';
+// import { trigger, state, style, transition, animate } from '@angular/animations';
 
-// import 'leaflet.bouncemarker';
-// import dynamics from 'dynamics.js'
+
+
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  animations: [
+  
+  // animations: [
 
     //Animation here ...
   //   trigger('elementState', [
@@ -28,8 +32,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   //   ])
 
   // ]
+
 })
 
+
+  
 ////////        Display Data in view        ////////
 
   
@@ -74,6 +81,7 @@ export class HomePage {
     }
 
 
+
 ////     Create map object and add base map tiles from Leaflet and attribution info to 'map' div
 
   ///  Create custom icon    
@@ -98,14 +106,6 @@ export class HomePage {
       maxZoom: 10
     }).on('locationfound', (e) => {
       let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon });
-      // marker.on('add', () => {
-      //   console.log("coucou")
-      //   this.doAnimations()
-      //   // putting this in setInterval so it runs forever
-      //   setInterval(() => {
-      //     this.doAnimations()
-      //   }, 5000)
-      // })
         
       this.map.addLayer(marker);
     }).on('locationerror', (err) => {
@@ -115,7 +115,9 @@ export class HomePage {
   }
 
   
+
 ////     Create a function for calling the restaurants from the provider
+  
   
   getRestaurants() {
    
@@ -127,6 +129,7 @@ export class HomePage {
         },
       error => this.errorMessage = <any>error);
   }
+
 
 
 ////    Function to display marker restaurant on the map
@@ -144,11 +147,16 @@ export class HomePage {
     
     
   ///   Diplay marker on map
-  // setInterval(() => {
-    this.restaurant.forEach(element => {
+
+    let array = this.restaurant;
+
+    for (var value of array) {
+        L.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } }).addTo(this.map);
+    }
+
+    // this.restaurant.forEach(element => {
       
-        L.marker([element.lat, element.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 100, height: 100 } }).addTo(this.map)
-     
+       
         //   .on('add', (e) => {
         //   this.mapPin.set(e.target._leaflet_id,element.id);
 
@@ -158,7 +166,7 @@ export class HomePage {
         //    })
         // }, 400);
       
-    });
+    // });
    
   }
 
