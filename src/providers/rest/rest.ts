@@ -19,6 +19,7 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
+  
 
 ////    Function to get the restaurants from the API
   

@@ -27,7 +27,7 @@
 
 
 (function () {
-console.log('coucou toi')
+console.log("Bouncemarker nous dit : 'je suis bien passé par là !'")
   // Retain the value of the original onAdd and onRemove functions
   var originalOnAdd = L.Marker.prototype.onAdd;
   var originalOnRemove = L.Marker.prototype.onRemove;
@@ -156,7 +156,6 @@ console.log('coucou toi')
     },
 
     onAdd: function (map) {
-      console.log("Alors, tu bounces ou quoi ?");
       this._map = map;
       // Keep original latitude and longitude
       this._origLatlng = this._latlng;
