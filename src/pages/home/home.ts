@@ -52,8 +52,10 @@ export class HomePage {
   map: any;
   restaurant: any;
   errorMessage: string;
+  
   mapPin: any;
- 
+
+
   ////    TEST ANIMATION
 
   // state = 'opaque';
@@ -164,7 +166,11 @@ export class HomePage {
     let array = this.restaurant;
 
     for (var value of array) {
-      L.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } }).addTo(this.map)
+      
+        L.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } }).addTo(this.map)
+          .bindPopup(value.name);
+  
+  
       //         .on('add', (e) => {
       //           this.mapPin.set(e.target._leaflet_id,value.id);
 

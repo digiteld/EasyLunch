@@ -279,8 +279,6 @@ var HomePage = (function () {
         console.log("Tu as slidé !");
         var currentIndex = this.slides.getActiveIndex();
         console.log("Current index is ", currentIndex);
-        // let currentEvent  =this.restaurant.weekEvents[currentIndex];
-        // this.map.setCenter({lat: parseFloat(currentEvent.lat),lng:parseFloat(currentEvent.lon)});
     };
     ////     Function to initialize map   -   we using leaflet with mapbox
     HomePage.prototype.loadmap = function () {
@@ -334,7 +332,8 @@ var HomePage = (function () {
         var array = this.restaurant;
         for (var _i = 0, array_1 = array; _i < array_1.length; _i++) {
             var value = array_1[_i];
-            __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } }).addTo(this.map);
+            __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } }).addTo(this.map)
+                .bindPopup(value.name);
             //         .on('add', (e) => {
             //           this.mapPin.set(e.target._leaflet_id,value.id);
             //         })
