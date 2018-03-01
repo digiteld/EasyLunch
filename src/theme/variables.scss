@@ -7,8 +7,11 @@ $font-path: "../assets/fonts";
 
 @font-face {
   font-family: 'Montserrat';
-  font-style: normal;
-  src: url('../assets/fonts/montserrat/montserrat-regular.ttf')
+  src: url('../assets/fonts/montserrat/Montserrat-Regular.ttf');
+  src: url('../assets/fonts/montserrat/Montserrat-Medium.ttf');
+  src: url('../assets/fonts/montserrat/Montserrat-SemiBold.ttf');
+  src: url('../assets/fonts/montserrat/Montserrat-Light.ttf'); 
+  src: url('../assets/fonts/montserrat/Montserrat-LightItalic.ttf');
 }
 
 

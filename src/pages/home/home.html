@@ -9,22 +9,22 @@
 <ion-content>
   <div id="map">
 
-    <div class="btn">
+    <!-- <div class="btn"> -->
       <ion-grid>
-        <ion-row class="z-index">
+        <ion-row flex-wrap: nowrap class="z-index">
 
-          <ion-col>
-            <button ion-button color="blue" style="width:100%"> Pour combien ? </button>
+          <ion-col class="stylecol">
+            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>
             <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->
           </ion-col>
 
-          <ion-col>
-            <button ion-button color="blue" style="width:100%"> A quelle heure ? </button>
+          <ion-col class="stylecol">
+            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>
           </ion-col>
 
         </ion-row>
       </ion-grid>
-    </div>
+    <!-- </div> -->
 
 
 

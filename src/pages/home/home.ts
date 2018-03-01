@@ -72,10 +72,10 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, public rest: RestProvider) {
-this.mapPin=this.mapPin || [];;
-this.pinID=this.pinID || [];
-this.sliding=false;
-  }
+    this.mapPin = this.mapPin || [];;
+    this.pinID = this.pinID || [];
+    this.sliding = false;   
+}
 
   ionViewDidEnter() {
     this.loadmap();
@@ -84,7 +84,6 @@ this.sliding=false;
   ionViewDidLoad() {
     this.getRestaurants();
   }
-
 
   slideChanged() {
     console.log("Tu as slidé !");
@@ -95,6 +94,8 @@ this.sliding=false;
       console.log("SIZE ARRAY --> "+this.pinID.length)
 }
 
+
+  
   ////     Function to initialize map   -   we using leaflet with mapbox
 
   loadmap() {
@@ -139,7 +140,24 @@ this.sliding=false;
 
 
   ////     Create a function for calling the restaurants from the provider
-onAddLayer(event, pin)
+
+
+  getRestaurants() {
+
+    this.rest.getRestaurants()
+      .subscribe(
+        restaurant => {
+          this.restaurant = restaurant;
+          this.formatData();
+        },
+        error => this.errorMessage = <any>error);
+  }
+
+
+
+    ////     Create a function for link pin with slide
+
+  onAddLayer(event, pin)
 {
     this.pinID.push(event.target._leaflet_id);
 
@@ -159,19 +177,8 @@ this.slides.slideTo(index)
   console.log("INDEX --> "+this.pinID.indexOf(event.target._leaflet_id))
 }
 
-  getRestaurants() {
 
-    this.rest.getRestaurants()
-      .subscribe(
-        restaurant => {
-          this.restaurant = restaurant;
-          this.formatData();
-        },
-        error => this.errorMessage = <any>error);
-  }
-
-
-
+  
   ////    Function to display marker restaurant on the map
 
 
@@ -180,7 +187,7 @@ this.slides.slideTo(index)
     ///  Create custom icon
 
     var forkIcon = L.icon({
-      iconUrl: '../../assets/imgs/pin.png',
+      iconUrl: '../../assets/icon/pin.png',
       // iconSize: [38, 95], // size of the icon
       popupAnchor: [0, -15]
     });
@@ -203,7 +210,7 @@ this.slides.slideTo(index)
 
       //     };
 
-
+      
       //   }
 
 
