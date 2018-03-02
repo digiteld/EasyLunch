@@ -5,11 +5,10 @@ import { RestProvider } from '../../providers/rest/rest';
 import L from 'leaflet';
 
 import { Slides } from 'ionic-angular';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/observable/interval';
 
 // import { trigger, state, style, transition, animate } from '@angular/animations';
-
+import { Observable } from 'rxjs/Observable';
+import { map, catchError } from 'rxjs/operators';
 
 
 
@@ -89,7 +88,7 @@ export class HomePage {
     console.log("Tu as slidé !");
     let currentIndex = this.slides.getActiveIndex();
     console.log("Current index is ", currentIndex)
-    let marker= this.mapPin[currentIndex]
+    let marker = this.mapPin[currentIndex]
     marker.openPopup();
       console.log("SIZE ARRAY --> "+this.pinID.length)
 }
@@ -118,6 +117,7 @@ export class HomePage {
       html: '<div id="c" <div class="s"></div> </div>'
     });
 
+    ///
 
     this.map = L.map("map", { zoomControl: false });
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
@@ -141,7 +141,6 @@ export class HomePage {
 
   ////     Create a function for calling the restaurants from the provider
 
-
   getRestaurants() {
 
     this.rest.getRestaurants()
@@ -157,23 +156,21 @@ export class HomePage {
 
     ////     Create a function for link pin with slide
 
-  onAddLayer(event, pin)
-{
+  onAddLayer(event, pin) {
     this.pinID.push(event.target._leaflet_id);
-
     this.mapPin.push(pin);
-
 
     console.log("SIZE ARRAY --> "+this.pinID.length)
 }
 
-onClickLayer(event)
-{
+  
+  onClickLayer(event) {
+  
   console.log("ID RESTO --> "+event.target._leaflet_id);
   // if(this.pinID.indexOf(event.target._leaflet_id)==-1)
   // this.pinID.push(event.target._leaflet_id);
   let index=this.pinID.indexOf(event.target._leaflet_id)
-this.slides.slideTo(index)
+  this.slides.slideTo(index)
   console.log("INDEX --> "+this.pinID.indexOf(event.target._leaflet_id))
 }
 
@@ -188,7 +185,7 @@ this.slides.slideTo(index)
 
     var forkIcon = L.icon({
       iconUrl: '../../assets/icon/pin.png',
-      // iconSize: [38, 95], // size of the icon
+      // iconSize: [38, 95], 
       popupAnchor: [0, -15]
     });
 
@@ -199,24 +196,16 @@ this.slides.slideTo(index)
 
     for (var value of array) {
 
-    let pin=  L.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
+    let pin =  L.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
       .on('add', event => {
         this.onAddLayer(event, pin);
       }).bindPopup(value.name).addTo(this.map);
 
-                pin.on("click",e =>{this.onClickLayer(e)});
-
-      //         };
-
-      //     };
-
-      
-      //   }
-
+      pin.on('click', event => {
+        this.onClickLayer(event)
+      });
 
     }
-
-
 
   }
 }

@@ -256,9 +256,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/observable/interval';
-// import { trigger, state, style, transition, animate } from '@angular/animations';
 var HomePage = (function () {
     ////    TEST ANIMATION
     // state = 'opaque';
@@ -306,6 +303,7 @@ var HomePage = (function () {
             className: 'css-icon',
             html: '<div id="c" <div class="s"></div> </div>'
         });
+        ///
         this.map = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.map("map", { zoomControl: false });
         __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -350,7 +348,7 @@ var HomePage = (function () {
         var _this = this;
         var forkIcon = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.icon({
             iconUrl: '../../assets/icon/pin.png',
-            // iconSize: [38, 95], // size of the icon
+            // iconSize: [38, 95], 
             popupAnchor: [0, -15]
         });
         ///   Diplay marker on map
@@ -360,10 +358,9 @@ var HomePage = (function () {
                 .on('add', function (event) {
                 _this.onAddLayer(event, pin);
             }).bindPopup(value.name).addTo(this_1.map);
-            pin.on("click", function (e) { _this.onClickLayer(e); });
-            //         };
-            //     };
-            //   }
+            pin.on('click', function (event) {
+                _this.onClickLayer(event);
+            });
         };
         var this_1 = this;
         for (var _i = 0, array_1 = array; _i < array_1.length; _i++) {
@@ -373,21 +370,22 @@ var HomePage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], HomePage.prototype, "mapContainer", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */])
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]) === "function" && _b || Object)
     ], HomePage.prototype, "slides", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map">\n\n    <!-- <div class="btn"> -->\n      <ion-grid>\n        <ion-row flex-wrap: nowrap class="z-index">\n\n          <ion-col class="stylecol">\n            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>\n            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->\n          </ion-col>\n\n          <ion-col class="stylecol">\n            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    <!-- </div> -->\n\n\n\n  </div>\n\n  <div id="slides">\n    <ion-grid>\n      <ion-row class="z-index">\n\n        <!-- <ion-col> -->\n        <ion-slides (ionSlideDidChange) = "slideChanged()">\n          <ion-slide *ngFor="let r of restaurant">\n            <ion-card>\n              <ion-card-content>\n                <ion-row>\n                  <ion-col col-4>\n                    <img src={{r.picture}}/>\n                  </ion-col>\n\n                  <ion-col col-8>\n                    <ion-card-title>\n                      <ion-row>\n                        <h2>{{r.name}}</h2>\n                      </ion-row>\n                      <ion-row>\n                        <h3>{{r.description}}</h3>\n                      </ion-row>\n                    </ion-card-title>\n                    <ion-row>\n                      <p>{{r.address}}</p>\n                    </ion-row>\n                  </ion-col>\n                </ion-row>\n\n              </ion-card-content>\n            </ion-card>\n\n          </ion-slide>\n        </ion-slides>\n\n        <!-- </ion-col> -->\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/,
+            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map">\n\n    <!-- <div class="btn"> -->\n      <ion-grid>\n        <ion-row flex-wrap: nowrap class="z-index">\n\n          <ion-col class="stylecol">\n            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>\n            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->\n          </ion-col>\n\n          <ion-col class="stylecol">\n            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    <!-- </div> -->\n\n\n\n  </div>\n\n  <div id="slides">\n    <ion-grid>\n      <ion-row class="z-index">\n\n        <!-- <ion-col> -->\n        <ion-slides (ionSlideDidChange) = "slideChanged()">\n          <ion-slide *ngFor="let r of restaurant">\n            <ion-card>\n              <ion-card-content>\n                <ion-row>\n                  <!-- <ion-col col-2> -->\n                    <img src={{r.picture}}/>\n                  <!-- </ion-col> -->\n\n                  <!-- <ion-col col-10> -->\n                    <ion-card-title>\n                      <ion-row>\n                        <h2>{{r.name}}</h2>\n                      </ion-row>\n                      <ion-row>\n                        <h3>{{r.description}}</h3>\n                      </ion-row>\n                      <ion-row>\n                        <h4>nom de la rue</h4>\n                      </ion-row>\n                      <ion-row>\n                        <h4>code postal + ville</h4>\n                      </ion-row>\n                    </ion-card-title>\n                    \n                  <!-- </ion-col> -->\n                </ion-row>\n\n              </ion-card-content>\n            </ion-card>\n\n          </ion-slide>\n        </ion-slides>\n\n        <!-- </ion-col> -->\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/,
         })
         ////////        Display Data in view        ////////
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map

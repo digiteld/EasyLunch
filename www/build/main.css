@@ -1,12 +1,3 @@
-@font-face {
-  font-family: 'Montserrat';
-  src: url("../assets/fonts/montserrat/Montserrat-Regular.ttf");
-  src: url("../assets/fonts/montserrat/Montserrat-Medium.ttf");
-  src: url("../assets/fonts/montserrat/Montserrat-SemiBold.ttf");
-  src: url("../assets/fonts/montserrat/Montserrat-Light.ttf");
-  src: url("../assets/fonts/montserrat/Montserrat-LightItalic.ttf");
-}
-
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -3745,7 +3736,7 @@
 
 @font-face {
   font-family: "Ionicons";
-  src: url("../assets/fonts/ionicons.woff2?v=3.0.0-alpha.3") format("woff2"), url("../assets/fonts/ionicons.woff?v=3.0.0-alpha.3") format("woff"), url("../assets/fonts/ionicons.ttf?v=3.0.0-alpha.3") format("truetype");
+  src: url("../fonts/ionicons.woff2?v=3.0.0-alpha.3") format("woff2"), url("../fonts/ionicons.woff?v=3.0.0-alpha.3") format("woff"), url("../fonts/ionicons.ttf?v=3.0.0-alpha.3") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -3772,56 +3763,56 @@ ion-icon::before {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 300;
-  src: local("Roboto Light"), local("Roboto-Light"), url("../assets/fonts/roboto-light.woff2") format("woff2"), url("../assets/fonts/roboto-light.woff") format("woff"), url("../assets/fonts/roboto-light.ttf") format("truetype");
+  src: local("Roboto Light"), local("Roboto-Light"), url("../fonts/roboto-light.woff2") format("woff2"), url("../fonts/roboto-light.woff") format("woff"), url("../fonts/roboto-light.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: local("Roboto"), local("Roboto-Regular"), url("../assets/fonts/roboto-regular.woff2") format("woff2"), url("../assets/fonts/roboto-regular.woff") format("woff"), url("../assets/fonts/roboto-regular.ttf") format("truetype");
+  src: local("Roboto"), local("Roboto-Regular"), url("../fonts/roboto-regular.woff2") format("woff2"), url("../fonts/roboto-regular.woff") format("woff"), url("../fonts/roboto-regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
-  src: local("Roboto Medium"), local("Roboto-Medium"), url("../assets/fonts/roboto-medium.woff2") format("woff2"), url("../assets/fonts/roboto-medium.woff") format("woff"), url("../assets/fonts/roboto-medium.ttf") format("truetype");
+  src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/roboto-medium.woff2") format("woff2"), url("../fonts/roboto-medium.woff") format("woff"), url("../fonts/roboto-medium.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
-  src: local("Roboto Bold"), local("Roboto-Bold"), url("../assets/fonts/roboto-bold.woff2") format("woff2"), url("../assets/fonts/roboto-bold.woff") format("woff"), url("../assets/fonts/roboto-bold.ttf") format("truetype");
+  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-bold.woff2") format("woff2"), url("../fonts/roboto-bold.woff") format("woff"), url("../fonts/roboto-bold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 300;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../assets/fonts/noto-sans-regular.woff") format("woff"), url("../assets/fonts/noto-sans-regular.ttf") format("truetype");
+  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.woff") format("woff"), url("../fonts/noto-sans-regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 400;
-  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../assets/fonts/noto-sans-regular.woff") format("woff"), url("../assets/fonts/noto-sans-regular.ttf") format("truetype");
+  src: local("Noto Sans"), local("Noto-Sans-Regular"), url("../fonts/noto-sans-regular.woff") format("woff"), url("../fonts/noto-sans-regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 500;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../assets/fonts/noto-sans-bold.woff") format("woff"), url("../assets/fonts/noto-sans-bold.ttf") format("truetype");
+  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.woff") format("woff"), url("../fonts/noto-sans-bold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 700;
-  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../assets/fonts/noto-sans-bold.woff") format("woff"), url("../assets/fonts/noto-sans-bold.ttf") format("truetype");
+  src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../fonts/noto-sans-bold.woff") format("woff"), url("../fonts/noto-sans-bold.ttf") format("truetype");
 }
 
 ion-action-sheet {
@@ -27981,12 +27972,49 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-page-home {
-  font-family: "Montserrat" !important;
+@font-face {
+  font-family: Montserrat;
+  src: url("../assets/fonts/montserrat.woff2");
 }
 
-page-home h1, page-home h2, page-home button {
-  font-family: "Montserrat" !important;
+.ios * {
+  font-family: Montserrat;
+}
+
+.ios button {
+  font-weight: 500;
+}
+
+.ios h2 {
+  font-weight: 600;
+}
+
+.ios h3 {
+  font-weight: 400;
+}
+
+.ios h4 {
+  font-weight: 500;
+}
+
+.md * {
+  font-family: Montserrat;
+}
+
+.md button {
+  font-weight: 500;
+}
+
+.md h2 {
+  font-weight: 600;
+}
+
+.md h3 {
+  font-weight: 400;
+}
+
+.md p {
+  font-weight: 500;
 }
 
 page-home #map {
@@ -28030,13 +28058,44 @@ page-home .ion-md-heure {
   height: 20px;
 }
 
-page-home p {
+page-home .stylebtn p {
   font-size: 1em;
   padding-left: 0.4em;
 }
 
 page-home ion-icon {
   padding-right: 0 !important;
+}
+
+page-home ion-card {
+  width: 320px !important;
+}
+
+page-home .card-content {
+  padding: 0 !important;
+}
+
+page-home img {
+  margin: 10px;
+}
+
+page-home h2 {
+  font-size: 16px !important;
+  color: #5E7FB1 !important;
+}
+
+page-home h3 {
+  font-size: 14px !important;
+  color: #5E7FB1 !important;
+}
+
+page-home .row h4 {
+  font-size: 12px !important;
+  color: #5E7FB1;
+}
+
+page-home .tab-button-text {
+  font-size: 10px !important;
 }
 
 page-home .s {
@@ -28048,7 +28107,7 @@ page-home .s {
 }
 
 page-home .s:nth-child(1) {
-  background: #33ffbb;
+  background: #5E7FB1;
   -webkit-animation: r0 2s 0s ease-out infinite;
   animation: r0 2s 0s ease-out infinite;
 }
@@ -28059,8 +28118,8 @@ page-home .s:nth-child(1) {
     box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
   }
   10% {
-    -webkit-box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px #333, 0 0 12px 14px #1affb3;
-    box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px #333, 0 0 12px 14px #1affb3;
+    -webkit-box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px #333, 0 0 12px 14px #5E7FB1;
+    box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px #333, 0 0 12px 14px #5E7FB1;
   }
   100% {
     -webkit-box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
@@ -28074,8 +28133,8 @@ page-home .s:nth-child(1) {
     box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px rgba(242, 242, 242, 0.5), 0 0 0px 0px rgba(26, 255, 179, 0);
   }
   10% {
-    -webkit-box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px rgba(242, 242, 242, 0.5), 0 0 12px 14px #1affb3;
-    box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px rgba(242, 242, 242, 0.5), 0 0 12px 14px #1affb3;
+    -webkit-box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px rgba(242, 242, 242, 0.5), 0 0 12px 14px #5E7FB1;
+    box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px rgba(242, 242, 242, 0.5), 0 0 12px 14px #5E7FB1;
   }
   100% {
     -webkit-box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px rgba(242, 242, 242, 0.5), 0 0 0px 40px rgba(26, 255, 179, 0);

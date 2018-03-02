@@ -1,16 +1,5 @@
 page-home {
 
-//////      Custom font
-
-    $font-family-base: "Montserrat", sans-serif !default;
-
-    font-family: "Montserrat" !important;
-
-    h1, h2, button {
-        font-family: "Montserrat" !important;
-        }
-
-
 //////      CSS home
 
     #map {
@@ -39,7 +28,6 @@ page-home {
     }
 
     .stylecol {
-
       width: 155px;
       height: 50px;
     }
@@ -58,7 +46,7 @@ page-home {
       height: 20px;
     }
 
-    p {
+    .stylebtn p {
       font-size: 1em;
       padding-left: 0.4em;
     }
@@ -68,6 +56,38 @@ page-home {
     }
 
 
+    ////   CARD
+
+    ion-card {
+      width: 320px !important;
+    }
+
+    .card-content {
+      padding: 0 !important;
+    }
+
+    img {
+      margin: 10px;
+    }
+
+    h2 {
+      font-size: 16px !important;
+      color: #5E7FB1 !important;
+    }
+
+    h3 {
+      font-size: 14px !important;
+      color: #5E7FB1 !important;
+    }
+
+    .row h4 {
+      font-size: 12px !important;
+      color: #5E7FB1;
+    }
+
+    .tab-button-text {
+      font-size: 10px !important;
+    }
 
 //////      Animation pin "geolocalisation"
     
@@ -81,7 +101,7 @@ page-home {
       }
   
       .s:nth-child(1) {
-        background: #33ffbb;
+        background: #5E7FB1;                              //vert :33ffbb
         -webkit-animation: r0 2s 0s ease-out infinite;
         -moz-animation: r0 2s 0s ease-out infinite;
         animation: r0 2s 0s ease-out infinite;
@@ -89,10 +109,10 @@ page-home {
       
       @-webkit-keyframes r0 {
         0% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
+          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);       // vert : #1affb3;
         }
         10% {
-          box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px #333, 0 0 12px 14px #1affb3;
+          box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px #333, 0 0 12px 14px #5E7FB1;
         }
         100% {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
@@ -103,7 +123,7 @@ page-home {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
         }
         10% {
-          box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px #333, 0 0 12px 14px #1affb3;
+          box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px #333, 0 0 12px 14px #5E7FB1;
         }
         100% {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
@@ -114,7 +134,7 @@ page-home {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px rgba(242,242,242,0.5), 0 0 0px 0px rgba(26, 255, 179, 0);
         }
         10% {
-          box-shadow: 0 0 8px 6px #1affb3, 0 0 12px 10px rgba(242,242,242,0.5), 0 0 12px 14px #1affb3;
+          box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px rgba(242,242,242,0.5), 0 0 12px 14px #5E7FB1;
         }
         100% {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px rgba(242,242,242,0.5), 0 0 0px 40px rgba(26, 255, 179, 0);

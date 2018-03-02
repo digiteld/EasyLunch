@@ -14,3 +14,56 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@font-face {
+    font-family: Montserrat;
+    src: url('../assets/fonts/montserrat.woff2');
+}
+
+///////      IOS
+
+
+.ios *{
+    font-family: Montserrat;
+}
+
+.ios button {
+    font-weight: 500;       // medium
+}
+
+.ios h2 {
+    font-weight: 600;       // semi-bold
+}
+
+.ios h3 {
+    font-weight: 400;       // regular
+}
+
+.ios h4 {
+    font-weight: 500;
+}
+
+
+
+///////      ANDROID
+
+
+.md *{
+    font-family: Montserrat;
+}
+
+.md button {
+    font-weight: 500;       // medium
+}
+
+.md h2 {
+    font-weight: 600;       // semi-bold
+}
+
+.md h3 {
+    font-weight: 400;       // regular
+}
+
+.md p {
+    font-weight: 500;
+}
