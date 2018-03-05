@@ -99,6 +99,7 @@ export class HomePage {
     this.slides.lockSwipeToNext(true)
 else
 this.slides.lockSwipeToNext(false)
+
     this.moveMarker(marker)
     console.log("SIZE ARRAY --> " + this.pinID.length)
   }
@@ -116,14 +117,18 @@ this.slides.lockSwipeToNext(false)
     });
 
     var forkIcon = L.icon({
-      iconUrl: '../../assets/icon/pin2.png',
+      iconUrl: '../../assets/icon/pin.png',
       // iconSize: [38, 95],
       popupAnchor: [0, -15]
     });
+    console.log("FUCKING INDEX --> "+this.slides.getPreviousIndex())
+
+      this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
+
 
     pin.bounce({ duration: 500, height: 100 });
     pin.setIcon(newIcon);
-    this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
+
   }
 
 
@@ -223,7 +228,11 @@ this.slides.lockSwipeToNext(false)
       popupAnchor: [0, -15]
     });
 
-
+    var newIcon = L.icon({
+      iconUrl: '../../assets/icon/pin2.png',
+      // iconSize: [38, 95],
+      popupAnchor: [0, -15]
+    });
     ///   Diplay marker on map
 
     let array = this.restaurant;
@@ -244,8 +253,9 @@ this.slides.lockSwipeToNext(false)
           if (i > 4) {
             return false;
           }
-          console.log(array[i])
-          let pin = L.marker([array[i].lat, array[i].lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
+          console.log(array[i]+  "   i ---> "+i)
+          let pin = L.marker([array[i].lat, array[i].lon], { icon: i==0?newIcon:forkIcon
+            , bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
             .on('add', event => {
 
               this.onAddLayer(event)

@@ -305,13 +305,14 @@ var HomePage = (function () {
             popupAnchor: [0, -15]
         });
         var forkIcon = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.icon({
-            iconUrl: '../../assets/icon/pin2.png',
+            iconUrl: '../../assets/icon/pin.png',
             // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
+        console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex());
+        this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
         pin.bounce({ duration: 500, height: 100 });
         pin.setIcon(newIcon);
-        this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
     };
     ////     Function to initialize map   -   we using leaflet with mapbox
     HomePage.prototype.loadmap = function () {
@@ -376,6 +377,11 @@ var HomePage = (function () {
             // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
+        var newIcon = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.icon({
+            iconUrl: '../../assets/icon/pin2.png',
+            // iconSize: [38, 95],
+            popupAnchor: [0, -15]
+        });
         ///   Diplay marker on map
         var array = this.restaurant;
         // for (let i = 0; i < array.length; i++){
@@ -394,8 +400,9 @@ var HomePage = (function () {
             if (i > 4) {
                 return false;
             }
-            console.log(array[i]);
-            var pin = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.marker([array[i].lat, array[i].lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
+            console.log(array[i] + "   i ---> " + i);
+            var pin = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.marker([array[i].lat, array[i].lon], { icon: i == 0 ? newIcon : forkIcon,
+                bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
                 .on('add', function (event) {
                 _this.onAddLayer(event);
             }).addTo(_this.map);
@@ -407,11 +414,11 @@ var HomePage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], HomePage.prototype, "mapContainer", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */])
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]) === "function" && _b || Object)
     ], HomePage.prototype, "slides", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -419,9 +426,10 @@ var HomePage = (function () {
         })
         ////////        Display Data in view        ////////
         ,
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
