@@ -7,9 +7,8 @@ import L from 'leaflet';
 import { Slides } from 'ionic-angular';
 
 // import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Observable } from 'rxjs/Observable';
-import { map, catchError } from 'rxjs/operators';
 
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable'; 
 
 
 @Component({
@@ -54,7 +53,9 @@ export class HomePage {
 
   mapPin: any;
   pinID: number[];
-  sliding:any;
+  sliding: any;
+  adresse: any[];
+  ville: any[];
 
 
   ////    TEST ANIMATION
@@ -71,10 +72,12 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, public rest: RestProvider) {
-    this.mapPin = this.mapPin || [];;
+    this.mapPin = this.mapPin || [];
     this.pinID = this.pinID || [];
-    this.sliding = false;   
-}
+    this.adresse = this.adresse || [];
+    this.ville = this.ville || [];
+    this.sliding = false;
+  }
 
   ionViewDidEnter() {
     this.loadmap();
@@ -84,17 +87,43 @@ export class HomePage {
     this.getRestaurants();
   }
 
+
   slideChanged() {
     console.log("Tu as slidé !");
     let currentIndex = this.slides.getActiveIndex();
     console.log("Current index is ", currentIndex)
     let marker = this.mapPin[currentIndex]
-    marker.openPopup();
-      console.log("SIZE ARRAY --> "+this.pinID.length)
-}
 
+    this.moveMarker(marker,this.slides.getPreviousIndex())
+    console.log("SIZE ARRAY --> " + this.pinID.length)
+  }
+
+
+  ////     Create a function for animated pin restaurants when slide is active
+
+
+
+  moveMarker(pin,previousIndex) {
+    var newIcon = L.icon({
+      iconUrl: '../../assets/icon/pin2.png',
+      // iconSize: [38, 95], 
+      popupAnchor: [0, -15]
+    });
+
+    var forkIcon = L.icon({
+      iconUrl: '../../assets/icon/pin2.png',
+      // iconSize: [38, 95], 
+      popupAnchor: [0, -15]
+    }); 
+
+    pin.bounce({ duration: 500, height: 100 });
+    pin.setIcon(newIcon);
+    this.mapPin[previousIndex].setIcon(forkIcon);
+  }
+  
 
   
+
   ////     Function to initialize map   -   we using leaflet with mapbox
 
   loadmap() {
@@ -154,28 +183,28 @@ export class HomePage {
 
 
 
-    ////     Create a function for link pin with slide
+  ////     Create a function for link pin with slide
 
-  onAddLayer(event, pin) {
+  onAddLayer(event) {
     this.pinID.push(event.target._leaflet_id);
-    this.mapPin.push(pin);
+    
+    
+    console.log("SIZE ARRAY --> " + this.pinID.length)
+  }
 
-    console.log("SIZE ARRAY --> "+this.pinID.length)
-}
 
-  
   onClickLayer(event) {
-  
-  console.log("ID RESTO --> "+event.target._leaflet_id);
-  // if(this.pinID.indexOf(event.target._leaflet_id)==-1)
-  // this.pinID.push(event.target._leaflet_id);
-  let index=this.pinID.indexOf(event.target._leaflet_id)
-  this.slides.slideTo(index)
-  console.log("INDEX --> "+this.pinID.indexOf(event.target._leaflet_id))
-}
+
+    console.log("ID RESTO --> " + event.target._leaflet_id);
+    // if(this.pinID.indexOf(event.target._leaflet_id)==-1)
+    // this.pinID.push(event.target._leaflet_id);
+    let index = this.pinID.indexOf(event.target._leaflet_id)
+    this.slides.slideTo(index)
+    console.log("INDEX --> " + this.pinID.indexOf(event.target._leaflet_id))
+  }
 
 
-  
+
   ////    Function to display marker restaurant on the map
 
 
@@ -193,19 +222,39 @@ export class HomePage {
     ///   Diplay marker on map
 
     let array = this.restaurant;
-
-    for (var value of array) {
-
-    let pin =  L.marker([value.lat, value.lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
-      .on('add', event => {
-        this.onAddLayer(event, pin);
-      }).bindPopup(value.name).addTo(this.map);
-
-      pin.on('click', event => {
-        this.onClickLayer(event)
-      });
-
-    }
+    // for (let i = 0; i < array.length; i++){
+      // console.log(i)
+      // if (i == 0) {
+      //   console.log("toot")
+      //   let pin = L.marker([array[i].lat, array[i].lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
+      //   .on('add', event => {
+      //     this.onAddLayer(event, pin);
+      //   }).bindPopup(array[i].name).addTo(this.map);
+      // pin.on('click', event => {
+      //   this.onClickLayer(event)
+      // });
+      // } else {
+  
+        IntervalObservable.create(1500).subscribe((i) => {
+          if (i > 4) {
+            return false;
+          }
+          let pin = L.marker([array[i].lat, array[i].lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
+            .on('add', event => {
+              
+              this.onAddLayer(event)
+              
+              
+            }).addTo(this.map);
+          pin.on('click', event => {
+            this.onClickLayer(event)
+          });
+          
+     
+          this.mapPin.push(pin);
+          
+         
+        })
 
   }
 }
