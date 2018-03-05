@@ -140,7 +140,7 @@ var TabsPage = (function () {
         this.tab4Root = __WEBPACK_IMPORTED_MODULE_3__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="J\'organise" tabIcon="jorganise"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Je participe" tabIcon="je-participe"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Réservations" tabIcon="reservations"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Compte" tabIcon="compte"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\tabs\tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="J\'organise" tabIcon="jorganise"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Je participe" tabIcon="je-participe"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Réservations" tabIcon="reservations"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Compte" tabIcon="compte"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -186,7 +186,7 @@ var AboutPage = (function () {
     };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<!-- <ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let r of restaurant">\n\n      <h2>{{r.name}}</h2>\n\n      <p>{{r.email}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>  -->'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\about\about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<!-- <ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let r of restaurant">\n\n      <h2>{{r.name}}</h2>\n\n      <p>{{r.email}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>  -->'/*ion-inline-end:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
     ], AboutPage);
@@ -221,7 +221,7 @@ var ContactPage = (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\contact\contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], ContactPage);
@@ -407,22 +407,21 @@ var HomePage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], HomePage.prototype, "mapContainer", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]),
-        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */]) === "function" && _b || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Slides */])
     ], HomePage.prototype, "slides", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <!-- <ion-title>\n\n        Easy Lunch\n\n    </ion-title> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div id="map">\n\n\n\n    <!-- <div class="btn"> -->\n\n      <ion-grid>\n\n        <ion-row flex-wrap: nowrap class="z-index">\n\n\n\n          <ion-col class="stylecol">\n\n            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>\n\n            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->\n\n          </ion-col>\n\n\n\n          <ion-col class="stylecol">\n\n            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>\n\n          </ion-col>\n\n\n\n        </ion-row>\n\n      </ion-grid>\n\n    <!-- </div> -->\n\n\n\n\n\n\n\n  </div>\n\n\n\n  <div id="slides">\n\n    <ion-grid>\n\n      <ion-row class="z-index">\n\n\n\n        <!-- <ion-col> -->\n\n        <ion-slides (ionSlideDidChange) = "slideChanged()">\n\n          <ion-slide *ngFor="let r of restaurant">\n\n            <ion-card>\n\n              <ion-card-content>\n\n                <ion-row>\n\n                  <!-- <ion-col col-2> -->\n\n                    <img src={{r.picture}}/>\n\n                  <!-- </ion-col> -->\n\n\n\n                  <!-- <ion-col col-10> -->\n\n                    <ion-card-title>\n\n                      <ion-row>\n\n                        <h2>{{r.name}}</h2>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h3>{{r.description}}</h3>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h4>nom de la rue</h4>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h4>code postal + ville</h4>\n\n                      </ion-row>\n\n                    </ion-card-title>\n\n                    \n\n                  <!-- </ion-col> -->\n\n                </ion-row>\n\n\n\n              </ion-card-content>\n\n            </ion-card>\n\n\n\n          </ion-slide>\n\n        </ion-slides>\n\n\n\n        <!-- </ion-col> -->\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\home\home.html"*/,
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <!-- <ion-title>\n\n        Easy Lunch\n\n    </ion-title> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div id="map">\n\n\n\n    <!-- <div class="btn"> -->\n\n      <ion-grid>\n\n        <ion-row flex-wrap: nowrap class="z-index">\n\n\n\n          <ion-col class="stylecol">\n\n            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>\n\n            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->\n\n          </ion-col>\n\n\n\n          <ion-col class="stylecol">\n\n            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>\n\n          </ion-col>\n\n\n\n        </ion-row>\n\n      </ion-grid>\n\n    <!-- </div> -->\n\n\n\n\n\n\n\n  </div>\n\n\n\n  <div id="slides">\n\n    <ion-grid>\n\n      <ion-row class="z-index">\n\n\n\n        <!-- <ion-col> -->\n\n        <ion-slides (ionSlideDidChange) = "slideChanged()">\n\n          <ion-slide *ngFor="let r of restaurant">\n\n            <ion-card>\n\n              <ion-card-content>\n\n                <ion-row>\n\n                  <!-- <ion-col col-2> -->\n\n                    <img src={{r.picture}}/>\n\n                  <!-- </ion-col> -->\n\n\n\n                  <!-- <ion-col col-10> -->\n\n                    <ion-card-title>\n\n                      <ion-row>\n\n                        <h2>{{r.name}}</h2>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h3>{{r.description}}</h3>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h4>nom de la rue</h4>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h4>code postal + ville</h4>\n\n                      </ion-row>\n\n                    </ion-card-title>\n\n                    \n\n                  <!-- </ion-col> -->\n\n                </ion-row>\n\n\n\n              </ion-card-content>\n\n            </ion-card>\n\n\n\n          </ion-slide>\n\n        </ion-slides>\n\n\n\n        <!-- </ion-col> -->\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\home\home.html"*/,
         })
         ////////        Display Data in view        ////////
         ,
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -561,7 +560,7 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -596,7 +595,7 @@ var BookPage = (function () {
     }
     BookPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-book',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\book\book.html"*/''/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\book\book.html"*/
+            selector: 'page-book',template:/*ion-inline-start:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\book\book.html"*/''/*ion-inline-end:"C:\Users\Romain\Desktop\Digiteld\Project Easy-Lunch\EasyLunch\src\pages\book\book.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], BookPage);
