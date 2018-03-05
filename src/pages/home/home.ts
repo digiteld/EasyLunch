@@ -8,7 +8,7 @@ import { Slides } from 'ionic-angular';
 
 // import { trigger, state, style, transition, animate } from '@angular/animations';
 
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable'; 
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 
 @Component({
@@ -81,6 +81,7 @@ export class HomePage {
 
   ionViewDidEnter() {
     this.loadmap();
+
   }
 
   ionViewDidLoad() {
@@ -93,8 +94,12 @@ export class HomePage {
     let currentIndex = this.slides.getActiveIndex();
     console.log("Current index is ", currentIndex)
     let marker = this.mapPin[currentIndex]
-
-    this.moveMarker(marker,this.slides.getPreviousIndex())
+    console.log("SIZE SLIDE --> "+this.slides.length())
+    if(currentIndex==this.slides.length()-1)
+    this.slides.lockSwipeToNext(true)
+else
+this.slides.lockSwipeToNext(false)
+    this.moveMarker(marker)
     console.log("SIZE ARRAY --> " + this.pinID.length)
   }
 
@@ -103,26 +108,26 @@ export class HomePage {
 
 
 
-  moveMarker(pin,previousIndex) {
+  moveMarker(pin) {
     var newIcon = L.icon({
       iconUrl: '../../assets/icon/pin2.png',
-      // iconSize: [38, 95], 
+      // iconSize: [38, 95],
       popupAnchor: [0, -15]
     });
 
     var forkIcon = L.icon({
       iconUrl: '../../assets/icon/pin2.png',
-      // iconSize: [38, 95], 
+      // iconSize: [38, 95],
       popupAnchor: [0, -15]
-    }); 
+    });
 
     pin.bounce({ duration: 500, height: 100 });
     pin.setIcon(newIcon);
-    this.mapPin[previousIndex].setIcon(forkIcon);
+    this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
   }
-  
 
-  
+
+
 
   ////     Function to initialize map   -   we using leaflet with mapbox
 
@@ -187,8 +192,8 @@ export class HomePage {
 
   onAddLayer(event) {
     this.pinID.push(event.target._leaflet_id);
-    
-    
+
+
     console.log("SIZE ARRAY --> " + this.pinID.length)
   }
 
@@ -214,7 +219,7 @@ export class HomePage {
 
     var forkIcon = L.icon({
       iconUrl: '../../assets/icon/pin.png',
-      // iconSize: [38, 95], 
+      // iconSize: [38, 95],
       popupAnchor: [0, -15]
     });
 
@@ -234,26 +239,27 @@ export class HomePage {
       //   this.onClickLayer(event)
       // });
       // } else {
-  
+
         IntervalObservable.create(1500).subscribe((i) => {
           if (i > 4) {
             return false;
           }
+          console.log(array[i])
           let pin = L.marker([array[i].lat, array[i].lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
             .on('add', event => {
-              
+
               this.onAddLayer(event)
-              
-              
+
+
             }).addTo(this.map);
           pin.on('click', event => {
             this.onClickLayer(event)
           });
-          
-     
+
+
           this.mapPin.push(pin);
-          
-         
+
+
         })
 
   }
