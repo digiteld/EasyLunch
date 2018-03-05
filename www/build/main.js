@@ -140,7 +140,7 @@ var TabsPage = (function () {
         this.tab4Root = __WEBPACK_IMPORTED_MODULE_3__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="J\'organise" tabIcon="jorganise"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Je participe" tabIcon="je-participe"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Réservations" tabIcon="reservations"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Compte" tabIcon="compte"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="J\'organise" tabIcon="jorganise"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Je participe" tabIcon="je-participe"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Réservations" tabIcon="reservations"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Compte" tabIcon="compte"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -186,7 +186,7 @@ var AboutPage = (function () {
     };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<!-- <ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let r of restaurant">\n      <h2>{{r.name}}</h2>\n      <p>{{r.email}}</p>\n    </ion-item>\n  </ion-list>\n</ion-content>  -->'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<!-- <ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let r of restaurant">\n\n      <h2>{{r.name}}</h2>\n\n      <p>{{r.email}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>  -->'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
     ], AboutPage);
@@ -221,7 +221,7 @@ var ContactPage = (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], ContactPage);
@@ -289,24 +289,29 @@ var HomePage = (function () {
         var currentIndex = this.slides.getActiveIndex();
         console.log("Current index is ", currentIndex);
         var marker = this.mapPin[currentIndex];
-        this.moveMarker(marker, this.slides.getPreviousIndex());
+        console.log("SIZE SLIDE --> " + this.slides.length());
+        if (currentIndex == this.slides.length() - 1)
+            this.slides.lockSwipeToNext(true);
+        else
+            this.slides.lockSwipeToNext(false);
+        this.moveMarker(marker);
         console.log("SIZE ARRAY --> " + this.pinID.length);
     };
     ////     Create a function for animated pin restaurants when slide is active
-    HomePage.prototype.moveMarker = function (pin, previousIndex) {
+    HomePage.prototype.moveMarker = function (pin) {
         var newIcon = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.icon({
             iconUrl: '../../assets/icon/pin2.png',
-            // iconSize: [38, 95], 
+            // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
         var forkIcon = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.icon({
             iconUrl: '../../assets/icon/pin2.png',
-            // iconSize: [38, 95], 
+            // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
         pin.bounce({ duration: 500, height: 100 });
         pin.setIcon(newIcon);
-        this.mapPin[previousIndex].setIcon(forkIcon);
+        this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
     };
     ////     Function to initialize map   -   we using leaflet with mapbox
     HomePage.prototype.loadmap = function () {
@@ -368,7 +373,7 @@ var HomePage = (function () {
         var _this = this;
         var forkIcon = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.icon({
             iconUrl: '../../assets/icon/pin.png',
-            // iconSize: [38, 95], 
+            // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
         ///   Diplay marker on map
@@ -389,6 +394,7 @@ var HomePage = (function () {
             if (i > 4) {
                 return false;
             }
+            console.log(array[i]);
             var pin = __WEBPACK_IMPORTED_MODULE_3_leaflet___default.a.marker([array[i].lat, array[i].lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
                 .on('add', function (event) {
                 _this.onAddLayer(event);
@@ -409,7 +415,7 @@ var HomePage = (function () {
     ], HomePage.prototype, "slides", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <!-- <ion-title>\n        Easy Lunch\n    </ion-title> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div id="map">\n\n    <!-- <div class="btn"> -->\n      <ion-grid>\n        <ion-row flex-wrap: nowrap class="z-index">\n\n          <ion-col class="stylecol">\n            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>\n            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->\n          </ion-col>\n\n          <ion-col class="stylecol">\n            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>\n          </ion-col>\n\n        </ion-row>\n      </ion-grid>\n    <!-- </div> -->\n\n\n\n  </div>\n\n  <div id="slides">\n    <ion-grid>\n      <ion-row class="z-index">\n\n        <!-- <ion-col> -->\n        <ion-slides (ionSlideDidChange) = "slideChanged()">\n          <ion-slide *ngFor="let r of restaurant">\n            <ion-card>\n              <ion-card-content>\n                <ion-row>\n                  <!-- <ion-col col-2> -->\n                    <img src={{r.picture}}/>\n                  <!-- </ion-col> -->\n\n                  <!-- <ion-col col-10> -->\n                    <ion-card-title>\n                      <ion-row>\n                        <h2>{{r.name}}</h2>\n                      </ion-row>\n                      <ion-row>\n                        <h3>{{r.description}}</h3>\n                      </ion-row>\n                      <ion-row>\n                        <h4>nom de la rue</h4>\n                      </ion-row>\n                      <ion-row>\n                        <h4>code postal + ville</h4>\n                      </ion-row>\n                    </ion-card-title>\n                    \n                  <!-- </ion-col> -->\n                </ion-row>\n\n              </ion-card-content>\n            </ion-card>\n\n          </ion-slide>\n        </ion-slides>\n\n        <!-- </ion-col> -->\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/home/home.html"*/,
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <!-- <ion-title>\n\n        Easy Lunch\n\n    </ion-title> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div id="map">\n\n\n\n    <!-- <div class="btn"> -->\n\n      <ion-grid>\n\n        <ion-row flex-wrap: nowrap class="z-index">\n\n\n\n          <ion-col class="stylecol">\n\n            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>\n\n            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->\n\n          </ion-col>\n\n\n\n          <ion-col class="stylecol">\n\n            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>\n\n          </ion-col>\n\n\n\n        </ion-row>\n\n      </ion-grid>\n\n    <!-- </div> -->\n\n\n\n\n\n\n\n  </div>\n\n\n\n  <div id="slides">\n\n    <ion-grid>\n\n      <ion-row class="z-index">\n\n\n\n        <!-- <ion-col> -->\n\n        <ion-slides (ionSlideDidChange) = "slideChanged()">\n\n          <ion-slide *ngFor="let r of restaurant">\n\n            <ion-card>\n\n              <ion-card-content>\n\n                <ion-row>\n\n                  <!-- <ion-col col-2> -->\n\n                    <img src={{r.picture}}/>\n\n                  <!-- </ion-col> -->\n\n\n\n                  <!-- <ion-col col-10> -->\n\n                    <ion-card-title>\n\n                      <ion-row>\n\n                        <h2>{{r.name}}</h2>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h3>{{r.description}}</h3>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h4>nom de la rue</h4>\n\n                      </ion-row>\n\n                      <ion-row>\n\n                        <h4>code postal + ville</h4>\n\n                      </ion-row>\n\n                    </ion-card-title>\n\n                    \n\n                  <!-- </ion-col> -->\n\n                </ion-row>\n\n\n\n              </ion-card-content>\n\n            </ion-card>\n\n\n\n          </ion-slide>\n\n        </ion-slides>\n\n\n\n        <!-- </ion-col> -->\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\home\home.html"*/,
         })
         ////////        Display Data in view        ////////
         ,
@@ -555,7 +561,7 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -590,7 +596,7 @@ var BookPage = (function () {
     }
     BookPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-book',template:/*ion-inline-start:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/book/book.html"*/''/*ion-inline-end:"/Users/Carole/Documents/DIGITELD/EasyLunch/src/pages/book/book.html"*/
+            selector: 'page-book',template:/*ion-inline-start:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\book\book.html"*/''/*ion-inline-end:"C:\Users\Nicolas\Desktop\Digiteld\Easy Lunch\EasyLunch\src\pages\book\book.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], BookPage);
