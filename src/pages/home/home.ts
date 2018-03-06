@@ -80,12 +80,14 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
+      if (!this.map)
     this.loadmap();
-
+      console.log("JE passe bien par IONDIDENTER")
   }
 
   ionViewDidLoad() {
-    this.getRestaurants();
+    console.log("JE passe bien par là")
+      this.getRestaurants();
   }
 
 
@@ -146,12 +148,7 @@ this.slides.lockSwipeToNext(false)
   ////     Function to initialize map   -   we using leaflet with mapbox
 
   loadmap() {
-    if (this.map) {
-      this.map.remove();
-    }
-
-
-
+    
     ////     Create map object and add base map tiles from Leaflet and attribution info to 'map' div
 
     ///  Create custom icon
@@ -262,7 +259,7 @@ this.slides.lockSwipeToNext(false)
           if (i > 4) {
             return false;
           }
-          console.log(array[i]+  "   i ---> "+i)
+
           let pin = L.marker([array[i].lat, array[i].lon], { icon: i==0?newIcon:forkIcon
             , bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
             .on('add', event => {

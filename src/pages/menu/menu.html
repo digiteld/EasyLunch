@@ -7,41 +7,59 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color: #F4FAFD;text-align:center;">
+    <div class="full">
 <p>Entrée</p>
-<ion-item>
-  <ion-label>Salade</ion-label>
-  <ion-checkbox color="dark" checked="false">  </ion-checkbox>
-</ion-item>
-<button ion-button (click)="openDetail()"> go to detail </button>
+    <ng-container *ngFor="let item of entree">
 
-<ion-item>
-  <ion-label>Pâtée</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+    <!--<button ion-button (click)="openDetail()">-->
+        <ion-card (click)="openDetail()">
+            <ion-card-header>
+                {{item.name}}<br>
+
+            </ion-card-header>
+            <ion-card-content>
+                {{item.description}}
+            </ion-card-content>
+        </ion-card>
+
+
+    </ng-container>
+
+
+
 <p>Plat</p>
-<ion-item>
-  <ion-label>Légume</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+    <ng-container *ngFor="let item of plat">
+        <ion-card (click)="openDetail()">
+            <ion-card-header>
+                {{item.name}}<br>
 
-<ion-item>
-  <ion-label>Carbo</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+            </ion-card-header>
+            <ion-card-content>
+                {{item.description}}
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+
 <p>Dessert</p>
-<ion-item>
-  <ion-label>Fruits</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
 
-<ion-item>
-  <ion-label>Glace</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+    <ng-container *ngFor="let item of dessert">
+        <ion-card (click)="openDetail()">
+            <ion-card-header>
+                {{item.name}}<br>
+
+            </ion-card-header>
+            <ion-card-content>
+                {{item.description}}
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+    </div>
 
 
-<button ion-button (click)="openRecap()"> Go to recap </button>
+<!--<button ion-button (click)="openRecap()"> Go to recap </button>-->
 </ion-content>
 
 
