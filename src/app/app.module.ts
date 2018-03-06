@@ -13,6 +13,11 @@ import { BookPage } from '../pages/book/book'
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 
+import { MenuPage } from '../pages/menu/menu';
+import { DetailsPage } from '../pages/details/details';
+import { RecapPage } from '../pages/recap/recap';
+import { ConfirmPage } from '../pages/confirm/confirm';
+ 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
@@ -26,7 +31,11 @@ import { HttpClientModule } from '@angular/common/http';
     BookPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    MenuPage,
+    DetailsPage,
+    RecapPage,
+    ConfirmPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +50,11 @@ import { HttpClientModule } from '@angular/common/http';
     BookPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    MenuPage,
+    DetailsPage,
+    RecapPage,
+    ConfirmPage
   ],
   providers: [
     StatusBar,
