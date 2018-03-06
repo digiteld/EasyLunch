@@ -71,6 +71,7 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, public rest: RestProvider) {
+
     this.mapPin = this.mapPin || [];
     this.pinID = this.pinID || [];
     this.adresse = this.adresse || [];
@@ -86,6 +87,8 @@ export class HomePage {
   ionViewDidLoad() {
     this.getRestaurants();
   }
+
+
 
 
   slideChanged() {
