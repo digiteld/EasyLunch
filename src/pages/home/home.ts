@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, Card } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { RestProvider } from '../../providers/rest/rest';
 import L from 'leaflet';
@@ -103,7 +103,7 @@ this.slides.lockSwipeToNext(false)
     console.log("SIZE ARRAY --> " + this.pinID.length)
   }
 
-  
+
 
   openMenu() {
     this.navCtrl.push(MenuPage);
