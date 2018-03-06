@@ -255,7 +255,7 @@ this.slides.lockSwipeToNext(false)
       // });
       // } else {
 
-        IntervalObservable.create(1500).subscribe((i) => {
+        IntervalObservable.create(10).subscribe((i) => {
           if (i > 4) {
             return false;
           }
