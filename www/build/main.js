@@ -35,6 +35,7 @@ var RestProvider = (function () {
     function RestProvider(http) {
         this.http = http;
         this.apiUrl = 'https://easy-lunch.herokuapp.com/api/restaurants';
+        this.apiUrlMeal = 'http://192.168.1.15:5000/api/meal?id=1';
         console.log('Hello RestProvider Provider');
     }
     ////    Function to get the restaurants from the API
@@ -47,6 +48,9 @@ var RestProvider = (function () {
     //     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
     //   })
     // }
+    RestProvider.prototype.getMeals = function () {
+        return this.http.get(this.apiUrlMeal).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["map"])(this.extractData), Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(this.handleError));
+    };
     RestProvider.prototype.extractData = function (res) {
         var body = res.data; // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
         return body || {};
@@ -65,9 +69,10 @@ var RestProvider = (function () {
     };
     RestProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], RestProvider);
     return RestProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=rest.js.map
