@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { DetailsPage } from '../details/details';
+import { RecapPage } from '../recap/recap';
+
 /**
  * Generated class for the MenuPage page.
  *
@@ -20,6 +23,16 @@ export class MenuPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
+  }
+
+  openDetail() {
+    this.navCtrl.push(DetailsPage);
+    console.log("well done tu as ouvert la page detail");
+  }
+
+  openRecap() {
+    this.navCtrl.push(RecapPage);
+    console.log("yeeeah this is your recap my friend !");
   }
 
 }

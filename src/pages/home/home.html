@@ -37,7 +37,7 @@
         <!-- <ion-col> -->
         <ion-slides (ionSlideDidChange) = "slideChanged()">
           <ion-slide *ngFor="let r of restaurant">
-            <ion-card>
+            <ion-card (click)="openMenu()">
               <ion-card-content>
                 <ion-row>
                   <!-- <ion-col col-2> -->

@@ -1,14 +1,14 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Card } from 'ionic-angular';
 
 import { RestProvider } from '../../providers/rest/rest';
 import L from 'leaflet';
 
 import { Slides } from 'ionic-angular';
-
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 // import { trigger, state, style, transition, animate } from '@angular/animations';
 
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import { MenuPage } from '../menu/menu';
 
 
 @Component({
@@ -57,7 +57,6 @@ export class HomePage {
   adresse: any[];
   ville: any[];
 
-
   ////    TEST ANIMATION
 
   // state = 'opaque';
@@ -105,6 +104,13 @@ this.slides.lockSwipeToNext(false)
 
     this.moveMarker(marker)
     console.log("SIZE ARRAY --> " + this.pinID.length)
+  }
+
+  
+
+  openMenu() {
+    this.navCtrl.push(MenuPage);
+    console.log("well play tu as ouvert la page menu");
   }
 
 
