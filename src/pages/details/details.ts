@@ -16,16 +16,36 @@ import { MenuPage } from '../menu/menu';
   templateUrl: 'details.html',
 })
 export class DetailsPage {
+  valeur:number;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.valeur=1;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
+    console.log(this.navParams.get('meal'));
+
   }
 
+  incremente()
+  {
+    console.log(this.total)
+      this.valeur++;
+  }
+
+  decremente()
+  {
+    if(this.valeur!=0)
+      this.valeur--;
+  }
   openMenu() {
-    this.navCtrl.push(MenuPage);
+    let callback=this.navParams.get('callback');
+      this.navCtrl.pop();
+      let p=this.valeur*this.navParams.get('meal').price;
+    callback(p,this.valeur)
+
     console.log("well play tu as ouvert la page menu");
   }
 

@@ -24,13 +24,25 @@ export class MenuPage {
     entree: any[];
     plat: any[];
     dessert: any[];
+    choosenEntree: any[];
+    choosenPlat: any[];
+    choosenDessert: any[];
+    tmpType:any;
+tmpIndex:number;
+    total:number;
+    choosenMenu:any[];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
 
         this.entree = this.entree || [];
         this.plat = this.plat || [];
         this.dessert = this.dessert || [];
+        this.choosenEntree = this.choosenEntree || [];
+        this.choosenPlat = this.choosenPlat || [];
+        this.choosenDessert = this.choosenDessert || [];
+        this.choosenMenu = this.choosenMenu || [];
 
+        this.total=0;
     }
 
     ionViewDidLoad() {
@@ -39,14 +51,44 @@ export class MenuPage {
 
 
     }
+    ionViewDidEnter()
+    {
 
-    openDetail() {
-        this.navCtrl.push(DetailsPage);
+    }
+    openDetail(plat,index) {
+        let obj
+        switch (plat)
+        {
+            case 0:
+                obj=this.entree;
+                break;
+             case 1:
+                obj=this.plat;
+                break;
+             case 2:
+                obj=this.dessert;
+                break;
+
+        }
+        this.tmpType=plat;
+        this.tmpIndex=index;
+        console.log("AVANT crash --> "+obj[index].name)
+        this.navCtrl.push(DetailsPage, {
+            meal:obj[index],
+            callback:this.callbackChild
+        });
         console.log("well done tu as ouvert la page detail");
+
+
     }
 
     openRecap() {
-        this.navCtrl.push(RecapPage);
+        this.navCtrl.push(RecapPage,{
+            entree:this.choosenEntree,
+            menu:this.choosenMenu,
+            dessert:this.choosenDessert,
+            total:this.total
+        });
         console.log("yeeeah this is your recap my friend !");
     }
 
@@ -63,6 +105,37 @@ export class MenuPage {
 
     }
 
+    private callbackChild=(p,valeur)=>
+    {   this.total+=p;
+    if(valeur>0)
+    {
+        let objSrc;
+        let objDst;
+        switch(this.tmpType)
+        {
+            case 0:
+                objSrc=this.entree;
+                objDst=this.choosenEntree;
+                break;
+            case 1:
+                objSrc=this.entree;
+                objDst=this.choosenMenu;
+                break;
+            case 2:
+                objSrc=this.entree;
+                objDst=this.choosenDessert;
+                break;
+
+        }
+
+        for (let i=0; i<valeur; i++)
+        {
+            objDst.push(objSrc[this.tmpIndex])
+        }
+    }
+
+        console.log("TOTAL --> "+this.total)
+    }
 
     private formatData() {
         this.meals.map(meal => {
@@ -71,6 +144,7 @@ export class MenuPage {
             switch (meal.plat) {
                 case 0:
                     this.entree.push(meal)
+
                     break;
                 case 1:
                     this.plat.push(meal)

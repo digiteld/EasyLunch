@@ -17,7 +17,13 @@ import { ConfirmPage } from '../confirm/confirm';
 })
 export class RecapPage {
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    console.log("Entree --> "+JSON.stringify(navParams.get('entree')))
+    console.log("Plat --> "+JSON.stringify(navParams.get('plat')))
+    console.log("Dessert --> "+JSON.stringify(navParams.get('dessert')))
+
   }
 
   ionViewDidLoad() {

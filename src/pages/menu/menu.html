@@ -7,19 +7,22 @@
 </ion-header>
 
 
-<ion-content padding style="background-color: #F4FAFD;text-align:center;">
+<ion-content padding style="background-color: #F4FAFD;">
     <div class="full">
 <p>Entrée</p>
-    <ng-container *ngFor="let item of entree">
+    <ng-container *ngFor="let item of entree;index as i">
 
     <!--<button ion-button (click)="openDetail()">-->
-        <ion-card (click)="openDetail()">
-            <ion-card-header>
-                {{item.name}}<br>
+        <ion-card (click)="openDetail(0,i)">
+            <ion-card-header style="color: #5E7FB1;">
+                {{item.name}}
 
             </ion-card-header>
             <ion-card-content>
                 {{item.description}}
+                <div class="price">
+                    {{item.price}}€
+                </div>
             </ion-card-content>
         </ion-card>
 
@@ -29,14 +32,17 @@
 
 
 <p>Plat</p>
-    <ng-container *ngFor="let item of plat">
-        <ion-card (click)="openDetail()">
+    <ng-container *ngFor="let item of plat;index as i">
+        <ion-card (click)="openDetail(1,i)">
             <ion-card-header>
-                {{item.name}}<br>
+                {{item.name}}
 
             </ion-card-header>
             <ion-card-content>
                 {{item.description}}
+                <div class="price">
+                {{item.price}}€
+                </div>
             </ion-card-content>
         </ion-card>
     </ng-container>
@@ -44,14 +50,19 @@
 
 <p>Dessert</p>
 
-    <ng-container *ngFor="let item of dessert">
-        <ion-card (click)="openDetail()">
+    <ng-container *ngFor="let item of dessert;index as i">
+
+        <ion-card (click)="openDetail(2,i)">
             <ion-card-header>
-                {{item.name}}<br>
+                {{item.name}}
 
             </ion-card-header>
             <ion-card-content>
                 {{item.description}}
+                <div class="price">
+                    {{item.price}}€
+
+                </div>
             </ion-card-content>
         </ion-card>
     </ng-container>
@@ -59,7 +70,9 @@
     </div>
 
 
-<!--<button ion-button (click)="openRecap()"> Go to recap </button>-->
+    <ng-container *ngIf="total!==0">
+<button ion-button (click)="openRecap()">Confirmer {{total}}€ </button>
+    </ng-container>
 </ion-content>
 
 
