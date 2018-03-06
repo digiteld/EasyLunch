@@ -28142,6 +28142,77 @@ page-home .s:nth-child(1) {
   }
 }
 
+page-participate .all {
+  position: relative;
+  background-color: #C0CFE3;
+  width: 100%;
+  height: 100%;
+}
+
+page-participate .code {
+  position: relative;
+  background-color: white;
+  left: 6.665%;
+  width: 86.67%;
+}
+
+page-participate .img-table {
+  width: 100%;
+  height: 59%;
+}
+
+page-participate .texte {
+  position: relative;
+  left: 6.665%;
+  width: 86.67%;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  color: #5E7FB1;
+}
+
+page-participate .item-check {
+  position: relative;
+  left: 41.33%;
+  bottom: 0;
+  width: 65px;
+  height: 65px;
+}
+
+page-participate .text-input {
+  color: #5E7FB1;
+  height: 7.50%;
+  text-align: center;
+}
+
+page-participate ion-input.floating-with-placeholder input::-webkit-input-placeholder {
+  color: #5E7FB1;
+}
+
+page-participate ion-input.floating-with-placeholder input::-moz-placeholder {
+  color: #5E7FB1;
+}
+
+page-participate ion-input.floating-with-placeholder input::-moz-placeholder {
+  color: #5E7FB1;
+}
+
+page-participate ion-input.floating-with-placeholder input:-ms-input-placeholder {
+  color: #5E7FB1;
+}
+
+page-participate ion-input.floating-with-placeholder input:-moz-placeholder {
+  color: transparent;
+}
+
+page-participate ion-input.floating-with-placeholder input::-moz-placeholder {
+  color: transparent;
+}
+
+page-participate ion-input.floating-with-placeholder input:-ms-input-placeholder {
+  color: transparent;
+}
+
 .ion-ios-jorganise,
 .ion-md-jorganise {
   content: url(../../assets/icon/jorganise.svg);

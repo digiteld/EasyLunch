@@ -17,14 +17,20 @@ export class ParticipatePage {
   }
 
   ionViewDidLoad() {
+    console.log("J'ai charger les page")
     this.getRestaurants();
   }
 
   getRestaurants() {
     this.rest.getRestaurants()
       .subscribe(
-      restaurant => this.restaurant = restaurant,
+      restaurant => {
+          this.restaurant = restaurant
+
+      },
       error => this.errorMessage = <any>error);
+
+
   }
 
 }
