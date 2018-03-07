@@ -172,11 +172,7 @@ this.slides.lockSwipeToNext(false)
     this.map.locate({
       setView: true,
       maxZoom: 10
-    }).on('locationfound', (e) => {
-      let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon });
-
-      this.map.addLayer(marker);
-    }).on('locationerror', (err) => {
+    }).on('locationfound', (e)=>{this.locationfound(e)}).on('locationerror', (err) => {
       alert(err.message);
     })
 
@@ -184,6 +180,20 @@ this.slides.lockSwipeToNext(false)
 
 
 
+  locationfound=(e)=>
+  {
+      var pulsingIcon = L.divIcon({
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          popupAnchor: [10, 0],
+          shadowSize: [0, 0],
+          className: 'css-icon',
+          html: '<div id="c" <div class="s"></div> </div>'
+      });
+      let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon });
+
+      this.map.addLayer(marker);
+  }
   ////     Create a function for calling the restaurants from the provider
 
   getRestaurants() {
