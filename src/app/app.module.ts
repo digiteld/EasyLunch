@@ -26,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccountCreaPage } from '../pages/account-crea/account-crea';
 import { AddCardPage } from '../pages/add-card/add-card';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { AddCardPage } from '../pages/add-card/add-card';
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+      IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

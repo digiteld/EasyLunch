@@ -31,6 +31,7 @@
     "cordova-android": "7.0.0",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-wheel-selector-plugin": "^1.0.9",
+    "cordova-sqlite-storage": "^2.2.1",
     "dynamics": "^1.0.0",
     "dynamics.js": "^1.1.5",
     "ionic-angular": "3.9.2",
@@ -50,7 +51,8 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-geolocation": {}
+      "cordova-plugin-geolocation": {},
+      "cordova-sqlite-storage": {}
     }
   }
 }

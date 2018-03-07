@@ -52,6 +52,11 @@
       "type": "registry",
       "id": "cordova-wheel-selector-plugin"
     },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage"
+    },
     "is_top_level": true,
     "variables": {}
   }
