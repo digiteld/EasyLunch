@@ -31,7 +31,7 @@ export class DetailsPage {
 
   incremente()
   {
-    console.log(this.total)
+   
       this.valeur++;
   }
 
