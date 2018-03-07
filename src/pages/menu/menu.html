@@ -7,41 +7,72 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color: #F4FAFD;">
+    <div class="full">
 <p>Entrée</p>
-<ion-item>
-  <ion-label>Salade</ion-label>
-  <ion-checkbox color="dark" checked="false">  </ion-checkbox>
-</ion-item>
-<button ion-button (click)="openDetail()"> go to detail </button>
+    <ng-container *ngFor="let item of entree;index as i">
 
-<ion-item>
-  <ion-label>Pâtée</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+    <!--<button ion-button (click)="openDetail()">-->
+        <ion-card (click)="openDetail(0,i)">
+            <ion-card-header style="color: #5E7FB1;">
+                {{item.name}}
+
+            </ion-card-header>
+            <ion-card-content>
+                {{item.description}}
+                <div class="price">
+                    {{item.price}}€
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+
+    </ng-container>
+
+
+
 <p>Plat</p>
-<ion-item>
-  <ion-label>Légume</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+    <ng-container *ngFor="let item of plat;index as i">
+        <ion-card (click)="openDetail(1,i)">
+            <ion-card-header>
+                {{item.name}}
 
-<ion-item>
-  <ion-label>Carbo</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+            </ion-card-header>
+            <ion-card-content>
+                {{item.description}}
+                <div class="price">
+                {{item.price}}€
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+
 <p>Dessert</p>
-<ion-item>
-  <ion-label>Fruits</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
 
-<ion-item>
-  <ion-label>Glace</ion-label>
-  <ion-checkbox color="dark" checked="false"></ion-checkbox>
-</ion-item>
+    <ng-container *ngFor="let item of dessert;index as i">
+
+        <ion-card (click)="openDetail(2,i)">
+            <ion-card-header>
+                {{item.name}}
+
+            </ion-card-header>
+            <ion-card-content>
+                {{item.description}}
+                <div class="price">
+                    {{item.price}}€
+
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+    </div>
 
 
-<button ion-button (click)="openRecap()"> Go to recap </button>
+    <ng-container *ngIf="total!==0">
+<button ion-button (click)="openRecap()">Confirmer {{total}}€ </button>
+    </ng-container>
 </ion-content>
 
 

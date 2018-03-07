@@ -13,7 +13,71 @@
 </ion-header>
 
 
-<ion-content padding>
-<p> tu veux manger des pâtes carbo avec un glace en dessert, good choice (15 balles stp)</p>
-<button ion-button (click)="openConfirm()"> go to confirm </button>
+
+<ion-content padding style="background-color: #F4FAFD;">
+  <div class="full">
+    <p>Entrée</p>
+    <ng-container *ngFor="let item of navParams.get('entree');">
+
+      <!--<button ion-button (click)="openDetail()">-->
+      <ion-card >
+        <ion-card-header style="color: #5E7FB1;">
+          {{item.name}}
+
+        </ion-card-header>
+        <ion-card-content>
+          {{item.description}}
+          <div class="price">
+            {{item.price}}€
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+
+    </ng-container>
+
+
+
+    <p>Plat</p>
+    <ng-container *ngFor="let item of navParams.get('plat');">
+      <ion-card >
+        <ion-card-header>
+          {{item.name}}
+
+        </ion-card-header>
+        <ion-card-content>
+          {{item.description}}
+          <div class="price">
+            {{item.price}}€
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+
+
+    <p>Dessert</p>
+
+    <ng-container *ngFor="let item of navParams.get('dessert');">
+
+      <ion-card >
+        <ion-card-header>
+          {{item.name}}
+
+        </ion-card-header>
+        <ion-card-content>
+          {{item.description}}
+          <div class="price">
+            {{item.price}}€
+
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+
+  </div>
+
+
+
+    <button ion-button (click)="openConfirm()">Payer et Réserver {{navParams.get('total')}}€ </button>
+
 </ion-content>

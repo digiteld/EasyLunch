@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import { DetailsPage } from '../details/details';
-import { RecapPage } from '../recap/recap';
+import {DetailsPage} from '../details/details';
+import {RecapPage} from '../recap/recap';
+import {RestProvider} from "../../providers/rest/rest";
 
 /**
  * Generated class for the MenuPage page.
@@ -13,26 +14,152 @@ import { RecapPage } from '../recap/recap';
 
 @IonicPage()
 @Component({
-  selector: 'page-menu',
-  templateUrl: 'menu.html',
+    selector: 'page-menu',
+    templateUrl: 'menu.html',
 })
 export class MenuPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    errorMessage: string;
+    meals: any;
+    entree: any[];
+    plat: any[];
+    dessert: any[];
+    choosenEntree: any[];
+    choosenPlat: any[];
+    choosenDessert: any[];
+    tmpType:any;
+tmpIndex:number;
+    total:number;
+    choosenMenu:any[];
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MenuPage');
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
 
-  openDetail() {
-    this.navCtrl.push(DetailsPage);
-    console.log("well done tu as ouvert la page detail");
-  }
+        this.entree = this.entree || [];
+        this.plat = this.plat || [];
+        this.dessert = this.dessert || [];
+        this.choosenEntree = this.choosenEntree || [];
+        this.choosenPlat = this.choosenPlat || [];
+        this.choosenDessert = this.choosenDessert || [];
+        this.choosenMenu = this.choosenMenu || [];
 
-  openRecap() {
-    this.navCtrl.push(RecapPage);
-    console.log("yeeeah this is your recap my friend !");
-  }
+        this.total=0;
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad MenuPage');
+        this.getMeals();
+
+
+    }
+    ionViewDidEnter()
+    {
+
+    }
+    openDetail(plat,index) {
+        let obj
+        switch (plat)
+        {
+            case 0:
+                obj=this.entree;
+                break;
+             case 1:
+                obj=this.plat;
+                break;
+             case 2:
+                obj=this.dessert;
+                break;
+
+        }
+        this.tmpType=plat;
+        this.tmpIndex=index;
+        console.log("AVANT crash --> "+obj[index].name)
+        this.navCtrl.push(DetailsPage, {
+            meal:obj[index],
+            callback:this.callbackChild
+        });
+        console.log("well done tu as ouvert la page detail");
+
+
+    }
+
+    openRecap() {
+        this.navCtrl.push(RecapPage,{
+            entree:this.choosenEntree,
+            menu:this.choosenMenu,
+            dessert:this.choosenDessert,
+            total:this.total
+        });
+        console.log("yeeeah this is your recap my friend !");
+    }
+
+    private getMeals() {
+        this.rest.getMeals()
+            .subscribe(
+                meal => {
+                    this.meals = meal;
+                    this.formatData()
+
+
+                },
+                error => this.errorMessage = <any>error);
+
+    }
+
+    private callbackChild=(p,valeur)=>
+    {   this.total+=p;
+    if(valeur>0)
+    {
+        let objSrc;
+        let objDst;
+        switch(this.tmpType)
+        {
+            case 0:
+                objSrc=this.entree;
+                objDst=this.choosenEntree;
+                break;
+            case 1:
+                objSrc=this.entree;
+                objDst=this.choosenMenu;
+                break;
+            case 2:
+                objSrc=this.entree;
+                objDst=this.choosenDessert;
+                break;
+
+        }
+
+        for (let i=0; i<valeur; i++)
+        {
+            objDst.push(objSrc[this.tmpIndex])
+        }
+    }
+
+        console.log("TOTAL --> "+this.total)
+    }
+
+    private formatData() {
+        this.meals.map(meal => {
+
+
+            switch (meal.plat) {
+                case 0:
+                    this.entree.push(meal)
+
+                    break;
+                case 1:
+                    this.plat.push(meal)
+                    break;
+                case 2:
+                    this.dessert.push(meal)
+                    break;
+            }
+
+
+        })
+
+        console.log(this.entree)
+        console.log(this.plat)
+        console.log(this.dessert)
+    }
 
 }
