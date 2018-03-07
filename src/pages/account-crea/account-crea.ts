@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
+import { AddCardPage } from '../add-card/add-card';
 
 /**
- * Generated class for the RecapPage page.
+ * Generated class for the AccountCreaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,27 +13,28 @@ import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
-  selector: 'page-recap',
-  templateUrl: 'recap.html',
-})
-export class RecapPage {
-
+  selector: 'page-account-crea',
+  templateUrl: 'account-crea.html',
+  })
+  
+export class AccountCreaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-    console.log("Entree --> "+JSON.stringify(navParams.get('entree')))
-    console.log("Plat --> "+JSON.stringify(navParams.get('plat')))
-    console.log("Dessert --> "+JSON.stringify(navParams.get('dessert')))
-
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RecapPage');
+    console.log('ionViewDidLoad AccountCreaPage');
   }
 
   openLogin() {
-    console.log("ok commande validé !");
+    console.log("ici tu peux créer ton compte mon ami");
     this.navCtrl.push(LoginPage);
   }
+
+  openAddCard() {
+    console.log('ajoutes ta CB');
+     this.navCtrl.push(AddCardPage);
+  }
+
 
 }

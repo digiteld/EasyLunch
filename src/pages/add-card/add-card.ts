@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { ConfirmPage } from '../confirm/confirm';
 /**
- * Generated class for the ConfirmPage page.
+ * Generated class for the AddCardPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,24 +11,21 @@ import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-confirm',
-  templateUrl: 'confirm.html',
+  selector: 'page-add-card',
+  templateUrl: 'add-card.html',
 })
-export class ConfirmPage {
-
-  code:string;
+export class AddCardPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.code="";
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfirmPage');
+    console.log('ionViewDidLoad AddCardPage');
   }
 
-  goHome() {
-    this.navCtrl.push(HomePage);
-    console.log('FELICITATION !!! Parcours terminé');
+  openConfirm() {
+    this.navCtrl.push(ConfirmPage);
+    console.log("check point !")
   }
 
 }

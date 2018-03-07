@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 
+import { MenuPage } from '../menu/menu';
+
 @Component({
   selector: 'page-participate',
   templateUrl: 'participate.html'
@@ -30,7 +32,11 @@ export class ParticipatePage {
       },
       error => this.errorMessage = <any>error);
 
+  }
 
+  openMenu() {
+    this.navCtrl.push(MenuPage);
+    console.log('ton code est validé');
   }
 
 }
