@@ -17,11 +17,14 @@ import { MenuPage } from '../pages/menu/menu';
 import { DetailsPage } from '../pages/details/details';
 import { RecapPage } from '../pages/recap/recap';
 import { ConfirmPage } from '../pages/confirm/confirm';
+import { LoginPage } from '../pages/login/login';
  
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountCreaPage } from '../pages/account-crea/account-crea';
+import { AddCardPage } from '../pages/add-card/add-card';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { HttpClientModule } from '@angular/common/http';
     MenuPage,
     DetailsPage,
     RecapPage,
-    ConfirmPage
+    ConfirmPage,
+    LoginPage,
+    AccountCreaPage,
+    AddCardPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,10 @@ import { HttpClientModule } from '@angular/common/http';
     MenuPage,
     DetailsPage,
     RecapPage,
-    ConfirmPage
+    ConfirmPage,
+    LoginPage,
+    AccountCreaPage,
+    AddCardPage
   ],
   providers: [
     StatusBar,

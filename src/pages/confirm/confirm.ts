@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { HomePage } from '../home/home';
 /**
  * Generated class for the ConfirmPage page.
  *
@@ -20,6 +21,11 @@ export class ConfirmPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfirmPage');
+  }
+
+  goHome() {
+    this.navCtrl.push(HomePage);
+    console.log('FELICITATION !!! Parcours terminé');
   }
 
 }

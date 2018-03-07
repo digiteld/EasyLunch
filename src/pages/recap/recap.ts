@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { ConfirmPage } from '../confirm/confirm';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the RecapPage page.
@@ -30,9 +30,9 @@ export class RecapPage {
     console.log('ionViewDidLoad RecapPage');
   }
 
-  openConfirm() {
+  openLogin() {
     console.log("ok commande validé !");
-    this.navCtrl.push(ConfirmPage);
+    this.navCtrl.push(LoginPage);
   }
 
 }

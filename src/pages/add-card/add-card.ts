@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { ConfirmPage } from '../confirm/confirm';
 /**
  * Generated class for the AddCardPage page.
  *
@@ -20,6 +21,11 @@ export class AddCardPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddCardPage');
+  }
+
+  openConfirm() {
+    this.navCtrl.push(ConfirmPage);
+    console.log("check point !")
   }
 
 }

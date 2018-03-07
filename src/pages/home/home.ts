@@ -153,14 +153,14 @@ this.slides.lockSwipeToNext(false)
 
     ///  Create custom icon
 
-    let pulsingIcon = L.divIcon({
-      iconSize: [30, 30],
-      iconAnchor: [15, 15],
-      popupAnchor: [10, 0],
-      shadowSize: [0, 0],
-      className: 'css-icon',
-      html: '<div id="c" <div class="s"></div> </div>'
-    });
+    // let pulsingIcon = L.divIcon({
+    //   iconSize: [30, 30],
+    //   iconAnchor: [15, 15],
+    //   popupAnchor: [10, 0],
+    //   shadowSize: [0, 0],
+    //   className: 'css-icon',
+    //   html: '<div id="c" <div class="s"></div> </div>'
+    // });
 
     ///
 
@@ -193,7 +193,7 @@ this.slides.lockSwipeToNext(false)
       let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon });
 
       this.map.addLayer(marker);
-  }
+    }
   ////     Create a function for calling the restaurants from the provider
 
   getRestaurants() {
