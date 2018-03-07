@@ -26,20 +26,17 @@ export class DetailsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
     console.log(this.navParams.get('meal'));
-
   }
 
-  incremente()
-  {
-   
+  incremente() {
       this.valeur++;
   }
 
-  decremente()
-  {
+  decremente() {
     if(this.valeur!=0)
       this.valeur--;
   }
+
   openMenu() {
     let callback=this.navParams.get('callback');
       this.navCtrl.pop();
