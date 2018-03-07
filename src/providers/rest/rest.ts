@@ -51,13 +51,19 @@ export class RestProvider {
 
 
 
-    postBooking(body): Observable<{}> {
-        return this.http.post(this.apiUrlPostBooking,).pipe(
-
+    postBooking(arg): Observable<{}> {
+        return this.http.post(this.apiUrlPostBooking,arg).pipe(
+            map(this.extractData2),
             catchError(this.handleError)
         );
     }
 
+    private extractData2(res: Response) {
+
+        let body = (<any>res).data;
+        // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
+        return body;
+    }
 
 
   private extractData(res: Response) {

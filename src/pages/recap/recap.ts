@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
 
 /**
@@ -18,11 +18,13 @@ import { LoginPage } from '../login/login';
 export class RecapPage {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
 
-    console.log("Entree --> "+JSON.stringify(navParams.get('entree')))
-    console.log("Plat --> "+JSON.stringify(navParams.get('plat')))
-    console.log("Dessert --> "+JSON.stringify(navParams.get('dessert')))
+  storage.set( 'entree',navParams.get('entree'))
+  storage.set('plat', navParams.get('plat'))
+  storage.set('dessert', navParams.get('dessert'))
+
+
 
   }
 
