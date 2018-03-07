@@ -27,11 +27,21 @@ export class MenuPage {
     choosenEntree: any[];
     choosenPlat: any[];
     choosenDessert: any[];
-    tmpType:any;
-tmpIndex:number;
-    total:number;
-    choosenMenu:any[];
+    tmpType: any;
+    tmpIndex: number;
+    total: number;
+    choosenMenu: any[];
+
+    //FOR HEADER RESTO
+
+    img:any;
+    address:string;
+    name:string;
+    desc:string;
+
+
     @ViewChild(Content) content: Content;
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
 
         this.entree = this.entree || [];
@@ -42,7 +52,12 @@ tmpIndex:number;
         this.choosenDessert = this.choosenDessert || [];
         this.choosenMenu = this.choosenMenu || [];
 
-        this.total=0;
+        this.total = 0;
+
+        this.img=this.navParams.get('img')
+        this.address=this.navParams.get('address')
+        this.name= this.navParams.get('name')
+        this.desc=this.navParams.get('desc')
     }
 
     ionViewDidLoad() {
@@ -51,31 +66,32 @@ tmpIndex:number;
 
 
     }
-    ionViewDidEnter()
-    {this.content.resize()
+
+    ionViewDidEnter() {
+        this.content.resize()
 
     }
-    openDetail(plat,index) {
+
+    openDetail(plat, index) {
         let obj
-        switch (plat)
-        {
+        switch (plat) {
             case 0:
-                obj=this.entree;
+                obj = this.entree;
                 break;
-             case 1:
-                obj=this.plat;
+            case 1:
+                obj = this.plat;
                 break;
-             case 2:
-                obj=this.dessert;
+            case 2:
+                obj = this.dessert;
                 break;
 
         }
-        this.tmpType=plat;
-        this.tmpIndex=index;
-        console.log("AVANT crash --> "+obj[index].name)
+        this.tmpType = plat;
+        this.tmpIndex = index;
+        console.log("AVANT crash --> " + obj[index].name)
         this.navCtrl.push(DetailsPage, {
-            meal:obj[index],
-            callback:this.callbackChild
+            meal: obj[index],
+            callback: this.callbackChild
         });
         console.log("well done tu as ouvert la page detail");
 
@@ -83,11 +99,11 @@ tmpIndex:number;
     }
 
     openRecap() {
-        this.navCtrl.push(RecapPage,{
-            entree:this.choosenEntree,
-            plat:this.choosenPlat,
-            dessert:this.choosenDessert,
-            total:this.total
+        this.navCtrl.push(RecapPage, {
+            entree: this.choosenEntree,
+            plat: this.choosenPlat,
+            dessert: this.choosenDessert,
+            total: this.total
         });
         console.log("yeeeah this is your recap my friend !");
     }
@@ -105,37 +121,34 @@ tmpIndex:number;
 
     }
 
-    private callbackChild=(p,valeur)=>
-    {   this.total+=p;
-    if(valeur>0)
-    {
-        let objSrc;
-        let objDst;
-        switch(this.tmpType)
-        {
-            case 0:
+    private callbackChild = (p, valeur) => {
+        this.total += p;
+        if (valeur > 0) {
+            let objSrc;
+            let objDst;
+            switch (this.tmpType) {
+                case 0:
 
-                objSrc=this.entree;
-                objDst=this.choosenEntree;
-                break;
-            case 1:
-                objSrc=this.plat;
-                objDst=this.choosenPlat;
-                break;
-            case 2:
-                objSrc=this.dessert;
-                objDst=this.choosenDessert;
-                break;
+                    objSrc = this.entree;
+                    objDst = this.choosenEntree;
+                    break;
+                case 1:
+                    objSrc = this.plat;
+                    objDst = this.choosenPlat;
+                    break;
+                case 2:
+                    objSrc = this.dessert;
+                    objDst = this.choosenDessert;
+                    break;
 
+            }
+
+            for (let i = 0; i < valeur; i++) {
+                objDst.push(objSrc[this.tmpIndex])
+            }
         }
 
-        for (let i=0; i<valeur; i++)
-        {
-            objDst.push(objSrc[this.tmpIndex])
-        }
-    }
-
-        console.log("TOTAL --> "+this.total)
+        console.log("TOTAL --> " + this.total)
     }
 
     private formatData() {

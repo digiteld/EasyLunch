@@ -50,12 +50,11 @@ export class HomePage {
   map: any;
   restaurant: any;
   errorMessage: string;
-
+    currentIndex:number;
   mapPin: any;
   pinID: number[];
   sliding: any;
-  adresse: any[];
-  ville: any[];
+
 
   ////    TEST ANIMATION
 
@@ -74,9 +73,9 @@ export class HomePage {
 
     this.mapPin = this.mapPin || [];
     this.pinID = this.pinID || [];
-    this.adresse = this.adresse || [];
-    this.ville = this.ville || [];
+
     this.sliding = false;
+    this.currentIndex=0;
   }
 
   ionViewDidEnter() {
@@ -95,11 +94,11 @@ export class HomePage {
 
   slideChanged() {
     console.log("Tu as slidé !");
-    let currentIndex = this.slides.getActiveIndex();
-    console.log("Current index is ", currentIndex)
-    let marker = this.mapPin[currentIndex]
+    this.currentIndex = this.slides.getActiveIndex();
+    console.log("Current index is ", this.currentIndex)
+    let marker = this.mapPin[this.currentIndex]
     console.log("SIZE SLIDE --> "+this.slides.length())
-    if(currentIndex==this.slides.length()-1)
+    if(this.currentIndex==this.slides.length()-1)
     this.slides.lockSwipeToNext(true)
 else
 this.slides.lockSwipeToNext(false)
@@ -111,7 +110,13 @@ this.slides.lockSwipeToNext(false)
 
 
   openMenu() {
-    this.navCtrl.push(MenuPage);
+    this.navCtrl.push(MenuPage, {
+    img:this.restaurant[this.currentIndex].picture,
+      address:this.restaurant[this.currentIndex].address,
+      name:this.restaurant[this.currentIndex].name,
+      desc:this.restaurant[this.currentIndex].desc
+
+    });
     console.log("well play tu as ouvert la page menu");
   }
 

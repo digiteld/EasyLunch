@@ -14,6 +14,7 @@ import { map, catchError } from 'rxjs/operators';
 export class RestProvider {
   private apiUrl = 'https://easy-lunch.herokuapp.com/api/restaurants';
   private apiUrlMeal = 'http://192.168.1.15:5000/api/meal?id=1';
+  private apiUrlPostBooking= 'http://192.168.1.15:5000/api/booking'
 
   // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
 
@@ -47,6 +48,17 @@ export class RestProvider {
             catchError(this.handleError)
         );
     }
+
+
+
+    postBooking(body): Observable<{}> {
+        return this.http.post(this.apiUrlPostBooking,).pipe(
+
+            catchError(this.handleError)
+        );
+    }
+
+
 
   private extractData(res: Response) {
 

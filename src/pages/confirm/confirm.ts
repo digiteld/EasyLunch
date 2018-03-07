@@ -15,7 +15,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ConfirmPage {
 
+  code:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.code="";
   }
 
   ionViewDidLoad() {
