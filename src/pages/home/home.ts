@@ -121,13 +121,13 @@ this.slides.lockSwipeToNext(false)
 
 
   moveMarker(pin) {
-    var newIcon = L.icon({
+    let newIcon = L.icon({
       iconUrl: '../../assets/icon/pin2.png',
       // iconSize: [38, 95],
       popupAnchor: [0, -15]
     });
 
-    var forkIcon = L.icon({
+    let forkIcon = L.icon({
       iconUrl: '../../assets/icon/pin.png',
       // iconSize: [38, 95],
       popupAnchor: [0, -15]
@@ -153,7 +153,7 @@ this.slides.lockSwipeToNext(false)
 
     ///  Create custom icon
 
-    var pulsingIcon = L.divIcon({
+    let pulsingIcon = L.divIcon({
       iconSize: [30, 30],
       iconAnchor: [15, 15],
       popupAnchor: [10, 0],
@@ -172,11 +172,7 @@ this.slides.lockSwipeToNext(false)
     this.map.locate({
       setView: true,
       maxZoom: 10
-    }).on('locationfound', (e) => {
-      let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon });
-
-      this.map.addLayer(marker);
-    }).on('locationerror', (err) => {
+    }).on('locationfound', (e)=>{this.locationfound(e)}).on('locationerror', (err) => {
       alert(err.message);
     })
 
@@ -184,6 +180,20 @@ this.slides.lockSwipeToNext(false)
 
 
 
+  locationfound=(e)=>
+  {
+      let pulsingIcon = L.divIcon({
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          popupAnchor: [10, 0],
+          shadowSize: [0, 0],
+          className: 'css-icon',
+          html: '<div id="c" <div class="s"></div> </div>'
+      });
+      let marker: any = L.marker([e.latitude, e.longitude], { icon: pulsingIcon });
+
+      this.map.addLayer(marker);
+  }
   ////     Create a function for calling the restaurants from the provider
 
   getRestaurants() {
