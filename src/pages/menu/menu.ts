@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Content, IonicPage, NavController, NavParams} from 'ionic-angular';
 
 import {DetailsPage} from '../details/details';
 import {RecapPage} from '../recap/recap';
@@ -31,7 +31,7 @@ export class MenuPage {
 tmpIndex:number;
     total:number;
     choosenMenu:any[];
-
+    @ViewChild(Content) content: Content;
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
 
         this.entree = this.entree || [];
@@ -52,7 +52,7 @@ tmpIndex:number;
 
     }
     ionViewDidEnter()
-    {
+    {this.content.resize()
 
     }
     openDetail(plat,index) {
@@ -85,7 +85,7 @@ tmpIndex:number;
     openRecap() {
         this.navCtrl.push(RecapPage,{
             entree:this.choosenEntree,
-            menu:this.choosenMenu,
+            plat:this.choosenPlat,
             dessert:this.choosenDessert,
             total:this.total
         });
@@ -114,15 +114,16 @@ tmpIndex:number;
         switch(this.tmpType)
         {
             case 0:
+
                 objSrc=this.entree;
                 objDst=this.choosenEntree;
                 break;
             case 1:
-                objSrc=this.entree;
-                objDst=this.choosenMenu;
+                objSrc=this.plat;
+                objDst=this.choosenPlat;
                 break;
             case 2:
-                objSrc=this.entree;
+                objSrc=this.dessert;
                 objDst=this.choosenDessert;
                 break;
 
@@ -157,9 +158,7 @@ tmpIndex:number;
 
         })
 
-        console.log(this.entree)
-        console.log(this.plat)
-        console.log(this.dessert)
+
     }
 
 }
