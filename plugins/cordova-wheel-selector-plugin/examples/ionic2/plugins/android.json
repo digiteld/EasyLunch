@@ -1,0 +1,33 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.wheelselector.app"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.wheelselector.app"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.wheelselector.app"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.wheelselector.app"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.wheelselector.app"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.wheelselector.app"
+        },
+        "cordova-wheel-selector-plugin": {
+            "PACKAGE_NAME": "com.ionicframework.wheelselector.app"
+        }
+    },
+    "dependent_plugins": {}
+}

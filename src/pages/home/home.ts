@@ -10,6 +10,8 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 import { MenuPage } from '../menu/menu';
 
+import { WheelSelector } from '@ionic-native/wheel-selector';
+
 
 @Component({
   selector: 'page-home',
@@ -69,7 +71,7 @@ export class HomePage {
   // }
 
 
-  constructor(public navCtrl: NavController, public rest: RestProvider) {
+  constructor(public navCtrl: NavController, public rest: RestProvider, private selector: WheelSelector) {
 
     this.mapPin = this.mapPin || [];
     this.pinID = this.pinID || [];
@@ -77,6 +79,8 @@ export class HomePage {
     this.sliding = false;
     this.currentIndex=0;
   }
+
+
 
   ionViewDidEnter() {
       if (!this.map)
@@ -294,4 +298,7 @@ this.slides.lockSwipeToNext(false)
         })
 
   }
+
+
+  
 }
