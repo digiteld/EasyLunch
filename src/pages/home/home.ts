@@ -121,13 +121,13 @@ this.slides.lockSwipeToNext(false)
 
 
   moveMarker(pin) {
-    var newIcon = L.icon({
+    let newIcon = L.icon({
       iconUrl: '../../assets/icon/pin2.png',
       // iconSize: [38, 95],
       popupAnchor: [0, -15]
     });
 
-    var forkIcon = L.icon({
+    let forkIcon = L.icon({
       iconUrl: '../../assets/icon/pin.png',
       // iconSize: [38, 95],
       popupAnchor: [0, -15]
@@ -153,7 +153,7 @@ this.slides.lockSwipeToNext(false)
 
     ///  Create custom icon
 
-    var pulsingIcon = L.divIcon({
+    let pulsingIcon = L.divIcon({
       iconSize: [30, 30],
       iconAnchor: [15, 15],
       popupAnchor: [10, 0],
@@ -182,7 +182,7 @@ this.slides.lockSwipeToNext(false)
 
   locationfound=(e)=>
   {
-      var pulsingIcon = L.divIcon({
+      let pulsingIcon = L.divIcon({
           iconSize: [30, 30],
           iconAnchor: [15, 15],
           popupAnchor: [10, 0],
