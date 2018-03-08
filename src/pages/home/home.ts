@@ -8,7 +8,9 @@ import { Slides } from 'ionic-angular';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 // import { trigger, state, style, transition, animate } from '@angular/animations';
 
+
 import { MenuPage } from '../menu/menu';
+// import { WheelSelector } from '@ionic-native/wheel-selector';
 
 import { WheelSelector } from '@ionic-native/wheel-selector';
 

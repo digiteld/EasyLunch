@@ -1,5 +1,5 @@
 node_modules
-
+plugins
 # User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml
