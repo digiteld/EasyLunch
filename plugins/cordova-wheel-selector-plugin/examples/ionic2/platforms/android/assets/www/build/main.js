@@ -44174,10 +44174,17 @@ function TransitionController_tsickle_Closure_declarations() {
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_plugin__ = __webpack_require__(199);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__ionic_native_plugin__["a"]; });
+<<<<<<< HEAD
 
 
 
 
+=======
+
+
+
+
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -44190,6 +44197,7 @@ function TransitionController_tsickle_Closure_declarations() {
 /* harmony export (immutable) */ __webpack_exports__["b"] = getPlugin;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return pluginWarn; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return cordovaWarn; });
+<<<<<<< HEAD
 /**
  * @private
  */
@@ -44255,6 +44263,73 @@ var cordovaWarn = function (pluginName, method) {
         console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
     }
 };
+=======
+/**
+ * @private
+ */
+function get(obj, path) {
+    path = path.split('.');
+    for (var i = 0; i < path.length; i++) {
+        if (!obj) {
+            return null;
+        }
+        obj = obj[path[i]];
+    }
+    return obj;
+}
+/**
+ * @private
+ */
+function getPromise(cb) {
+    var tryNativePromise = function () {
+        if (window.Promise) {
+            return new Promise(function (resolve, reject) {
+                cb(resolve, reject);
+            });
+        }
+        else {
+            console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular 2 or on a recent browser.');
+        }
+    };
+    return tryNativePromise();
+}
+/**
+ * @private
+ * @param pluginRef
+ * @returns {null|*}
+ */
+function getPlugin(pluginRef) {
+    return get(window, pluginRef);
+}
+;
+/**
+ * @private
+ */
+var pluginWarn = function (pluginName, plugin, method) {
+    if (method) {
+        console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
+    }
+    else {
+        console.warn('Native: tried accessing the ' + pluginName + ' plugin but it\'s not installed.');
+    }
+    if (plugin) {
+        console.warn('Install the ' + pluginName + ' plugin: \'ionic plugin add ' + plugin + '\'');
+    }
+};
+/**
+ * @private
+ * @param pluginName
+ * @param method
+ */
+var cordovaWarn = function (pluginName, method) {
+    if (method) {
+        console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+    }
+    else {
+        console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+    }
+};
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=util.js.map
 
 /***/ }),
@@ -55850,6 +55925,7 @@ HomePage = __decorate([
 /* harmony export (immutable) */ __webpack_exports__["e"] = overrideFunction;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return wrap; });
 /* harmony export (immutable) */ __webpack_exports__["d"] = wrapInstance;
+<<<<<<< HEAD
 
 
 
@@ -56147,6 +56223,305 @@ function wrapInstance(pluginObj, methodName, opts) {
         }
     };
 }
+=======
+
+
+
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__bootstrap__["a" /* checkReady */])();
+function checkAvailability(plugin, methodName, pluginName) {
+    var pluginRef, pluginInstance, pluginPackage;
+    if (typeof plugin === 'string') {
+        pluginRef = plugin;
+    }
+    else {
+        pluginRef = plugin.constructor.getPluginRef();
+        pluginName = plugin.constructor.getPluginName();
+        pluginPackage = plugin.constructor.getPluginInstallName();
+    }
+    pluginInstance = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["b" /* getPlugin */])(pluginRef);
+    if (!pluginInstance || (!!methodName && typeof pluginInstance[methodName] === 'undefined')) {
+        if (!window.cordova) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["c" /* cordovaWarn */])(pluginName, methodName);
+            return {
+                error: 'cordova_not_available'
+            };
+        }
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["d" /* pluginWarn */])(pluginName, pluginPackage, methodName);
+        return {
+            error: 'plugin_not_installed'
+        };
+    }
+    return true;
+}
+/**
+ * Checks if _objectInstance exists and has the method/property
+ * @private
+ */
+function instanceAvailability(pluginObj, methodName) {
+    return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
+}
+function setIndex(args, opts, resolve, reject) {
+    if (opts === void 0) { opts = {}; }
+    // ignore resolve and reject in case sync
+    if (opts.sync) {
+        return args;
+    }
+    // If the plugin method expects myMethod(success, err, options)
+    if (opts.callbackOrder === 'reverse') {
+        // Get those arguments in the order [resolve, reject, ...restOfArgs]
+        args.unshift(reject);
+        args.unshift(resolve);
+    }
+    else if (opts.callbackStyle === 'node') {
+        args.push(function (err, result) {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(result);
+            }
+        });
+    }
+    else if (opts.callbackStyle === 'object' && opts.successName && opts.errorName) {
+        var obj = {};
+        obj[opts.successName] = resolve;
+        obj[opts.errorName] = reject;
+        args.push(obj);
+    }
+    else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
+        var setSuccessIndex = function () {
+            // If we've specified a success/error index
+            if (opts.successIndex > args.length) {
+                args[opts.successIndex] = resolve;
+            }
+            else {
+                args.splice(opts.successIndex, 0, resolve);
+            }
+        };
+        var setErrorIndex = function () {
+            // We don't want that the reject cb gets spliced into the position of an optional argument that has not been defined and thus causing non expected behaviour.
+            if (opts.errorIndex > args.length) {
+                args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
+            }
+            else {
+                args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
+            }
+        };
+        if (opts.successIndex > opts.errorIndex) {
+            setErrorIndex();
+            setSuccessIndex();
+        }
+        else {
+            setSuccessIndex();
+            setErrorIndex();
+        }
+    }
+    else {
+        // Otherwise, let's tack them on to the end of the argument list
+        // which is 90% of cases
+        args.push(resolve);
+        args.push(reject);
+    }
+    return args;
+}
+function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
+    if (opts === void 0) { opts = {}; }
+    // Try to figure out where the success/error callbacks need to be bound
+    // to our promise resolve/reject handlers.
+    args = setIndex(args, opts, resolve, reject);
+    var availabilityCheck = checkAvailability(pluginObj, methodName);
+    if (availabilityCheck === true) {
+        var pluginInstance = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["b" /* getPlugin */])(pluginObj.constructor.getPluginRef());
+        return pluginInstance[methodName].apply(pluginInstance, args);
+    }
+    else {
+        return availabilityCheck;
+    }
+}
+function wrapPromise(pluginObj, methodName, args, opts) {
+    if (opts === void 0) { opts = {}; }
+    var pluginResult, rej;
+    var p = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["a" /* getPromise */])(function (resolve, reject) {
+        pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
+        rej = reject;
+    });
+    // Angular throws an error on unhandled rejection, but in this case we have already printed
+    // a warning that Cordova is undefined or the plugin is uninstalled, so there is no reason
+    // to error
+    if (pluginResult && pluginResult.error) {
+        p.catch(function () { });
+        rej(pluginResult.error);
+    }
+    return p;
+}
+function wrapOtherPromise(pluginObj, methodName, args, opts) {
+    if (opts === void 0) { opts = {}; }
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["a" /* getPromise */])(function (resolve, reject) {
+        var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
+        if (pluginResult) {
+            if (pluginResult.error) {
+                reject(pluginResult.error);
+            }
+            else if (pluginResult.then) {
+                pluginResult.then(resolve).catch(reject);
+            }
+        }
+        else {
+            reject({ error: 'unexpected_error' });
+        }
+    });
+}
+function wrapObservable(pluginObj, methodName, args, opts) {
+    if (opts === void 0) { opts = {}; }
+    return new __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"](function (observer) {
+        var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+        if (pluginResult && pluginResult.error) {
+            observer.error(pluginResult.error);
+            observer.complete();
+        }
+        return function () {
+            try {
+                if (opts.clearFunction) {
+                    if (opts.clearWithArgs) {
+                        return callCordovaPlugin(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+                    }
+                    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["e" /* get */])(window, pluginObj.constructor.getPluginRef())[opts.clearFunction].call(pluginObj, pluginResult);
+                }
+            }
+            catch (e) {
+                console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
+                console.error(e);
+            }
+        };
+    });
+}
+function callInstance(pluginObj, methodName, args, opts, resolve, reject) {
+    if (opts === void 0) { opts = {}; }
+    args = setIndex(args, opts, resolve, reject);
+    if (instanceAvailability(pluginObj, methodName)) {
+        return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
+    }
+}
+/**
+ * Wrap the event with an observable
+ * @private
+ * @param event even name
+ * @param element The element to attach the event listener to
+ * @returns {Observable}
+ */
+function wrapEventObservable(event, element) {
+    if (element === void 0) { element = window; }
+    return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].fromEvent(element, event);
+}
+/**
+ * Certain plugins expect the user to override methods in the plugin. For example,
+ * window.cordova.plugins.backgroundMode.onactivate = function() { ... }.
+ *
+ * Unfortunately, this is brittle and would be better wrapped as an Observable. overrideFunction
+ * does just this.
+ * @private
+ */
+function overrideFunction(pluginObj, methodName, args, opts) {
+    if (opts === void 0) { opts = {}; }
+    return new __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"](function (observer) {
+        var availabilityCheck = checkAvailability(pluginObj, methodName);
+        if (availabilityCheck === true) {
+            var pluginInstance_1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["b" /* getPlugin */])(pluginObj.constructor.getPluginRef());
+            pluginInstance_1[methodName] = observer.next.bind(observer);
+            return function () { return pluginInstance_1[methodName] = function () { }; };
+        }
+        else {
+            observer.error(availabilityCheck);
+            observer.complete();
+        }
+    });
+}
+/**
+ * @private
+ */
+var wrap = function (pluginObj, methodName, opts) {
+    if (opts === void 0) { opts = {}; }
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i - 0] = arguments[_i];
+        }
+        if (opts.sync) {
+            // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
+            return callCordovaPlugin(pluginObj, methodName, args, opts);
+        }
+        else if (opts.observable) {
+            return wrapObservable(pluginObj, methodName, args, opts);
+        }
+        else if (opts.eventObservable && opts.event) {
+            return wrapEventObservable(opts.event, opts.element);
+        }
+        else if (opts.otherPromise) {
+            return wrapOtherPromise(pluginObj, methodName, args, opts);
+        }
+        else {
+            return wrapPromise(pluginObj, methodName, args, opts);
+        }
+    };
+};
+/**
+ * @private
+ */
+function wrapInstance(pluginObj, methodName, opts) {
+    if (opts === void 0) { opts = {}; }
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i - 0] = arguments[_i];
+        }
+        if (opts.sync) {
+            return callInstance(pluginObj, methodName, args, opts);
+        }
+        else if (opts.observable) {
+            return new __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"](function (observer) {
+                var pluginResult = callInstance(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+                if (pluginResult && pluginResult.error) {
+                    observer.error(pluginResult.error);
+                    observer.complete();
+                }
+                return function () {
+                    try {
+                        if (opts.clearWithArgs) {
+                            return pluginObj._objectInstance[opts.clearFunction].apply(pluginObj._objectInstance, args);
+                        }
+                        return pluginObj._objectInstance[opts.clearFunction].call(pluginObj, pluginResult);
+                    }
+                    catch (e) {
+                        console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
+                        console.error(e);
+                    }
+                };
+            });
+        }
+        else if (opts.otherPromise) {
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["a" /* getPromise */])(function (resolve, reject) {
+                var result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+                if (result && !result.error) {
+                    result.then(resolve, reject);
+                }
+            });
+        }
+        else {
+            var pluginResult_1, rej_1;
+            var p = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util__["a" /* getPromise */])(function (resolve, reject) {
+                pluginResult_1 = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+                rej_1 = reject;
+            });
+            if (pluginResult_1 && pluginResult_1.error) {
+                p.catch(function () { });
+                rej_1(pluginResult_1.error);
+            }
+            return p;
+        }
+    };
+}
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=plugin.js.map
 
 /***/ }),
@@ -56157,6 +56532,7 @@ function wrapInstance(pluginObj, methodName, opts) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_core__ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SplashScreen; });
+<<<<<<< HEAD
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -56234,6 +56610,85 @@ var SplashScreen = (function (_super) {
     ], SplashScreen);
     return SplashScreen;
 }(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["c" /* IonicNativePlugin */]));
+=======
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * @name Splash Screen
+ * @description This plugin displays and hides a splash screen during application launch. The methods below allows showing and hiding the splashscreen after the app has loaded.
+ * @usage
+ * ```typescript
+ * import { SplashScreen } from '@ionic-native/splash-screen';
+ *
+ * constructor(private splashScreen: SplashScreen) { }
+ *
+ * ...
+ *
+ * this.splashScreen.show();
+ *
+ * this.splashScreen.hide();
+ * ```
+ */
+var SplashScreen = (function (_super) {
+    __extends(SplashScreen, _super);
+    function SplashScreen() {
+        _super.apply(this, arguments);
+    }
+    /**
+     * Shows the splashscreen
+     */
+    SplashScreen.prototype.show = function () { };
+    /**
+     * Hides the splashscreen
+     */
+    SplashScreen.prototype.hide = function () { };
+    SplashScreen.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    SplashScreen.ctorParameters = function () { return []; };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], SplashScreen.prototype, "show", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], SplashScreen.prototype, "hide", null);
+    SplashScreen = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["b" /* Plugin */])({
+            pluginName: 'SplashScreen',
+            plugin: 'cordova-plugin-splashscreen',
+            pluginRef: 'navigator.splashscreen',
+            repo: 'https://github.com/apache/cordova-plugin-splashscreen'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], SplashScreen);
+    return SplashScreen;
+}(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["c" /* IonicNativePlugin */]));
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -56244,6 +56699,7 @@ var SplashScreen = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_core__ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatusBar; });
+<<<<<<< HEAD
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -56438,6 +56894,202 @@ var StatusBar = (function (_super) {
     ], StatusBar);
     return StatusBar;
 }(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["c" /* IonicNativePlugin */]));
+=======
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * @name Status Bar
+ * @description
+ * Manage the appearance of the native status bar.
+ *
+ * Requires Cordova plugin: `cordova-plugin-statusbar`. For more info, please see the [StatusBar plugin docs](https://github.com/apache/cordova-plugin-statusbar).
+ *
+ * @usage
+ * ```typescript
+ * import { StatusBar } from '@ionic-native/status-bar';
+ *
+ * constructor(private statusBar: StatusBar) { }
+ *
+ * ...
+ *
+ * // let status bar overlay webview
+ * this.statusBar.overlaysWebView(true);
+ *
+ * // set status bar to white
+ * this.statusBar.backgroundColorByHexString('#ffffff');
+ * ```
+ *
+ */
+var StatusBar = (function (_super) {
+    __extends(StatusBar, _super);
+    function StatusBar() {
+        _super.apply(this, arguments);
+    }
+    /**
+     * Set whether the status bar overlays the main app view. The default
+     * is true.
+     *
+     * @param {boolean} doesOverlay  Whether the status bar overlays the main app view.
+     */
+    StatusBar.prototype.overlaysWebView = function (doesOverlay) { };
+    ;
+    /**
+     * Use the default statusbar (dark text, for light backgrounds).
+     */
+    StatusBar.prototype.styleDefault = function () { };
+    ;
+    /**
+     * Use the lightContent statusbar (light text, for dark backgrounds).
+     */
+    StatusBar.prototype.styleLightContent = function () { };
+    ;
+    /**
+     * Use the blackTranslucent statusbar (light text, for dark backgrounds).
+     */
+    StatusBar.prototype.styleBlackTranslucent = function () { };
+    ;
+    /**
+     * Use the blackOpaque statusbar (light text, for dark backgrounds).
+     */
+    StatusBar.prototype.styleBlackOpaque = function () { };
+    ;
+    /**
+     * Set the status bar to a specific named color. Valid options:
+     * black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown.
+     *
+     * iOS note: you must call StatusBar.overlaysWebView(false) to enable color changing.
+     *
+     * @param {string} colorName  The name of the color (from above)
+     */
+    StatusBar.prototype.backgroundColorByName = function (colorName) { };
+    ;
+    /**
+     * Set the status bar to a specific hex color (CSS shorthand supported!).
+     *
+     * iOS note: you must call StatusBar.overlaysWebView(false) to enable color changing.
+     *
+     * @param {string} hexString  The hex value of the color.
+     */
+    StatusBar.prototype.backgroundColorByHexString = function (hexString) { };
+    ;
+    /**
+     * Hide the StatusBar
+     */
+    StatusBar.prototype.hide = function () { };
+    ;
+    /**
+    * Show the StatusBar
+    */
+    StatusBar.prototype.show = function () { };
+    ;
+    StatusBar.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    StatusBar.ctorParameters = function () { return []; };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [Boolean]), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "overlaysWebView", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "styleDefault", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "styleLightContent", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "styleBlackTranslucent", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "styleBlackOpaque", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [String]), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "backgroundColorByName", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [String]), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "backgroundColorByHexString", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "hide", null);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])({
+            sync: true
+        }), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], StatusBar.prototype, "show", null);
+    __decorate([
+        __WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["d" /* CordovaProperty */], 
+        __metadata('design:type', Boolean)
+    ], StatusBar.prototype, "isVisible", void 0);
+    StatusBar = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["b" /* Plugin */])({
+            pluginName: 'StatusBar',
+            plugin: 'cordova-plugin-statusbar',
+            pluginRef: 'StatusBar',
+            repo: 'https://github.com/apache/cordova-plugin-statusbar',
+            platforms: ['iOS', 'Android', 'Windows Phone 8', 'Windows 8', 'Windows 10']
+        }), 
+        __metadata('design:paramtypes', [])
+    ], StatusBar);
+    return StatusBar;
+}(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["c" /* IonicNativePlugin */]));
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -74230,6 +74882,7 @@ exports.tryCatch = tryCatch;
 /* 191 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 var g;
 
 // This works in non-strict mode
@@ -74251,6 +74904,29 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+=======
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 
 
 /***/ }),
@@ -100653,6 +101329,7 @@ var ImportResolver = (function () {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = checkReady;
+<<<<<<< HEAD
 function checkReady() {
     var DEVICE_READY_TIMEOUT = 5000;
     // To help developers using cordova, we listen for the device ready event and
@@ -100671,6 +101348,26 @@ function checkReady() {
         }
     }, DEVICE_READY_TIMEOUT);
 }
+=======
+function checkReady() {
+    var DEVICE_READY_TIMEOUT = 5000;
+    // To help developers using cordova, we listen for the device ready event and
+    // log an error if it didn't fire in a reasonable amount of time. Generally,
+    // when this happens, developers should remove and reinstall plugins, since
+    // an inconsistent plugin is often the culprit.
+    var before = Date.now();
+    var didFireReady = false;
+    document.addEventListener('deviceready', function () {
+        console.log("Ionic Native: deviceready event fired after " + (Date.now() - before) + " ms");
+        didFireReady = true;
+    });
+    setTimeout(function () {
+        if (!didFireReady && window.cordova) {
+            console.warn("Ionic Native: deviceready did not fire within " + DEVICE_READY_TIMEOUT + "ms. This can happen when plugins are in an inconsistent state. Try removing plugins from plugins/ and reinstalling them.");
+        }
+    }, DEVICE_READY_TIMEOUT);
+}
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=bootstrap.js.map
 
 /***/ }),
@@ -100693,6 +101390,7 @@ function checkReady() {
 /* unused harmony export InstanceProperty */
 /* unused harmony export CordovaFunctionOverride */
 /* unused harmony export CordovaFiniteObservable */
+<<<<<<< HEAD
 
 
 
@@ -100946,6 +101644,261 @@ function CordovaFiniteObservable(opts) {
         };
     };
 }
+=======
+
+
+
+
+/**
+ * @private
+ */
+function InstanceCheck(opts) {
+    if (opts === void 0) { opts = {}; }
+    return function (pluginObj, methodName, descriptor) {
+        return {
+            value: function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i - 0] = arguments[_i];
+                }
+                if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["a" /* instanceAvailability */])(this)) {
+                    return descriptor.value.apply(this, args);
+                }
+                else {
+                    if (opts.sync) {
+                        return;
+                    }
+                    else if (opts.observable) {
+                        return new __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"](function () { });
+                    }
+                    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util__["a" /* getPromise */])(function () { });
+                }
+            }
+        };
+    };
+}
+/**
+ * Executes function only if plugin is available
+ * @private
+ */
+function CordovaCheck(opts) {
+    if (opts === void 0) { opts = {}; }
+    return function (pluginObj, methodName, descriptor) {
+        return {
+            value: function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i - 0] = arguments[_i];
+                }
+                var check = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["b" /* checkAvailability */])(pluginObj);
+                if (check === true) {
+                    return descriptor.value.apply(this, args);
+                }
+                else {
+                    if (opts.sync) {
+                        return null;
+                    }
+                    else if (opts.observable) {
+                        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(new Error(check && check.error));
+                    }
+                    return Promise.reject(check && check.error);
+                }
+            }
+        };
+    };
+}
+/**
+ * @private
+ *
+ * Class decorator specifying Plugin metadata. Required for all plugins.
+ *
+ * @usage
+ * ```typescript
+ * @Plugin({
+ *  pluginName: 'MyPlugin',
+ *  plugin: 'cordova-plugin-myplugin',
+ *  pluginRef: 'window.myplugin'
+ *  })
+ *  export class MyPlugin {
+ *
+ *    // Plugin wrappers, properties, and functions go here ...
+ *
+ *  }
+ * ```
+ */
+function Plugin(config) {
+    return function (cls) {
+        // Add these fields to the class
+        for (var k in config) {
+            cls[k] = config[k];
+        }
+        cls['installed'] = function (printWarning) {
+            return !!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util__["b" /* getPlugin */])(config.pluginRef);
+        };
+        cls['getPlugin'] = function () {
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util__["b" /* getPlugin */])(config.pluginRef);
+        };
+        cls['checkInstall'] = function () {
+            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["b" /* checkAvailability */])(cls) === true;
+        };
+        cls['getPluginName'] = function () {
+            return config.pluginName;
+        };
+        cls['getPluginRef'] = function () {
+            return config.pluginRef;
+        };
+        cls['getPluginInstallName'] = function () {
+            return config.plugin;
+        };
+        cls['getPluginRepo'] = function () {
+            return config.repo;
+        };
+        cls['getSupportedPlatforms'] = function () {
+            return config.platforms;
+        };
+        return cls;
+    };
+}
+/**
+ * @private
+ *
+ * Wrap a stub function in a call to a Cordova plugin, checking if both Cordova
+ * and the required plugin are installed.
+ */
+function Cordova(opts) {
+    if (opts === void 0) { opts = {}; }
+    return function (target, methodName, descriptor) {
+        return {
+            value: function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i - 0] = arguments[_i];
+                }
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["c" /* wrap */])(this, methodName, opts).apply(this, args);
+            }
+        };
+    };
+}
+/**
+ * @private
+ *
+ * Wrap an instance method
+ */
+function CordovaInstance(opts) {
+    if (opts === void 0) { opts = {}; }
+    return function (target, methodName) {
+        return {
+            value: function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i - 0] = arguments[_i];
+                }
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["d" /* wrapInstance */])(this, methodName, opts).apply(this, args);
+            }
+        };
+    };
+}
+/**
+ * @private
+ *
+ *
+ * Before calling the original method, ensure Cordova and the plugin are installed.
+ */
+function CordovaProperty(target, key) {
+    Object.defineProperty(target, key, {
+        enumerable: true,
+        get: function () {
+            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["b" /* checkAvailability */])(target, key) === true) {
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util__["b" /* getPlugin */])(target.constructor.getPluginRef())[key];
+            }
+            else {
+                return null;
+            }
+        },
+        set: function (value) {
+            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["b" /* checkAvailability */])(target, key) === true) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util__["b" /* getPlugin */])(target.constructor.getPluginRef())[key] = value;
+            }
+        }
+    });
+}
+/**
+ * @private
+ * @param target
+ * @param key
+ * @constructor
+ */
+function InstanceProperty(target, key) {
+    Object.defineProperty(target, key, {
+        enumerable: true,
+        get: function () {
+            return this._objectInstance[key];
+        },
+        set: function (value) {
+            this._objectInstance[key] = value;
+        }
+    });
+}
+/**
+ * @private
+ *
+ * Wrap a stub function in a call to a Cordova plugin, checking if both Cordova
+ * and the required plugin are installed.
+ */
+function CordovaFunctionOverride(opts) {
+    if (opts === void 0) { opts = {}; }
+    return function (target, methodName, descriptor) {
+        return {
+            value: function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i - 0] = arguments[_i];
+                }
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["e" /* overrideFunction */])(this, methodName, opts);
+            }
+        };
+    };
+}
+/**
+ * @private
+ *
+ * Wraps method that returns an observable that can be completed. Provided opts.resultFinalPredicate dictates when the observable completes.
+ *
+ */
+function CordovaFiniteObservable(opts) {
+    if (opts === void 0) { opts = {}; }
+    if (opts.observable === false) {
+        throw new Error('CordovaFiniteObservable decorator can only be used on methods that returns observable. Please provide correct option.');
+    }
+    opts.observable = true;
+    return function (target, methodName, descriptor) {
+        return {
+            value: function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i - 0] = arguments[_i];
+                }
+                var wrappedObservable = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__plugin__["c" /* wrap */])(this, methodName, opts).apply(this, args);
+                return new __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"](function (observer) {
+                    var wrappedSubscription = wrappedObservable.subscribe({
+                        next: function (x) {
+                            observer.next(opts.resultTransform ? opts.resultTransform(x) : x);
+                            if (opts.resultFinalPredicate && opts.resultFinalPredicate(x)) {
+                                observer.complete();
+                            }
+                        },
+                        error: function (err) { observer.error(err); },
+                        complete: function () { observer.complete(); }
+                    });
+                    return function () {
+                        wrappedSubscription.unsubscribe();
+                    };
+                });
+            }
+        };
+    };
+}
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=decorators.js.map
 
 /***/ }),
@@ -100954,6 +101907,7 @@ function CordovaFiniteObservable(opts) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonicNativePlugin; });
+<<<<<<< HEAD
 var IonicNativePlugin = (function () {
     function IonicNativePlugin() {
     }
@@ -100980,6 +101934,34 @@ var IonicNativePlugin = (function () {
     IonicNativePlugin.getPluginInstallName = function () { return; };
     return IonicNativePlugin;
 }());
+=======
+var IonicNativePlugin = (function () {
+    function IonicNativePlugin() {
+    }
+    /**
+     * Returns a boolean that indicates whether the plugin is installed
+     * @return {boolean}
+     */
+    IonicNativePlugin.installed = function () { return false; };
+    /**
+     * Returns the original plugin object
+     */
+    IonicNativePlugin.getPlugin = function () { };
+    /**
+     * Returns the plugin's name
+     */
+    IonicNativePlugin.getPluginName = function () { return; };
+    /**
+     * Returns the plugin's reference
+     */
+    IonicNativePlugin.getPluginRef = function () { return; };
+    /**
+     * Returns the plugin's install name
+     */
+    IonicNativePlugin.getPluginInstallName = function () { return; };
+    return IonicNativePlugin;
+}());
+>>>>>>> 564c2900f8eeaf4818b9285b1a9a8cc881b83efc
 //# sourceMappingURL=ionic-native-plugin.js.map
 
 /***/ }),
