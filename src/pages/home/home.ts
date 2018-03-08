@@ -8,7 +8,9 @@ import { Slides } from 'ionic-angular';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 // import { trigger, state, style, transition, animate } from '@angular/animations';
 
+
 import { MenuPage } from '../menu/menu';
+// import { WheelSelector } from '@ionic-native/wheel-selector';
 
 
 @Component({
@@ -77,6 +79,8 @@ export class HomePage {
     this.sliding = false;
     this.currentIndex=0;
   }
+
+
 
   ionViewDidEnter() {
       if (!this.map)
@@ -294,4 +298,7 @@ this.slides.lockSwipeToNext(false)
         })
 
   }
+
+
+  
 }

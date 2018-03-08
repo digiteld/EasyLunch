@@ -47,7 +47,7 @@ export class ConfirmPage {
         this.rest.postBooking(arg)
             .subscribe(
                 code => {
-                    this.code = code;
+                    this.code = <string>code;
                     console.log(this.code);
 
 

@@ -60,7 +60,7 @@ export class RestProvider {
 
     private extractData2(res: Response) {
 
-        let body = (<any>res).data;
+        let body = ((<any>res).data);
         // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
         return body;
     }
