@@ -22,6 +22,7 @@
       Merci !
     </div>
     <div class="texte-2">Votre Réservation à été pris en compte</div>
+    <ng-container *ngIf="create">
     <div class="texte-3">
      Partagez ce code avec les personnes qui participeront au repas avec vous
     </div>
@@ -31,6 +32,7 @@
 
 
     </div>
+    </ng-container>
     <div class="item-check" ion-button (click)="goHome()">
       <ion-img width="100%" height="100%" style="background: transparent !important;"  src="../assets/icon/check.svg"></ion-img>
     </div>

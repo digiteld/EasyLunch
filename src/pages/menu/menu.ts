@@ -4,6 +4,7 @@ import {Content, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {DetailsPage} from '../details/details';
 import {RecapPage} from '../recap/recap';
 import {RestProvider} from "../../providers/rest/rest";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the MenuPage page.
@@ -32,6 +33,11 @@ export class MenuPage {
     total: number;
     choosenMenu: any[];
 
+
+    //API
+
+    idResto:number;
+
     //FOR HEADER RESTO
 
     img:any;
@@ -42,7 +48,7 @@ export class MenuPage {
 
     @ViewChild(Content) content: Content;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider,private storage: Storage) {
 
         this.entree = this.entree || [];
         this.plat = this.plat || [];
@@ -58,11 +64,16 @@ export class MenuPage {
         this.address=this.navParams.get('address')
         this.name= this.navParams.get('name')
         this.desc=this.navParams.get('desc')
+        this.storage.get('id_restaurant').then(   data =>
+        { console.log("ID --> "+data)
+                this.idResto=data
+            this.getMeals(this.idResto);},
+            error => console.error(error));
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MenuPage');
-        this.getMeals();
+
 
 
     }
@@ -108,8 +119,8 @@ export class MenuPage {
         console.log("yeeeah this is your recap my friend !");
     }
 
-    private getMeals() {
-        this.rest.getMeals()
+    private getMeals(id) {
+        this.rest.getMeals(id)
             .subscribe(
                 meal => {
                     this.meals = meal;
