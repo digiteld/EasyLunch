@@ -58,8 +58,10 @@ export class RestProvider {
         );
     }
 
-    postBooking(arg): Observable<string> {
-        return this.http.post(this.apiUrlPostBooking, arg).pipe(
+
+  postBooking(arg): Observable< any > {
+        return this.http.post(this.apiUrlPostBooking,arg).pipe(
+
             map(this.extractData2),
             catchError(this.handleError)
         );

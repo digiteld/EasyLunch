@@ -40,10 +40,10 @@ export class MenuPage {
 
     //FOR HEADER RESTO
 
-    img:any;
-    address:string;
-    name:string;
-    desc:string;
+    img: any;
+    address: string;
+    name: string;
+    desc: string;
 
 
     @ViewChild(Content) content: Content;
@@ -69,6 +69,7 @@ export class MenuPage {
                 this.idResto=data
             this.getMeals(this.idResto);},
             error => console.error(error));
+
     }
 
     ionViewDidLoad() {
@@ -76,12 +77,17 @@ export class MenuPage {
 
 
 
+
     }
+
 
     ionViewDidEnter() {
         this.content.resize()
-
     }
+
+    goBack() {
+        this.navCtrl.pop();
+      }
 
     openDetail(plat, index) {
         let obj
@@ -105,9 +111,8 @@ export class MenuPage {
             callback: this.callbackChild
         });
         console.log("well done tu as ouvert la page detail");
-
-
     }
+
 
     openRecap() {
         this.navCtrl.push(RecapPage, {
@@ -119,8 +124,10 @@ export class MenuPage {
         console.log("yeeeah this is your recap my friend !");
     }
 
+
     private getMeals(id) {
         this.rest.getMeals(id)
+
             .subscribe(
                 meal => {
                     this.meals = meal;
@@ -131,6 +138,7 @@ export class MenuPage {
                 error => this.errorMessage = <any>error);
 
     }
+
 
     private callbackChild = (p, valeur) => {
         this.total += p;
@@ -162,6 +170,7 @@ export class MenuPage {
         console.log("TOTAL --> " + this.total)
     }
 
+
     private formatData() {
         this.meals.map(meal => {
 
@@ -179,9 +188,7 @@ export class MenuPage {
                     break;
             }
 
-
         })
-
 
     }
 

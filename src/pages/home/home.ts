@@ -4,6 +4,7 @@ import {NavController} from 'ionic-angular';
 import {RestProvider} from '../../providers/rest/rest';
 import L from 'leaflet';
 
+
 import {Slides} from 'ionic-angular';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 // import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -13,6 +14,10 @@ import {MenuPage} from '../menu/menu';
 import {Storage} from "@ionic/storage";
 
 // import { WheelSelector } from '@ionic-native/wheel-selector';
+
+// import { trigger, state, style, transition, animate } from '@angular/animations';
+
+
 
 
 @Component({
@@ -45,31 +50,30 @@ import {Storage} from "@ionic/storage";
 
 export class HomePage {
 
-    @ViewChild('map') mapContainer: ElementRef;
+
+
+  @ViewChild('map') mapContainer: ElementRef;
+
+
+  ////    Add variable for holds data
+
+  map: any;
+  restaurant: any;
+  errorMessage: string;
+  currentIndex:number;
+  mapPin: any;
+  pinID: number[];
+  sliding: any;
+
+
 
     @ViewChild(Slides) slides: Slides;
     ////    Add variable for holds data
-
-    map: any;
-    restaurant: any;
-    errorMessage: string;
-    currentIndex: number;
-    mapPin: any;
-    pinID: number[];
-    sliding: any;
 
 
     ////    TEST ANIMATION
 
     // state = 'opaque';
-
-    // makeInactive() {
-    //   this.state = 'inactive';
-    // }
-
-    // makeActive() {
-    //   this.state = 'active';
-    // }
 
 
     constructor(public navCtrl: NavController, public rest: RestProvider,private storage: Storage) {
@@ -77,9 +81,11 @@ export class HomePage {
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
 
+
         this.sliding = false;
         this.currentIndex = 0;
     }
+
 
 
     ionViewDidEnter() {
@@ -94,16 +100,17 @@ export class HomePage {
     }
 
 
+
     slideChanged() {
         console.log("Tu as slidé !");
         this.currentIndex = this.slides.getActiveIndex();
         console.log("Current index is ", this.currentIndex)
         let marker = this.mapPin[this.currentIndex]
         console.log("SIZE SLIDE --> " + this.slides.length())
-        if (this.currentIndex == this.slides.length() - 1)
-            this.slides.lockSwipeToNext(true)
-        else
-            this.slides.lockSwipeToNext(false)
+        // if (this.currentIndex == this.slides.length() - 1)
+        //     this.slides.lockSwipeToNext(true)
+        // else
+        //     this.slides.lockSwipeToNext(false)
 
         this.moveMarker(marker)
         console.log("SIZE ARRAY --> " + this.pinID.length)
