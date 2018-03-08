@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
-import {RestProvider} from "../../providers/rest/rest";
+import { RestProvider } from "../../providers/rest/rest";
 /**
  * Generated class for the ConfirmPage page.
  *
@@ -47,7 +47,7 @@ export class ConfirmPage {
         this.rest.postBooking(arg)
             .subscribe(
                 code => {
-                    this.code = <string>code;
+                    // this.code = <string>code;
                     console.log(this.code);
 
 

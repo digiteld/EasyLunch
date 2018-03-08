@@ -34,10 +34,10 @@ export class MenuPage {
 
     //FOR HEADER RESTO
 
-    img:any;
-    address:string;
-    name:string;
-    desc:string;
+    img: any;
+    address: string;
+    name: string;
+    desc: string;
 
 
     @ViewChild(Content) content: Content;
@@ -54,23 +54,25 @@ export class MenuPage {
 
         this.total = 0;
 
-        this.img=this.navParams.get('img')
-        this.address=this.navParams.get('address')
-        this.name= this.navParams.get('name')
-        this.desc=this.navParams.get('desc')
+        this.img = this.navParams.get('img');
+        this.address = this.navParams.get('address');
+        this.name = this.navParams.get('name');
+        this.desc = this.navParams.get('desc');
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MenuPage');
         this.getMeals();
-
-
     }
+
 
     ionViewDidEnter() {
         this.content.resize()
-
     }
+
+    goBack() {
+        this.navCtrl.pop();
+      }
 
     openDetail(plat, index) {
         let obj
@@ -94,9 +96,8 @@ export class MenuPage {
             callback: this.callbackChild
         });
         console.log("well done tu as ouvert la page detail");
-
-
     }
+
 
     openRecap() {
         this.navCtrl.push(RecapPage, {
@@ -107,6 +108,7 @@ export class MenuPage {
         });
         console.log("yeeeah this is your recap my friend !");
     }
+
 
     private getMeals() {
         this.rest.getMeals()
@@ -120,6 +122,7 @@ export class MenuPage {
                 error => this.errorMessage = <any>error);
 
     }
+
 
     private callbackChild = (p, valeur) => {
         this.total += p;
@@ -151,6 +154,7 @@ export class MenuPage {
         console.log("TOTAL --> " + this.total)
     }
 
+
     private formatData() {
         this.meals.map(meal => {
 
@@ -168,9 +172,7 @@ export class MenuPage {
                     break;
             }
 
-
         })
-
 
     }
 

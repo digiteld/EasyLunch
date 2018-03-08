@@ -51,7 +51,7 @@ export class RestProvider {
 
 
 
-    postBooking(arg): Observable<{}> {
+  postBooking(arg): Observable< any > {
         return this.http.post(this.apiUrlPostBooking,arg).pipe(
             map(this.extractData2),
             catchError(this.handleError)

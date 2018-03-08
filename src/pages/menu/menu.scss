@@ -1,18 +1,43 @@
 page-menu {
 
-.full{
-  position:relative;
-  width: 100%;
-
-  color: #5E7FB1;
-  //background-color:#F4FAFD;
-
-}
-
-  .price
-  {
-    text-align: right;
+  #img {
+    position: relative;
+    z-index: 1;
+    height: 22.3vh;
   }
+
+  #img img {
+    width: 100%;
+    height: 100%;
+  }
+
+  #img button {
+    position: absolute;
+    z-index: 2;
+    top: 25px;
+    left: 25px;
+  }
+
+  .card  {
+    position: absolute;
+    z-index: 1;
+    top: 90px;
+  }
+
+
+  .full{
+    position:relative;
+    width: 100%;
+
+    color: #5E7FB1;
+    //background-color:#F4FAFD;
+
+  }
+
+    .price
+    {
+      text-align: right;
+    }
 
 
 

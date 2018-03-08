@@ -6,13 +6,11 @@ import L from 'leaflet';
 
 import { Slides } from 'ionic-angular';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import { StatusBar } from '@ionic-native/status-bar';
 // import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 import { MenuPage } from '../menu/menu';
-// import { WheelSelector } from '@ionic-native/wheel-selector';
-
-import { WheelSelector } from '@ionic-native/wheel-selector';
 
 
 @Component({
@@ -54,11 +52,11 @@ export class HomePage {
   map: any;
   restaurant: any;
   errorMessage: string;
-    currentIndex:number;
+  currentIndex:number;
   mapPin: any;
   pinID: number[];
   sliding: any;
-
+  statusBar: any;
 
   ////    TEST ANIMATION
 
@@ -73,25 +71,28 @@ export class HomePage {
   // }
 
 
-  constructor(public navCtrl: NavController, public rest: RestProvider, private selector: WheelSelector) {
+  constructor(public navCtrl: NavController, public rest: RestProvider, statusBar: StatusBar) {
 
     this.mapPin = this.mapPin || [];
     this.pinID = this.pinID || [];
 
     this.sliding = false;
-    this.currentIndex=0;
+    this.currentIndex = 0; 
   }
+  
 
 
 
   ionViewDidEnter() {
       if (!this.map)
     this.loadmap();
-      console.log("JE passe bien par IONDIDENTER")
+      console.log("Je passe bien par IONDIDENTER")
   }
 
   ionViewDidLoad() {
-    console.log("JE passe bien par là")
+
+
+    console.log("Je passe bien par là")
       this.getRestaurants();
   }
 
@@ -104,10 +105,10 @@ export class HomePage {
     console.log("Current index is ", this.currentIndex)
     let marker = this.mapPin[this.currentIndex]
     console.log("SIZE SLIDE --> "+this.slides.length())
-    if(this.currentIndex==this.slides.length()-1)
-    this.slides.lockSwipeToNext(true)
-else
-this.slides.lockSwipeToNext(false)
+//     if(this.currentIndex==this.slides.length()-1)
+//     this.slides.lockSwipeToNext(true)
+// else
+// this.slides.lockSwipeToNext(false)
 
     this.moveMarker(marker)
     console.log("SIZE ARRAY --> " + this.pinID.length)

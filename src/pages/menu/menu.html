@@ -1,13 +1,22 @@
-<ion-header>
+<ion-content style="background-color: #F4FAFD;">
 
-  <ion-navbar>
-    <ion-title>menu</ion-title>
-  </ion-navbar>
+<div id="img"> 
+    <img src={{img}}/>
+    <button (click)="goBack()"> fleche </button> 
+</div>  
 
-</ion-header>
+<ion-card>
 
-
-<ion-content padding style="background-color: #F4FAFD;">
+      
+        <ion-card-content>
+         <h1>{{ name }}</h1>
+         <h2>Restaurant français{{ desc }}</h2>
+         <p>{{ address }}</p>
+        </ion-card-content>
+      
+      </ion-card>
+    
+                 
     <div class="full">
 <p>Entrée</p>
     <ng-container *ngFor="let item of entree;index as i">
