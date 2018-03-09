@@ -1,5 +1,8 @@
 page-menu {
 
+
+////    Image restaurant
+
   #img {
     position: relative;
     z-index: 1;
@@ -11,6 +14,9 @@ page-menu {
     height: 100%;
   }
 
+
+////    Btn return
+
   #img button {
     position: absolute;
     z-index: 2;
@@ -18,11 +24,40 @@ page-menu {
     left: 25px;
   }
 
-  .card  {
+
+////    Card restau
+
+  #cardrestau  {
+    display: flex;
     position: absolute;
     z-index: 1;
-    top: 90px;
+    top: 10.7vh;
+    height: 19.5vh;
   }
+
+  .card-content {
+    margin: auto;
+    text-align: center;
+    color: #5E7FB1;
+  }
+
+  .card-content h1 {
+    font-size: 1.4em;
+    font-weight: 600;
+  }
+
+  .card-content h2 {
+    font-size: 1.2em;
+    font-weight: 400;
+  }
+
+  .card-content p {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #5E7FB1;
+  }
+
 
 
   .full{

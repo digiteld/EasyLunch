@@ -34,8 +34,8 @@
 
         <!-- <ion-col> -->
         <ion-slides slidesPerView="1.5" (ionSlideDidChange) = "slideChanged()">
-          <ion-slide *ngFor="let r of restaurant">
-            <ion-card (click)="openMenu()">
+          <ion-slide *ngFor="let r of restaurant;let i= index">
+            <ion-card (click)="openMenu(i)">
               <ion-card-content>
                 <ion-row>
                   <!-- <ion-col col-2> -->

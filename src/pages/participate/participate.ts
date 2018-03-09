@@ -1,42 +1,60 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { RestProvider } from '../../providers/rest/rest';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {RestProvider} from '../../providers/rest/rest';
+import {Storage} from '@ionic/storage';
 
-import { MenuPage } from '../menu/menu';
+import {MenuPage} from '../menu/menu';
+
 
 @Component({
-  selector: 'page-participate',
-  templateUrl: 'participate.html'
+    selector: 'page-participate',
+    templateUrl: 'participate.html'
 })
 
 export class ParticipatePage {
 
-  restaurant: any;
-  errorMessage: string;
 
-  constructor(public navCtrl: NavController, public rest: RestProvider) {
+    errorMessage: string;
+    codeInput: string;
+    notExist: boolean
 
-  }
+    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage) {
+        this.notExist = false;
+    }
 
-  ionViewDidLoad() {
-    console.log("J'ai charger les page")
-    this.getRestaurants();
-  }
+    ionViewDidLoad() {
+        console.log("J'ai charger les page")
 
-  getRestaurants() {
-    this.rest.getRestaurants()
-      .subscribe(
-      restaurant => {
-          this.restaurant = restaurant
+    }
 
-      },
-      error => this.errorMessage = <any>error);
 
-  }
+    openMenu() {
+        this.storage.set('create_booking', false)
+        this.rest.getRestaurantWithCode(this.codeInput).subscribe(
+            data => {
 
-  openMenu() {
-    this.navCtrl.push(MenuPage);
-    console.log('ton code est validé');
-  }
+
+               try
+                {
+                  if(data.id) {
+                      this.storage.set('id_command', data.id)
+                      this.storage.set('id_restaurant', data.restaurant_id)
+                      this.navCtrl.push(MenuPage);
+                  }
+                }
+                catch(e)
+                {
+                    console.log(e)
+                    this.notExist=true;
+
+                }
+
+            },
+            error => this.errorMessage = <any>error);
+
+        console.log("LE CODE IS --> " + this.codeInput)
+
+        console.log('ton code est validé');
+    }
 
 }
