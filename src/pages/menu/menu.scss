@@ -12,6 +12,7 @@ page-menu {
   #img img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
 
@@ -27,12 +28,18 @@ page-menu {
 
 ////    Card restau
 
-  #cardrestau  {
+  #restau {
+    height: 32vh;
+  }
+
+  #cardrestau {
+    width: 86.6vw;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 10.7vh;
     display: flex;
     position: absolute;
     z-index: 1;
-    top: 10.7vh;
-    height: 19.5vh;
   }
 
   .card-content {
@@ -59,18 +66,22 @@ page-menu {
   }
 
 
+////   Menu
 
-  .full{
-    position:relative;
-    width: 100%;
-
-    color: #5E7FB1;
-    //background-color:#F4FAFD;
-
+  .scrollmenu {
+    top: 3vh;
+    height: 30px;
   }
 
-    .price
-    {
+  .selection {
+    position:relative;
+    top: 5vh;
+    color: #5E7FB1;
+    text-align: center;
+    //background-color:#F4FAFD;
+  }
+
+    .price {
       text-align: right;
     }
 
