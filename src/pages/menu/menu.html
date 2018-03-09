@@ -1,47 +1,59 @@
 <ion-content style="background-color: #F4FAFD;">
 
-    <div id="img">
-        <img src={{img}}/>
-        <button (click)="goBack()"> fleche </button>
+    <div id="restau">
+        <div id="img">
+            <img src={{img}}/>
+            <button (click)="goBack()"> fleche </button>
+        </div>
+
+
+        <div id="cardrestau">
+            <ion-card>
+                <ion-card-content>
+                    <h1>{{ name }}</h1>
+                    <h2>Restaurant français{{ desc }}</h2>
+                    <p>{{ address }}</p>
+                </ion-card-content>
+            </ion-card>
+        </div>  
     </div>
+    
 
-
-    <div id="cardrestau">
-        <ion-card>
-            <ion-card-content>
-                <h1>{{ name }}</h1>
-                <h2>Restaurant français{{ desc }}</h2>
-                <p>{{ address }}</p>
-            </ion-card-content>
-        </ion-card>
-    </div>  
-
-    <ion-scroll scollX="true">
-
-        <ion-row flex-wrap: nowrap>
-            <ion-col>
-                Plat du jour
-            </ion-col>
-            <ion-col>
-                Formules
-            </ion-col>
-            <ion-col>
-                Entrées
-            </ion-col>
-            <ion-col>
-                Plats
-            </ion-col>
-            <ion-col>
-                Desserts
-            </ion-col>
-        </ion-row>
-
+        <ion-scroll scollX="true" class="scrollmenu">
+            <ion-row flex-wrap: nowrap>
+                <ion-col>
+                    <a href="#Menu du jour">Menu du jour</a>
+                </ion-col>
+                <ion-col>
+                        <a href="#Formules">Formules</a>
+                </ion-col>
+                <ion-col>
+                        <a href="#Entrées">Entrées</a>
+                </ion-col>
+                <ion-col>
+                        <a href="#Plats">Plats</a>
+                </ion-col>
+                <ion-col>
+                        <a href="#Desserts">Desserts</a>
+                </ion-col>
+            </ion-row>
         </ion-scroll>
 
 
+        <div class="selection">
+            
+            <div id="Menu du jour">
+                Menu du jour
+            </div>
 
-        <div class="full">
-            <p>Entrée</p>
+            <div id="Formules">
+                    Formules
+                </div>
+
+                <div id="Entrées">
+                        Entrées
+                    </div>
+
             <ng-container *ngFor="let item of entree;index as i">
 
                 <!--<button ion-button (click)="openDetail()">-->
@@ -57,13 +69,13 @@
                         </div>
                     </ion-card-content>
                 </ion-card>
-
-
             </ng-container>
 
 
+            <div id="Plats">
+                    Plats
+                </div>
 
-            <p>Plat</p>
             <ng-container *ngFor="let item of plat;index as i">
                 <ion-card (click)="openDetail(1,i)">
                     <ion-card-header>
@@ -80,7 +92,9 @@
             </ng-container>
 
 
-            <p>Dessert</p>
+            <div id="Desserts">
+                    Desserts
+                </div>
 
             <ng-container *ngFor="let item of dessert;index as i">
 
