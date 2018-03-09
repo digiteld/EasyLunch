@@ -5,6 +5,8 @@ import {RestProvider} from '../../providers/rest/rest';
 import L from 'leaflet';
 
 
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 import {Slides} from 'ionic-angular';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 // import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -16,8 +18,6 @@ import {Storage} from "@ionic/storage";
 // import { WheelSelector } from '@ionic-native/wheel-selector';
 
 // import { trigger, state, style, transition, animate } from '@angular/animations';
-
-
 
 
 @Component({
@@ -51,21 +51,20 @@ import {Storage} from "@ionic/storage";
 export class HomePage {
 
 
-
-  @ViewChild('map') mapContainer: ElementRef;
-
-
-  ////    Add variable for holds data
-
-  map: any;
-  restaurant: any;
-  errorMessage: string;
-  currentIndex:number;
-  mapPin: any;
-  pinID: number[];
-  sliding: any;
+    @ViewChild('map') mapContainer: ElementRef;
 
 
+    ////    Add variable for holds data
+
+    map: any;
+    restaurant: any;
+    errorMessage: string;
+    currentIndex: number;
+    mapPin: any;
+    pinID: number[];
+    sliding: any;
+    showNbPers: boolean;
+    showSchedule: boolean;
 
     @ViewChild(Slides) slides: Slides;
     ////    Add variable for holds data
@@ -76,19 +75,26 @@ export class HomePage {
     // state = 'opaque';
 
 
-    constructor(public navCtrl: NavController, public rest: RestProvider,private storage: Storage) {
+    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage,private androidPermissions: AndroidPermissions) {
 
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
-
+        this.showNbPers = false;
+        this.showSchedule = false;
 
         this.sliding = false;
         this.currentIndex = 0;
     }
 
 
-
     ionViewDidEnter() {
+        //CHECK AND REQUEST IF NECESSARY PERMISSION FOR POSITION
+        //de la merde
+        // this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION).then(
+        //     result => console.log('Has permission?',result.hasPermission),
+        //     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION)
+        // );
+
         if (!this.map)
             this.loadmap();
         console.log("JE passe bien par IONDIDENTER")
@@ -98,7 +104,6 @@ export class HomePage {
         console.log("JE passe bien par là")
         this.getRestaurants();
     }
-
 
 
     slideChanged() {
@@ -118,18 +123,18 @@ export class HomePage {
 
 
     openMenu(i) {
-        console.log("J'ai cliqué sur le --> "+i)
+        console.log("J'ai cliqué sur le --> " + i)
 
         let obj = this.restaurant[i]
-        console.log("ID cc  --> "+obj)
-        this.storage.set('id_restaurant',obj.id)
-        this.storage.set('create_booking',true)
+        console.log("ID cc  --> " + obj)
+        this.storage.set('id_restaurant', obj.id)
+        this.storage.set('create_booking', true)
         this.navCtrl.push(MenuPage, {
 
             img: obj.picture,
             address: obj.address,
-            name:obj.name,
-            desc:obj.desc
+            name: obj.name,
+            desc: obj.desc
 
 
         })
@@ -143,13 +148,13 @@ export class HomePage {
 
     moveMarker(pin) {
         let newIcon = L.icon({
-            iconUrl: '../../assets/icon/pin2.png',
+            iconUrl: '../assets/icon/pin2.png',
             // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
 
         let forkIcon = L.icon({
-            iconUrl: '../../assets/icon/pin.png',
+            iconUrl: '../assets/icon/pin.png',
             // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
@@ -237,6 +242,13 @@ export class HomePage {
         console.log("SIZE ARRAY --> " + this.pinID.length)
     }
 
+    openNbPers() {
+
+    }
+
+    openSchedule() {
+
+    }
 
     onClickLayer(event) {
 
@@ -257,13 +269,13 @@ export class HomePage {
         ///  Create custom icon
 
         var forkIcon = L.icon({
-            iconUrl: '../../assets/icon/pin.png',
+            iconUrl: '../assets/icon/pin.png',
             // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
 
         var newIcon = L.icon({
-            iconUrl: '../../assets/icon/pin2.png',
+            iconUrl: '../assets/icon/pin2.png',
             // iconSize: [38, 95],
             popupAnchor: [0, -15]
         });
