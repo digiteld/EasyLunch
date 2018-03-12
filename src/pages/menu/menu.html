@@ -15,108 +15,215 @@
                     <p>{{ address }}</p>
                 </ion-card-content>
             </ion-card>
-        </div>  
+        </div>
     </div>
-    
-
-        <ion-scroll scollX="true" class="scrollmenu">
-            <ion-row flex-wrap: nowrap>
-                <ion-col>
-                    <a href="#Menu du jour">Menu du jour</a>
-                </ion-col>
-                <ion-col>
-                        <a href="#Formules">Formules</a>
-                </ion-col>
-                <ion-col>
-                        <a href="#Entrées">Entrées</a>
-                </ion-col>
-                <ion-col>
-                        <a href="#Plats">Plats</a>
-                </ion-col>
-                <ion-col>
-                        <a href="#Desserts">Desserts</a>
-                </ion-col>
-            </ion-row>
-        </ion-scroll>
 
 
-        <div class="selection">
-            
-            <div id="Menu du jour">
-                Menu du jour
-            </div>
+    <!--        Menu scrollable      -->
 
-            <div id="Formules">
-                    Formules
-                </div>
+    <ion-scroll scollX="true" class="scrollmenu">
+        <ion-row flex-wrap: nowrap>
+            <ion-col>
+                <a href="#Menu du jour">Menu du jour</a>
+            </ion-col>
+            <ion-col>
+                <a href="#Formules">Formules</a>
+            </ion-col>
+            <ion-col>
+                <a href="#Entrées">Entrées</a>
+            </ion-col>
+            <ion-col>
+                <a href="#Plats">Plats</a>
+            </ion-col>
+            <ion-col>
+                <a href="#Desserts">Desserts</a>
+            </ion-col>
+        </ion-row>
+    </ion-scroll>
 
-                <div id="Entrées">
-                        Entrées
+    <!--        ///////////////      -->
+
+
+
+    <!--        Meal choice      -->
+
+    <div class="selection">
+
+
+        <!--        Menu du jour      -->
+
+        <div id="Menu du jour">
+            <h2>Menu du jour</h2>
+        </div>
+
+        <ng-container>
+
+            <ion-card>
+
+                <ion-card-content>
+                    <div class="entree">
+                        <h3>
+                            Entrée
+                        </h3>
+                        <p>
+                            Terrine de campagne maison
+                        </p>
+                        <p>
+                            Vitaminé de carotte, poire et melon
+                        </p>
+                    </div>
+                    <div class="plat">
+                        <h3>
+                            Plat
+                        </h3>
+                        <p>
+                            Carbonara de dinde aux épices
+                        </p>
+                        <p>
+                            Poisson du marché
+                        </p>
+                    </div>
+                    <div class="dessert">
+                        <h3>
+                            Dessert
+                        </h3>
+                        <p>
+                            Parfait glacé, sauce chocolat
+                        </p>
+                        <p>
+                            Panna Cotta, citron et framboise
+                        </p>
                     </div>
 
+                    <div class="price">
+                        dès 14,00 €
+                    </div>
+                </ion-card-content>
+
+            </ion-card>
+
+        </ng-container>
+
+
+        <!--        Formules      -->
+
+        <div id="Formules">
+            <h2>Formules</h2>
+        </div>
+
+        <ng-container>
+
+            <ion-card>
+
+                <ion-card-content>
+                    <div class="menu">
+                        <h3>
+                            Menu douceur
+                        </h3>
+                        <p>
+                            Entrée - plat ou plat dessert à la carte
+                        </p>
+                    </div>
+
+                    <div class="price">
+                        dès 16,00 €
+                    </div>
+                </ion-card-content>
+
+            </ion-card>
+
+        </ng-container>
+
+
+        <!--        Entrées      -->
+
+
+        <div id="repas">
+
+            <div id="Entrées">
+                <h2>Entrées</h2>
+            </div>
+
             <ng-container *ngFor="let item of entree;index as i">
-
-                <!--<button ion-button (click)="openDetail()">-->
                 <ion-card (click)="openDetail(0,i)">
-                    <ion-card-header style="color: #5E7FB1;">
-                        {{item.name}}
 
-                    </ion-card-header>
                     <ion-card-content>
-                        {{item.description}}
+                        <div class="choix">
+                            <h3> {{item.name}} </h3>
+                            <!-- style="color: #5E7FB1;" -->
+                            <p> {{item.description}} </p>
+                        </div>
+
                         <div class="price">
                             {{item.price}}€
                         </div>
                     </ion-card-content>
+
                 </ion-card>
+
             </ng-container>
 
+
+            <!--       Plats      -->
 
             <div id="Plats">
-                    Plats
-                </div>
+                <h2>Plats</h2>
+            </div>
 
             <ng-container *ngFor="let item of plat;index as i">
-                <ion-card (click)="openDetail(1,i)">
-                    <ion-card-header>
-                        {{item.name}}
 
-                    </ion-card-header>
+                <ion-card (click)="openDetail(1,i)">
+
                     <ion-card-content>
-                        {{item.description}}
+                        <div class="choix">
+                            <h3> {{item.name}} </h3>
+                            <p> {{item.description}} </p>
+                        </div>
+
                         <div class="price">
                             {{item.price}}€
                         </div>
                     </ion-card-content>
+
                 </ion-card>
+
             </ng-container>
 
 
+            <!--        Desserts      -->
+
             <div id="Desserts">
-                    Desserts
-                </div>
+                <h2>Desserts</h2>
+            </div>
 
             <ng-container *ngFor="let item of dessert;index as i">
 
                 <ion-card (click)="openDetail(2,i)">
-                    <ion-card-header>
-                        {{item.name}}
-
-                    </ion-card-header>
+        
                     <ion-card-content>
-                        {{item.description}}
+                        <div class="choix">
+                            <h3> {{item.name}} </h3>
+                            <p> {{item.description}} </p>
+                        </div>
+
                         <div class="price">
                             {{item.price}}€
-
                         </div>
                     </ion-card-content>
+                    
                 </ion-card>
+
             </ng-container>
 
         </div>
 
+    </div>
 
-        <ng-container *ngIf="total!==0">
-            <button ion-button (click)="openRecap()">Confirmer {{total}}€ </button>
-        </ng-container>
+    <!--        Total price      -->
+
+    <ng-container *ngIf="total!==0">
+        <button ion-button (click)="openRecap()">Confirmer {{total}}€ </button>
+    </ng-container>
+
+
 </ion-content>
