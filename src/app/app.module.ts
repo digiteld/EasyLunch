@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { ParticipatePage } from '../pages/participate/participate';
 import { BookPage } from '../pages/book/book'
 import { ContactPage } from '../pages/contact/contact';
@@ -72,6 +73,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Geolocation,
+      AndroidPermissions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider
   ]

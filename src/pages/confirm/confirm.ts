@@ -1,4 +1,3 @@
-
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, Tabs} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
@@ -25,24 +24,15 @@ export class ConfirmPage {
     code: string;
     errorMessage: string;
     create: boolean;
-    idCommand:number;
+    idCommand: number;
+    mealId: number[]
+
     @ViewChild('myTabs') tabRef: Tabs;
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage,) {
         this.code = "";
-        storage.get('create_booking').then(data => {
-                this.create = data
-                if (!this.create) {
-                    storage.get('id_command').then(
-                        data => {this.idCommand = data
-                            this.post()
-                            console.log("BOOKING ID --> "+data)}
-                        ,
-                        error => console.error(error))
-                }
-                else
-                    this.post()
-            },
-            error => console.error(error))
+        this.mealId = this.mealId || [];
+        this.init()
 
 
     }
@@ -53,25 +43,57 @@ export class ConfirmPage {
 
     }
 
-    post()
-    {
+    init() {
+
+        this.storage.get('create_booking').then(data => {
+
+                this.create = data
+                this.storage.get('idMeals').then(
+                    data => {
+                        this.mealId = data
+
+                        if (!this.create) {
+                            this.storage.get('id_command').then(
+                                data => {
+                                    this.idCommand = data
+                                    this.post()
+                                    console.log("BOOKING ID --> " + data)
+                                }
+                                ,
+                                error => console.error(error))
+                        }
+                        else
+                            this.post()
+
+
+                    }
+                    ,
+                    error => console.error(error))
+
+
+            },
+            error => console.error(error))
+
+    }
+
+    post() {
         if (this.create) {
             this.postBooking({
                 master_user_id: 1,
                 restaurant_id: 1,
                 nb_users: 1,
                 schedule: 1200,
-                meal_id: [1, 2, 3],
+                meal_id: this.mealId,
                 payment_id: 2
             })
         }
         else {
-            console.log("AT INSTANT T --> "+this.idCommand)
+            console.log("AT INSTANT T --> " + this.idCommand)
             this.postCommand({
-                user_id:1,
-                meal_id: [1, 2, 3],
+                user_id: 1,
+                meal_id: this.mealId,
                 payment_id: 2,
-                booking_id:this.idCommand
+                booking_id: this.idCommand
             })
         }
     }
@@ -89,7 +111,7 @@ export class ConfirmPage {
             .subscribe(
                 result => {
 
-                    console.log("APAPAPAP --> "+result);
+                    console.log("APAPAPAP --> " + result);
 
 
                 },
@@ -100,7 +122,7 @@ export class ConfirmPage {
         this.rest.postBooking(arg)
             .subscribe(
                 code => {
-                    // this.code = <string>code;
+                    this.code = <string>code;
                     console.log(this.code);
 
 

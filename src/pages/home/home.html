@@ -1,75 +1,78 @@
 <ion-header>
-  <!-- <ion-navbar>
+    <!-- <ion-navbar>
 
-  </ion-navbar> -->
+    </ion-navbar> -->
 </ion-header>
 
 <ion-content>
-  <div id="map">
+    <div id="map">
 
-    <!-- <div class="btn"> -->
-      <ion-grid>
-        <ion-row flex-wrap: nowrap class="z-index">
+        <!-- <div class="btn"> -->
+        <ion-grid>
+            <ion-row flex-wrap: nowrap class="z-index">
 
-          <ion-col class="stylecol">
-            <button class="stylebtn" ion-button full icon-start color="blue">  <ion-icon name="combien"></ion-icon><p>Pour combien ?</p> </button>
-            <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->
-          </ion-col>
+                <ion-col class="stylecol">
+                    <button class="stylebtn" ion-button full icon-start color="blue" (click)="openNbPers()">
+                        <ion-icon name="combien"></ion-icon>
+                        <p>Pour combien ?</p></button>
+                    <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->
+                </ion-col>
 
-          <ion-col class="stylecol">
-            <button class="stylebtn" ion-button full icon-start color="blue"> <ion-icon name="heure"></ion-icon> <p>A quelle heure ?</p> </button>
-          </ion-col>
+                <ion-col class="stylecol">
+                    <button class="stylebtn" ion-button full icon-start color="blue" (click)="openSchedule()">
+                        <ion-icon name="heure"></ion-icon>
+                        <p>A quelle heure ?</p></button>
+                </ion-col>
 
-        </ion-row>
-      </ion-grid>
-    <!-- </div> -->
+            </ion-row>
+        </ion-grid>
+        <!-- </div> -->
 
 
+    </div>
 
-  </div>
+    <div id="slides">
+        <ion-grid>
+            <ion-row class="z-index">
 
-  <div id="slides">
-    <ion-grid>
-      <ion-row class="z-index">
+                <!-- <ion-col> -->
+                <ion-slides slidesPerView="1.5" (ionSlideDidChange)="slideChanged()">
+                    <ion-slide *ngFor="let r of restaurant;let i= index">
+                        <ion-card (click)="openMenu(i)">
+                            <ion-card-content>
+                                <ion-row>
+                                    <!-- <ion-col col-2> -->
+                                    <img src={{r.picture}}/>
+                                    <!-- </ion-col> -->
 
-        <!-- <ion-col> -->
-        <ion-slides slidesPerView="1.5" (ionSlideDidChange) = "slideChanged()">
-          <ion-slide *ngFor="let r of restaurant;let i= index">
-            <ion-card (click)="openMenu(i)">
-              <ion-card-content>
-                <ion-row>
-                  <!-- <ion-col col-2> -->
-                    <img src={{r.picture}}/>
-                  <!-- </ion-col> -->
+                                    <!-- <ion-col col-10> -->
+                                    <ion-card-title>
+                                        <ion-row>
+                                            <h2>{{r.name}}</h2>
+                                        </ion-row>
+                                        <ion-row>
+                                            <h3>{{r.description}}</h3>
+                                        </ion-row>
+                                        <ion-row>
+                                            <h4>nom de la rue</h4>
+                                        </ion-row>
+                                        <ion-row>
+                                            <h4>code postal + ville</h4>
+                                        </ion-row>
+                                    </ion-card-title>
 
-                  <!-- <ion-col col-10> -->
-                    <ion-card-title>
-                      <ion-row>
-                        <h2>{{r.name}}</h2>
-                      </ion-row>
-                      <ion-row>
-                        <h3>{{r.description}}</h3>
-                      </ion-row>
-                      <ion-row>
-                        <h4>nom de la rue</h4>
-                      </ion-row>
-                      <ion-row>
-                        <h4>code postal + ville</h4>
-                      </ion-row>
-                    </ion-card-title>
-                    
-                  <!-- </ion-col> -->
-                </ion-row>
+                                    <!-- </ion-col> -->
+                                </ion-row>
 
-              </ion-card-content>
-            </ion-card>
+                            </ion-card-content>
+                        </ion-card>
 
-          </ion-slide>
-        </ion-slides>
+                    </ion-slide>
+                </ion-slides>
 
-        <!-- </ion-col> -->
-      </ion-row>
-    </ion-grid>
-  </div>
+                <!-- </ion-col> -->
+            </ion-row>
+        </ion-grid>
+    </div>
 
 </ion-content>

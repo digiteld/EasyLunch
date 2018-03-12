@@ -31,7 +31,7 @@ export class MenuPage {
     tmpType: any;
     tmpIndex: number;
     total: number;
-    choosenMenu: any[];
+    choosenId: number[];
 
 
     //API
@@ -56,7 +56,7 @@ export class MenuPage {
         this.choosenEntree = this.choosenEntree || [];
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
-        this.choosenMenu = this.choosenMenu || [];
+        this.choosenId = this.choosenId || [];
 
         this.total = 0;
 
@@ -115,6 +115,7 @@ export class MenuPage {
 
 
     openRecap() {
+        this.storage.set('idMeals',this.choosenId)
         this.navCtrl.push(RecapPage, {
             entree: this.choosenEntree,
             plat: this.choosenPlat,
@@ -164,6 +165,8 @@ export class MenuPage {
 
             for (let i = 0; i < valeur; i++) {
                 objDst.push(objSrc[this.tmpIndex])
+                console.log("ID of meal select --> "+objSrc[this.tmpIndex].id)
+                this.choosenId.push(objSrc[this.tmpIndex].id)
             }
         }
 
