@@ -1,26 +1,21 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { MenuPage } from '../menu/menu';
-
-/**
- * Generated class for the DetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NgSwitch } from '@angular/common';
 
 @IonicPage()
 @Component({
   selector: 'page-details',
   templateUrl: 'details.html',
-})
+  })
+  
 export class DetailsPage {
-  valeur:number;
+  valeur: number;
+  ngSwitch: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.valeur=1;
+    this.valeur = 1;
   }
 
   ionViewDidLoad() {
@@ -33,15 +28,16 @@ export class DetailsPage {
   }
 
   decremente() {
-    if(this.valeur!=0)
-      this.valeur--;
+    if (this.valeur != 0)
+        this.valeur--;
   }
 
   openMenu() {
-    let callback=this.navParams.get('callback');
+    let callback = this.navParams.get('callback');
       this.navCtrl.pop();
-      let p=this.valeur*this.navParams.get('meal').price;
-    callback(p,this.valeur)
+      let p = this.valeur * this.navParams.get('meal').price;
+      
+    callback(p, this.valeur)
 
     console.log("well play tu as ouvert la page menu");
   }

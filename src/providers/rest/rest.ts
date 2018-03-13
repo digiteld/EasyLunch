@@ -36,15 +36,6 @@ export class RestProvider {
         );
     }
 
-    // private loginUrl = 'https://easy-lunch.herokuapp.com/login';
-
-    // addLogin(username: string, password: string): Observable<{}> {
-    //   return this.http.post(this.loginUrl, {username:"j", password:"j"}, {
-    //     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
-    //   })
-
-    // }
-
     getMeals(id): Observable<{}> {
         return this.http.get(this.apiUrlMeal + id).pipe(
             map(this.extractData),
@@ -61,7 +52,7 @@ export class RestProvider {
     }
 
 
-  postBooking(arg): Observable< any > {
+    postBooking(arg): Observable< any > {
         return this.http.post(this.apiUrlPostBooking,arg).pipe(
 
             map(this.extractData2),
