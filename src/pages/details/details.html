@@ -18,17 +18,40 @@
 </ion-header>
 
 
-<ion-content padding style="background-color: #F4FAFD;">
+<ion-content>
   
-    <div> {{navParams.get('meal').name}} </div>
+    <div class="name"> {{navParams.get('meal').name}} </div>
 
-    <div> {{navParams.get('meal').description}} </div>
+    <div class="description"> {{navParams.get('meal').description}} </div>
     
     <div class="number-picker">
-      <div class="left" (click)="decremente()"></div>
+
+      <div class="left" (click)="decremente()"> <p> - </p> </div>
       <ion-input type="number" class="number" placeholder={{valeur}}></ion-input>
-      <div class="right" (click)="incremente()"></div>
+      <div class="right" (click)="incremente()"> <p> + </p> </div>
+
     </div>
-    
-  <button ion-button (click)="openMenu()"> COMMANDER  &nbsp;&nbsp;&nbsp;&nbsp; x{{valeur}} &nbsp;&nbsp;&nbsp;&nbsp; {{valeur*navParams.get('meal').price}} € </button>
+
+      <ion-card>
+
+        <ion-content> 
+            Instructions spéciales
+          <ion-input type="text" class="text" placeholder="Rentrez ici vos commentaires sur la commande (cuisson de la viande, pas de champignons, etc...)">  </ion-input>
+        </ion-content>
+
+    </ion-card>
+
+    <ion-footer>
+        <ion-toolbar>
+          <ion-buttons>
+            <button ion-button round (click)="openMenu()">
+                COMMANDER  &nbsp;&nbsp;&nbsp;&nbsp; x{{valeur}} &nbsp;&nbsp;&nbsp;&nbsp; {{valeur*navParams.get('meal').price}} €
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    <!-- <div class="button">
+      <button ion-button round (click)="openMenu()"> COMMANDER  &nbsp;&nbsp;&nbsp;&nbsp; x{{valeur}} &nbsp;&nbsp;&nbsp;&nbsp; {{valeur*navParams.get('meal').price}} € </button>
+    </div> -->
+
 </ion-content>

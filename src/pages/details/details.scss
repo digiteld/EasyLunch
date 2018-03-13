@@ -1,37 +1,99 @@
 page-details {
 
+  .scroll-content {
+    padding: 30px 25px;
+    background-color: #F4FAFD;
+  }
+
+  ////    NavBar
+
+  .toolbar-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #5E7FB1;
+  }
+
+
+
+  ////    Name + description
+
+  .name {
+    font-weight: 600;
+    font-size: 20px;
+    color: #5E7FB1;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-weight: 500;
+    font-size: 16px;
+    color: #5E7FB1;
+  }
+
+
+
+  ////    Number picker 
+
+
   $size: 17px;
-  .right,
-  .left {
 
-    height: $size * 2;
-    width: $size;
+  .number-picker {
+    position: relative;
+    top: 4.5vh;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    margin: auto;
   }
 
-
-
-  .right {
-    background-color: #5E7FB1;
-    border-bottom-right-radius: $size * 2;
-    border-top-right-radius: $size * 2;
-  }
-
-  .number
-  {
-    width: 25%;
-  }
-
-
+  $size: 17px;
 
   .left {
+    width: 65px;
+    height: 50px;
     background-color: #5E7FB1;
     border-bottom-left-radius: $size * 2;
     border-top-left-radius: $size * 2;
   }
 
-  .number-picker
-  {
+  .right {
+    width: 65px;
+    height: 50px;
+    background-color: #5E7FB1;
+    border-bottom-right-radius: $size * 2;
+    border-top-right-radius: $size * 2;
+  }
 
+
+  .number {
+    display: flex;
+    width: 70px;
+    height: 50px;
+    margin: 0;
+    background: #DFE8F2;
+    color: #5E7FB1;
+  }
+
+  .number-picker .text-input {
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  .number-picker p {
+    text-align: center;
+    color: #FFFFFF;
+  }
+  
+
+  .card {
+    position: relative;
+    top: 7.5vh;
+  }
+
+  .toolbar-content {
+    text-align: center;
   }
 
 }

@@ -10,20 +10,27 @@
         <!-- <div class="btn"> -->
         <ion-grid>
             <ion-row flex-wrap: nowrap class="z-index">
-
-                <ion-col class="stylecol">
-                    <button class="stylebtn" ion-button full icon-start color="blue" (click)="openNbPers()">
+                <div class="stylebtn">
+                    <ion-item>
+                        <ion-label>Pour combien ?</ion-label>
+                        <ion-datetime pickerFormat="D" displayFormat="false" [(ngModel)]="NbPers"></ion-datetime>
+                    </ion-item>
+                        <!-- <button class="stylebtn" ion-button full icon-start color="blue" (click)="openNbPers()">
                         <ion-icon name="combien"></ion-icon>
-                        <p>Pour combien ?</p></button>
+                        <p>Pour combien ?</p></button></ion-datetime> -->
+                    
                     <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->
-                </ion-col>
 
                 <ion-col class="stylecol">
-                    <button class="stylebtn" ion-button full icon-start color="blue" (click)="openSchedule()">
+                        <ion-item>
+                            <ion-label>A quelle heure ?</ion-label>
+                            <ion-datetime pickerFormat="HH/mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat="false" [(ngModel)]="Schedule"></ion-datetime>
+                        </ion-item>
+                    <!-- <button class="stylebtn" ion-button full icon-start color="blue" (click)="openSchedule()">
                         <ion-icon name="heure"></ion-icon>
-                        <p>A quelle heure ?</p></button>
+                        <p>A quelle heure ?</p></button> -->
                 </ion-col>
-
+            </div>
             </ion-row>
         </ion-grid>
         <!-- </div> -->
