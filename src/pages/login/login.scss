@@ -1,3 +1,55 @@
 page-login {
 
+    .content {
+        background-image: url(../assets/imgs/login.png);
+    }
+
+    #logo {
+        top: 12vh;
+        position: relative;
+        width: 146.8px;
+    }
+
+    .ion-ios-email,
+    .ion-md-email {
+      content: url(../assets/icon/envelope.svg);
+      height: 15px;
+    }
+
+    .ion-ios-mdp,
+    .ion-md-mdp {
+      content: url(../assets/icon/locked.svg);
+      height: 20px;
+    }
+
+
+    #input {
+        position: relative;
+        top: 12.6vh;
+        width: 260px;
+    }
+
+    .item {
+        background-color: transparent;
+    }
+
+    #btnco {
+        width: 100%;
+        height: 50px;
+        margin: auto;
+        top: 22vh;
+        background-color: #5E7FB1;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    #btnpdc {
+        width: 200px;
+        height: 50px;
+        margin: auto;
+        top: 27vh;
+        background-color: #809BC4;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
 }

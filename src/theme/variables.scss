@@ -34,7 +34,7 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #5E7FB1,
-  secondary:  #32db64,
+  secondary:  #C0CFE3,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
@@ -87,5 +87,5 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
+// @import "roboto";
 @import "noto-sans";
