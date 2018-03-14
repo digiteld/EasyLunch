@@ -23,26 +23,40 @@ page-home {
 
     ////   BTN
 
+    .item {
+      background-color: #5E7FB1;
+    }
+
+    #lbl-0 {
+      content: url(../../assets/icon/combien.svg);
+      width: 20px;
+      height: 15px;
+    }
+
+    #lbl-1 {
+      content: url(../../assets/icon/heure.svg);
+      width: 20.68px;
+      height: 20px;
+    }
+
     .stylebtn {
       text-transform: none;
     }
 
     .stylecol {
       width: 155px;
-      height: 50px;
+      // height: 50px;
     }
 
     .ion-ios-combien,
     .ion-md-combien {
       content: url(../../assets/icon/combien.svg);
-      width: 20px;
       height: 15px;
     }
 
     .ion-ios-heure,
     .ion-md-heure {
       content: url(../../assets/icon/heure.svg);
-      width: 20.68px;
       height: 20px;
     }
 

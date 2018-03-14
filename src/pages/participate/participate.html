@@ -1,23 +1,26 @@
-
-
 <ion-content>
+
     <div class="all">
-<div class="img-table">
-  <ion-img width="100%" height="100%" style="background: transparent !important;" src="../assets/imgs/code-empty.png"></ion-img>
-</div>
-<div class="texte">
-    Je participe à une réservation en cours
-  </div>
+
+        <div class="img-table">
+            <ion-img width="100%" height="100%" style="background: transparent !important;" src="../assets/imgs/code-empty.png"></ion-img>
+        </div>
+
+    <div class="texte"> Je participe à une réservation en cours </div>
+
         <ng-container *ngIf="error">
             <ion-img src="../assets/imgs/error.svg"></ion-img>
         </ng-container>
+
         <div class="code">
-  <ion-input placeholder="Entrez le code ici" class="text-input" [(ngModel)]="codeInput" color="#5E7FB1"></ion-input>
+            <ion-input placeholder="Entrez le code ici" class="text-input" [(ngModel)]= "codeInput" color= "#5E7FB1"></ion-input>
         </div>
 
 
-        <div class="item-check" ion-button (click)="openMenu()">
-  <ion-img width="100%" height="100%" style="background: transparent !important;" src="../assets/icon/check.svg"></ion-img>
+        <div class="item-check" ion-button round (click)="openMenu()">
+            <ion-img width="100%" height="100%" style="background: transparent !important;" src="../assets/icon/check.svg"></ion-img>
         </div>
+
     </div>
+
 </ion-content>
