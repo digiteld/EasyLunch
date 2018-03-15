@@ -10,9 +10,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { ParticipatePage } from '../pages/participate/participate';
-import { BookPage } from '../pages/book/book'
-import { ContactPage } from '../pages/contact/contact';
+import { BookPage } from '../pages/book/book';
 import { HomePage } from '../pages/home/home';
+import { ContactPage } from '../pages/contact/contact';
 
 import { MenuPage } from '../pages/menu/menu';
 import { DetailsPage } from '../pages/details/details';
@@ -35,8 +35,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     ParticipatePage,
     BookPage,
-    ContactPage,
     HomePage,
+    ContactPage,
     TabsPage,
     MenuPage,
     DetailsPage,
@@ -58,8 +58,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     ParticipatePage,
     BookPage,
-    ContactPage,
     HomePage,
+    ContactPage,
     TabsPage,
     MenuPage,
     DetailsPage,
@@ -73,7 +73,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Geolocation,
-      AndroidPermissions,
+    AndroidPermissions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider
   ]

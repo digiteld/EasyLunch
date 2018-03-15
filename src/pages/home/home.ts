@@ -4,7 +4,6 @@ import {NavController} from 'ionic-angular';
 import {RestProvider} from '../../providers/rest/rest';
 import L from 'leaflet';
 
-
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import {Slides} from 'ionic-angular';

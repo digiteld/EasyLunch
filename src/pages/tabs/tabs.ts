@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { ParticipatePage } from '../participate/participate';
 import { BookPage } from '../book/book';
-import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
+import { ContactPage } from '../contact/contact';
 
 @Component({
   templateUrl: 'tabs.html'
