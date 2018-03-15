@@ -1,44 +1,38 @@
-<!--
-  Generated template for the AccountCreaPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>account_crea</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
-  <ion-list>
 
-      <ion-item>
-        <ion-label>Prénom et nom</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
+  <div id="logo"> <img src = "../assets/icon/logo-easylunch.svg"> </div>
 
-      <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-input type="email"></ion-input>
-      </ion-item>
+    <img class="compte" src="../assets/icon/compte.svg">
+    <img class="envelope" src="../assets/icon/envelope.svg">
+    <img class="tel" src="../assets/icon/locked.svg">
+    <img class="locked" src="../assets/icon/locked.svg">
     
-      <ion-item>
-        <ion-label>Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-    
-    </ion-list>
-    
-    <div padding>
-        <button ion-button (click)="openAddCard()">Créer mon compte</button>
+      <div id="input">
+          <ion-item>
+            <ion-label color="secondary"  > Prénom et Nom </ion-label>
+            <ion-input clearInput></ion-input>
+          </ion-item>
+        
+          <ion-item>
+              <ion-label color="secondary" > Email </ion-label>
+              <ion-input clearInput></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="secondary" > N° de portable </ion-label>
+            <ion-input clearInput></ion-input>
+        </ion-item>
+
+          <ion-item>
+            <ion-label color="secondary" > Mot de passe </ion-label>
+            <ion-input clearInput></ion-input>
+        </ion-item>
     </div>
+      
+      <button id="btnco" ion-button round (click)="openAddCard()">Créer mon compte</button>
 
-    <div padding>
-        <button ion-button (click)="openLogin()">Déjà un compte ?</button>
-    </div>
+      <button id="btnpdc" ion-button round (click)="openLogin()">Déjà un compte ?</button>
+
+
 </ion-content>
 
