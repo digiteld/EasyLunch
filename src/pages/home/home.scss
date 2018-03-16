@@ -72,10 +72,6 @@ page-home {
 
     ////   CARD
 
-    // ion-card {
-    //   width: 320px !important;
-    // }
-
     .card-content {
       padding: 0 !important;
     }
@@ -84,24 +80,37 @@ page-home {
       margin: 10px;
     }
 
-    h2 {
-      font-size: 16px !important;
-      color: #5E7FB1 !important;
+
+
+    .card h2 {
+      color: #5E7FB1;
+      font-weight: 600;
     }
 
-    h3 {
-      font-size: 14px !important;
-      color: #5E7FB1 !important;
+    .card h3 {
+      color: #5E7FB1;
+      margin-bottom: 0.7vh;
     }
 
     .row h4 {
-      font-size: 12px !important;
+      font-size: 12px;
       color: #5E7FB1;
+      font-weight: 500;
     }
 
-    .tab-button-text {
-      font-size: 10px !important;
-    }
+
+    // .tab-ios .tab-button {
+    //   font-size: 10px !important;
+    //   color: #5E7FB1;
+    //   font-weight: 400;
+    // }
+
+    // .tab-md .tab-button {
+    //   font-size: 10px !important;
+    //   color: #5E7FB1 !important;
+    //   font-weight: 400 !important;
+    // }
+    
 
 //////      Animation pin "geolocalisation"
     

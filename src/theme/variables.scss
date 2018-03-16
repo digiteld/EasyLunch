@@ -46,9 +46,14 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-// .md .button {
-//   text-transform: capitalize;
-// }
+$tabs-ios-tab-text-color: (
+  #809BC4
+);
+
+
+$tabs-ios-tab-color-inactive: (
+  #809BC4
+);
 
 
 
@@ -56,8 +61,17 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$tabs-md-tab-text-color: (
+  #809BC4
+);
 
+$tabs-md-tab-font-size-active: (
+  1rem
+);
 
+$tabs-md-tab-font-size: (
+  1rem
+);
 
 // App Windows Variables
 // --------------------------------------------------

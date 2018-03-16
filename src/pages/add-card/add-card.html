@@ -6,20 +6,25 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>add_card</ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-title> Mon moyen de paiement </ion-title>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<h2> Mon moyen de paiement </h2>
-<p> Card </p>
-<p> n° card </p>
-<p> info card </p>
-<p> name owner card </p>
+  <div id="card"> </div>
 
-<button ion-button round (click)="openConfirm()">Check</button>
+  <div id="numero"> <h2> Numéro de carte </h2> </div>
+
+  <div class="flex">
+    <div id="date"> <h2> Date d'expiration </h2> </div>
+    <div id="CCV"> <h2> CCV </h2> </div>
+  </div>
+  
+  <div id="nom"> <h2> Nom du titulaire </h2> </div>
+
+<button ion-button round (click)="openConfirm()"></button>
 
 </ion-content>
