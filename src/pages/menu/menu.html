@@ -220,11 +220,13 @@
 
     </div>
 
+
     <!--        Total price      -->
 
-    <ng-container *ngIf="total!==0">
-        <button ion-button (click)="openRecap()">Confirmer {{total}}€ </button>
-    </ng-container>
-
-
+    <div id="confirmer"> 
+        <ng-container *ngIf="total!==0">
+            <button ion-button (click)="openRecap()">Confirmer {{total}}€ </button>
+        </ng-container>
+    </div>
+    
 </ion-content>

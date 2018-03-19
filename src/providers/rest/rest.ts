@@ -15,11 +15,11 @@ export class RestProvider {
     private prod = 'https://easy-lunch-tmp.herokuapp.com';
     private test = 'http://192.168.1.15:5000';
     private apiUrl = 'https://easy-lunch.herokuapp.com/api/restaurants';
-    private apiUrlMeal = this.test+'/api/meal?id=';
-    private apiUrlPostBooking = this.test+'/api/booking';
-    private apiUrlPostCommand = this.test+'/api/command';
-    private apiUtlGetSingleResto = this.test+'/api/restaurants/';
-    private apiUrlGetAllBookingUser=this.test+'/api/command?iduser='
+    private apiUrlMeal = this.prod+'/api/meal?id=';
+    private apiUrlPostBooking = this.prod+'/api/booking';
+    private apiUrlPostCommand = this.prod+'/api/command';
+    private apiUtlGetSingleResto = this.prod+'/api/restaurants/';
+    private apiUrlGetAllBookingUser=this.prod+'/api/command?iduser='
 
     // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
 

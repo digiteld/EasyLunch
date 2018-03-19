@@ -25,11 +25,11 @@ page-menu {
     position: absolute;
     background-color: transparent;
     top: 25px;
-    left: 25px;
+    left: 14px;
   }
 
   #img .arrow {
-    width: 16px;
+    width: 22px;
     height: 20px;
   }
 
@@ -182,6 +182,13 @@ page-menu {
 
   #repas p {
     font-weight: 200;
+  }
+
+  #confirmer {
+    position: relative;
+    text-align: center;
+    top: 5vh;
+    background-color: #FFFFFF;
   }
 
 
