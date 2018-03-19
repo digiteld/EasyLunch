@@ -26,6 +26,8 @@ export class ConfirmPage {
     create: boolean;
     idCommand: number;
     mealId: number[]
+    nbPers: string
+    schedule: string;
 
     @ViewChild('myTabs') tabRef: Tabs;
 
@@ -33,6 +35,10 @@ export class ConfirmPage {
         this.code = "";
         this.mealId = this.mealId || [];
         this.init()
+        this.idCommand = null;
+        this.create = null;
+        this.nbPers = null;
+        this.schedule = null;
 
 
     }
@@ -45,30 +51,45 @@ export class ConfirmPage {
 
     init() {
 
+        this.storage.get('nbPers').then(data => {
+            this.nbPers = data
+            console.log("DATA NBPER --> " + data)
+            this.post()
+        }, error => console.error(error))
+
+        this.storage.get('schedule').then(data => {
+            this.schedule = data.replace(':', '')
+            console.log("DATA SCHEDULE --> " + data)
+            this.post()
+        }, error => console.error(error))
+
+        this.post()
+        this.storage.get('idMeals').then(
+            data => {
+                this.mealId = data
+                console.log("AAA --> "+data)
+                this.post()
+
+
+            }
+            ,
+            error => console.error(error))
         this.storage.get('create_booking').then(data => {
 
                 this.create = data
-                this.storage.get('idMeals').then(
-                    data => {
-                        this.mealId = data
+                if (!this.create) {
+                    this.storage.get('id_command').then(
+                        data => {
+                            this.idCommand = data
 
-                        if (!this.create) {
-                            this.storage.get('id_command').then(
-                                data => {
-                                    this.idCommand = data
-                                    this.post()
-                                    console.log("BOOKING ID --> " + data)
-                                }
-                                ,
-                                error => console.error(error))
-                        }
-                        else
                             this.post()
-
-
-                    }
-                    ,
-                    error => console.error(error))
+                            console.log("BOOKING ID --> " + data)
+                        }
+                        ,
+                        error => console.error(error))
+                }
+                else
+                    this.post()
 
 
             },
@@ -77,24 +98,38 @@ export class ConfirmPage {
     }
 
     post() {
-        if (this.create) {
-            this.postBooking({
-                master_user_id: 1,
-                restaurant_id: 1,
-                nb_users: 1,
-                schedule: 1200,
-                meal_id: this.mealId,
-                payment_id: 2
-            })
-        }
-        else {
-            console.log("AT INSTANT T --> " + this.idCommand)
-            this.postCommand({
-                user_id: 1,
-                meal_id: this.mealId,
-                payment_id: 2,
-                booking_id: this.idCommand
-            })
+
+        console.log("TEST --> "+this.create+"  "+this.mealId+"   "+this.idCommand)
+        if (this.create != null && this.mealId != null ) {
+            console.log("Je rentre dans la premiere STEP ")
+            if (this.create) {
+                console.log("Je rentre dans la deuxieme STEP ")
+                if (this.nbPers != null && this.schedule != null) {
+                    console.log("Je rentre dans la troisieme STEP ")
+                    console.log("NB USERS --> " + this.nbPers)
+                    console.log("schedule --> " + this.schedule)
+
+                    this.postBooking({
+                        master_user_id: 1,
+                        restaurant_id: 1,
+                        nb_users: this.nbPers,
+                        schedule: this.schedule,
+                        meal_id: this.mealId,
+                        payment_id: 2
+                    })
+                }
+            }
+            else {
+                if(this.idCommand!=null) {
+                    console.log("AT INSTANT T --> " + this.idCommand)
+                    this.postCommand({
+                        user_id: 1,
+                        meal_id: this.mealId,
+                        payment_id: 2,
+                        booking_id: this.idCommand
+                    })
+                }
+            }
         }
     }
 

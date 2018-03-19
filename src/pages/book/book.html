@@ -7,11 +7,27 @@
   </ion-header>
   
   <ion-content>
-    <ion-list>
-      <ion-list-header>Follow us on Twitter</ion-list-header>
-      <ion-item>
-        <ion-icon name="ionic" item-start></ion-icon>
-        @ionicframework
-      </ion-item>
-    </ion-list>
+    <div class="full">
+   <div>
+     Mes Réservations en cours
+   </div>
+    <div>
+      Mes Réservations précédentes
+    </div>
+      <ng-container *ngFor="let item of booking;index as i">
+        <ion-card (click)="openDetail(i)">
+
+          <ion-card-content>
+         <img src={{item.picture}}/>
+            <div>
+            {{item.name}}</div><div>
+            {{item.created_date}}</div><div>
+            {{item.nb_users}}</div><div>
+            {{item.price}}</div>
+          </ion-card-content>
+
+        </ion-card>
+
+      </ng-container>
+    </div>
   </ion-content>
