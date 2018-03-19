@@ -14,6 +14,7 @@ import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 import {MenuPage} from '../menu/menu';
 import {Storage} from "@ionic/storage";
 
+
 // import { WheelSelector } from '@ionic-native/wheel-selector';
 
 // import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -62,8 +63,9 @@ export class HomePage {
     mapPin: any;
     pinID: number[];
     sliding: any;
-    showNbPers: boolean;
-    showSchedule: boolean;
+    NbPers:string;
+    Schedule:string;
+
 
     @ViewChild(Slides) slides: Slides;
     ////    Add variable for holds data
@@ -78,9 +80,8 @@ export class HomePage {
 
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
-        this.showNbPers = false;
-        this.showSchedule = false;
-
+        this.NbPers=null;
+        this.Schedule=null;
         this.sliding = false;
         this.currentIndex = 0;
     }
@@ -88,7 +89,7 @@ export class HomePage {
 
     ionViewDidEnter() {
         //CHECK AND REQUEST IF NECESSARY PERMISSION FOR POSITION
-        //de la merde
+
         // this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION).then(
         //     result => console.log('Has permission?',result.hasPermission),
         //     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION)
@@ -123,11 +124,25 @@ export class HomePage {
 
     openMenu(i) {
         console.log("J'ai cliqué sur le --> " + i)
-
+        console.log("NBPERS --> "+this.NbPers)
+        console.log("Schedule --> "+this.Schedule)
         let obj = this.restaurant[i]
         console.log("ID cc  --> " + obj)
         this.storage.set('id_restaurant', obj.id)
         this.storage.set('create_booking', true)
+        if(this.Schedule!=null) {
+            console.log("JE SET SCHEDULE "+this.Schedule)
+            this.storage.set('schedule', this.Schedule)
+
+        }
+        if(this.NbPers!=null)
+        {
+            console.log("JE SET NBPERS "+this.NbPers)
+            let nbpers=this.NbPers.substring(0, this.NbPers.length-3)
+            this.storage.set('nbPers', nbpers)
+
+        }
+
         this.navCtrl.push(MenuPage, {
 
             img: obj.picture,
