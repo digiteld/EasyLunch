@@ -65,6 +65,7 @@ export class HomePage {
     sliding: any;
     NbPers:string;
     Schedule:string;
+    allPin:any;
 
 
     @ViewChild(Slides) slides: Slides;
@@ -84,6 +85,7 @@ export class HomePage {
         this.Schedule=null;
         this.sliding = false;
         this.currentIndex = 0;
+        this.allPin=this.allPin || [];
     }
 
 
@@ -229,6 +231,9 @@ export class HomePage {
             html: '<div id="c" <div class="s"></div> </div>'
         });
         let marker: any = L.marker([e.latitude, e.longitude], {icon: pulsingIcon});
+        this.allPin.push(marker)
+
+
 
         this.map.addLayer(marker);
     }
@@ -296,6 +301,7 @@ export class HomePage {
         ///   Diplay marker on map
 
         let array = this.restaurant;
+
         // for (let i = 0; i < array.length; i++){
         // console.log(i)
         // if (i == 0) {
@@ -333,6 +339,11 @@ export class HomePage {
 
 
         })
+
+
+
+
+
 
     }
 
