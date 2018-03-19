@@ -13,7 +13,23 @@ page-details {
     color: #5E7FB1;
   }
 
+  .arrow {
+    content: url(../assets/icon/arrow-left-grey.svg);
+    width: 20px;
+    height: 15px;
+  }
 
+  // .bar-buttons-ios {
+  //   content: url(../assets/icon/arrow-left-grey.svg);
+  //   width: 20px;
+  //   height: 15px;
+  // }
+
+  // .bar-buttons-md {
+  //   content: url(../assets/icon/arrow-left-grey.svg);
+  //   width: 20.68px;
+  //   height: 20px;
+  // }
 
   ////    Name + description
 
@@ -56,12 +72,21 @@ page-details {
     border-top-left-radius: $size * 2;
   }
 
+  .left img {
+    height: 22px;
+    width: 22px;
+  }
+
   .right {
     width: 65px;
     height: 50px;
     background-color: #5E7FB1;
     border-bottom-right-radius: $size * 2;
     border-top-right-radius: $size * 2;
+  }
+
+  .right img {
+    height: 22px;
   }
 
   .number {
