@@ -1,3 +1,119 @@
 page-add-card {
+    .scroll-content {
+        background-color: #F4FAFD;
+        padding: 25px!important;
+        overflow: hidden;
+    }
 
+    #card {
+        background-color: #C0CFE3;
+        width: 100%;
+        height: 188px;
+        border-radius: 20px;
+    }
+
+////        Input Card
+
+
+    #numero {
+        background-color: #FFFFFF;
+        width: 100%;
+        height: 86px;
+        margin-top: 15px;
+    }
+
+    .flex {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    #date {
+        background-color: #FFFFFF;
+        width: 50%;
+        height: 86px;
+        margin-right: 10px;
+    }
+
+    #CCV {
+        background-color: #FFFFFF;
+        width: 50%;
+        height: 86px;
+    }
+
+    #nom {
+        background-color: #FFFFFF;
+        width: 100%;
+        height: 86px;
+        margin-top: 10px;
+    }
+
+
+
+////        Input Text
+
+
+    #numero h2 {
+        position: relative;
+        top: 20px;
+        left: 15px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #5E7FB1;
+    }
+
+    
+
+    .flex h2 {
+        position: relative;
+        top: 20px;
+        left: 15px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #5E7FB1;
+    }
+
+    
+
+    #nom h2 {
+        position: relative;
+        top: 20px;
+        left: 15px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #5E7FB1;
+    }
+
+
+
+////        Input Number 
+
+
+    #input .item-inner {
+        border: none;
+    }
+
+    #input .item {
+        position: relative;
+        top: 10px;
+    } 
+
+
+
+////        BTN
+
+
+    .button {
+        position: relative;
+        margin: auto;
+        transform: translateX(-50%);
+        left: 50%;
+        width: 65px;
+        height: 65px;
+        top: 2vh;
+    }
+
+    span.button-inner {
+        width: 29.75px;
+        transform: translateX(-25%);
+      }
 }

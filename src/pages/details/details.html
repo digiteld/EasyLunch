@@ -1,18 +1,16 @@
-<!--
-  Generated template for the DetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>    
+  <ion-navbar hideBackButton>
     <ion-title [ngSwitch]="navParams.get('meal').plat">
         <ion-title *ngSwitchCase=0>Entrée</ion-title>
         <ion-title *ngSwitchCase=1>Plat</ion-title>
         <ion-title *ngSwitchCase=2>Dessert</ion-title>
     </ion-title>
-
+    <ion-buttons class="arrow" left>
+        <button ion-button navPop icon-only>
+            <ion-icon ios="ios-arrow" md="md-arrow"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -26,9 +24,9 @@
     
     <div class="number-picker">
 
-      <div class="left" (click)="decremente()"> <p> - </p> </div>
+      <div class="left" (click)="decremente()"> <p> <img src="../assets/icon/remove.svg"> </p> </div>
       <ion-input type="number" class="number" placeholder={{valeur}}></ion-input>
-      <div class="right" (click)="incremente()"> <p> + </p> </div>
+      <div class="right" (click)="incremente()"> <p> <img src="../assets/icon/add.svg"> </p> </div>
 
     </div>
 
@@ -42,6 +40,7 @@
     </ion-card>
 
     <ion-footer>
+
         <ion-toolbar>
           <ion-buttons>
             <button ion-button round (click)="openMenu()">
@@ -49,6 +48,7 @@
             </button>
           </ion-buttons>
         </ion-toolbar>
+
       </ion-footer>
     <!-- <div class="button">
       <button ion-button round (click)="openMenu()"> COMMANDER  &nbsp;&nbsp;&nbsp;&nbsp; x{{valeur}} &nbsp;&nbsp;&nbsp;&nbsp; {{valeur*navParams.get('meal').price}} € </button>

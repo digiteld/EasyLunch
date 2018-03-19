@@ -6,6 +6,10 @@ page-participate {
     height: 100vh;
   }
 
+  .scroll-content {
+    overflow: hidden;
+  }
+
   .code {
     position: relative;
     background-color: white;
@@ -19,7 +23,7 @@ page-participate {
     height: 59%;
   }
 
- .texte {
+ .text {
    position: relative;
    left: 6.665%;
    width: 86.67%;
@@ -37,12 +41,24 @@ page-participate {
     top: 7vh;
     width: 65px;
     height: 65px;
+    background-color: #A7BAD6;
+    box-shadow: none;
   }
 
   .text-input {
     color: #5E7FB1;
     height: 7.50%;
     text-align: center;
+  }
+
+  span.button-inner {
+    position: relative;
+    margin: auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 29.75px;
+    height: 21.64px;
   }
 
 
