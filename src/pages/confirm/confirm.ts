@@ -164,4 +164,6 @@ export class ConfirmPage {
                 },
                 error => this.errorMessage = <any>error);
     }
+
+
 }
