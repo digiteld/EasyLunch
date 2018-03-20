@@ -20,6 +20,9 @@
 
   <div class="full">
 
+    <ng-container *ngIf="entree">
+    <p>Entrée</p>
+
     <ng-container *ngFor="let item of navParams.get('entree');">
 
       <!--<button ion-button (click)="openDetail()">-->
@@ -39,6 +42,9 @@
 
     </ng-container>
 
+    </ng-container>
+<ng-container *ngIf="plat">
+    <p>Plat</p>
 
     <ng-container *ngFor="let item of navParams.get('plat');">
       <ion-card >
@@ -53,6 +59,12 @@
         </ion-card-content>
       </ion-card>
     </ng-container>
+
+
+</ng-container>
+    <ng-container *ngIf="dessert">
+    <p>Dessert</p>
+
 
     <ng-container *ngFor="let item of navParams.get('dessert');">
 
@@ -69,6 +81,7 @@
           </div>
         </ion-card-content>
       </ion-card>
+    </ng-container>
     </ng-container>
     <button ion-button (click)="openLogin()">Payer et Réserver {{navParams.get('total')}}€ </button>
   </div>

@@ -50,3 +50,4 @@ fabric.properties
 www/build
 
 .sourcemaps
+.sourcemaps/main.js.map

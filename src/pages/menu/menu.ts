@@ -120,7 +120,12 @@ export class MenuPage {
             entree: this.choosenEntree,
             plat: this.choosenPlat,
             dessert: this.choosenDessert,
-            total: this.total
+            total: this.total,
+            img:this.img,
+            address:this.address,
+            desc:this.desc,
+            name:this.name
+
         });
         console.log("yeeeah this is your recap my friend !");
     }
