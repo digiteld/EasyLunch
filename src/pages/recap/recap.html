@@ -18,7 +18,8 @@
         </div>
     </div>
 
-  <div class="full">
+  <div id="repas">
+    <h2> Récupérer la valeur des btn pour combien et à quelle heure </h2>
 
     <ng-container *ngIf="entree">
     <p>Entrée</p>
@@ -27,15 +28,15 @@
 
       <!--<button ion-button (click)="openDetail()">-->
       <ion-card >
-        <ion-card-header style="color: #5E7FB1;">
-          {{item.name}}
-
-        </ion-card-header>
         <ion-card-content>
-          {{item.description}}
-          <div class="price">
-            {{item.price}}€
-          </div>
+            <div class="choix">
+                <h3> {{item.name}} </h3>
+                <p> {{item.description}} </p>
+            </div>
+
+            <div class="price">
+                {{item.price}}€
+            </div>
         </ion-card-content>
       </ion-card>
 
@@ -48,42 +49,48 @@
 
     <ng-container *ngFor="let item of navParams.get('plat');">
       <ion-card >
-        <ion-card-header>
-          {{item.name}}
-        </ion-card-header>
-        <ion-card-content>
-          {{item.description}}
-          <div class="price">
-            {{item.price}}€
-          </div>
-        </ion-card-content>
+          <ion-card-content>
+              <div class="choix">
+                  <h3> {{item.name}} </h3>
+                  <p> {{item.description}} </p>
+              </div>
+
+              <div class="price">
+                  {{item.price}}€
+              </div>
+          </ion-card-content>
+
       </ion-card>
     </ng-container>
 
 
 </ng-container>
     <ng-container *ngIf="dessert">
-    <p>Dessert</p>
+        <p>Dessert</p>
 
 
     <ng-container *ngFor="let item of navParams.get('dessert');">
+        <ion-card >
+            <ion-card-content>
+                <div class="choix">
+                    <h3> {{item.name}} </h3>
+                    <p> {{item.description}} </p>
+                </div>
 
-      <ion-card >
-        <ion-card-header>
-          {{item.name}}
-
-        </ion-card-header>
-        <ion-card-content>
-          {{item.description}}
-          <div class="price">
-            {{item.price}}€
-
-          </div>
-        </ion-card-content>
-      </ion-card>
+                <div class="price">
+                    {{item.price}}€
+                </div>
+            </ion-card-content>
+        </ion-card>
+      </ng-container>
     </ng-container>
-    </ng-container>
-    <button ion-button (click)="openLogin()">Payer et Réserver {{navParams.get('total')}}€ </button>
+
+    <div id="payer"> 
+        <ng-container *ngIf="total!==0">
+            <button ion-button round (click)="openLogin()">Payer et Réserver {{navParams.get('total')}}€ </button>
+        </ng-container>
+    </div>
+   
   </div>
 
 
