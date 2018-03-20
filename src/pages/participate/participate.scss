@@ -47,7 +47,6 @@ page-participate {
 
   .text-input {
     color: #5E7FB1;
-    height: 7.50%;
     text-align: center;
   }
 
@@ -62,15 +61,15 @@ page-participate {
   }
 
 
-  ion-input.floating-with-placeholder{
-    input::-webkit-input-placeholder { color:#5E7FB1; }
-    input::-moz-placeholder { color:#5E7FB1; }
-    input::-moz-placeholder { color:#5E7FB1; }
-    input:-ms-input-placeholder { color:#5E7FB1; }
+  // ion-input.floating-with-placeholder{
+  //   input::-webkit-input-placeholder { color:#5E7FB1; }
+  //   input::-moz-placeholder { color:#5E7FB1; }
+  //   input::-moz-placeholder { color:#5E7FB1; }
+  //   input:-ms-input-placeholder { color:#5E7FB1; }
 
-    input:-moz-placeholder { color:transparent; }
-    input::-moz-placeholder { color:transparent; }
-    input:-ms-input-placeholder { color:transparent; }
-  }
+  //   input:-moz-placeholder { color:transparent; }
+  //   input::-moz-placeholder { color:transparent; }
+  //   input:-ms-input-placeholder { color:transparent; }
+  // }
 
 }
