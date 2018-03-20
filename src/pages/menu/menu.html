@@ -3,7 +3,7 @@
     <div id="restau">
         <div id="img">
             <img src={{img}}/>
-            <button (click)="goBack()"> <img class="arrow" src="../assets/icon/arrow-left-white.svg"> </button>
+            <button (click)="goBack()"><img class="arrow" src="../assets/icon/arrow-left-white.svg"></button>
         </div>
 
 
@@ -44,7 +44,6 @@
     <!--        ///////////////      -->
 
 
-
     <!--        Meal choice      -->
 
     <div class="selection">
@@ -64,40 +63,40 @@
                 <ion-card-content>
                     <div class="entree">
                         <h3>
-                            Entrée
+                            Entrées
                         </h3>
-                        <p>
-                            Terrine de campagne maison
-                        </p>
-                        <p>
-                            Vitaminé de carotte, poire et melon
-                        </p>
+                        <ng-container *ngFor="let item of menuOfDay.id_plat">
+                            <ng-container *ngIf="mapEntree.has(item)">
+                                <p>{{mapEntree.get(item).name}}</p>
+                            </ng-container>
+
+                        </ng-container>
                     </div>
                     <div class="plat">
                         <h3>
                             Plat
                         </h3>
-                        <p>
-                            Carbonara de dinde aux épices
-                        </p>
-                        <p>
-                            Poisson du marché
-                        </p>
+                        <ng-container *ngFor="let item of menuOfDay.id_plat">
+                            <ng-container *ngIf="mapPlat.has(item)">
+                                <p>{{mapPlat.get(item).name}}</p>
+                            </ng-container>
+
+                        </ng-container>
                     </div>
                     <div class="dessert">
                         <h3>
                             Dessert
                         </h3>
-                        <p>
-                            Parfait glacé, sauce chocolat
-                        </p>
-                        <p>
-                            Panna Cotta, citron et framboise
-                        </p>
+                        <ng-container *ngFor="let item of menuOfDay.id_plat">
+                            <ng-container *ngIf="mapDessert.has(item)">
+                                <p>{{mapDessert.get(item).name}}</p>
+                            </ng-container>
+
+                        </ng-container>
                     </div>
 
                     <div class="price">
-                        dès 14,00 €
+                        {{menuOfDay.price}}€
                     </div>
                 </ion-card-content>
 
@@ -112,26 +111,34 @@
             <h2>Formules</h2>
         </div>
 
-        <ng-container>
+        <ng-container *ngFor="let item of formule">
 
             <ion-card>
 
                 <ion-card-content>
                     <div class="menu">
                         <h3>
-                            Menu douceur
+                            {{item.name}}
                         </h3>
-                        <p>
-                            Entrée - plat ou plat dessert à la carte
-                        </p>
+                        <ng-container *ngIf="item.nbmeals===2">
+                            <p>
+                                Entrée / Plat ou Plat / Dessert
+                            </p>
+                        </ng-container>
+                        <ng-container *ngIf="item.nbmeals===3">
+                            <p>
+                                Entrée / Plat / Dessert
+                            </p>
+                        </ng-container>
                     </div>
 
                     <div class="price">
-                        dès 16,00 €
+                        {{item.price}}€
                     </div>
-                </ion-card-content>
 
-            </ion-card>
+        </ion-card-content>
+
+        </ion-card>
 
         </ng-container>
 
@@ -199,7 +206,7 @@
             <ng-container *ngFor="let item of dessert;index as i">
 
                 <ion-card (click)="openDetail(2,i)">
-        
+
                     <ion-card-content>
                         <div class="choix">
                             <h3> {{item.name}} </h3>
@@ -210,7 +217,7 @@
                             {{item.price}}€
                         </div>
                     </ion-card-content>
-                    
+
                 </ion-card>
 
             </ng-container>

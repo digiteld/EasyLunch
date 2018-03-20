@@ -15,22 +15,34 @@ import {Storage} from "@ionic/storage";
 export class MenuPage {
 
     errorMessage: string;
+
+    //ALL ITEMS
     meals: any;
+    menus: any;
+
+    //FORMAT ITEM
     entree: any[];
     plat: any[];
     dessert: any[];
     choosenEntree: any[];
     choosenPlat: any[];
     choosenDessert: any[];
+
+    menuOfDay: any;
+    formule:any[];
+
     tmpType: any;
     tmpIndex: number;
     total: number;
     choosenId: number[];
 
+    mapEntree: any;
+    mapPlat: any;
+    mapDessert: any;
 
     //API
 
-    idResto:number;
+    idResto: number;
 
     //FOR HEADER RESTO
 
@@ -42,11 +54,17 @@ export class MenuPage {
 
     @ViewChild(Content) content: Content;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider,private storage: Storage) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
+        this.mapEntree = new Map();
+        this.mapPlat = new Map();
+        this.mapDessert = new Map();
         this.entree = this.entree || [];
+        this.formule=this.formule || [];
+
         this.plat = this.plat || [];
         this.dessert = this.dessert || [];
+        this.menuOfDay=this.menuOfDay|| {}
         this.choosenEntree = this.choosenEntree || [];
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
@@ -54,22 +72,21 @@ export class MenuPage {
 
         this.total = 0;
 
-        this.img=this.navParams.get('img')
-        this.address=this.navParams.get('address')
-        this.name= this.navParams.get('name')
-        this.desc=this.navParams.get('desc')
-        this.storage.get('id_restaurant').then(   data =>
-        { console.log("ID --> "+data)
-                this.idResto=data
-            this.getMeals(this.idResto);},
+        this.img = this.navParams.get('img')
+        this.address = this.navParams.get('address')
+        this.name = this.navParams.get('name')
+        this.desc = this.navParams.get('desc')
+        this.storage.get('id_restaurant').then(data => {
+                console.log("ID --> " + data)
+                this.idResto = data
+                this.getMeals(this.idResto);
+            },
             error => console.error(error));
 
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MenuPage');
-
-
 
 
     }
@@ -81,7 +98,7 @@ export class MenuPage {
 
     goBack() {
         this.navCtrl.pop();
-      }
+    }
 
     openDetail(plat, index) {
         let obj
@@ -109,16 +126,16 @@ export class MenuPage {
 
 
     openRecap() {
-        this.storage.set('idMeals',this.choosenId)
+        this.storage.set('idMeals', this.choosenId)
         this.navCtrl.push(RecapPage, {
             entree: this.choosenEntree,
             plat: this.choosenPlat,
             dessert: this.choosenDessert,
             total: this.total,
-            img:this.img,
-            address:this.address,
-            desc:this.desc,
-            name:this.name
+            img: this.img,
+            address: this.address,
+            desc: this.desc,
+            name: this.name
 
         });
         console.log("yeeeah this is your recap my friend !");
@@ -129,8 +146,11 @@ export class MenuPage {
         this.rest.getMeals(id)
 
             .subscribe(
-                meal => {
-                    this.meals = meal;
+                data => {
+
+                    console.log("ALL --> " + JSON.stringify(data[0]))
+                    this.meals = data[0].meal;
+                    this.menus = data[0].menu;
                     this.formatData()
 
 
@@ -164,7 +184,7 @@ export class MenuPage {
 
             for (let i = 0; i < valeur; i++) {
                 objDst.push(objSrc[this.tmpIndex])
-                console.log("ID of meal select --> "+objSrc[this.tmpIndex].id)
+                console.log("ID of meal select --> " + objSrc[this.tmpIndex].id)
                 this.choosenId.push(objSrc[this.tmpIndex].id)
             }
         }
@@ -180,18 +200,36 @@ export class MenuPage {
             switch (meal.plat) {
                 case 0:
                     this.entree.push(meal)
+                    this.mapEntree.set(meal.id, meal);
 
                     break;
                 case 1:
                     this.plat.push(meal)
+                    this.mapPlat.set(meal.id, meal);
                     break;
                 case 2:
                     this.dessert.push(meal)
+                    this.mapDessert.set(meal.id, meal);
                     break;
             }
 
         })
 
+        this.menus.map(m => {
+            if (m.mod)
+                this.menuOfDay=m
+            else
+            {
+                this.formule.push(m)
+                console.log("AAA --> "+JSON.stringify(m))
+                console.log(m.name)
+                console.log(m.nbmeals)
+
+            }
+        })
+
+
     }
+
 
 }
