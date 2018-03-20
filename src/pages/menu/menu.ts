@@ -5,6 +5,7 @@ import {DetailsPage} from '../details/details';
 import {RecapPage} from '../recap/recap';
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
+import {DetailMenuPage} from "../detail-menu/detail-menu";
 
 /**
  * Generated class for the MenuPage page.
@@ -54,7 +55,7 @@ export class MenuPage {
 
     img: any;
     address: string;
-    name: string;
+    name: strinyeg;
     desc: string;
 
 
@@ -128,6 +129,31 @@ export class MenuPage {
             callback: this.callbackChild
         });
         console.log("well done tu as ouvert la page detail");
+    }
+
+    openDetailMenu()
+    {
+        let _entree=[]
+        let _plat=[]
+        let _dessert=[]
+
+        this.menuOfDay.id_plat.forEach(id =>{
+            if(this.mapEntree.has(id))
+                _entree.push(this.mapEntree.get(id))
+            if(this.mapPlat.has(id))
+                _plat.push(this.mapPlat.get(id))
+            if(this.mapDessert.has(id))
+                _dessert.push(this.mapDessert.get(id))
+
+        })
+
+        this.navCtrl.push(DetailMenuPage, {
+            entree:_entree,
+            plat:_plat,
+            dessert:_dessert,
+
+
+        })
     }
 
 
