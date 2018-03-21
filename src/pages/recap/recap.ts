@@ -21,6 +21,7 @@ export class RecapPage {
     entree: boolean;
     plat: boolean;
     dessert: boolean;
+    menu: boolean;
 
     img: any;
     address: string;
@@ -32,6 +33,9 @@ export class RecapPage {
         storage.set('entree', navParams.get('entree'))
         storage.set('plat', navParams.get('plat'))
         storage.set('dessert', navParams.get('dessert'))
+        storage.set('total', navParams.get('total'))
+
+
         this.img = navParams.get('img')
         this.address = navParams.get('address')
         this.name = navParams.get('name')
@@ -41,6 +45,7 @@ export class RecapPage {
         this.plat = false;
         this.dessert = false;
 
+        this.menu = false;
 
         if (navParams.get('plat').length > 0)
             this.plat = true
@@ -51,6 +56,11 @@ export class RecapPage {
         if (navParams.get('dessert').length > 0)
             this.dessert = true
 
+        if (navParams.get('menuMeal').length > 0)
+            this.menu = true
+
+        console.log("MENU MEAL SIZE --> " + navParams.get('menuMeal'))
+        console.log("MENU --> " + JSON.stringify(navParams.get('menu')))
 
     }
 

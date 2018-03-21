@@ -28,6 +28,9 @@ export class ConfirmPage {
     mealId: number[]
     nbPers: string
     schedule: string;
+    menuID:any;
+    menuMealID:any;
+    total:number;
 
     @ViewChild('myTabs') tabRef: Tabs;
 
@@ -41,6 +44,7 @@ export class ConfirmPage {
         this.schedule = null;
 
 
+
     }
 
     ionViewDidLoad() {
@@ -51,6 +55,21 @@ export class ConfirmPage {
 
     init() {
 
+        this.storage.get('menuID').then(data=>{
+
+            this.menuID=data
+            console.log("DATA --> "+data)
+        },error => console.error(error))
+
+        this.storage.get('menuMealID').then(data=>{
+            console.log("DATA --> "+data)
+        this.menuMealID=data
+        },error => console.error(error))
+
+        this.storage.get('total').then(data =>{
+            this.total=data
+            console.log("DATA --> "+data)
+        }, error => console.error(error))
         this.storage.get('nbPers').then(data => {
             this.nbPers = data
             console.log("DATA NBPER --> " + data)
@@ -115,7 +134,9 @@ export class ConfirmPage {
                         nb_users: this.nbPers,
                         schedule: this.schedule,
                         meal_id: this.mealId,
-                        payment_id: 2
+                        payment_id: 2,
+                        menu:'{'+this.menuID+':'+this.menuMealID+'}',
+                        total:this.total
                     })
                 }
             }
@@ -126,7 +147,9 @@ export class ConfirmPage {
                         user_id: 1,
                         meal_id: this.mealId,
                         payment_id: 2,
-                        booking_id: this.idCommand
+                        booking_id: this.idCommand,
+                        menu:'{'+this.menuID+':['+this.menuMealID+']}',
+                        total:this.total
                     })
                 }
             }

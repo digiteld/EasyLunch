@@ -24,7 +24,8 @@ export class DetailMenuPage {
   dessertSelect:boolean;
 
   showButton:boolean;
-    tabBarElement
+
+  mealId:any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
@@ -32,7 +33,12 @@ export class DetailMenuPage {
  this.platSelect=false;
  this.dessertSelect=false;
 
+
  this.showButton=false;
+
+ this.mealId=this.mealId || [];
+
+ console.log("AZERTY --> "+this.navParams.get('idMeal'))
 
  }
 
@@ -46,6 +52,7 @@ export class DetailMenuPage {
 
     console.log(this.entree)
       this.entreeSelect=true;
+
       this.showValidation()
   }
   onChangePlat()
@@ -71,6 +78,12 @@ export class DetailMenuPage {
   goBackMenu()
   {
       console.log("Je change")
+      this.mealId.push(this.entree)
+      this.mealId.push(this.plat)
+      this.mealId.push(this.dessert)
+
+      let callback = this.navParams.get('callback');
+      callback(this.mealId, this.navParams.get('idMeal'))
     this.navCtrl.pop()
 
   }

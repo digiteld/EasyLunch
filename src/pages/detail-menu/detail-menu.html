@@ -23,7 +23,7 @@
     <ion-item>
 
       <ion-label>{{item.name}}</ion-label>
-      <ion-radio (ionSelect)="onChangeEntree()" value={{item.name}}></ion-radio>
+      <ion-radio (ionSelect)="onChangeEntree()" value={{item.id}}></ion-radio>
 
     </ion-item>
   </ion-card>
@@ -40,7 +40,7 @@
         <ion-item>
 
           <ion-label>{{item.name}}</ion-label>
-          <ion-radio (ionSelect)="onChangePlat()" value={{item.name}}></ion-radio>
+          <ion-radio (ionSelect)="onChangePlat()" value={{item.id}}></ion-radio>
 
         </ion-item>
       </ion-card>
@@ -57,7 +57,7 @@
         <ion-item>
 
           <ion-label>{{item.name}}</ion-label>
-          <ion-radio (ionSelect)="onChangeDessert()" value={{item.name}}></ion-radio>
+          <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
 
         </ion-item>
       </ion-card>
@@ -73,7 +73,7 @@
   <br/>
   <ng-container *ngIf="showButton">
 
-    <ion-buttons (click)="goBackMenu()" >Commander x1 {{navParams.get('price')}}€</ion-buttons>
+    <button (click)="goBackMenu()" >Commander x1 {{navParams.get('price')}}€</button>
 
 
   </ng-container>
