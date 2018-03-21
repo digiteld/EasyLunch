@@ -1,31 +1,46 @@
-<ion-header>
-    <ion-navbar>
-      <ion-title>
-        Réservation
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content>
-    <div class="full">
-   <div>
-     Mes Réservations en cours
-   </div>
-    <div>
-      Mes Réservations précédentes
+<ion-content>
+  <div class="full">
+    <div class="new">
+      <h2> Mes réservations en cours </h2>
+      
+      <p> Vous n'avez aucune réservation en cours ! </p>
+      
+        <button ion-button round (click)="goHome()">
+            J'organise une réservation
+        </button>
     </div>
-      <ng-container *ngFor="let item of booking;index as i">
-        <ion-card (click)="openDetail(i)">
+
+    <div class="old">
+      <p> Mes réservations précédentes <p>
+    
+    <ng-container *ngFor="let item of booking;index as i">
+      <ion-card (click)="openDetail(i)">
 
           <ion-card-content>
-            <img src={{item.picture}}/>
-              <div> {{item.name}} </div>
-              <div> {{item.created_date}} </div>
-              <div> {{item.nb_users}} </div>
-              <div> {{item.price}} </div>
-            </ion-card-content>
 
-          </ion-card>
-      </ng-container>
+              <ion-row>
+                  <img src={{item.picture}}/>
+
+                  <ion-card-title>
+                      <ion-row>
+                          <h2>{{item.name}}</h2>
+                      </ion-row>
+                      <ion-row>
+                          <!-- <h3>{{item.created_date}} </h3> -->
+                      </ion-row>
+                      <ion-row>
+                          <h4> {{item.nb_users}} </h4>
+                      </ion-row>
+                      <ion-row>
+                          <h4> {{item.price}} </h4>
+                      </ion-row>
+                  </ion-card-title>
+              </ion-row>
+
+          </ion-card-content>
+
+        </ion-card>
+    </ng-container>
     </div>
-  </ion-content>
+  </div>
+</ion-content>
