@@ -19,7 +19,7 @@ export class RestProvider {
     private apiUrlPostBooking = this.test+'/api/booking';
     private apiUrlPostCommand = this.test+'/api/command';
     private apiUtlGetSingleResto = this.test+'/api/restaurants/';
-    private apiUrlGetAllBookingUser=this.test+'/api/command?iduser='
+    private apiUrlGetAllBookingUser = this.test + '/api/command?iduser=';
 
     // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
 

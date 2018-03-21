@@ -143,6 +143,10 @@ page-menu {
 
       ////   Card menu du jour
   
+  h2 img {
+    height: 14.27px;
+  }
+  
   .plat h3 {
     margin-top: 20px;
   }
@@ -185,11 +189,16 @@ page-menu {
   }
 
   #confirmer {
+    padding: 5px 25px;
     position: relative;
     text-align: center;
     top: 5vh;
     background-color: #FFFFFF;
   }
 
+  #confirmer button {
+    width: 100%;
+    text-transform: uppercase;
+  }
 
 }

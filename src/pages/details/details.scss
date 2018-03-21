@@ -13,11 +13,18 @@ page-details {
     color: #5E7FB1;
   }
 
-  .arrow {
-    content: url(../assets/icon/arrow-left-grey.svg);
-    width: 20px;
-    height: 15px;
+  .arrow button {
+    position: absolute;
+    background-color: transparent;
+    transform: translateY(-50%);
+    left: 12px;
   }
+
+  .arrow img {
+    width: 26px;
+  }
+
+
 
   // .bar-buttons-ios {
   //   content: url(../assets/icon/arrow-left-grey.svg);
@@ -102,7 +109,7 @@ page-details {
     margin: auto;
     text-align: center;
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .number-picker p {
@@ -114,10 +121,36 @@ page-details {
   .card {
     position: relative;
     top: 7.5vh;
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 125px;
+    box-shadow: none;
   }
 
-  .toolbar-content {
-    text-align: center;
+  .card .scroll-content {
+    background-color: #FFFFFF;
+    padding: 20px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5E7FB1;
+  }
+
+  .card .text-input {
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+
+  #commander {
+    background-color: #FFFFFF;
+  }
+
+  #commander button {
+    transform: translateX(-50%);
+    left: 50%;
+    font-weight: 600;
   }
 
 }

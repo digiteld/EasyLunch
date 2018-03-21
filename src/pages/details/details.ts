@@ -43,6 +43,10 @@ export class DetailsPage {
     }
   }
 
+  goBack() {
+    this.navCtrl.pop();
+  }
+
   incremente() {
       this.valeur++;
   }

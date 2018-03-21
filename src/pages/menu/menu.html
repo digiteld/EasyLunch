@@ -52,8 +52,8 @@
         <!--        Menu du jour      -->
 
         <div id="Menu du jour">
-            <!-- <img src="../assets/icon/cloche.svg">  -->
-            <h2>Menu du jour</h2>
+             
+            <h2><img src="../assets/icon/cloche.svg"> Menu du jour</h2>
         </div>
 
         <ng-container>
@@ -158,7 +158,6 @@
                     <ion-card-content>
                         <div class="choix">
                             <h3> {{item.name}} </h3>
-                            <!-- style="color: #5E7FB1;" -->
                             <p> {{item.description}} </p>
                         </div>
 
@@ -230,10 +229,11 @@
 
     <!--        Total price      -->
 
-    <div id="confirmer">
-        <ng-container *ngIf="total!==0">
-            <button ion-button (click)="openRecap()">Confirmer {{total}}€</button>
-        </ng-container>
-    </div>
+        <div id="confirmer"> 
+            <ng-container *ngIf="total!==0">
+                <button ion-button round (click)="openRecap()">Confirmer {{total}}€ </button>
+            </ng-container>
+        </div>
 
+    
 </ion-content>

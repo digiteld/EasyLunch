@@ -1,59 +1,207 @@
 page-recap {
 
-    ////    Image restaurant
 
-
-  #img {
-    position: relative;
-    z-index: 1;
-    height: 22.3vh;
+  ////    Image restaurant
+  
+  
+    #img {
+      position: relative;
+      z-index: 1;
+      height: 22.3vh;
+    }
+  
+    #img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+  
+  
+  ////    Btn return
+  
+  
+    #img button {
+      position: absolute;
+      background-color: transparent;
+      top: 25px;
+      left: 14px;
+    }
+  
+    #img .arrow {
+      width: 22px;
+      height: 20px;
+    }
+  
+  
+  
+  ////    Card restau
+  
+  
+    #restau {
+      height: 32vh;
+    }
+  
+    #cardrestau {
+      width: 100%;
+      transform: translateX(-50%);
+      left: 50%;
+      top: 10.7vh;
+      display: flex;
+      position: absolute;
+      z-index: 1;
+    }
+  
+    #cardrestau p {
+      text-align: center;
+    }
+  
+  
+  
+  ////    Card menu
+  
+  
+    .card {
+      margin: 12px 25px;
+      width: calc(100% - 50px);
+      box-shadow: none;
+    }
+  
+    .card-content {
+      margin: auto;
+      text-align: center;
+    }
+  
+    .card-content h1 {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #5E7FB1;
+    }
+  
+    .card-content h2 {
+      font-size: 1.1em;
+      font-weight: 400;
+      color: #5E7FB1;
+    }
+  
+    .card-content h3 {
+      font-size: 0.9em;
+      font-weight: 400;
+      color: #5E7FB1;
+    }
+  
+    .card-content p {
+      font-size: 1.1em;
+      font-weight: 500 !important;
+      margin-top: 10px;
+      color: #5E7FB1;
+      text-align: left;
+    }
+  
+  
+  ////   Menu scroll
+  
+  
+    .scrollmenu {
+      top: 3vh;
+      height: 30px;
+    }
+  
+    a {
+      color: #5E7FB1;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  
+  
+  ////   Card menu 
+  
+    .selection {
+      position:relative;
+      top: 5vh;
+      color: #5E7FB1;
+      text-align: center;
+      //background-color:#F4FAFD;
+    }
+  
+    .selection .card-content {
+      padding: 20px 15px;
+    }
+  
+    h2 {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin: 30px 0 20px 0;
+    }
+  
+    .price {
+      text-align: right;
+      margin-top: 20px;
+      color: #5E7FB1;
+    }
+  
+  
+        ////   Card menu du jour
+    
+    h2 img {
+      height: 14.27px;
+    }
+    
+    .plat h3 {
+      margin-top: 20px;
+    }
+  
+    .dessert h3 {
+      margin-top: 20px;
+    }
+  
+        ////   Card formules
+  
+    .menu h3 {
+      text-align: left !important;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  
+    .menu p {
+      font-weight: 200;
+    }
+  
+  
+  
+        ////   Card entrées / plats / dessert
+  
+    #repas .card-content {
+      text-align: left;
+    }
+  
+    #repas .card-content h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  
+    #repas p {
+      font-weight: 200;
+    }
+  
+    #payer {
+      padding: 5px 25px;
+      position: relative;
+      text-align: center;
+      top: 13vh;
+      background-color: #FFFFFF;
+    }
+  
+    #payer button {
+      width: 100%;
+      text-transform: uppercase;
+    }
+  
   }
+  
 
-  #img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-
-
-////    Btn return
-
-
-  #img button {
-    position: absolute;
-    background-color: transparent;
-    top: 25px;
-    left: 14px;
-  }
-
-  #img .arrow {
-    width: 22px;
-    height: 20px;
-  }
-
-
-
-////    Card restau
-
-
-  #restau {
-    height: 32vh;
-  }
-
-  #cardrestau {
-    width: 100%;
-    transform: translateX(-50%);
-    left: 50%;
-    top: 10.7vh;
-    display: flex;
-    position: absolute;
-    z-index: 1;
-  }
-
-  #cardrestau p {
-    text-align: center;
-  }
-
-
-}
