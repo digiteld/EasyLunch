@@ -17,6 +17,8 @@ export class MenuPage {
 
     errorMessage: string;
 
+
+
     //ALL ITEMS
     meals: any;
     menus: any;
@@ -54,6 +56,10 @@ export class MenuPage {
     name: string;
     desc: string;
 
+    //verif schedule and nbPErs
+    schedule:boolean;
+    nbPers:boolean;
+
 
     @ViewChild(Content) content: Content;
 
@@ -73,20 +79,46 @@ export class MenuPage {
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
         this.choosenId = this.choosenId || [];
+        this.schedule=true;
+        this.nbPers=true;
 
 
         this.total = 0;
 
-        this.img = this.navParams.get('img')
-        this.address = this.navParams.get('address')
-        this.name = this.navParams.get('name')
-        this.desc = this.navParams.get('desc')
+        if(navParams.get('participate'))
+            console.log("JE VIENS DE PARTICIPATE")
+        else {
+
+            this.img = this.navParams.get('img')
+            this.address = this.navParams.get('address')
+            this.name = this.navParams.get('name')
+            this.desc = this.navParams.get('desc')
+
+        }
+        
         this.storage.get('id_restaurant').then(data => {
                 console.log("ID --> " + data)
                 this.idResto = data
                 this.getMeals(this.idResto);
             },
             error => console.error(error));
+        this.storage.get('nbPers').then(data => {
+            if(data!=null)
+            this.nbPers=true
+            else
+                this.nbPers=false
+
+            console.log("NBPERS --> "+data)
+        }, error => console.error(error))
+
+        this.storage.get('schedule').then(data => {
+            if(data!=null)
+            this.schedule=true;
+            else
+                this.schedule=false;
+
+            console.log("SCHEDULE --> "+data)
+        }, error => console.error(error))
 
     }
 
@@ -106,73 +138,79 @@ export class MenuPage {
     }
 
     openDetail(plat, index) {
-        let obj
-        switch (plat) {
-            case 0:
-                obj = this.entree;
-                break;
-            case 1:
-                obj = this.plat;
-                break;
-            case 2:
-                obj = this.dessert;
-                break;
+        if(this.schedule && this.nbPers) {
+            let obj
+            switch (plat) {
+                case 0:
+                    obj = this.entree;
+                    break;
+                case 1:
+                    obj = this.plat;
+                    break;
+                case 2:
+                    obj = this.dessert;
+                    break;
 
+            }
+            this.tmpType = plat;
+            this.tmpIndex = index;
+            console.log("AVANT crash --> " + obj[index].name)
+            this.navCtrl.push(DetailsPage, {
+                meal: obj[index],
+                callback: this.callbackChild
+            });
+            console.log("well done tu as ouvert la page detail");
         }
-        this.tmpType = plat;
-        this.tmpIndex = index;
-        console.log("AVANT crash --> " + obj[index].name)
-        this.navCtrl.push(DetailsPage, {
-            meal: obj[index],
-            callback: this.callbackChild
-        });
-        console.log("well done tu as ouvert la page detail");
     }
 
     openDetailMenu(id) {
-        console.log("ID MEAL --> " + id)
-        let _entree = []
-        let _plat = []
-        let _dessert = []
+        if(this.schedule && this.nbPers) {
+            console.log("ID MEAL --> " + id)
+            let _entree = []
+            let _plat = []
+            let _dessert = []
 
-        this.menuOfDay.id_plat.forEach(id => {
-            if (this.mapEntree.has(id))
-                _entree.push(this.mapEntree.get(id))
-            if (this.mapPlat.has(id))
-                _plat.push(this.mapPlat.get(id))
-            if (this.mapDessert.has(id))
-                _dessert.push(this.mapDessert.get(id))
+            this.menuOfDay.id_plat.forEach(id => {
+                if (this.mapEntree.has(id))
+                    _entree.push(this.mapEntree.get(id))
+                if (this.mapPlat.has(id))
+                    _plat.push(this.mapPlat.get(id))
+                if (this.mapDessert.has(id))
+                    _dessert.push(this.mapDessert.get(id))
 
-        })
+            })
 
-        this.navCtrl.push(DetailMenuPage, {
-            entree: _entree,
-            plat: _plat,
-            dessert: _dessert,
-            idMeal: id,
-            callback: this.callBackMenu
+            this.navCtrl.push(DetailMenuPage, {
+                entree: _entree,
+                plat: _plat,
+                dessert: _dessert,
+                idMeal: id,
+                callback: this.callBackMenu
 
 
-        })
+            })
+        }
     }
 
 
     openRecap() {
-        this.storage.set('idMeals', this.choosenId)
-        this.navCtrl.push(RecapPage, {
-            entree: this.choosenEntree,
-            plat: this.choosenPlat,
-            dessert: this.choosenDessert,
-            total: this.total,
-            menu: this.choosenMenu,
-            menuMeal: this.choosenMenuID,
-            img: this.img,
-            address: this.address,
-            desc: this.desc,
-            name: this.name
+        if(this.schedule && this.nbPers) {
+            this.storage.set('idMeals', this.choosenId)
+            this.navCtrl.push(RecapPage, {
+                entree: this.choosenEntree,
+                plat: this.choosenPlat,
+                dessert: this.choosenDessert,
+                total: this.total,
+                menu: this.choosenMenu,
+                menuMeal: this.choosenMenuID,
+                img: this.img,
+                address: this.address,
+                desc: this.desc,
+                name: this.name
 
-        });
-        console.log("yeeeah this is your recap my friend !");
+            });
+            console.log("yeeeah this is your recap my friend !");
+        }
     }
 
 

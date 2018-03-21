@@ -78,7 +78,7 @@ export class HomePage {
 
 
     constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage,private androidPermissions: AndroidPermissions) {
-
+this.cleanStorage()
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
         this.NbPers=null;
@@ -233,8 +233,6 @@ export class HomePage {
         let marker: any = L.marker([e.latitude, e.longitude], {icon: pulsingIcon});
         this.allPin.push(marker)
 
-
-
         this.map.addLayer(marker);
     }
 
@@ -343,6 +341,20 @@ export class HomePage {
 
 
 
+
+
+    }
+
+    private cleanStorage() {
+        console.log("CLEAR STORAGE")
+        this.storage.remove('menuID')
+        this.storage.remove('menuMealID')
+        this.storage.remove('total')
+        this.storage.remove('nbPers')
+        this.storage.remove('schedule')
+        this.storage.remove('idMeals')
+        this.storage.remove('id_command')
+        this.storage.remove('create_booking')
 
 
     }

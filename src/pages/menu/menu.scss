@@ -196,8 +196,29 @@ page-menu {
     background-color: #FFFFFF;
   }
 
+  #fixed-warning
+  {
+    background-color: #5E7FB1;
+    color:white;
+    position:fixed;
+    text-align: center;
+    bottom:7.35%;
+    height: 10%;
+    width:100%;
+    display:table;
+  }
+
+  #fixed-warning-text
+  {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+
   #confirmer button {
     width: 100%;
+
     text-transform: uppercase;
   }
 
