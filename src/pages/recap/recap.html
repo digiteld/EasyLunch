@@ -18,8 +18,21 @@
         </div>
     </div>
 
+  
+
   <div id="repas">
-    <h2> Récupérer la valeur des btn pour combien et à quelle heure </h2>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <img class="heure" src="assets/icon/heure2.svg"> <p> Auj. à {{schedule}} </p>
+                </ion-col>
+                
+                <ion-col>
+                    <img class="cmb" src="assets/icon/combien2.svg"> <p> {{nbPers}} personnes </p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+       
 
 
       <ng-container *ngIf="menu">
@@ -29,11 +42,7 @@
 
           <ng-container *ngFor="let item of navParams.get('menuMeal');">
 
-
-
                       <p>{{item}}</p>
-
-
 
 
           </ng-container>

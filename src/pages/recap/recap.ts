@@ -28,6 +28,9 @@ export class RecapPage {
     name: string;
     desc: string;
 
+    schedule: any;
+    nbPers: any;
+
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
 
         storage.set('entree', navParams.get('entree'))
@@ -59,8 +62,18 @@ export class RecapPage {
         if (navParams.get('menuMeal').length > 0)
             this.menu = true
 
-        console.log("MENU MEAL SIZE --> " + navParams.get('menuMeal'))
-        console.log("MENU --> " + JSON.stringify(navParams.get('menu')))
+        console.log("MENU MEAL SIZE --> " + navParams.get('menuMeal'));
+        console.log("MENU --> " + JSON.stringify(navParams.get('menu')));
+
+        this.storage.get('schedule').then(data=>{
+            this.schedule=data
+            console.log("DATA --> "+data)
+        }, error => console.error(error))
+        
+        this.storage.get('nbPers').then(data=>{
+            this.nbPers=data
+            console.log("DATA --> "+data)
+        },error => console.error(error))
 
     }
 
@@ -72,5 +85,10 @@ export class RecapPage {
         console.log("ok commande validé !");
         this.navCtrl.push(LoginPage);
     }
+
+    goBack() {
+        this.navCtrl.pop();
+    }
+    
 
 }
