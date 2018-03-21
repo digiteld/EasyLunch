@@ -150,7 +150,7 @@ export class HomePage {
             img: obj.picture,
             address: obj.address,
             name: obj.name,
-            desc: obj.desc
+            desc: obj.description
 
 
         })
