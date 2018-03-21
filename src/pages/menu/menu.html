@@ -236,7 +236,7 @@
         </div>
 
 
-    <ng-container *ngIf="!schedule || !nbPers">
+    <ng-container *ngIf="(!schedule && !participate) || (!nbPers && !participate)  ">
     <div id="fixed-warning">
         <div id="fixed-warning-text">
         Pour réserver, vous devez renseigner le nombre de personnes attendu ainsi que l'heure d'arrivée

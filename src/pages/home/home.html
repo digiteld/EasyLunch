@@ -33,20 +33,20 @@
     </div>
 
     <div id="slides">
+
         <ion-grid>
             <ion-row class="z-index">
 
                 <!-- <ion-col> -->
                 <ion-slides slidesPerView="1.5" (ionSlideDidChange)="slideChanged()">
                     <ion-slide *ngFor="let r of restaurant;let i= index">
+
                         <ion-card (click)="openMenu(i)">
                             <ion-card-content>
-                                <ion-row>
-                                    <!-- <ion-col col-2> -->
-                                    <img src={{r.picture}}/>
-                                    <!-- </ion-col> -->
 
-                                    <!-- <ion-col col-10> -->
+                                <ion-row>
+                                    <img src={{r.picture}}/>
+
                                     <ion-card-title>
                                         <ion-row>
                                             <h2>{{r.name}}</h2>
@@ -61,8 +61,6 @@
                                             <h4>code postal + ville</h4>
                                         </ion-row>
                                     </ion-card-title>
-
-                                    <!-- </ion-col> -->
                                 </ion-row>
 
                             </ion-card-content>
@@ -71,9 +69,9 @@
                     </ion-slide>
                 </ion-slides>
 
-                <!-- </ion-col> -->
             </ion-row>
         </ion-grid>
+        
     </div>
 
 </ion-content>

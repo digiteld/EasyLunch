@@ -24,11 +24,11 @@
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    <img class="heure" src="assets/icon/heure2.svg"> <p> Auj. à {{schedule}} </p>
+                    <img class="heure" src="assets/icon/heure2.svg"> <h3> Auj. à {{schedule}} </h3>
                 </ion-col>
                 
                 <ion-col>
-                    <img class="cmb" src="assets/icon/combien2.svg"> <p> {{nbPers}} personnes </p>
+                    <img class="cmb" src="assets/icon/combien2.svg"> <h3> {{nbPers}} personnes </h3>
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -52,13 +52,14 @@
 
 
     <ng-container *ngIf="entree">
-    <p>Entrée</p>
+   
 
     <ng-container *ngFor="let item of navParams.get('entree');">
 
       <!--<button ion-button (click)="openDetail()">-->
       <ion-card >
         <ion-card-content>
+            <h4>Entrée</h4>
             <div class="choix">
                 <h3> {{item.name}} </h3>
                 <p> {{item.description}} </p>
@@ -75,11 +76,11 @@
 
     </ng-container>
 <ng-container *ngIf="plat">
-    <p>Plat</p>
 
     <ng-container *ngFor="let item of navParams.get('plat');">
       <ion-card >
           <ion-card-content>
+                <h4>Plat</h4>
               <div class="choix">
                   <h3> {{item.name}} </h3>
                   <p> {{item.description}} </p>
@@ -96,12 +97,11 @@
 
 </ng-container>
     <ng-container *ngIf="dessert">
-        <p>Dessert</p>
-
 
     <ng-container *ngFor="let item of navParams.get('dessert');">
         <ion-card >
             <ion-card-content>
+                    <h4>Dessert</h4>
                 <div class="choix">
                     <h3> {{item.name}} </h3>
                     <p> {{item.description}} </p>

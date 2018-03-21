@@ -58,7 +58,8 @@ export class MenuPage {
 
     //verif schedule and nbPErs
     schedule:boolean;
-    nbPers:boolean;
+    nbPers: boolean;
+    participate: boolean;
 
 
     @ViewChild(Content) content: Content;
@@ -80,7 +81,8 @@ export class MenuPage {
         this.choosenDessert = this.choosenDessert || [];
         this.choosenId = this.choosenId || [];
         this.schedule=true;
-        this.nbPers=true;
+        this.nbPers = true;
+        this.participate = false;
 
 
         this.total = 0;
@@ -94,6 +96,7 @@ export class MenuPage {
                 if(navParams.get('participate')) {
                     console.log("JE VIENS DE PARTICIPATE")
                     this.getInfoResto(this.idResto)
+                    this.participate = true;
                 }
                 else {
 

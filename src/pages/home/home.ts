@@ -80,7 +80,7 @@ export class HomePage {
 
 
     constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage,private androidPermissions: AndroidPermissions) {
-this.cleanStorage()
+    this.cleanStorage()
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
         this.markerArray=this.markerArray || []

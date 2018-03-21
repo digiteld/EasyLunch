@@ -47,6 +47,12 @@ page-recap {
       display: flex;
     }
 
+    .col h3 {
+      color: #5E7FB1;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
   ////    Card restau
   
   
@@ -102,6 +108,12 @@ page-recap {
       color: #5E7FB1;
     }
   
+    .card-content h4 {
+      font-size: 16px;
+      font-weight: 500 !important;
+      color: #5E7FB1;
+    }
+
     .card-content p {
       font-size: 1.1em;
       font-weight: 500 !important;

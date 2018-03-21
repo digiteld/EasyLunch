@@ -1,8 +1,69 @@
 page-book {
 
-  .full
-  {
+  .full {
     background-color: #F4FAFD ;
+    padding: 25px;
+  }
+
+  ////    Reservation en cours
+
+  .new h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5E7FB1;
+  }
+
+  .new p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #5E7FB1;
+  }
+
+  .new button {
+    width: 100%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .old p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5E7FB1;
+  }
+
+  .card-content {
+    padding: 0 !important;
+  }
+
+  img {
+    margin: 10px;
+    width: 100px;
+    height: 89px;
+  }
+
+  .card-ios {
+    margin: 12px 0;
+    width: 100%;
+    box-shadow: none;
+  }
+
+
+  .card h2 {
+    color: #5E7FB1;
+    font-weight: 600;
+  }
+
+  .card h3 {
+    color: #5E7FB1;
+    margin-bottom: 0.7vh;
+  }
+
+  .row h4 {
+    font-size: 12px;
+    color: #5E7FB1;
+    font-weight: 500;
   }
 
 }
