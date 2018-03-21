@@ -67,6 +67,8 @@ export class HomePage {
     Schedule:string;
     allPin:any;
 
+    markerArray:any[]
+
 
     @ViewChild(Slides) slides: Slides;
     ////    Add variable for holds data
@@ -81,6 +83,7 @@ export class HomePage {
 this.cleanStorage()
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
+        this.markerArray=this.markerArray || []
         this.NbPers=null;
         this.Schedule=null;
         this.sliding = false;
@@ -114,13 +117,10 @@ this.cleanStorage()
         console.log("Current index is ", this.currentIndex)
         let marker = this.mapPin[this.currentIndex]
         console.log("SIZE SLIDE --> " + this.slides.length())
-        // if (this.currentIndex == this.slides.length() - 1)
-        //     this.slides.lockSwipeToNext(true)
-        // else
-        //     this.slides.lockSwipeToNext(false)
 
         this.moveMarker(marker)
         console.log("SIZE ARRAY --> " + this.pinID.length)
+
     }
 
 
@@ -189,20 +189,7 @@ this.cleanStorage()
 
     loadmap() {
 
-        ////     Create map object and add base map tiles from Leaflet and attribution info to 'map' div
 
-        ///  Create custom icon
-
-        // let pulsingIcon = L.divIcon({
-        //   iconSize: [30, 30],
-        //   iconAnchor: [15, 15],
-        //   popupAnchor: [10, 0],
-        //   shadowSize: [0, 0],
-        //   className: 'css-icon',
-        //   html: '<div id="c" <div class="s"></div> </div>'
-        // });
-
-        ///
 
         this.map = L.map("map", {zoomControl: false});
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
@@ -231,8 +218,10 @@ this.cleanStorage()
             html: '<div id="c" <div class="s"></div> </div>'
         });
         let marker: any = L.marker([e.latitude, e.longitude], {icon: pulsingIcon});
+        console.log(e)
         this.allPin.push(marker)
-
+        this.markerArray.push(marker)
+        this.zoomOnNearestResto()
         this.map.addLayer(marker);
     }
 
@@ -300,25 +289,12 @@ this.cleanStorage()
 
         let array = this.restaurant;
 
-        // for (let i = 0; i < array.length; i++){
-        // console.log(i)
-        // if (i == 0) {
-        //   console.log("toot")
-        //   let pin = L.marker([array[i].lat, array[i].lon], { icon: forkIcon, bounceOnAdd: true, bounceOnAddOptions: { duration: 800, height: 200 } })
-        //   .on('add', event => {
-        //     this.onAddLayer(event, pin);
-        //   }).bindPopup(array[i].name).addTo(this.map);
-        // pin.on('click', event => {
-        //   this.onClickLayer(event)
-        // });
-        // } else {
-
         IntervalObservable.create(10).subscribe((i) => {
             if (i > 4) {
                 return false;
             }
 
-            let pin = L.marker([array[i].lat, array[i].lon], {
+        let pin = L.marker([array[i].lat, array[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}
             })
@@ -332,6 +308,11 @@ this.cleanStorage()
                 this.onClickLayer(event)
             });
 
+            if(i===0) {
+                console.log("JE ZOOM ON FIRST RESTO "+array[i].name)
+                this.markerArray.push(pin)
+                this.zoomOnNearestResto()
+            }
 
             this.mapPin.push(pin);
 
@@ -343,6 +324,21 @@ this.cleanStorage()
 
 
 
+    }
+
+    private zoomOnNearestResto()
+    {
+        if(this.markerArray.length==2) {
+            console.log(this.markerArray.length)
+            setTimeout(()=> {
+                    var group = new L.featureGroup(this.markerArray); //add markers array to featureGroup
+                    this.map .fitBounds(group.getBounds());
+                }
+
+            , 1000);
+
+
+        }
     }
 
     private cleanStorage() {

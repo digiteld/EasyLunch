@@ -25,7 +25,7 @@ export class BookPage {
     this.rest.getCommandWithIdUser(1) .subscribe(
         _booking => {
             this.booking = _booking;
-
+            console.log(_booking)
 
 
         },
