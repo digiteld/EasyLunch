@@ -10,14 +10,17 @@ export class BookPage {
 
     errorMessage: string;
     booking:any;
+    tabs:any;
 
     constructor(public navCtrl: NavController, public rest: RestProvider) {
-
+        this.tabs = navCtrl.parent;
         this.getBooking()
 
   }
 
+    ionViewDidEnter(){
 
+    }
   private getBooking() {
     this.rest.getCommandWithIdUser(1) .subscribe(
         _booking => {
@@ -42,7 +45,8 @@ export class BookPage {
     console.log(this.navCtrl.length())
 
    // this.navCtrl.setPages(this.navCtrl[0])
-    this.navCtrl.popToRoot()
+
+      this.tabs.select(0)
     console.log('FELICITATION !!! Parcours terminé');
 }
     
