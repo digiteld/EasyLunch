@@ -144,7 +144,7 @@ export class MenuPage {
     }
 
     openDetail(plat, index) {
-        if(this.schedule && this.nbPers) {
+        if((this.schedule && this.nbPers) || this.participate) {
             let obj
             switch (plat) {
                 case 0:
@@ -170,7 +170,7 @@ export class MenuPage {
     }
 
     openDetailMenu(id) {
-        if(this.schedule && this.nbPers) {
+        if((this.schedule && this.nbPers) || this.participate) {
             console.log("ID MEAL --> " + id)
             let _entree = []
             let _plat = []
@@ -200,7 +200,7 @@ export class MenuPage {
 
 
     openRecap() {
-        if(this.schedule && this.nbPers) {
+        if((this.schedule && this.nbPers) || this.participate) {
             this.storage.set('idMeals', this.choosenId)
             this.navCtrl.push(RecapPage, {
                 entree: this.choosenEntree,
@@ -241,7 +241,6 @@ export class MenuPage {
     {
         this.rest.getRestaurantWithCode(id).subscribe(data => {
 
-                console.log("JSON --> "+JSON.stringify(data))
 
                 this.img = data.picture
                 this.address = data.address

@@ -76,6 +76,7 @@ export class ConfirmPage {
         }, error => console.error(error))
 
         this.storage.get('schedule').then(data => {
+            if(data!=null)
             this.schedule = data.replace(':', '')
             console.log("DATA SCHEDULE --> " + data)
             this.post()
@@ -118,25 +119,29 @@ export class ConfirmPage {
     post() {
 
         if (this.create != null && this.mealId != null) {
+            var menu;
+            var meal;
+            if(this.menuID===null)
+                menu=null
+            else
+                menu='{\"' + this.menuID + '\":[' + this.menuMealID + ']}'
+
+            if(this.mealId.length===0)
+                meal=null
+            else
+                meal=this.mealId
 
             if (this.create) {
 
                 if (this.nbPers != null && this.schedule != null) {
                     this.cleanStorage()
-                    var menu;
-                    var meal;
-                    if(this.menuID===null)
-                        menu=null
-                    else
-                        menu='{\"' + this.menuID + '\":[' + this.menuMealID + ']}'
-
-                    if(this.mealId.length===0)
-                        meal=null
-                    else
-                        meal=this.mealId
 
                     console.log("MEAL ID  --> " + this.mealId)
 
+                    var today = new Date();
+                    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    var dateTime = date+' '+time;
 
                     this.postBooking({
                         master_user_id: 1,
@@ -144,6 +149,7 @@ export class ConfirmPage {
                         nb_users: this.nbPers,
                         schedule: this.schedule,
                         meal_id: meal,
+                        date:dateTime,
                         payment_id: 2,
                         menu: menu,
                         total: this.total
@@ -152,15 +158,24 @@ export class ConfirmPage {
             }
             else {
                 if (this.idCommand != null) {
+                    var today = new Date();
+                    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    var dateTime = date+' '+time;
+
+
+
+                    console.log("TOTAL --> "+this.total)
                     this.cleanStorage()
                     console.log("AT INSTANT T --> " + this.idCommand)
                     this.postCommand({
                         user_id: 1,
-                        meal_id: this.mealId,
+                        meal_id: meal,
                         payment_id: 2,
                         booking_id: this.idCommand,
-                        menu: '{' + this.menuID + ':[' + this.menuMealID + ']}',
-                        total: this.total
+                        menu: menu,
+                        total: this.total,
+                        date:dateTime
                     })
                 }
             }

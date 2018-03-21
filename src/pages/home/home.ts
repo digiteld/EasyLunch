@@ -341,7 +341,13 @@ export class HomePage {
             console.log(this.markerArray.length)
             setTimeout(()=> {
                     var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
-                    this.map .fitBounds(group.getBounds());
+                    this.map.fitBounds(group.getBounds(), {
+                            paddingTop: 20,
+                            paddingBottom: 20,
+                            paddingLeft: 20,
+                            paddingRight: 20
+                        }
+                    );
                 }
 
             , 1000);
