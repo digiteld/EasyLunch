@@ -85,21 +85,24 @@ export class MenuPage {
 
         this.total = 0;
 
-        if(navParams.get('participate'))
-            console.log("JE VIENS DE PARTICIPATE")
-        else {
 
-            this.img = this.navParams.get('img')
-            this.address = this.navParams.get('address')
-            this.name = this.navParams.get('name')
-            this.desc = this.navParams.get('desc')
 
-        }
-        
         this.storage.get('id_restaurant').then(data => {
                 console.log("ID --> " + data)
                 this.idResto = data
                 this.getMeals(this.idResto);
+                if(navParams.get('participate')) {
+                    console.log("JE VIENS DE PARTICIPATE")
+                    this.getInfoResto(this.idResto)
+                }
+                else {
+
+                    this.img = this.navParams.get('img')
+                    this.address = this.navParams.get('address')
+                    this.name = this.navParams.get('name')
+                    this.desc = this.navParams.get('desc')
+
+                }
             },
             error => console.error(error));
         this.storage.get('nbPers').then(data => {
@@ -229,6 +232,21 @@ export class MenuPage {
                 },
                 error => this.errorMessage = <any>error);
 
+    }
+
+    private getInfoResto(id)
+    {
+        this.rest.getRestaurantWithCode(id).subscribe(data => {
+
+                console.log("JSON --> "+JSON.stringify(data))
+
+                this.img = data.picture
+                this.address = data.address
+                this.name = data.name
+                this.desc = data.description
+
+            },
+            error => this.errorMessage = <any>error)
     }
 
 

@@ -150,7 +150,7 @@ this.cleanStorage()
             img: obj.picture,
             address: obj.address,
             name: obj.name,
-            desc: obj.desc
+            desc: obj.description
 
 
         })

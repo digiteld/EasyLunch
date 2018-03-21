@@ -169,9 +169,11 @@ export class ConfirmPage {
 
     goHome() {
 
-        this.tabRef.select(0)
+        // this.tabRef.select(0)
+        console.log(this.navCtrl.length())
 
-        // this.navCtrl.push(HomePage);
+       // this.navCtrl.setPages(this.navCtrl[0])
+        this.navCtrl.popToRoot()
         console.log('FELICITATION !!! Parcours terminé');
     }
 
