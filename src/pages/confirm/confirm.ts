@@ -28,9 +28,9 @@ export class ConfirmPage {
     mealId: number[]
     nbPers: string
     schedule: string;
-    menuID:any;
-    menuMealID:any;
-    total:number;
+    menuID: any;
+    menuMealID: any;
+    total: number;
 
     @ViewChild('myTabs') tabRef: Tabs;
 
@@ -44,7 +44,6 @@ export class ConfirmPage {
         this.schedule = null;
 
 
-
     }
 
     ionViewDidLoad() {
@@ -55,20 +54,20 @@ export class ConfirmPage {
 
     init() {
 
-        this.storage.get('menuID').then(data=>{
+        this.storage.get('menuID').then(data => {
 
-            this.menuID=data
-            console.log("DATA --> "+data)
-        },error => console.error(error))
+            this.menuID = data
+            console.log("DATA --> " + data)
+        }, error => console.error(error))
 
-        this.storage.get('menuMealID').then(data=>{
-            console.log("DATA --> "+data)
-        this.menuMealID=data
-        },error => console.error(error))
+        this.storage.get('menuMealID').then(data => {
+            console.log("DATA --> " + data)
+            this.menuMealID = data
+        }, error => console.error(error))
 
-        this.storage.get('total').then(data =>{
-            this.total=data
-            console.log("DATA --> "+data)
+        this.storage.get('total').then(data => {
+            this.total = data
+            console.log("DATA --> " + data)
         }, error => console.error(error))
         this.storage.get('nbPers').then(data => {
             this.nbPers = data
@@ -86,7 +85,7 @@ export class ConfirmPage {
         this.storage.get('idMeals').then(
             data => {
                 this.mealId = data
-                console.log("AAA --> "+data)
+                console.log("AAA --> " + data)
                 this.post()
 
 
@@ -118,38 +117,50 @@ export class ConfirmPage {
 
     post() {
 
-        console.log("TEST --> "+this.create+"  "+this.mealId+"   "+this.idCommand)
-        if (this.create != null && this.mealId != null ) {
-            console.log("Je rentre dans la premiere STEP ")
+        if (this.create != null && this.mealId != null) {
+
             if (this.create) {
-                console.log("Je rentre dans la deuxieme STEP ")
+
                 if (this.nbPers != null && this.schedule != null) {
-                    console.log("Je rentre dans la troisieme STEP ")
-                    console.log("NB USERS --> " + this.nbPers)
-                    console.log("schedule --> " + this.schedule)
+                    this.cleanStorage()
+                    var menu;
+                    var meal;
+                    if(this.menuID===null)
+                        menu=null
+                    else
+                        menu='{\"' + this.menuID + '\":[' + this.menuMealID + ']}'
+
+                    if(this.mealId.length===0)
+                        meal=null
+                    else
+                        meal=this.mealId
+
+                    console.log("MEAL ID  --> " + this.mealId)
+
 
                     this.postBooking({
                         master_user_id: 1,
                         restaurant_id: 1,
                         nb_users: this.nbPers,
                         schedule: this.schedule,
-                        meal_id: this.mealId,
+                        meal_id: meal,
                         payment_id: 2,
-                        menu:'{'+this.menuID+':'+this.menuMealID+'}',
-                        total:this.total
+                        menu: menu,
+                        total: this.total
                     })
                 }
             }
             else {
-                if(this.idCommand!=null) {
+                if (this.idCommand != null) {
+                    this.cleanStorage()
                     console.log("AT INSTANT T --> " + this.idCommand)
                     this.postCommand({
                         user_id: 1,
                         meal_id: this.mealId,
                         payment_id: 2,
                         booking_id: this.idCommand,
-                        menu:'{'+this.menuID+':['+this.menuMealID+']}',
-                        total:this.total
+                        menu: '{' + this.menuID + ':[' + this.menuMealID + ']}',
+                        total: this.total
                     })
                 }
             }
@@ -165,6 +176,7 @@ export class ConfirmPage {
     }
 
     private postCommand(arg) {
+
         this.rest.postCommand(arg)
             .subscribe(
                 result => {
@@ -189,4 +201,17 @@ export class ConfirmPage {
     }
 
 
+    private cleanStorage() {
+        console.log("CLEAR STORAGE")
+        this.storage.remove('menuID')
+        this.storage.remove('menuMealID')
+        this.storage.remove('total')
+        this.storage.remove('nbPers')
+        this.storage.remove('schedule')
+        this.storage.remove('idMeals')
+        this.storage.remove('id_command')
+        this.storage.remove('create_booking')
+
+
+    }
 }

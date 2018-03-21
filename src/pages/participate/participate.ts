@@ -39,7 +39,9 @@ export class ParticipatePage {
                   if(data.id) {
                       this.storage.set('id_command', data.id)
                       this.storage.set('id_restaurant', data.restaurant_id)
-                      this.navCtrl.push(MenuPage);
+                      this.navCtrl.push(MenuPage, {
+                          participate:true
+                      });
                   }
                 }
                 catch(e)

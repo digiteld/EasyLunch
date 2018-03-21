@@ -230,10 +230,19 @@
     <!--        Total price      -->
 
         <div id="confirmer"> 
-            <ng-container *ngIf="total!==0">
+            <ng-container *ngIf="total!==0 && schedule && nbPers">
                 <button ion-button round (click)="openRecap()">Confirmer {{total}}€ </button>
             </ng-container>
         </div>
+
+
+    <ng-container *ngIf="!schedule || !nbPers">
+    <div id="fixed-warning">
+        <div id="fixed-warning-text">
+        Pour réserver, vous devez renseigner le nombre de personnes attendu ainsi que l'heure d'arrivée
+        </div>
+    </div>
+    </ng-container>
 
     
 </ion-content>
