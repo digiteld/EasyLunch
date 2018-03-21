@@ -36,14 +36,15 @@ export class BookPage {
       )
   }
   
-//     goHome() {
-      
-//     this.tabRef.select(0)
+  goHome() {
 
-//     // this.navCtrl.push(HomePage);
-//     console.log('FELICITATION !!! Parcours terminé');
-    
-//   }
+    // this.tabRef.select(0)
+    console.log(this.navCtrl.length())
+
+   // this.navCtrl.setPages(this.navCtrl[0])
+    this.navCtrl.popToRoot()
+    console.log('FELICITATION !!! Parcours terminé');
+}
     
 
 }
