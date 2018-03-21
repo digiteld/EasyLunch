@@ -21,6 +21,27 @@
   <div id="repas">
     <h2> Récupérer la valeur des btn pour combien et à quelle heure </h2>
 
+
+      <ng-container *ngIf="menu">
+          <ion-card >
+              <ion-card-content>
+          <p>{{navParams.get('menu').name}}</p>
+
+          <ng-container *ngFor="let item of navParams.get('menuMeal');">
+
+
+
+                      <p>{{item}}</p>
+
+
+
+
+          </ng-container>
+              </ion-card-content>
+      </ion-card>
+      </ng-container>
+
+
     <ng-container *ngIf="entree">
     <p>Entrée</p>
 

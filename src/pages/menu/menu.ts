@@ -5,6 +5,7 @@ import {DetailsPage} from '../details/details';
 import {RecapPage} from '../recap/recap';
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
+import {DetailMenuPage} from "../detail-menu/detail-menu";
 
 
 @IonicPage()
@@ -28,8 +29,10 @@ export class MenuPage {
     choosenPlat: any[];
     choosenDessert: any[];
 
+    choosenMenu: any;
+    choosenMenuID: any[]
     menuOfDay: any;
-    formule:any[];
+    formule: any[];
 
     tmpType: any;
     tmpIndex: number;
@@ -56,19 +59,21 @@ export class MenuPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
+        this.choosenMenuID = this.choosenMenuID || [];
         this.mapEntree = new Map();
         this.mapPlat = new Map();
         this.mapDessert = new Map();
         this.entree = this.entree || [];
-        this.formule=this.formule || [];
+        this.formule = this.formule || [];
 
         this.plat = this.plat || [];
         this.dessert = this.dessert || [];
-        this.menuOfDay=this.menuOfDay|| {}
+        this.menuOfDay = this.menuOfDay || {}
         this.choosenEntree = this.choosenEntree || [];
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
         this.choosenId = this.choosenId || [];
+
 
         this.total = 0;
 
@@ -124,6 +129,33 @@ export class MenuPage {
         console.log("well done tu as ouvert la page detail");
     }
 
+    openDetailMenu(id) {
+        console.log("ID MEAL --> " + id)
+        let _entree = []
+        let _plat = []
+        let _dessert = []
+
+        this.menuOfDay.id_plat.forEach(id => {
+            if (this.mapEntree.has(id))
+                _entree.push(this.mapEntree.get(id))
+            if (this.mapPlat.has(id))
+                _plat.push(this.mapPlat.get(id))
+            if (this.mapDessert.has(id))
+                _dessert.push(this.mapDessert.get(id))
+
+        })
+
+        this.navCtrl.push(DetailMenuPage, {
+            entree: _entree,
+            plat: _plat,
+            dessert: _dessert,
+            idMeal: id,
+            callback: this.callBackMenu
+
+
+        })
+    }
+
 
     openRecap() {
         this.storage.set('idMeals', this.choosenId)
@@ -132,6 +164,8 @@ export class MenuPage {
             plat: this.choosenPlat,
             dessert: this.choosenDessert,
             total: this.total,
+            menu: this.choosenMenu,
+            menuMeal: this.choosenMenuID,
             img: this.img,
             address: this.address,
             desc: this.desc,
@@ -192,6 +226,44 @@ export class MenuPage {
         console.log("TOTAL --> " + this.total)
     }
 
+    private callBackMenu = (mealID, menuId) => {
+
+        console.log("MENU ID --> " + menuId)
+        console.log("MEALS ID --> " + mealID)
+        this.storage.set('menuID',menuId)
+        this.storage.set('menuMealID',mealID)
+
+        this.menus.map(m => {
+
+            if (m.id === menuId) {
+                this.choosenMenu = m
+                this.total += m.price
+            }
+        })
+        console.log(this.mapEntree)
+        console.log(this.mapPlat)
+        console.log(this.mapDessert)
+        mealID.map(m => {
+                console.log("MMMM --> "+m)
+            let meal=parseInt(m)
+            if (this.mapEntree.has(meal)) {
+                console.log("I FOUND --> " + m)
+                this.choosenMenuID.push(this.mapEntree.get(meal).name)
+            }
+            if (this.mapPlat.has(meal)) {
+                console.log("I FOUND --> " + m)
+                this.choosenMenuID.push(this.mapPlat.get(meal).name)
+            }
+            if (this.mapDessert.has(meal)) {
+                console.log("I FOUND --> " + m)
+                this.choosenMenuID.push(this.mapDessert.get(meal).name)
+            }
+
+
+        })
+
+    }
+
 
     private formatData() {
         this.meals.map(meal => {
@@ -217,11 +289,10 @@ export class MenuPage {
 
         this.menus.map(m => {
             if (m.mod)
-                this.menuOfDay=m
-            else
-            {
+                this.menuOfDay = m
+            else {
                 this.formule.push(m)
-                console.log("AAA --> "+JSON.stringify(m))
+                console.log("AAA --> " + JSON.stringify(m))
                 console.log(m.name)
                 console.log(m.nbmeals)
 

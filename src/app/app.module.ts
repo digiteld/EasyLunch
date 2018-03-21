@@ -26,7 +26,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountCreaPage } from '../pages/account-crea/account-crea';
 import { AddCardPage } from '../pages/add-card/add-card';
-
+import {DetailMenuPage} from "../pages/detail-menu/detail-menu";
 import { IonicStorageModule } from '@ionic/storage';
 
 
@@ -44,7 +44,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ConfirmPage,
     LoginPage,
     AccountCreaPage,
-    AddCardPage
+    AddCardPage,
+      DetailMenuPage
   ],
   imports: [
     BrowserModule,
@@ -67,7 +68,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ConfirmPage,
     LoginPage,
     AccountCreaPage,
-    AddCardPage
+    AddCardPage,DetailMenuPage
   ],
   providers: [
     StatusBar,

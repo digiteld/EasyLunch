@@ -1,0 +1,123 @@
+page-detail-menu {
+  .scroll-content {
+    padding: 30px 25px;
+    background-color: #F4FAFD;
+  }
+
+  ////    NavBar
+
+  .toolbar-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #5E7FB1;
+  }
+
+  .arrow {
+    content: url(../assets/icon/arrow-left-grey.svg);
+    width: 20px;
+    height: 15px;
+  }
+
+  // .bar-buttons-ios {
+  //   content: url(../assets/icon/arrow-left-grey.svg);
+  //   width: 20px;
+  //   height: 15px;
+  // }
+
+  // .bar-buttons-md {
+  //   content: url(../assets/icon/arrow-left-grey.svg);
+  //   width: 20.68px;
+  //   height: 20px;
+  // }
+
+  ////    Name + description
+
+  .name {
+    font-weight: 600;
+    font-size: 20px;
+    color: #5E7FB1;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-weight: 500;
+    font-size: 16px;
+    color: #5E7FB1;
+  }
+
+
+
+  ////    Number picker
+
+
+  $size: 17px;
+
+  .number-picker {
+    position: relative;
+    top: 4.5vh;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    margin: auto;
+  }
+
+  $size: 17px;
+
+  .left {
+    width: 65px;
+    height: 50px;
+    background-color: #5E7FB1;
+    border-bottom-left-radius: $size * 2;
+    border-top-left-radius: $size * 2;
+  }
+
+  .left img {
+    height: 22px;
+    width: 22px;
+  }
+
+  .right {
+    width: 65px;
+    height: 50px;
+    background-color: #5E7FB1;
+    border-bottom-right-radius: $size * 2;
+    border-top-right-radius: $size * 2;
+  }
+
+  .right img {
+    height: 22px;
+  }
+
+  .number {
+    display: flex;
+    width: 70px;
+    height: 50px;
+    margin: 0;
+    background: #DFE8F2;
+    color: #5E7FB1;
+  }
+
+  .number-picker .text-input {
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  .number-picker p {
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+
+  .card {
+    position: relative;
+    top: 7.5vh;
+  }
+
+  .toolbar-content {
+    text-align: center;
+  }
+
+
+}
