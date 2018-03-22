@@ -14,67 +14,56 @@
 
 
   <p>Entrée</p>
-  <!-- <ion-list radio-group  [(ngModel)]="entree"> -->
+ <ion-list radio-group  [(ngModel)]="entree">
 
 <ng-container *ngFor="let item of navParams.get('entree'); let i = index">
     <ion-card>
-    <!-- <ion-item>
+   <ion-item>
       <ion-label>{{item.name}}</ion-label>
       <ion-radio (ionSelect)="onChangeEntree()" value={{item.id}}></ion-radio>
-    </ion-item> -->
-    <ion-item>
-      <ion-label>{{item.name}}</ion-label>
-      <ion-checkbox [(ngModel)]="entree" (ionChange)="onChangeEntree(item.id)"></ion-checkbox>
     </ion-item>
+
 
   </ion-card>
 
 </ng-container>
 
-  <!-- </ion-list> -->
+ </ion-list>
 
   <p>Plat</p>
-  <!-- <ion-list radio-group  [(ngModel)]="plat"> -->
+ <ion-list radio-group  [(ngModel)]="plat">
 
     <ng-container *ngFor="let item of navParams.get('plat')">
       <ion-card>
 
-        <!-- <ion-item>
+  <ion-item>
           <ion-label>{{item.name}}</ion-label>
           <ion-radio (ionSelect)="onChangePlat()" value={{item.id}}></ion-radio>
-        </ion-item> -->
+        </ion-item>
 
-        <ion-item>
-            <ion-label>{{item.name}}</ion-label>
-            <ion-checkbox [(ngModel)]="plat" (ionChange)="onChangePlat(item.id)"></ion-checkbox>
-          </ion-item>
+
 
       </ion-card>
 
     </ng-container>
 
-  <!-- </ion-list> -->
-
+ </ion-list>
   <p>Dessert</p>
-  <!-- <ion-list radio-group  [(ngModel)]="dessert"> -->
+ <ion-list radio-group  [(ngModel)]="dessert">
 
     <ng-container *ngFor="let item of navParams.get('dessert')">
       <ion-card>
-        <!-- <ion-item>
-          <ion-label>{{item.name}}</ion-label>
-          <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
-        </ion-item> -->
-
         <ion-item>
           <ion-label>{{item.name}}</ion-label>
-          <ion-checkbox [(ngModel)]="dessert" (ionChange)="onChangeDessert(item.id)"></ion-checkbox>
+          <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
         </ion-item>
+
 
       </ion-card>
 
     </ng-container>
 
-  <!-- </ion-list> -->
+ </ion-list>
 
 
   <!-- <br/>
