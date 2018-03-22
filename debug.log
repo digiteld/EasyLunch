@@ -190,3 +190,9 @@
 [0322/165927.991:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)
 [0322/165927.997:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
 [0322/165927.998:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)
+[0322/204804.685:ERROR:process_info.cc(350)] VirtualQueryEx: Accès refusé. (0x5)
+[0322/204804.686:ERROR:process_info.cc(571)] ReadMemoryInfo failed
+[0322/204804.690:ERROR:process_reader_win.cc(151)] SuspendThread: Accès refusé. (0x5)
+[0322/204804.690:ERROR:exception_snapshot_win.cc(88)] thread ID 10956 not found in process
+[0322/204804.690:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed
+[0322/204804.690:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Tentative d’accès à un processus en cours d’arrêt. (0xc000010a)
