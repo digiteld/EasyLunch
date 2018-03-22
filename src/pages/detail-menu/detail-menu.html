@@ -2,11 +2,9 @@
 
   <ion-navbar hideBackButton>
     <ion-title>Menu du jour </ion-title>
-    <ion-buttons class="arrow" left>
-      <button ion-button navPop icon-only>
-        <ion-icon ios="ios-arrow" md="md-arrow"></ion-icon>
-      </button>
-    </ion-buttons>
+    <div class="arrow">
+        <button (click)="goBack()"> <img src="../assets/icon/arrow-left-grey.svg"> </button>
+      </div>
   </ion-navbar>
 
 </ion-header>
@@ -16,61 +14,73 @@
 
 
   <p>Entrée</p>
-  <ion-list radio-group  [(ngModel)]="entree">
+  <!-- <ion-list radio-group  [(ngModel)]="entree"> -->
 
-<ng-container *ngFor="let item of navParams.get('entree')">
+<ng-container *ngFor="let item of navParams.get('entree'); let i = index">
     <ion-card>
-    <ion-item>
-
+    <!-- <ion-item>
       <ion-label>{{item.name}}</ion-label>
       <ion-radio (ionSelect)="onChangeEntree()" value={{item.id}}></ion-radio>
-
+    </ion-item> -->
+    <ion-item>
+      <ion-label>{{item.name}}</ion-label>
+      <ion-checkbox [(ngModel)]="entree" (ionChange)="onChangeEntree(item.id)"></ion-checkbox>
     </ion-item>
+
   </ion-card>
 
 </ng-container>
 
-  </ion-list>
+  <!-- </ion-list> -->
 
   <p>Plat</p>
-  <ion-list radio-group  [(ngModel)]="plat">
+  <!-- <ion-list radio-group  [(ngModel)]="plat"> -->
 
     <ng-container *ngFor="let item of navParams.get('plat')">
       <ion-card>
-        <ion-item>
 
+        <!-- <ion-item>
           <ion-label>{{item.name}}</ion-label>
           <ion-radio (ionSelect)="onChangePlat()" value={{item.id}}></ion-radio>
+        </ion-item> -->
 
-        </ion-item>
+        <ion-item>
+            <ion-label>{{item.name}}</ion-label>
+            <ion-checkbox [(ngModel)]="plat" (ionChange)="onChangePlat(item.id)"></ion-checkbox>
+          </ion-item>
+
       </ion-card>
 
     </ng-container>
 
-  </ion-list>
+  <!-- </ion-list> -->
 
   <p>Dessert</p>
-  <ion-list radio-group  [(ngModel)]="dessert">
+  <!-- <ion-list radio-group  [(ngModel)]="dessert"> -->
 
     <ng-container *ngFor="let item of navParams.get('dessert')">
       <ion-card>
-        <ion-item>
-
+        <!-- <ion-item>
           <ion-label>{{item.name}}</ion-label>
           <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
+        </ion-item> -->
 
+        <ion-item>
+          <ion-label>{{item.name}}</ion-label>
+          <ion-checkbox [(ngModel)]="dessert" (ionChange)="onChangeDessert(item.id)"></ion-checkbox>
         </ion-item>
+
       </ion-card>
 
     </ng-container>
 
-  </ion-list>
+  <!-- </ion-list> -->
 
 
+  <!-- <br/>
   <br/>
   <br/>
-  <br/>
-  <br/>
+  <br/> -->
   <ng-container *ngIf="showButton">
 
     <button (click)="goBackMenu()" >Commander x1 {{navParams.get('price')}}€</button>
