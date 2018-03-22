@@ -5,6 +5,14 @@ page-add-card {
         overflow: hidden;
     }
 
+    .toolbar-ios ion-title {
+        padding: 0;
+    }
+
+    .toolbar-title {
+        color: #5E7FB1;
+    }
+    
     #card {
         background-image: url(../assets/imgs/carte.svg);
         background-repeat: no-repeat;
@@ -14,6 +22,7 @@ page-add-card {
         color:white;
         position:relative;
     }
+
     #card-number
     {
         position: relative;
@@ -22,36 +31,31 @@ page-add-card {
         left:9.23%;
         width: 73.85%;
         height: 10.11%;
-
-
     }
 
-    #card-text-expire
-    {
+    #card-text-expire {
         float: left;
         position:relative;
         font-size: 9px;
         left:9.23%;
         top:38.66%;
     }
-    #card-text-ccv
-    {
+
+    #card-text-ccv {
         font-size: 9px;
         top:38.66%;
         left: 50%;
         position:relative;
     }
-    #card-text-name
-    {
 
+    #card-text-name {
         position:relative;
         font-size: 9px;
         left:9.23%;
         top:46%;
     }
 
-    #card-expire
-    {
+    #card-expire {
         float: left;
         position:relative;
         left:-9%;
@@ -59,15 +63,14 @@ page-add-card {
         letter-spacing: 0.2em;
     }
 
-    #card-name
-    {
+    #card-name {
         position:relative;
         left:9.23%;
     top:46%;
         letter-spacing: 0.2em;
     }
-    #card-ccv
-    {
+
+    #card-ccv {
         position: relative;
         top:38.66%;
         left:49%;
