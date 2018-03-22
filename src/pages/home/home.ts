@@ -228,11 +228,10 @@ export class HomePage {
             setTimeout(() => {
                 console.log("!!!!!!!!!!! J'ai esquivé ADD LAYER !!!!!!!!!!!!!")
                     this.map.addLayer(marker);
-                    var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
-                    this.map.fitBounds(group.getBounds());
+                  
                 }
 
-                , 1000);
+                , 500);
         }
     }
 
