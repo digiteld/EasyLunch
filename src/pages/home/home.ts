@@ -226,6 +226,7 @@ export class HomePage {
         this.map.addLayer(marker);
         else {
             setTimeout(() => {
+                console.log("!!!!!!!!!!! J'ai esquivé ADD LAYER !!!!!!!!!!!!!")
                     var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
                     this.map.fitBounds(group.getBounds());
                 }
