@@ -222,7 +222,18 @@ export class HomePage {
         this.allPin.push(marker)
         this.markerArray.push(marker)
         this.zoomOnNearestResto()
+        if(this.map)
         this.map.addLayer(marker);
+        else {
+            setTimeout(() => {
+                console.log("!!!!!!!!!!! J'ai esquivé ADD LAYER !!!!!!!!!!!!!")
+                    this.map.addLayer(marker);
+                    var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
+                    this.map.fitBounds(group.getBounds());
+                }
+
+                , 1000);
+        }
     }
 
     ////     Create a function for calling the restaurants from the provider
@@ -331,8 +342,14 @@ export class HomePage {
         if(this.markerArray.length==2) {
             console.log(this.markerArray.length)
             setTimeout(()=> {
-                    var group = new L.featureGroup(this.markerArray); //add markers array to featureGroup
-                    this.map .fitBounds(group.getBounds());
+                    var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
+                    this.map.fitBounds(group.getBounds(), {
+                            paddingTop: 20,
+                            paddingBottom: 20,
+                            paddingLeft: 20,
+                            paddingRight: 20
+                        }
+                    );
                 }
 
             , 1000);
