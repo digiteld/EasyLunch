@@ -105,3 +105,40 @@ $tabs-md-tab-font-size: (
 
 // @import "roboto";
 @import "noto-sans";
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: extra-light;
+  font-weight: 200;
+  src: url('../assets/fonts/Montserrat/200/Montserrat-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: light;
+  font-weight: 300;
+  src: url('../assets/fonts/Montserrat/300/Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: regular;
+  font-weight: 400;
+  src: url('../assets/fonts/Montserrat/400/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: medium;
+  font-weight: 500;
+  src: url('../assets/fonts/Montserrat/500/Montserrat-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: semi-bold;
+  font-weight: 600;
+  src: url('../assets/fonts/Montserrat/600/Montserrat-SemiBold.ttf');
+}
+
+// $font-family-base: "Montserrat", sans-serif !default;

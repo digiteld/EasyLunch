@@ -34,7 +34,10 @@ page-recap {
     }
 
   ////    Pour combien / A quelle heure
-
+    
+    .grid {
+      padding: 5px 20px;
+    }
     .heure {
       height: 24.19px;
     }
@@ -47,10 +50,15 @@ page-recap {
       display: flex;
     }
 
+    .col img {
+      margin: 5px;
+    }
+
     .col h3 {
       color: #5E7FB1;
       font-size: 16px;
       font-weight: 600;
+      margin: 9px;
     }
 
   ////    Card restau

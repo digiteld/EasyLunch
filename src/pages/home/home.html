@@ -37,8 +37,7 @@
         <ion-grid>
             <ion-row class="z-index">
 
-                <!-- <ion-col> -->
-                <ion-slides slidesPerView="1.5" (ionSlideDidChange)="slideChanged()">
+                <ion-slides slidesPerView="1.3" (ionSlideDidChange)="slideChanged()">
                     <ion-slide *ngFor="let r of restaurant;let i= index">
 
                         <ion-card (click)="openMenu(i)">
