@@ -28,6 +28,7 @@ import { AccountCreaPage } from '../pages/account-crea/account-crea';
 import { AddCardPage } from '../pages/add-card/add-card';
 import {DetailMenuPage} from "../pages/detail-menu/detail-menu";
 import { IonicStorageModule } from '@ionic/storage';
+import {SecureStorage} from '@ionic-native/secure-storage'
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicModule.forRoot(MyApp),
     HttpClientModule,
       IonicStorageModule.forRoot()
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -76,7 +78,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Geolocation,
     AndroidPermissions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RestProvider
+    RestProvider,
+      SecureStorage
   ]
 })
   

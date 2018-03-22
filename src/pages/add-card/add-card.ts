@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import { ConfirmPage } from '../confirm/confirm';
+import {ConfirmPage} from '../confirm/confirm';
+import {SecureStorage} from '@ionic-native/secure-storage'
+
 /**
  * Generated class for the AddCardPage page.
  *
@@ -11,21 +13,66 @@ import { ConfirmPage } from '../confirm/confirm';
 
 @IonicPage()
 @Component({
-  selector: 'page-add-card',
-  templateUrl: 'add-card.html',
+    selector: 'page-add-card',
+    templateUrl: 'add-card.html',
 })
 export class AddCardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    nbCarte: number;
+    nbExpire: string;
+    ccv: number;
+    nameCard: string;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddCardPage');
-  }
+    nbCarteFormat:string;
 
-  openConfirm() {
-    this.navCtrl.push(ConfirmPage);
-    console.log("check point !")
-  }
+
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+        this.init()
+
+
+    }
+
+
+    init()
+    {
+
+
+
+
+        this.nbCarteFormat = '1234 5678 9123 4567';
+        this.nbExpire = "03/19";
+        this.ccv = 963;
+        this.nameCard = "Cersei Lannister";
+
+    }
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad AddCardPage');
+    }
+
+    openConfirm() {
+        this.navCtrl.push(ConfirmPage);
+        console.log("check point !")
+    }
+
+    formatCardNumber()
+    {
+        console.log(this.nbCarte)
+        let string=this.nbCarte.toString()
+        console.log("NB STRING --> "+string)
+        let formatstring="";
+        for(let i=1; i<string.length+1; i++)
+        {
+            formatstring+=string.charAt(i-1)
+
+            if(i%4===0)
+            {
+                formatstring+=' '
+            }
+        }
+
+        console.log("FORMAT --> "+formatstring)
+        this.nbCarteFormat=formatstring
+    }
 
 }

@@ -10,26 +10,26 @@
 <ion-content padding>
   <div id="card">
     <div id="card-number">
-        1234 5678 9123 4567
+        {{nbCarteFormat}}
     </div>
       <div id="card-text-expire">
           EXPIRE A FIN
       </div>
       <div id="card-expire">
-          03/19
+          {{nbExpire}}
 
       </div>
       <div id="card-text-ccv">
           CCV
       </div>
       <div id="card-ccv">
-          963
+          {{ccv}}
       </div>
       <div id="card-text-name">
           NOM DU TITULAIRE
       </div>
       <div id="card-name">
-          Cersei Lannister
+          {{nameCard}}
       </div>
   </div>
 
@@ -38,7 +38,7 @@
     <div id="numero"> 
         <h2> Numéro de carte </h2> 
         <ion-item>
-            <ion-input type="number" placeholder="1234 5678 9123 4567"></ion-input>
+            <ion-input type="tel" maxlength="16" [(ngModel)]="nbCarte" (ngModelChange)="formatCardNumber()" placeholder="1234 5678 9123 4567"></ion-input>
         </ion-item>
     </div>
 
@@ -46,14 +46,14 @@
       <div id="date"> 
         <h2> Date d'expiration </h2> 
         <ion-item>
-            <ion-input type="date" placeholder="03/19"></ion-input>
+            <ion-input type="text" maxlength="5" [(ngModel)]="nbExpire" placeholder="mm/yy"></ion-input>
         </ion-item>
       </div>
 
       <div id="CCV"> 
         <h2> CCV </h2>
         <ion-item>
-            <ion-input type="number" placeholder="963"></ion-input>
+            <ion-input type="tel" maxlength="3" [(ngModel)]="ccv" placeholder="963"></ion-input>
         </ion-item> 
       </div>
     </div>
@@ -61,7 +61,7 @@
     <div id="nom"> 
       <h2> Nom du titulaire </h2>
       <ion-item>
-          <ion-input type="text" placeholder="Cersei Lannister"></ion-input>
+          <ion-input type="text" [(ngModel)]="nameCard" placeholder="Cersei Lannister"></ion-input>
       </ion-item> 
     </div>
   
