@@ -28,7 +28,7 @@ import { AccountCreaPage } from '../pages/account-crea/account-crea';
 import { AddCardPage } from '../pages/add-card/add-card';
 import {DetailMenuPage} from "../pages/detail-menu/detail-menu";
 import { IonicStorageModule } from '@ionic/storage';
-import {SecureStorage} from '@ionic-native/secure-storage'
+
 
 
 @NgModule({
@@ -78,8 +78,8 @@ import {SecureStorage} from '@ionic-native/secure-storage'
     Geolocation,
     AndroidPermissions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RestProvider,
-      SecureStorage
+    RestProvider
+      
   ]
 })
   

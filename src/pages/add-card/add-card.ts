@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 import {ConfirmPage} from '../confirm/confirm';
-import {SecureStorage} from '@ionic-native/secure-storage'
+
 
 /**
  * Generated class for the AddCardPage page.
