@@ -1,4 +1,4 @@
-<ion-content style="background-color: #F4FAFD;">
+<ion-content>
 
     <div id="restau">
         <div id="img">
@@ -24,19 +24,19 @@
     <ion-scroll scollX="true" class="scrollmenu">
         <ion-row flex-wrap: nowrap>
             <ion-col>
-                <a href="#Menu du jour">Menu du jour</a>
+                <a href="#menudujour">Menu du jour</a>
             </ion-col>
             <ion-col>
-                <a href="#Formules">Formules</a>
+                <a href="#formules">Formules</a>
             </ion-col>
             <ion-col>
-                <a href="#Entrées">Entrées</a>
+                <a href="#entrees">Entrées</a>
             </ion-col>
             <ion-col>
-                <a href="#Plats">Plats</a>
+                <a href="#plats">Plats</a>
             </ion-col>
             <ion-col>
-                <a href="#Desserts">Desserts</a>
+                <a href="#desserts">Desserts</a>
             </ion-col>
         </ion-row>
     </ion-scroll>
@@ -51,7 +51,7 @@
 
         <!--        Menu du jour      -->
 
-        <div id="Menu du jour">
+        <div id="menudujour">
              
             <h2><img src="../assets/icon/cloche.svg"> Menu du jour</h2>
         </div>
@@ -63,7 +63,7 @@
                 <ion-card-content>
                     <div class="entree">
                         <h3>
-                            Entrées
+                            Entrée
                         </h3>
                         <ng-container *ngFor="let item of menuOfDay.id_plat">
                             <ng-container *ngIf="mapEntree.has(item)">
@@ -107,7 +107,7 @@
 
         <!--        Formules      -->
 
-        <div id="Formules">
+        <div id="formules">
             <h2>Formules</h2>
         </div>
 
@@ -148,7 +148,7 @@
 
         <div id="repas">
 
-            <div id="Entrées">
+            <div id="entrees">
                 <h2>Entrées</h2>
             </div>
 
@@ -173,7 +173,7 @@
 
             <!--       Plats      -->
 
-            <div id="Plats">
+            <div id="plats">
                 <h2>Plats</h2>
             </div>
 
@@ -199,7 +199,7 @@
 
             <!--        Desserts      -->
 
-            <div id="Desserts">
+            <div id="desserts">
                 <h2>Desserts</h2>
             </div>
 
@@ -237,11 +237,11 @@
 
 
     <ng-container *ngIf="(!schedule && !participate) || (!nbPers && !participate)  ">
-    <div id="fixed-warning">
-        <div id="fixed-warning-text">
-        Pour réserver, vous devez renseigner le nombre de personnes attendu ainsi que l'heure d'arrivée
+        <div id="fixed-warning">
+            <div id="fixed-warning-text">
+                Pour réserver, vous devez renseigner le nombre de personnes attendu ainsi que l'heure d'arrivée
+            </div>
         </div>
-    </div>
     </ng-container>
 
     

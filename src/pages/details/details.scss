@@ -2,15 +2,27 @@ page-details {
 
   .scroll-content {
     padding: 30px 25px;
-    background-color: #F4FAFD;
+    background-color: #F9F9F9;
   }
 
   ////    NavBar
 
+  .header {
+    box-shadow: 0 0 6px rgba(0,0,0,0.16);
+  }
+
+  .toolbar-background {
+    background-color: #FFFFFF;
+  }
+
   .toolbar-title {
     font-weight: 600;
-    font-size: 16px;
-    color: #5E7FB1;
+    font-size: 1.1em;
+    color: #525252;
+  }
+
+  .toolbar-title-md {
+    text-align: center;
   }
 
   .arrow button {
@@ -21,7 +33,7 @@ page-details {
   }
 
   .arrow img {
-    width: 26px;
+    width: 12px;
   }
 
 
@@ -43,14 +55,14 @@ page-details {
   .name {
     font-weight: 600;
     font-size: 20px;
-    color: #5E7FB1;
+    color: #525252;
     margin-bottom: 20px;
   }
 
   .description {
     font-weight: 500;
-    font-size: 16px;
-    color: #5E7FB1;
+    font-size: 1em;
+    color: #525252;
   }
 
 
@@ -74,7 +86,7 @@ page-details {
   .left {
     width: 65px;
     height: 50px;
-    background-color: #5E7FB1;
+    background-image: linear-gradient(#F1C40F, #FFA300);
     border-bottom-left-radius: $size * 2;
     border-top-left-radius: $size * 2;
   }
@@ -87,7 +99,7 @@ page-details {
   .right {
     width: 65px;
     height: 50px;
-    background-color: #5E7FB1;
+    background-image: linear-gradient(#F1C40F, #FFA300);
     border-bottom-right-radius: $size * 2;
     border-top-right-radius: $size * 2;
   }
@@ -101,7 +113,7 @@ page-details {
     width: 70px;
     height: 50px;
     margin: 0;
-    background: #DFE8F2;
+    background: #FFFFFF;
     color: #5E7FB1;
   }
 
@@ -133,11 +145,11 @@ page-details {
     padding: 20px 15px;
     font-size: 16px;
     font-weight: 500;
-    color: #5E7FB1;
+    color: #525252;
   }
 
   .card .text-input {
-    font-size: 14px;
+    font-size: 0.875em;
     font-weight: 300;
     font-style: italic;
   }
@@ -145,12 +157,14 @@ page-details {
 
   #commander {
     background-color: #FFFFFF;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
   }
 
   #commander button {
     transform: translateX(-50%);
     left: 50%;
     font-weight: 600;
+    background-image: linear-gradient(#F1C40F, #FFA300);
   }
 
 }

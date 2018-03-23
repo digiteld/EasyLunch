@@ -12,7 +12,7 @@ page-home {
 
     #slides {
         position: absolute; 
-        bottom: 10px;
+        bottom: 1.5vh;
     }
 
     #slides img {
@@ -24,17 +24,18 @@ page-home {
     ////   BTN
 
     .item {
-      background-color: #5E7FB1;
+      background-color: #FFFFFF;
+      box-shadow: 0 8px 5px rgba(0,0,0,0.2);
     }
 
     #lbl-0 {
-      content: url(../assets/icon/combien.svg);
+      content: url(../assets/icon/users.svg);
       width: 20px;
       height: 15px;
     }
 
     #lbl-1 {
-      content: url(../assets/icon/heure.svg);
+      content: url(../assets/icon/clock.svg);
       width: 20.68px;
       height: 20px;
     }
@@ -80,22 +81,29 @@ page-home {
       margin: 10px;
     }
 
+    .card {
+      box-shadow: 0 8px 5px rgba(0,0,0,0.2);
+    }
+
 
 
     .card h2 {
-      color: #5E7FB1;
+      color: #333333;
       font-weight: 600;
+      font-size: 1em;
     }
 
     .card h3 {
-      color: #5E7FB1;
+      color: #333333;
       margin-bottom: 0.7vh;
+      font-weight: 400;
+      font-size: 0.875em;
     }
 
     .row h4 {
-      font-size: 12px;
-      color: #5E7FB1;
+      color: #333333;
       font-weight: 500;
+      font-size: 0.75em;
     }
 
 
@@ -124,7 +132,7 @@ page-home {
       }
   
       .s:nth-child(1) {
-        background: #5E7FB1;                              //vert :33ffbb
+        background: #95989A;
         -webkit-animation: r0 2s 0s ease-out infinite;
         -moz-animation: r0 2s 0s ease-out infinite;
         animation: r0 2s 0s ease-out infinite;
@@ -132,10 +140,10 @@ page-home {
       
       @-webkit-keyframes r0 {
         0% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);       // vert : #1affb3;
+          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
         }
         10% {
-          box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px #333, 0 0 12px 14px #5E7FB1;
+          box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px #333, 0 0 12px 14px #95989A;
         }
         100% {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
@@ -146,7 +154,7 @@ page-home {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
         }
         10% {
-          box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px #333, 0 0 12px 14px #5E7FB1;
+          box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px #333, 0 0 12px 14px #95989A;
         }
         100% {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
@@ -157,7 +165,7 @@ page-home {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px rgba(242,242,242,0.5), 0 0 0px 0px rgba(26, 255, 179, 0);
         }
         10% {
-          box-shadow: 0 0 8px 6px #5E7FB1, 0 0 12px 10px rgba(242,242,242,0.5), 0 0 12px 14px #5E7FB1;
+          box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px rgba(242,242,242,0.5), 0 0 12px 14px #95989A;
         }
         100% {
           box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px rgba(242,242,242,0.5), 0 0 0px 40px rgba(26, 255, 179, 0);

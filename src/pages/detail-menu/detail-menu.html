@@ -65,17 +65,15 @@
 
  </ion-list>
 
-
-  <!-- <br/>
-  <br/>
-  <br/>
-  <br/> -->
+ <ion-footer>
   <ng-container *ngIf="showButton">
 
-    <button (click)="goBackMenu()" >Commander x1 {{navParams.get('price')}}€</button>
-
-
+    <div id="commander"> 
+        <button ion-button round (click)="goBackMenu()"> Commander &nbsp;&nbsp;&nbsp;&nbsp; x1 &nbsp;&nbsp;&nbsp;&nbsp; {{navParams.get('price')}} € </button>
+    </div>
+  
   </ng-container>
+</ion-footer>
 
 </ion-content>
 
