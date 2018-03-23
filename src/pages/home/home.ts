@@ -164,14 +164,14 @@ export class HomePage {
 
     moveMarker(pin) {
         let newIcon = L.icon({
-            iconUrl: '../assets/icon/pin2.png',
-            // iconSize: [38, 95],
+            iconUrl: '../assets/icon/pin.svg',
+            iconSize: [60, 80],
             popupAnchor: [0, -15]
         });
 
         let forkIcon = L.icon({
-            iconUrl: '../assets/icon/pin.png',
-            // iconSize: [38, 95],
+            iconUrl: '../assets/icon/pin.svg',
+            iconSize: [37.5, 50],
             popupAnchor: [0, -15]
         });
         console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex())
@@ -285,14 +285,14 @@ export class HomePage {
         ///  Create custom icon
 
         var forkIcon = L.icon({
-            iconUrl: '../assets/icon/pin.png',
-            // iconSize: [38, 95],
+            iconUrl: '../assets/icon/pin.svg',
+            iconSize: [37.5, 50],
             popupAnchor: [0, -15]
         });
 
         var newIcon = L.icon({
-            iconUrl: '../assets/icon/pin2.png',
-            // iconSize: [38, 95],
+            iconUrl: '../assets/icon/pin.svg',
+            iconSize: [60, 80],
             popupAnchor: [0, -15]
         });
         ///   Diplay marker on map
