@@ -248,9 +248,14 @@ export class RecapPage {
 
             })
 
-            let arrayId = obj[id]
+            console.log("ID MOTHERFUCKA --> "+id)
+            let arrayId = []
+                id.map(i=>{
+                    arrayId=arrayId.concat(obj[i])
+                })
             arrayId.map(ID => {
                 this.menuList.push(this.platMap.get(ID))
+                console.log("ID AAA "+ID)
 
             })
 

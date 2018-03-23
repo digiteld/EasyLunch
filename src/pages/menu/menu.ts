@@ -84,6 +84,8 @@ export class MenuPage {
         this.nbPers = true;
         this.participate = false;
 
+        this.participate=this.navParams.get('participate')
+
 
         this.total = 0;
 
@@ -108,23 +110,26 @@ export class MenuPage {
                 }
             },
             error => console.error(error));
-        this.storage.get('nbPers').then(data => {
-            if(data!=null)
-            this.nbPers=true
-            else
-                this.nbPers=false
+if(!this.participate) {
 
-            console.log("NBPERS --> "+data)
-        }, error => console.error(error))
+    this.storage.get('nbPers').then(data => {
+        if (data != null)
+            this.nbPers = true
+        else
+            this.nbPers = false
 
-        this.storage.get('schedule').then(data => {
-            if(data!=null)
-            this.schedule=true;
-            else
-                this.schedule=false;
+        console.log("NBPERS --> " + data)
+    }, error => console.error(error))
 
-            console.log("SCHEDULE --> "+data)
-        }, error => console.error(error))
+    this.storage.get('schedule').then(data => {
+        if (data != null)
+            this.schedule = true;
+        else
+            this.schedule = false;
+
+        console.log("SCHEDULE --> " + data)
+    }, error => console.error(error))
+}
 
     }
 

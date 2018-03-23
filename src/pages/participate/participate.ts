@@ -36,9 +36,18 @@ export class ParticipatePage {
 
                try
                 {
+                    console.log("JSON --> "+JSON.stringify(data))
                   if(data.id) {
                       this.storage.set('id_command', data.id)
                       this.storage.set('id_restaurant', data.restaurant_id)
+                      let schedule=data.schedule
+                      schedule=schedule.toString()
+                      console.log("SCHEDULE STRING "+schedule)
+                      schedule=schedule.substring(0,2)+":"
+                      schedule+=schedule.substring(2,2)
+                      console.log("SCHEDULE FORMAT --> "+schedule)
+                      this.storage.set('schedule', data.schedule)
+                      this.storage.set('nbPers', data.nb_users)
                       this.navCtrl.push(MenuPage, {
                           participate:true
                       });
