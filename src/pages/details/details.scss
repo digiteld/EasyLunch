@@ -7,10 +7,22 @@ page-details {
 
   ////    NavBar
 
+  .header {
+    box-shadow: 0 0 6px rgba(0,0,0,0.16);
+  }
+
+  .toolbar-background {
+    background-color: #FFFFFF;
+  }
+
   .toolbar-title {
     font-weight: 600;
     font-size: 1.1em;
     color: #525252;
+  }
+
+  .toolbar-title-md {
+    text-align: center;
   }
 
   .arrow button {
