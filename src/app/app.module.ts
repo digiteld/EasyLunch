@@ -30,6 +30,7 @@ import {DetailMenuPage} from "../pages/detail-menu/detail-menu";
 import { IonicStorageModule } from '@ionic/storage';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -53,6 +54,7 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicModule.forRoot(MyApp),
     HttpClientModule,
       IonicStorageModule.forRoot()
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -77,6 +79,7 @@ import { IonicStorageModule } from '@ionic/storage';
     AndroidPermissions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider
+      
   ]
 })
   

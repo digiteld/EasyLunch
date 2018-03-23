@@ -2,12 +2,41 @@
   <div class="full">
     <div class="new">
       <h2> Mes réservations en cours </h2>
-      
+      <ng-container *ngIf="!commandeEncour">
       <p> Vous n'avez aucune réservation en cours ! </p>
       
         <button ion-button round (click)="goHome()">
             J'organise une réservation
         </button>
+      </ng-container>
+        <ng-container *ngIf="commandeEncour">
+            <ion-card (click)="openDetail(0)">
+
+                <ion-card-content>
+
+                    <ion-row>
+                        <img src={{mapResto.get(booking[0].restaurant_id).picture}}/>
+
+                        <ion-card-title>
+                            <ion-row>
+                                <h2>{{booking[0].name}}</h2>
+                            </ion-row>
+                            <ion-row>
+                                <!-- <h3>{{item.created_date}} </h3> -->
+                            </ion-row>
+                            <ion-row>
+                                <h4> {{booking[0].nb_users}} </h4>
+                            </ion-row>
+                            <ion-row>
+                                <h4> {{booking[0].price}} </h4>
+                            </ion-row>
+                        </ion-card-title>
+                    </ion-row>
+
+                </ion-card-content>
+
+            </ion-card>
+        </ng-container>
     </div>
 
     <div class="old">
@@ -19,11 +48,11 @@
           <ion-card-content>
 
               <ion-row>
-                  <img src={{item.picture}}/>
+                  <img src={{mapResto.get(item.restaurant_id).picture}}/>
 
                   <ion-card-title>
                       <ion-row>
-                          <h2>{{item.name}}</h2>
+                          <h2>{{mapResto.get(item.restaurant_id).name}}</h2>
                       </ion-row>
                       <ion-row>
                           <!-- <h3>{{item.created_date}} </h3> -->
