@@ -1,5 +1,8 @@
 page-menu {
 
+  .content {
+    background-color: #F9F9F9;
+  }
 
 ////    Image restaurant
 
@@ -50,10 +53,15 @@ page-menu {
     display: flex;
     position: absolute;
     z-index: 1;
+    color: #333333;
   }
-
+  
   #cardrestau p {
     text-align: center;
+  }
+
+  #cardrestau .card {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   }
 
 
@@ -64,7 +72,6 @@ page-menu {
   .card {
     margin: 12px 25px;
     width: calc(100% - 50px);
-    box-shadow: none;
   }
 
   .card-content {
@@ -75,32 +82,35 @@ page-menu {
   .card-content h1 {
     font-size: 1.3em;
     font-weight: 600;
-    color: #5E7FB1;
   }
 
   .card-content h2 {
     font-size: 1.1em;
     font-weight: 400;
-    color: #5E7FB1;
   }
 
   .card-content h3 {
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 400;
-    color: #5E7FB1;
+    color: #333333;
   }
 
   .card-content p {
     font-size: 1.1em;
-    font-weight: 500 !important;
+    font-weight: 500 ;
     margin-top: 10px;
-    color: #5E7FB1;
     text-align: left;
+    color: #333333;
   }
+
 
 
 ////   Menu scroll
 
+
+  .row {
+    padding-left: 25px;
+  }
 
   .scrollmenu {
     top: 3vh;
@@ -108,14 +118,21 @@ page-menu {
   }
 
   a {
-    color: #5E7FB1;
+    color: #525252;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 1em;
+    font-weight: 500;
   }
+
+  a:active {
+    color: #333333;
+    font-weight: 600;
+}
+
 
 
 ////   Card menu 
+
 
   .selection {
     position:relative;
@@ -130,19 +147,24 @@ page-menu {
   }
 
   h2 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: 600;
     margin: 30px 0 20px 0;
+    color: #525252;
   }
 
   .price {
     text-align: right;
-    margin-top: 20px;
+    color: #333333;
+    font-weight: 500;
+    margin-top: 3vh;
   }
+
 
 
       ////   Card menu du jour
   
+
   h2 img {
     height: 14.27px;
   }
@@ -155,7 +177,10 @@ page-menu {
     margin-top: 20px;
   }
 
+
+
       ////   Card formules
+
 
   .menu h3 {
     text-align: left !important;
@@ -173,6 +198,7 @@ page-menu {
 
       ////   Card entrées / plats / dessert
 
+
   #repas .card-content {
     text-align: left;
   }
@@ -188,6 +214,10 @@ page-menu {
     font-weight: 200;
   }
 
+
+
+////   BTN Confirmer
+
   #confirmer {
     padding: 5px 25px;
     position: relative;
@@ -196,30 +226,31 @@ page-menu {
     background-color: #FFFFFF;
   }
 
-  #fixed-warning
-  {
-    background-color: #5E7FB1;
-    color:white;
-    position:fixed;
-    text-align: center;
-    bottom:7.35%;
-    height: 10%;
-    width:100%;
-    display:table;
-  }
-
-  #fixed-warning-text
-  {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-  }
-
-
   #confirmer button {
     width: 100%;
 
     text-transform: uppercase;
   }
+
+
+
+////   Warning
+
+
+  #fixed-warning {
+    background-image: linear-gradient(#F1C40F, #FFA300);
+    color:white;
+    display: flex;
+    padding: 15px 25px;
+    position:fixed;
+    bottom:7.35vh;
+    height: 10vh;
+  }
+
+  #fixed-warning-text {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+
 
 }
