@@ -1,5 +1,9 @@
 page-recap {
 
+  .content {
+    background-color: #F9F9F9;
+  }
+
 
   ////    Image restaurant
   
@@ -38,6 +42,7 @@ page-recap {
     .grid {
       padding: 5px 20px;
     }
+
     .heure {
       height: 24.19px;
     }
@@ -77,13 +82,9 @@ page-recap {
       position: absolute;
       z-index: 1;
     }
-  
-    #cardrestau p {
-      text-align: center;
-    }
-  
-  
-  
+
+
+    
   ////    Card menu
   
   
@@ -97,38 +98,7 @@ page-recap {
       margin: auto;
       text-align: center;
     }
-  
-    .card-content h1 {
-      font-size: 1.3em;
-      font-weight: 600;
-      color: #5E7FB1;
-    }
-  
-    .card-content h2 {
-      font-size: 1.1em;
-      font-weight: 400;
-      color: #5E7FB1;
-    }
-  
-    .card-content h3 {
-      font-size: 0.9em;
-      font-weight: 400;
-      color: #5E7FB1;
-    }
-  
-    .card-content h4 {
-      font-size: 16px;
-      font-weight: 500 !important;
-      color: #5E7FB1;
-    }
 
-    .card-content p {
-      font-size: 1.1em;
-      font-weight: 500 !important;
-      margin-top: 10px;
-      color: #5E7FB1;
-      text-align: left;
-    }
   
   
   ////   Menu scroll
@@ -146,6 +116,33 @@ page-recap {
       font-weight: 600;
     }
   
+  
+  ////   Card repas
+
+    #repas .card-content {
+      text-align: left;
+    }
+
+    #repas h4 {
+      font-size: 1.2em;
+      font-weight: 500;
+      color: #333333;
+    }
+
+    #repas h3 {
+      font-size: 1em;
+      font-weight: 200;
+      color: #333333;
+    }
+
+    #repas p {
+      font-size: 1em;
+      font-weight: 200;
+      font-style: italic;
+      margin-top: 10px;
+      color: #333333;
+    }
+
   
   ////   Card menu 
   
@@ -169,8 +166,9 @@ page-recap {
   
     .price {
       text-align: right;
-      margin-top: 20px;
-      color: #5E7FB1;
+      margin-top: 3vh;
+      color: #333333;
+      font-weight: 500;
     }
   
   
@@ -188,39 +186,20 @@ page-recap {
       margin-top: 20px;
     }
   
+
         ////   Card formules
   
-    .menu h3 {
-      text-align: left !important;
-      font-size: 16px;
-      font-weight: 500;
-      margin-top: 5px;
-      margin-bottom: 10px;
-    }
-  
-    .menu p {
-      font-weight: 200;
-    }
-  
+
   
   
         ////   Card entrées / plats / dessert
   
-    #repas .card-content {
-      text-align: left;
-    }
   
-    #repas .card-content h3 {
-      font-size: 16px;
-      font-weight: 500;
-      margin-top: 5px;
-      margin-bottom: 10px;
-    }
-  
-    #repas p {
-      font-weight: 200;
-    }
-  
+
+
+      ////    BTN Confirmer et Payer
+
+
     #payer {
       padding: 5px 25px;
       position: relative;
@@ -232,8 +211,10 @@ page-recap {
     #payer button {
       width: 100%;
       text-transform: uppercase;
+      background-image: linear-gradient(#F1C40F, #FFA300);
     }
   
+
   }
   
 
