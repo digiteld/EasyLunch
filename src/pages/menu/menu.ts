@@ -176,6 +176,7 @@ export class MenuPage {
             let _plat = []
             let _dessert = []
 
+
             this.menuOfDay.id_plat.forEach(id => {
                 if (this.mapEntree.has(id))
                     _entree.push(this.mapEntree.get(id))
@@ -191,6 +192,7 @@ export class MenuPage {
                 plat: _plat,
                 dessert: _dessert,
                 idMeal: id,
+
                 callback: this.callBackMenu
 
 
@@ -226,7 +228,7 @@ export class MenuPage {
             .subscribe(
                 data => {
 
-                    console.log("ALL --> " + JSON.stringify(data[0]))
+
                     this.meals = data[0].meal;
                     this.menus = data[0].menu;
                     this.formatData()
