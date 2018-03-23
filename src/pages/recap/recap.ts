@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 
 import {LoginPage} from '../login/login';
+import {RestProvider} from "../../providers/rest/rest";
 
 /**
  * Generated class for the RecapPage page.
@@ -23,57 +24,85 @@ export class RecapPage {
     dessert: boolean;
     menu: boolean;
 
+    entreeList: any[]
+    platList: any[]
+    dessertList: any[]
+    menuList: any[];
+    menuMeal: any[];
+
+    nameMenu: string;
+
+    platMap: any;
+
+
     img: any;
     address: string;
+
     name: string;
     desc: string;
 
     schedule: any;
     nbPers: any;
+    meals: any;
+    menus: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+    errorMessage: string;
 
-        storage.set('entree', navParams.get('entree'))
-        storage.set('plat', navParams.get('plat'))
-        storage.set('dessert', navParams.get('dessert'))
-        storage.set('total', navParams.get('total'))
+    total: number;
+
+    printCode: boolean
+
+    code:string;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public rest: RestProvider) {
+
+        this.img = navParams.get('img');
+        this.address = navParams.get('address');
+        this.name = navParams.get('name');
+        this.desc = navParams.get('desc');
+
+        this.entreeList = this.entreeList || [];
+        this.platList = this.platList || [];
+        this.dessertList = this.dessertList || [];
+        this.menuList = this.menuList || [];
+        this.menuMeal = this.menuMeal || [];
+        this.total = 0
+        this.printCode = false;
 
 
-        this.img = navParams.get('img')
-        this.address = navParams.get('address')
-        this.name = navParams.get('name')
-        this.desc = navParams.get('desc')
+        if (!navParams.get('book')) {
+            this.init()
 
-        this.entree = false;
-        this.plat = false;
-        this.dessert = false;
+        }
 
-        this.menu = false;
+        else {
 
-        if (navParams.get('plat').length > 0)
-            this.plat = true
+            this.platMap = new Map()
 
-        if (navParams.get('entree').length > 0)
-            this.entree = true
+            this.printCode = this.navParams.get('printCode')
 
-        if (navParams.get('dessert').length > 0)
-            this.dessert = true
 
-        if (navParams.get('menuMeal').length > 0)
-            this.menu = true
+            this.nbPers = navParams.get('nbPers')
 
-        console.log("MENU MEAL SIZE --> " + navParams.get('menuMeal'));
-        console.log("MENU --> " + JSON.stringify(navParams.get('menu')));
+            let scheduleString = (navParams.get('schedule')).toString()
 
-        this.storage.get('schedule').then(data=>{
-            this.schedule=data
-            console.log("DATA --> "+data)
-        }, error => console.error(error))
-        
-        this.storage.get('nbPers').then(data=>{
-            this.nbPers=data
-            console.log("DATA --> "+data)
-        },error => console.error(error))
+            let scheduleFormat = "";
+            for (let i = 0; i < scheduleString.length; i++) {
+
+                if (i == scheduleString.length - 2)
+                    scheduleFormat += 'h'
+
+                scheduleFormat += scheduleString.charAt(i)
+            }
+            this.schedule = scheduleFormat
+
+
+            this.getMeals(navParams.get('restoId'))
+            if (this.printCode)
+                this.getCode()
+
+        }
+
 
     }
 
@@ -89,6 +118,161 @@ export class RecapPage {
     goBack() {
         this.navCtrl.pop();
     }
-    
 
+
+    private init() {
+        this.storage.set('entree', this.navParams.get('entree'))
+        this.storage.set('plat', this.navParams.get('plat'))
+        this.storage.set('dessert', this.navParams.get('dessert'))
+        this.storage.set('total', this.navParams.get('total'))
+        this.total = this.navParams.get('total')
+
+
+        this.entree = false;
+        this.plat = false;
+        this.dessert = false;
+
+        this.menu = false;
+
+        if (this.navParams.get('plat').length > 0) {
+
+            this.platList = this.navParams.get('plat')
+            this.plat = true
+
+        }
+        if (this.navParams.get('entree').length > 0) {
+            this.entree = true
+            this.entreeList = this.navParams.get('entree')
+        }
+        if (this.navParams.get('dessert').length > 0) {
+            this.dessertList = this.navParams.get('dessert')
+            this.dessert = true
+
+        }
+        if (this.navParams.get('menuMeal').length > 0) {
+            this.menuList = this.navParams.get('menuMeal')
+            console.log("OOOOO ---> " + JSON.stringify(this.menuList))
+            this.nameMenu = this.navParams.get('menu').name
+            this.menu = true
+        }
+        this.storage.get('schedule').then(data => {
+            this.schedule = data
+            console.log("DATA --> " + data)
+        }, error => console.error(error))
+
+        this.storage.get('nbPers').then(data => {
+            this.nbPers = data
+            console.log("DATA --> " + data)
+        }, error => console.error(error))
+    }
+
+    private getMeals(id) {
+        this.rest.getMeals(id)
+
+            .subscribe(
+                data => {
+
+
+                    this.meals = data[0].meal;
+                    this.menus = data[0].menu;
+                    this.formatData()
+
+
+                },
+                error => this.errorMessage = <any>error);
+
+    }
+
+    private formatData() {
+
+        this.meals.map(m => {
+
+
+            switch (m.plat) {
+                case 0:
+
+                    this.platMap.set(m.id, m.name)
+                    break;
+                case 1:
+
+                    this.platMap.set(m.id, m.name)
+                    break;
+                case 2:
+
+                    this.platMap.set(m.id, m.name)
+                    break;
+
+            }
+
+
+        })
+
+        if (this.navParams.get('mealId') != null) {
+            this.meals.map(m => {
+
+                if (this.navParams.get('mealId').indexOf(m.id) != -1) {
+                    switch (m.plat) {
+                        case 0:
+                            this.entreeList.push(m)
+                            this.entree = true;
+
+                            break;
+                        case 1:
+                            this.platList.push(m)
+                            this.plat = true;
+
+                            break;
+                        case 2:
+                            this.dessertList.push(m)
+                            this.dessert = true;
+
+                            break;
+
+                    }
+                }
+
+
+            })
+        }
+        if (this.navParams.get('menu') != null) {
+            this.menu = true
+
+            let obj = this.navParams.get('menu')
+            let id = Object.keys(obj)
+            this.menus.map(m => {
+                if (m.id == id) {
+                    console.log(JSON.stringify(m))
+                    this.nameMenu = m.name
+
+                }
+
+            })
+
+            let arrayId = obj[id]
+            arrayId.map(ID => {
+                this.menuList.push(this.platMap.get(ID))
+
+            })
+
+
+        }
+
+
+    }
+
+    private getCode() {
+
+        let arg=this.navParams.get('bookingId').toString()+'?booking=true'
+        console.log(arg)
+        this.rest.getCodeByBookingId(arg)
+
+            .subscribe(
+                data => {
+
+
+                    this.code=data.name
+
+                },
+                error => this.errorMessage = <any>error);
+    }
 }

@@ -20,6 +20,7 @@ export class RestProvider {
     private apiUrlPostCommand = this.test+'/api/command';
     private apiUtlGetSingleResto = this.test+'/api/restaurants/';
     private apiUrlGetAllBookingUser = this.test + '/api/command?iduser=';
+    private apiUrlGetCodeByBooking=this.test+'/api/code/'
 
     // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
 
@@ -56,6 +57,19 @@ export class RestProvider {
     postBooking(arg): Observable< any > {
         return this.http.post(this.apiUrlPostBooking,arg).pipe(
 
+            map(this.extractData2),
+            catchError(this.handleError)
+        );
+    }
+
+    getCodeByBookingId(arg): Observable<any>
+    {
+        let url=this.apiUrlGetCodeByBooking
+
+            console.log("urL ---> "+url)
+        url+=arg
+        console.log("urL ---> "+url)
+        return this.http.get(url).pipe(
             map(this.extractData2),
             catchError(this.handleError)
         );

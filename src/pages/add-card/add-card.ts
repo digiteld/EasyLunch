@@ -24,9 +24,11 @@ export class AddCardPage {
     nameCard: string;
 
     nbCarteFormat:string;
+    showValidation:boolean
 
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
+
 
         this.init()
 
@@ -36,8 +38,9 @@ export class AddCardPage {
 
     init()
     {
-
-
+        this.showValidation=true
+        if(this.navParams.get('param'))
+            this.showValidation=false
 
 
         this.nbCarteFormat = '1234 5678 9123 4567';
