@@ -43,6 +43,7 @@
       <p> Mes réservations précédentes <p>
     
     <ng-container *ngFor="let item of booking;index as i">
+        <ng-container *ngIf="!commandeEncour || (commandeEncour && i>0)" >
       <ion-card (click)="openDetail(i)">
 
           <ion-card-content>
@@ -69,6 +70,7 @@
           </ion-card-content>
 
         </ion-card>
+        </ng-container>
     </ng-container>
     </div>
   </div>

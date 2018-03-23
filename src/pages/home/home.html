@@ -8,7 +8,7 @@
                     <ion-item>
                         <ion-label>Pour combien ?</ion-label>
 
-                        <ion-datetime pickerFormat="HH"  displayFormat="HH" [(ngModel)]="NbPers"></ion-datetime>
+                        <ion-datetime pickerFormat="HH"  displayFormat={{formatnbPers}} (ionChange)="onChangeNbPers()" [(ngModel)]="NbPers"></ion-datetime>
 
                     </ion-item>
                 </ion-col>
@@ -21,7 +21,7 @@
                 <ion-col class="stylecol">
                         <ion-item>
                             <ion-label>A quelle heure ?</ion-label>
-                            <ion-datetime pickerFormat="HH/mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat="HH:mm" [(ngModel)]="Schedule"></ion-datetime>
+                            <ion-datetime pickerFormat="HH/mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}} (ionChange)="onChangeSchedule()" [(ngModel)]="Schedule"></ion-datetime>
                         </ion-item>
                 </ion-col>
                 <!-- <button class="stylebtn" ion-button full icon-start color="blue" (click)="openSchedule()">

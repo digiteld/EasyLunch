@@ -43,10 +43,19 @@ export class ParticipatePage {
                       let schedule=data.schedule
                       schedule=schedule.toString()
                       console.log("SCHEDULE STRING "+schedule)
-                      schedule=schedule.substring(0,2)+":"
-                      schedule+=schedule.substring(2,2)
-                      console.log("SCHEDULE FORMAT --> "+schedule)
-                      this.storage.set('schedule', data.schedule)
+                      let scheduleFormat=""
+                      for(let y=0; y<schedule.length; y++)
+                      {
+
+                          if(y==2)
+                          {
+                              scheduleFormat+='h'
+                          }
+                          scheduleFormat+=schedule.charAt(y)
+
+                      }
+                      console.log("SCHEDuLE FORMATTT --> "+scheduleFormat)
+                      this.storage.set('schedule', scheduleFormat)
                       this.storage.set('nbPers', data.nb_users)
                       this.navCtrl.push(MenuPage, {
                           participate:true
