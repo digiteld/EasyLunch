@@ -66,8 +66,12 @@ export class HomePage {
     NbPers:string;
     Schedule:string;
     allPin:any;
-
+    date:Date;
     markerArray:any[]
+    dateNbPers:any;
+    dateSchedule:any;
+    formatnbPers:string;
+    formatSchedule:string
 
 
     @ViewChild(Slides) slides: Slides;
@@ -87,8 +91,22 @@ export class HomePage {
         this.NbPers=null;
         this.Schedule=null;
         this.sliding = false;
+       this.formatnbPers="none"
+       this.formatSchedule="none"
+        // HH:mm
+        //HH
+
         this.currentIndex = 0;
         this.allPin=this.allPin || [];
+
+        this.dateNbPers=new Date('1995-12-17T02:24:00')
+        this.dateNbPers=this.dateNbPers.toISOString()
+
+        this.dateSchedule=new Date('1995-12-17T13:00:00')
+        this.dateSchedule=this.dateSchedule.toISOString()
+        this.NbPers=this.dateNbPers
+        this.Schedule=this.dateSchedule
+
     }
 
 
@@ -371,5 +389,14 @@ export class HomePage {
 
     }
 
+    onChangeNbPers()
+    {
+        this.formatnbPers="HH"
+    }
+    onChangeSchedule()
+    {
+        this.formatSchedule="HH:mm"
+        console.log("ON CHANGE SCHEDULE")
+    }
 
 }
