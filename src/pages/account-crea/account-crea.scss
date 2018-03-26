@@ -1,7 +1,7 @@
 page-account-crea {
 
     .content {
-        background-image: url(../assets/imgs/login.png);
+        background-image: url(/assets/imgs/bg-login.png);
     }
 
     .scroll-content {
@@ -57,10 +57,11 @@ page-account-crea {
         height: 50px;
         margin: auto;
         top: 14vh;
-        background-color: #5E7FB1;
+        background-image: linear-gradient(#F1C40F, #FFA300);
+        background-color: #F9F9F9;
         text-transform: uppercase;
-        font-weight: 500;
-        box-shadow: none;
+        font-weight: 600;
+        box-shadow: 0 8px 5px rgba(0,0,0,0.2);
     }
 
     #btnpdc {
@@ -68,9 +69,11 @@ page-account-crea {
         height: 50px;
         margin: auto;
         top: 18vh;
-        background-color: #809BC4;
+        background-image: linear-gradient(#F9F9F9, #F2F2F2);
+        background-color: #F9F9F9;
         text-transform: uppercase;
-        font-weight: 500;
-        box-shadow: none;
+        color:  #F9B522;
+        font-weight: 600;
+        box-shadow: 0 8px 5px rgba(0,0,0,0.2);
     }
 }

@@ -1,8 +1,7 @@
 page-add-card {
     .scroll-content {
-        background-color: #F4FAFD;
+        background-color: #F9F9F9;
         padding: 25px!important;
-        overflow: hidden;
     }
 
     .toolbar-ios ion-title {
@@ -10,11 +9,11 @@ page-add-card {
     }
 
     .toolbar-title {
-        color: #5E7FB1;
+        color: #525252;
     }
     
     #card {
-        background-image: url(../assets/imgs/carte.svg);
+        background-image: url(/assets/imgs/carte.svg);
         background-repeat: no-repeat;
         width: 100%;
         height: 188px;
@@ -23,8 +22,7 @@ page-add-card {
         position:relative;
     }
 
-    #card-number
-    {
+    #card-number {
         position: relative;
         letter-spacing: 0.2em;
         top: 37.23%;
@@ -37,13 +35,13 @@ page-add-card {
         float: left;
         position:relative;
         font-size: 9px;
-        left:9.23%;
-        top:38.66%;
+        left: 9.23%;
+        top: 38.66%;
     }
 
     #card-text-ccv {
         font-size: 9px;
-        top:38.66%;
+        top: 38.66%;
         left: 50%;
         position:relative;
     }
@@ -51,29 +49,29 @@ page-add-card {
     #card-text-name {
         position:relative;
         font-size: 9px;
-        left:9.23%;
-        top:46%;
+        left: 9.23%;
+        top: 46%;
     }
 
     #card-expire {
         float: left;
-        position:relative;
-        left:-9%;
-        top:44%;
+        position: relative;
+        left: -9%;
+        top: 44%;
         letter-spacing: 0.2em;
     }
 
     #card-name {
-        position:relative;
-        left:9.23%;
-    top:46%;
+        position: relative;
+        left: 9.23%;
+        top: 46%;
         letter-spacing: 0.2em;
     }
 
     #card-ccv {
         position: relative;
-        top:38.66%;
-        left:49%;
+        top: 38.66%;
+        left: 49%;
     }
 
 
@@ -127,7 +125,7 @@ page-add-card {
         left: 15px;
         font-size: 14px;
         font-weight: 500;
-        color: #5E7FB1;
+        color: #333333;
     }
 
     
@@ -138,7 +136,7 @@ page-add-card {
         left: 15px;
         font-size: 14px;
         font-weight: 500;
-        color: #5E7FB1;
+        color: #333333;
     }
 
     
@@ -149,7 +147,7 @@ page-add-card {
         left: 15px;
         font-size: 14px;
         font-weight: 500;
-        color: #5E7FB1;
+        color: #333333;
     }
 
 
@@ -176,6 +174,8 @@ page-add-card {
         margin: auto;
         transform: translateX(-50%);
         left: 50%;
+        background-image: linear-gradient(#F1C40F, #FFA300);
+        box-shadow: 0 8px 5px rgba(0,0,0,0.2);
         width: 65px;
         height: 65px;
         top: 2vh;
