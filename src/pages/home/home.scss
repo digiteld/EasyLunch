@@ -2,6 +2,7 @@ page-home {
 
 //////      CSS home
 
+
     #map {
         height: 100%;
     }
@@ -21,57 +22,56 @@ page-home {
     }
 
 
+
     ////   BTN
+
 
     .item {
       background-color: #FFFFFF;
       box-shadow: 0 8px 5px rgba(0,0,0,0.2);
     }
 
-    #lbl-0 {
-      content: url(../assets/icon/users.svg);
-      width: 20px;
-      height: 15px;
-    }
-
-    #lbl-1 {
-      content: url(../assets/icon/clock.svg);
-      width: 20.68px;
-      height: 20px;
-    }
-
     .stylebtn {
       text-transform: none;
+      background-color: #FFFFFF;
+      box-shadow: 0 8px 5px rgba(0,0,0,0.2);
     }
 
     .stylecol {
-      width: 155px;
-      // height: 50px;
+      width: 50%;
     }
 
     .ion-ios-combien,
     .ion-md-combien {
-      content: url(../assets/icon/combien.svg);
+      content: url(/assets/icon/users.svg);
       height: 15px;
     }
 
     .ion-ios-heure,
     .ion-md-heure {
-      content: url(../assets/icon/heure.svg);
+      content: url(/assets/icon/clock.svg);
       height: 20px;
     }
 
     .stylebtn p {
-      font-size: 1em;
+      font-size: 0.875em;
       padding-left: 0.4em;
+      color: #333333;
+      font-weight: 500;
     }
     
     ion-icon {
       padding-right: 0 !important;
     }
 
+    .picker-toolbar-button {
+      font-weight: 600;
+  }
+
+
 
     ////   CARD
+
 
     .card-content {
       padding: 0 !important;
@@ -85,25 +85,42 @@ page-home {
       box-shadow: 0 8px 5px rgba(0,0,0,0.2);
     }
 
-
-
-    .card h2 {
+    .card-ios h2 {
       color: #333333;
       font-weight: 600;
       font-size: 1em;
     }
 
-    .card h3 {
+    .card-md h2 {
+      color: #333333;
+      font-weight: 600;
+      font-size: 0.75em;
+    }
+
+    .card-ios h3 {
       color: #333333;
       margin-bottom: 0.7vh;
       font-weight: 400;
       font-size: 0.875em;
     }
 
-    .row h4 {
+    .card-md h3 {
+      color: #333333;
+      margin-bottom: 0.7vh;
+      font-weight: 400;
+      font-size: 0.675em;
+    }
+
+    .row-ios h4 {
       color: #333333;
       font-weight: 500;
       font-size: 0.75em;
+    }
+
+    .row-md h4 {
+      color: #333333;
+      font-weight: 500;
+      font-size: 0.55em;
     }
 
 

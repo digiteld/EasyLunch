@@ -225,10 +225,10 @@
         </div>
 
     </div>
-
+</ion-content>
 
     <!--        Total price      -->
-
+<ion-footer>
         <div id="confirmer"> 
             <ng-container *ngIf="total!==0 && ((schedule && nbPers) || participate)">
                 <button ion-button round (click)="openRecap()">Confirmer  &nbsp;&nbsp;&nbsp;&nbsp; {{total}} € </button>
@@ -243,6 +243,5 @@
             </div>
         </div>
     </ng-container>
-
+</ion-footer>
     
-</ion-content>
