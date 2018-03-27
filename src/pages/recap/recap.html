@@ -39,13 +39,11 @@
         <ng-container *ngIf="printCode">
 
             Le code de réservation à partager :
-            <div>
-                {{code}}
-
+            <div> 
+                {{code}} 
             </div>
 
         </ng-container>
-
 
         <ng-container *ngIf="menu">
             <ion-card>
@@ -64,11 +62,7 @@
 
 
         <ng-container *ngIf="entree">
-
-
             <ng-container *ngFor="let item of entreeList;">
-
-                <!--<button ion-button (click)="openDetail()">-->
                 <ion-card>
                     <ion-card-content>
                         <h4>Entrée</h4>
@@ -85,8 +79,8 @@
 
 
             </ng-container>
-
         </ng-container>
+
         <ng-container *ngIf="plat">
 
             <ng-container *ngFor="let item of platList;">
@@ -128,27 +122,26 @@
 
             </ng-container>
         </ng-container>
-
-
-    <ion-footer>
-        <div id="total">
-            <span class="text"> TOTAL </span>
-            <span class="price"> {{navParams.get('total')}}€ </span>
-        </div>
-    </ion-footer>
-        
-
-        <ng-container *ngIf="total!==0">
-            <div id="payer">
-
-                <button ion-button round (click)="openLogin()">Payer et Réserver {{navParams.get('total')}}€ </button>
-
-            </div>
-        </ng-container>
+    
     </div>
 
 
-
-
-
 </ion-content>
+
+<ion-footer>
+    <div id="total">
+        <div class="text"> TOTAL </div>
+        <div class="total"> {{navParams.get('total')}}€ </div>
+    </div>
+
+    <ng-container *ngIf="total!==0">
+        <div id="payer">
+            <button ion-button round (click)="openLogin()">Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}}€ </button>
+        </div>
+    </ng-container>
+</ion-footer>
+
+
+
+
+

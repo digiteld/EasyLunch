@@ -49,15 +49,10 @@ page-menu {
     width: 100%;
     transform: translate(-50%, -50%);
     left: 50%;
-    // top: 10.7vh;
     display: flex;
     position: absolute;
     z-index: 1;
     color: #333333;
-  }
-
-  .ios-#cardrestau {
-    top: 13.7vh;
   }
   
   #cardrestau p {
@@ -111,14 +106,10 @@ page-menu {
 
 ////   Menu scroll
 
-
-  .row {
-    padding-left: 25px;
-  }
-
-  .scrollmenu {
+  .scroll-menu {
+    width: 2000px;
+    white-space: nowrap;
     top: 3vh;
-    height: 30px;
   }
 
   a {
@@ -148,6 +139,10 @@ page-menu {
 
   .selection .card-content {
     padding: 20px 15px;
+  }
+
+  .selection .card {
+    box-shadow: 0 0px 2px rgba(0,0,0,0.08);
   }
 
   h2 {
@@ -231,6 +226,7 @@ page-menu {
     width: 100%;
     background-image: linear-gradient(#F1C40F, #FFA300);
     text-transform: uppercase;
+    font-weight: 600;
   }
 
 

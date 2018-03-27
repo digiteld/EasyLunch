@@ -21,25 +21,15 @@
 
     <!--        Menu scrollable      -->
 
-    <ion-scroll scollX="true" class="scrollmenu">
-        <ion-row flex-wrap: nowrap>
-            <ion-col>
-                <a href="#menudujour">Menu du jour</a>
-            </ion-col>
-            <ion-col>
-                <a href="#formules">Formules</a>
-            </ion-col>
-            <ion-col>
-                <a href="#entrees">Entrées</a>
-            </ion-col>
-            <ion-col>
-                <a href="#plats">Plats</a>
-            </ion-col>
-            <ion-col>
-                <a href="#desserts">Desserts</a>
-            </ion-col>
-        </ion-row>
-    </ion-scroll>
+        <ion-scroll scrollX="true" style="width:100%; height:40px">
+            <div class="scroll-menu">
+                <a href="#menudujour"> Menu du jour </a>
+                <a href="#formules"> Formules </a>
+                <a href="#entrees"> Entrées </a>
+                <a href="#plats"> Plats </a>
+                <a href="#desserts"> Desserts </a>
+            </div>
+        </ion-scroll>
 
     <!--        ///////////////      -->
 
@@ -231,7 +221,7 @@
 <ion-footer>
         <div id="confirmer"> 
             <ng-container *ngIf="total!==0 && ((schedule && nbPers) || participate)">
-                <button ion-button round (click)="openRecap()">Confirmer  &nbsp;&nbsp;&nbsp;&nbsp; {{total}} € </button>
+                <button ion-button round (click)="openRecap()"> Confirmer  &nbsp;&nbsp;&nbsp;&nbsp; {{total}} € </button>
             </ng-container>
         </div>
 
