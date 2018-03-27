@@ -59,10 +59,11 @@ import { IonicStorageModule } from '@ionic/storage';
     MenuPageModule,
     RecapPageModule,
     BrowserAnimationsModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true,
+    }),
     HttpClientModule,
       IonicStorageModule.forRoot()
-
   ],
   bootstrap: [IonicApp],
   entryComponents: [

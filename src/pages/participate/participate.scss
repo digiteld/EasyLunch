@@ -23,6 +23,11 @@ page-participate {
     height: 59%;
   }
 
+  .pattern {
+    background-image: url(/assets/imgs/pattern-little.svg);
+    height: 250px;;
+  }
+
  .text {
    position: relative;
    left: 6.665%;
@@ -59,6 +64,7 @@ page-participate {
     left: 50%;
     width: 29.75px;
     height: 21.64px;
+    opacity: 0.6;
   }
 
 }

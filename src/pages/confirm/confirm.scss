@@ -2,7 +2,6 @@ page-confirm {
   .all {
     position: relative;
     background-color: #FFA300;
-    background-image: url(/assets/imgs/pattern-little.svg);
     height: 100vh;
   }
 
@@ -25,6 +24,11 @@ page-confirm {
 
   .padding {
     padding: 25px;
+  }
+
+  .pattern {
+    background-image: url(/assets/imgs/pattern-little.svg);
+    height: 306px;
   }
 
   .text1 {
