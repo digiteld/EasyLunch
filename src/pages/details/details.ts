@@ -32,7 +32,7 @@ export class DetailsPage {
     console.log(this.navParams.get('meal'));
 
   }
-
+  
   // ionViewWillEnter() {
   //   if (this.tabBarElement) {
   //     this.tabBarElement.style.display = 'none';
