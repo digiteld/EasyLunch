@@ -4,12 +4,26 @@ page-add-card {
         padding: 25px!important;
     }
 
+    .header {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+    }
+
     .toolbar-ios ion-title {
         padding: 0;
     }
 
     .toolbar-title {
+        font-weight: 600;
+        font-size: 1.1em;
         color: #525252;
+    }
+
+    .toolbar-background {
+        background-color: #FFFFFF;
+    }
+    
+    .toolbar-title-md {
+        text-align: center;
     }
 
 
