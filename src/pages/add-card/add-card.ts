@@ -4,13 +4,6 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ConfirmPage} from '../confirm/confirm';
 
 
-/**
- * Generated class for the AddCardPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
     selector: 'page-add-card',
@@ -24,58 +17,52 @@ export class AddCardPage {
     nameCard: string;
 
     nbCarteFormat:string;
-    showValidation:boolean
+    showValidation: boolean;
 
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-
         this.init()
-
 
     }
 
 
-    init()
-    {
+    init() {
         this.showValidation=true
         if(this.navParams.get('param'))
-            this.showValidation=false
-
+            this.showValidation = false
 
         this.nbCarteFormat = '1234 5678 9123 4567';
         this.nbExpire = "03/19";
         this.ccv = 963;
         this.nameCard = "Cersei Lannister";
-
     }
+
     ionViewDidLoad() {
         console.log('ionViewDidLoad AddCardPage');
     }
 
     openConfirm() {
         this.navCtrl.push(ConfirmPage);
-        console.log("check point !")
+        console.log("check point !");
     }
 
-    formatCardNumber()
-    {
+    formatCardNumber() {
         console.log(this.nbCarte)
         let string=this.nbCarte.toString()
         console.log("NB STRING --> "+string)
         let formatstring="";
-        for(let i=1; i<string.length+1; i++)
-        {
+        for (let i = 1; i < string.length + 1; i++) {
+
             formatstring+=string.charAt(i-1)
 
-            if(i%4===0)
-            {
-                formatstring+=' '
+            if(i%4===0) {
+                formatstring += ' ';
             }
         }
 
-        console.log("FORMAT --> "+formatstring)
-        this.nbCarteFormat=formatstring
+        console.log("FORMAT --> " + formatstring);
+        this.nbCarteFormat = formatstring;
     }
 
 }

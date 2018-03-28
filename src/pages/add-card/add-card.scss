@@ -11,7 +11,11 @@ page-add-card {
     .toolbar-title {
         color: #525252;
     }
+
+
+    ////        CARD
     
+
     #card {
         background-image: url(/assets/imgs/carte.svg);
         background-repeat: no-repeat;
@@ -22,64 +26,52 @@ page-add-card {
         position:relative;
     }
 
-    #card-number {
-        position: relative;
-        letter-spacing: 0.2em;
-        top: 37.23%;
-        left:9.23%;
-        width: 73.85%;
-        height: 10.11%;
-    }
+        #card-number {
+            position: absolute;
+            top: 10.5vh;
+            left: 8vw;
+            width: 73.85%;
+            height: 10.11%;
+        }
 
-    #card-text-expire {
-        float: left;
-        position:relative;
-        font-size: 9px;
-        left: 9.23%;
-        top: 38.66%;
-    }
+        #card-expire {
+            position: absolute;
+            top: 14.5vh;
+            left: 8vw;
+        }
 
-    #card-text-ccv {
-        font-size: 9px;
-        top: 38.66%;
-        left: 50%;
-        position:relative;
-    }
 
-    #card-text-name {
-        position:relative;
-        font-size: 9px;
-        left: 9.23%;
-        top: 46%;
-    }
+        #card-name {
+            position: absolute;
+            top: 20vh;
+            left: 8vw;
+        }
 
-    #card-expire {
-        float: left;
-        position: relative;
-        left: -9%;
-        top: 44%;
-        letter-spacing: 0.2em;
-    }
+        #card-ccv {
+            position: absolute;
+            top: 14.5vh;
+            right: 8vh;
+        }
+       
+            .card-text {
+                font-size: 9px;
+            }
 
-    #card-name {
-        position: relative;
-        left: 9.23%;
-        top: 46%;
-        letter-spacing: 0.2em;
-    }
+            .card-nb {
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 0.2em;
+            }
 
-    #card-ccv {
-        position: relative;
-        top: 38.66%;
-        left: 49%;
-    }
+            .card-num {
+                font-size: 16px;
+                font-weight: 500;
+                letter-spacing: 0.2em;
+            }
 
 
 
-
-
-
-////        Input Card
+//////        Input Card
 
 
     #numero {
@@ -163,6 +155,10 @@ page-add-card {
         position: relative;
         top: 10px;
     } 
+
+    .text-input {
+        letter-spacing: 0.2em;
+    }
 
 
 

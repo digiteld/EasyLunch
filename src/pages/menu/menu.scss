@@ -135,7 +135,7 @@ page-menu {
     border-bottom-width: 2px;
   }
 
-  a:active {
+  a:active:after {
     color: #333333;
     font-weight: 600;
 }

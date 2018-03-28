@@ -9,24 +9,40 @@
 
 <ion-content padding>
   <div id="card">
-      <div id="card-text-expire">
+
+    <div id="card-number">
+        <div class="card-num">
+            {{nbCarteFormat}}
+        </div>
+    </div>
+
+    <div id="card-expire">
+      <div class="card-text">
           EXPIRE A FIN
       </div>
-      <div id="card-expire">
+      <div class="card-nb">
           {{nbExpire}} 
       </div>
-      <div id="card-text-ccv">
+    </div>
+
+    <div id="card-ccv">
+      <div class="card-text">
           CCV
       </div>
-      <div id="card-ccv">
+      <div class="card-nb">
           {{ccv}}
       </div>
-      <div id="card-text-name">
+    </div>
+
+    <div id="card-name">
+      <div class="card-text">
           NOM DU TITULAIRE
       </div>
-      <div id="card-name">
+      <div class="card-nb">
           {{nameCard}}
       </div>
+    </div>
+
   </div>
 
   <div id="input">
@@ -39,19 +55,19 @@
     </div>
 
     <div class="flex">
-      <div id="date"> 
-        <h2> Date d'expiration </h2> 
-        <ion-item>
-            <ion-input type="text" maxlength="5" [(ngModel)]="nbExpire" placeholder="mm/yy"></ion-input>
-        </ion-item>
-      </div>
+        <div id="date"> 
+            <h2> Date d'expiration </h2> 
+            <ion-item>
+                <ion-input type="text" maxlength="5" [(ngModel)]="nbExpire" placeholder="mm/yy"></ion-input>
+            </ion-item>
+        </div>
 
-      <div id="CCV"> 
-        <h2> CCV </h2>
-        <ion-item>
-            <ion-input type="tel" maxlength="3" [(ngModel)]="ccv" placeholder="963"></ion-input>
-        </ion-item> 
-      </div>
+        <div id="CCV"> 
+            <h2> CCV </h2>
+            <ion-item>
+                <ion-input type="tel" maxlength="3" [(ngModel)]="ccv" placeholder="963"></ion-input>
+            </ion-item> 
+        </div>
     </div>
     
     <div id="nom"> 

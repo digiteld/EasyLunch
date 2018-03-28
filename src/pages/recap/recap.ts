@@ -46,7 +46,7 @@ export class RecapPage {
 
     printCode: boolean
 
-    code:string;
+    code: string;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public rest: RestProvider) {
 
@@ -163,12 +163,9 @@ export class RecapPage {
 
             .subscribe(
                 data => {
-
-
                     this.meals = data[0].meal;
                     this.menus = data[0].menu;
                     this.formatData()
-
 
                 },
                 error => this.errorMessage = <any>error);
@@ -193,9 +190,7 @@ export class RecapPage {
 
                     this.platMap.set(m.id, m.name)
                     break;
-
             }
-
 
         })
 
@@ -219,10 +214,8 @@ export class RecapPage {
                             this.dessert = true;
 
                             break;
-
                     }
                 }
-
 
             })
         }
