@@ -99,13 +99,7 @@ export class HomePage {
         this.currentIndex = 0;
         this.allPin = this.allPin || [];
 
-        this.dateNbPers = new Date('1995-12-17T02:24:00')
-        this.dateNbPers = this.dateNbPers.toISOString()
 
-        this.dateSchedule = new Date('1995-12-17T13:00:00')
-        this.dateSchedule = this.dateSchedule.toISOString()
-        this.NbPers = this.dateNbPers
-        this.Schedule = this.dateSchedule
     }
 
 
@@ -388,14 +382,6 @@ export class HomePage {
 
     }
 
-    onChangeNbPers()
-    {
-        this.formatnbPers="HH"
-    }
-    onChangeSchedule()
-    {
-        this.formatSchedule="HH:mm"
-        console.log("ON CHANGE SCHEDULE")
-    }
+
 
 }
