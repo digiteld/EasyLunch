@@ -53,6 +53,7 @@ page-recap {
 
     .col {
       display: flex;
+      padding: 0;
     }
 
     .col img {
@@ -64,6 +65,10 @@ page-recap {
       font-size: 1.14em;
       font-weight: 600;
       margin: 9px 2px;
+    }
+
+    .row {
+      margin: 15px 0 10px;
     }
 
   ////    Card restau

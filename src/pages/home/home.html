@@ -4,19 +4,21 @@
         <ion-grid class="btn">
             <ion-row flex-wrap: nowrap class="z-index">
                 <ion-col class="stylecol">
-                    <button class="stylebtn" ion-button full icon-start (click)="nbpicker.open()">
-                        <ion-datetime #nbpicker pickerFormat="HH" hourValues="1,2,3,4,5,6,7,8,9,10,11,12" displayFormat={{formatnbPers}} doneText="Valider"
-                            cancelText="Annuler" [(ngModel)]="NbPers"></ion-datetime>
-                        <ion-icon name="combien"></ion-icon>
-                        <p>Pour combien ?</p>
+                    <button class="stylebtn" ion-button full (click)="nbpicker.open()">
+                        <ion-datetime #nbpicker pickerFormat="HH" hourValues="1,2,3,4,5,6,7,8,9,10,11,12" displayFormat={{formatnbPers}} doneText="Valider" cancelText="Annuler" [(ngModel)]="NbPers"></ion-datetime>
+                        <div class="btn-content">
+                            <ion-icon name="combien"></ion-icon>
+                            <p>Pour combien ?</p>
+                        </div>
                     </button>
                 </ion-col>
                 <ion-col class="stylecol">
-                    <button class="stylebtn" ion-button full icon-start (click)="schedulepicker.open()">
-                        <ion-datetime #schedulepicker pickerFormat="HH/mm" hourValues="11, 12, 13, 14" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}}
-                            doneText="Valider" cancelText="Annuler" [(ngModel)]="Schedule"></ion-datetime>
-                        <ion-icon name="heure"></ion-icon>
+                    <button class="stylebtn" ion-button full (click)="schedulepicker.open()">
+                        <ion-datetime #schedulepicker pickerFormat="HH/mm" hourValues="11, 12, 13, 14" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}} doneText="Valider" cancelText="Annuler" [(ngModel)]="Schedule"></ion-datetime>
+                            <div class="btn-content">
+                            <ion-icon name="heure"></ion-icon>
                         <p>A quelle heure ?</p>
+                    </div>
                     </button>
                 </ion-col>
             </ion-row>

@@ -28,3 +28,69 @@
   width: 26px;
   height: 26px;
 }
+
+// .tabbar, .tabs-ios, .tabs-md {
+//   .tab-button-icon {
+//       background-repeat:no-repeat;
+//       background-position:center;
+//       height:48px;
+//       width:48px;
+//       &:before {
+//           display:none;
+//       }
+//   }
+// }
+
+// .tabs-ios {
+//     a[aria-selected=false] {
+//       .tab-button-icon[ng-reflect-name=search], .tab-button-icon[aria-label="search outline"] {
+//         background-image: url(/assets/icon/categories_inactive.png);
+//         }
+//       }
+//     a[aria-selected=true] {
+//       .tab-button-icon[ng-reflect-name=tab1Root], .tab-button-icon[aria-label=tab1Root] {
+//         background-image: url(/assets/icon/jorganise.svg);
+//         }
+//       }
+//     a[aria-selected=true] {
+//       .tab-button-icon[ng-reflect-name=tab2Root], .tab-button-icon[aria-label=tab2Root] {
+//         background-image: url(/assets/icon/jeparticipe.svg);
+//         }
+//       }
+//     a[aria-selected=true] {
+//       .tab-button-icon[ng-reflect-name=tab3Root], .tab-button-icon[aria-label=tab3Root] {
+//         background-image: url(/assets/icon/reservations.svg);
+//         }
+//       }
+// }
+
+
+
+// .tabs-md {
+// a[aria-selected=false]{
+//    .tab-button-icon[ng-reflect-name=tab1Root], .tab-button-icon[aria-label="j'organise"] {
+//     background-image: url(/assets/icon/jorganise.svg);
+//   }
+//   .tab-button-icon[ng-reflect-name=tab2Root], .tab-button-icon[aria-label=jeparticipe] {
+//     background-image: url(/assets/icon/jorganise.svg);
+//   }
+//   .tab-button-icon[ng-reflect-name=tab3Root], .tab-button-icon[aria-label=réservation] {
+//     background-image: url(/assets/icon/jeparticipe.svg);
+//   }
+// }
+
+// a[aria-selected=true] {
+//  span {
+//     color: #f00; //whatever colour you want to use for the text
+//   }
+//   .tab-button-icon[ng-reflect-name=tab1Root], .tab-button-icon[aria-label="j'organise"] {
+//     background-image: url(/assets/icon/jorganise.svg);
+//   }
+//   .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=jeparticipe] {
+//     background-image: url(/assets/icon/jorganise.svg);
+//   }
+//   .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=réservation] {
+//     background-image: url(/assets/icon/jeparticipe.svg);
+//   }
+// }
+// }
