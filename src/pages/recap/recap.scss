@@ -63,7 +63,7 @@ page-recap {
       color: #525252;
       font-size: 1.14em;
       font-weight: 600;
-      margin: 9px;
+      margin: 9px 2px;
     }
 
   ////    Card restau
@@ -88,14 +88,15 @@ page-recap {
     }
   
     #cardrestau h2 {
-      font-size: 1.15em;
-      font-weight: 400;
+      font-size: 1.1em;
+      font-weight: 300;
     }
   
     #cardrestau p {
       text-align: center;
-      font-size: 1em;
-      font-weight: 400;
+      font-size: 1.1em;
+      font-weight: 500;
+      margin-top: 10px;
       color: #333333;
     }
 

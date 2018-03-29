@@ -136,7 +136,7 @@ page-details {
     margin: auto;
     width: 100%;
     height: 175px;
-    box-shadow: none;
+    box-shadow: 0 0 2px rgba(0,0,0,0.08);
   }
 
   .card .scroll-content {
@@ -161,7 +161,7 @@ page-details {
 
   #commander {
     background-color: #FFFFFF;
-    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    box-shadow: 0 0 6px rgba(0,0,0,0.16);
   }
 
   #commander button {
