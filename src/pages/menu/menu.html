@@ -46,7 +46,7 @@
 
         <ng-container>
 
-            <ion-card (click)="openDetailMenu(menuOfDay.id)">
+            <ion-card (click)="openDetailMenu(menuOfDay.id, true)">
 
                 <ion-card-content>
                     <div class="entree">
@@ -101,7 +101,7 @@
 
         <ng-container *ngFor="let item of formule">
 
-            <ion-card (click)="openDetailMenu(item.id)">
+            <ion-card (click)="openDetailMenu(item.id,false)">
 
                 <ion-card-content>
                     <div class="menu">

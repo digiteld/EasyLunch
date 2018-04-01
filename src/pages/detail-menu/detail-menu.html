@@ -49,6 +49,7 @@
 
  </ion-list>
   <p>Dessert</p>
+<ng-container *ngIf="navParams.get('nbMeal')===3">
  <ion-list radio-group  [(ngModel)]="dessert">
 
     <ng-container *ngFor="let item of navParams.get('dessert')">
@@ -64,8 +65,29 @@
     </ng-container>
 
  </ion-list>
+</ng-container>
 
- <ion-footer>
+    <ng-container *ngIf="navParams.get('nbMeal')===2">
+        <ion-list radio-group  [(ngModel)]="entree">
+
+            <ng-container *ngFor="let item of navParams.get('dessert')">
+                <ion-card>
+                    <ion-item>
+                        <ion-label>{{item.name}}</ion-label>
+                        <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
+                    </ion-item>
+
+
+                </ion-card>
+
+            </ng-container>
+
+        </ion-list>
+    </ng-container>
+
+
+
+    <ion-footer>
   <ng-container *ngIf="showButton">
 
     <div id="commander"> 
