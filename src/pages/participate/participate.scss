@@ -2,7 +2,7 @@ page-participate {
 
   .all {
     position: relative;
-    background-color: #C0CFE3;
+    background-color: #FFA300;
     height: 100vh;
   }
 
@@ -12,7 +12,7 @@ page-participate {
 
   .code {
     position: relative;
-    background-color: white;
+    background-color: #FFFFFF;
     width: 86.67%;
     margin: auto;
     top: 3vh;
@@ -23,14 +23,19 @@ page-participate {
     height: 59%;
   }
 
+  .pattern {
+    background-image: url(/assets/imgs/pattern-little.svg);
+    height: 250px;;
+  }
+
  .text {
    position: relative;
    left: 6.665%;
    width: 86.67%;
    font-weight: 600;
-   font-size: 20px;
+   font-size: 1.45em;
    text-align: center;
-   color: #5E7FB1;
+   color: #FFFFFF;
  }
 
   .item-check {
@@ -41,13 +46,14 @@ page-participate {
     top: 7vh;
     width: 65px;
     height: 65px;
-    background-color: #A7BAD6;
+    background-color: #F9B522;
     box-shadow: none;
   }
 
   .text-input {
-    color: #5E7FB1;
     text-align: center;
+    font-weight: 500;
+    font-size: 1.1em;
   }
 
   span.button-inner {
@@ -58,18 +64,7 @@ page-participate {
     left: 50%;
     width: 29.75px;
     height: 21.64px;
+    opacity: 0.6;
   }
-
-
-  // ion-input.floating-with-placeholder{
-  //   input::-webkit-input-placeholder { color:#5E7FB1; }
-  //   input::-moz-placeholder { color:#5E7FB1; }
-  //   input::-moz-placeholder { color:#5E7FB1; }
-  //   input:-ms-input-placeholder { color:#5E7FB1; }
-
-  //   input:-moz-placeholder { color:transparent; }
-  //   input::-moz-placeholder { color:transparent; }
-  //   input:-ms-input-placeholder { color:transparent; }
-  // }
 
 }

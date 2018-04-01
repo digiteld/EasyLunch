@@ -47,9 +47,8 @@ page-menu {
 
   #cardrestau {
     width: 100%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     left: 50%;
-    top: 10.7vh;
     display: flex;
     position: absolute;
     z-index: 1;
@@ -107,24 +106,36 @@ page-menu {
 
 ////   Menu scroll
 
-
-  .row {
-    padding-left: 25px;
+  .scroll-menu {
+    white-space: nowrap;
   }
 
-  .scrollmenu {
-    top: 3vh;
+  .scroll-menu .scroll-content {
+    margin-top: 25px;
     height: 30px;
   }
 
   a {
     color: #525252;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 1.15em;
     font-weight: 500;
+    margin: 15px;
   }
 
-  a:active {
+  a:after {
+    content:'';
+    height:100%;
+    left: 15px;
+    box-sizing:border-box;
+    position:absolute;
+    width:10%;
+    border-bottom:solid;
+    border-bottom-color: #F9B522;
+    border-bottom-width: 2px;
+  }
+
+  a:active:after {
     color: #333333;
     font-weight: 600;
 }
@@ -146,10 +157,14 @@ page-menu {
     padding: 20px 15px;
   }
 
+  .selection .card {
+    box-shadow: 0 0px 2px rgba(0,0,0,0.08);
+  }
+
   h2 {
     font-size: 1.5em;
     font-weight: 600;
-    margin: 30px 0 20px 0;
+    margin-left: 30px 0 20px 0;
     color: #525252;
   }
 
@@ -220,9 +235,6 @@ page-menu {
 
   #confirmer {
     padding: 5px 25px;
-    position: relative;
-    text-align: center;
-    top: 5vh;
     background-color: #FFFFFF;
   }
 
@@ -230,6 +242,7 @@ page-menu {
     width: 100%;
     background-image: linear-gradient(#F1C40F, #FFA300);
     text-transform: uppercase;
+    font-weight: 600;
   }
 
 
@@ -240,11 +253,7 @@ page-menu {
   #fixed-warning {
     background-image: linear-gradient(#F1C40F, #FFA300);
     color:white;
-    display: flex;
     padding: 15px 25px;
-    position:fixed;
-    bottom:7.35vh;
-    height: 10vh;
   }
 
   #fixed-warning-text {

@@ -40,10 +40,10 @@ export class ParticipatePage {
                   if(data.id) {
                       this.storage.set('id_command', data.id)
                       this.storage.set('id_restaurant', data.restaurant_id)
-                      let schedule=data.schedule
-                      schedule=schedule.toString()
+                      let schedule = data.schedule
+                      schedule = schedule.toString()
                       console.log("SCHEDULE STRING "+schedule)
-                      let scheduleFormat=""
+                      let scheduleFormat= ""
                       for(let y=0; y<schedule.length; y++)
                       {
 

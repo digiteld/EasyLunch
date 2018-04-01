@@ -5,12 +5,6 @@ import {Storage} from '@ionic/storage';
 import {LoginPage} from '../login/login';
 import {RestProvider} from "../../providers/rest/rest";
 
-/**
- * Generated class for the RecapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -52,7 +46,7 @@ export class RecapPage {
 
     printCode: boolean
 
-    code:string;
+    code: string;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public rest: RestProvider) {
 
@@ -72,15 +66,13 @@ export class RecapPage {
 
         if (!navParams.get('book')) {
             this.init()
-
         }
 
         else {
-
+            
             this.platMap = new Map()
 
             this.printCode = this.navParams.get('printCode')
-
 
             this.nbPers = navParams.get('nbPers')
 
@@ -171,12 +163,9 @@ export class RecapPage {
 
             .subscribe(
                 data => {
-
-
                     this.meals = data[0].meal;
                     this.menus = data[0].menu;
                     this.formatData()
-
 
                 },
                 error => this.errorMessage = <any>error);
@@ -201,9 +190,7 @@ export class RecapPage {
 
                     this.platMap.set(m.id, m.name)
                     break;
-
             }
-
 
         })
 
@@ -227,10 +214,8 @@ export class RecapPage {
                             this.dessert = true;
 
                             break;
-
                     }
                 }
-
 
             })
         }
@@ -273,10 +258,7 @@ export class RecapPage {
 
             .subscribe(
                 data => {
-
-
-                    this.code=data.name
-
+                    this.code = data.name
                 },
                 error => this.errorMessage = <any>error);
     }

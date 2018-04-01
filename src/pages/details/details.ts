@@ -12,19 +12,17 @@ import { NgSwitch } from '@angular/common';
 export class DetailsPage {
   valeur: number;
   ngSwitch: any;
-  tabBarElement: any;
-  // scrollcontentElement: any;
+  // tabBarElement: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.valeur = 1;
 
-    if (document.querySelector('.tabbar')) {
-      this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
-      if (document.querySelector('.scroll-content')) {
-      // this.scrollcontentElement = document.querySelector('.scroll-content');
-      }
-    }
+    // if (document.querySelector('.tabbar')) {
+    //   this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    //   if (document.querySelector('.scroll-content')) {
+    //   }
+    // }
 
 
   }
@@ -34,21 +32,19 @@ export class DetailsPage {
     console.log(this.navParams.get('meal'));
 
   }
+  
+  // ionViewWillEnter() {
+  //   if (this.tabBarElement) {
+  //     this.tabBarElement.style.display = 'none';
+  //   }
 
-  ionViewWillEnter() {
-    if (this.tabBarElement) {
-      this.tabBarElement.style.display = 'none';
-      // this.scrollcontentElement.style.marginBottom = '1px';
-    }
+  // }
 
-  }
-
-  ionViewWillLeave() {
-    if (this.tabBarElement) {
-      this.tabBarElement.style.display = 'flex';
-      // this.scrollcontentElement.style.marginBottom = '49px';
-    }
-  }
+  // ionViewWillLeave() {
+  //   if (this.tabBarElement) {
+  //     this.tabBarElement.style.display = 'flex';
+  //   }
+  // }
 
   goBack() {
     this.navCtrl.pop();

@@ -22,6 +22,7 @@ export class RestProvider {
     private apiUrlGetAllBookingUser = this.prod + '/api/command?iduser=';
     private apiUrlGetCodeByBooking=this.prod+'/api/code/'
 
+
     // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
 
     constructor(public http: HttpClient) {
@@ -54,7 +55,7 @@ export class RestProvider {
     }
 
 
-    postBooking(arg): Observable< any > {
+    postBooking(arg): Observable<any> {
         return this.http.post(this.apiUrlPostBooking,arg).pipe(
 
             map(this.extractData2),

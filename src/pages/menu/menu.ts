@@ -1,11 +1,11 @@
-import {Component, ViewChild} from '@angular/core';
-import {Content, IonicPage, NavController, NavParams} from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Content, IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {DetailsPage} from '../details/details';
-import {RecapPage} from '../recap/recap';
-import {RestProvider} from "../../providers/rest/rest";
-import {Storage} from "@ionic/storage";
-import {DetailMenuPage} from "../detail-menu/detail-menu";
+import { DetailsPage } from '../details/details';
+import { RecapPage } from '../recap/recap';
+import { RestProvider } from "../../providers/rest/rest";
+import { Storage } from "@ionic/storage";
+import { DetailMenuPage } from "../detail-menu/detail-menu";
 
 
 @IonicPage()
@@ -57,7 +57,7 @@ export class MenuPage {
     desc: string;
 
     //verif schedule and nbPErs
-    schedule:boolean;
+    schedule: boolean;
     nbPers: boolean;
     participate: boolean;
 
@@ -80,11 +80,11 @@ export class MenuPage {
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
         this.choosenId = this.choosenId || [];
-        this.schedule=true;
+        this.schedule = true;
         this.nbPers = true;
         this.participate = false;
 
-        this.participate=this.navParams.get('participate')
+        this.participate = this.navParams.get('participate')
 
 
         this.total = 0;
@@ -92,44 +92,44 @@ export class MenuPage {
 
 
         this.storage.get('id_restaurant').then(data => {
-                console.log("ID --> " + data)
-                this.idResto = data
-                this.getMeals(this.idResto);
-                if(navParams.get('participate')) {
-                    console.log("JE VIENS DE PARTICIPATE")
-                    this.getInfoResto(this.idResto)
-                    this.participate = true;
-                }
-                else {
+            console.log("ID --> " + data)
+            this.idResto = data
+            this.getMeals(this.idResto);
+            if (navParams.get('participate')) {
+                console.log("JE VIENS DE PARTICIPATE")
+                this.getInfoResto(this.idResto)
+                this.participate = true;
+            }
+            else {
 
-                    this.img = this.navParams.get('img')
-                    this.address = this.navParams.get('address')
-                    this.name = this.navParams.get('name')
-                    this.desc = this.navParams.get('desc')
+                this.img = this.navParams.get('img')
+                this.address = this.navParams.get('address')
+                this.name = this.navParams.get('name')
+                this.desc = this.navParams.get('desc')
 
-                }
-            },
+            }
+        },
             error => console.error(error));
-if(!this.participate) {
+        if (!this.participate) {
 
-    this.storage.get('nbPers').then(data => {
-        if (data != null)
-            this.nbPers = true
-        else
-            this.nbPers = false
+            this.storage.get('nbPers').then(data => {
+                if (data != null)
+                    this.nbPers = true
+                else
+                    this.nbPers = false
 
-        console.log("NBPERS --> " + data)
-    }, error => console.error(error))
+                console.log("NBPERS --> " + data)
+            }, error => console.error(error))
 
-    this.storage.get('schedule').then(data => {
-        if (data != null)
-            this.schedule = true;
-        else
-            this.schedule = false;
+            this.storage.get('schedule').then(data => {
+                if (data != null)
+                    this.schedule = true;
+                else
+                    this.schedule = false;
 
-        console.log("SCHEDULE --> " + data)
-    }, error => console.error(error))
-}
+                console.log("SCHEDULE --> " + data)
+            }, error => console.error(error))
+        }
 
     }
 
@@ -149,7 +149,7 @@ if(!this.participate) {
     }
 
     openDetail(plat, index) {
-        if((this.schedule && this.nbPers) || this.participate) {
+        if ((this.schedule && this.nbPers) || this.participate) {
             let obj
             switch (plat) {
                 case 0:
@@ -175,7 +175,7 @@ if(!this.participate) {
     }
 
     openDetailMenu(id) {
-        if((this.schedule && this.nbPers) || this.participate) {
+        if ((this.schedule && this.nbPers) || this.participate) {
             console.log("ID MEAL --> " + id)
             let _entree = []
             let _plat = []
@@ -207,7 +207,7 @@ if(!this.participate) {
 
 
     openRecap() {
-        if((this.schedule && this.nbPers) || this.participate) {
+        if ((this.schedule && this.nbPers) || this.participate) {
             this.storage.set('idMeals', this.choosenId)
             this.navCtrl.push(RecapPage, {
                 entree: this.choosenEntree,
@@ -244,17 +244,16 @@ if(!this.participate) {
 
     }
 
-    private getInfoResto(id)
-    {
+    private getInfoResto(id) {
         this.rest.getRestaurantWithCode(id).subscribe(data => {
 
 
-                this.img = data.picture
-                this.address = data.address
-                this.name = data.name
-                this.desc = data.description
+            this.img = data.picture
+            this.address = data.address
+            this.name = data.name
+            this.desc = data.description
 
-            },
+        },
             error => this.errorMessage = <any>error)
     }
 
@@ -296,8 +295,8 @@ if(!this.participate) {
 
         console.log("MENU ID --> " + menuId)
         console.log("MEALS ID --> " + mealID)
-        this.storage.set('menuID',menuId)
-        this.storage.set('menuMealID',mealID)
+        this.storage.set('menuID', menuId)
+        this.storage.set('menuMealID', mealID)
 
         this.menus.map(m => {
 
@@ -310,8 +309,8 @@ if(!this.participate) {
         console.log(this.mapPlat)
         console.log(this.mapDessert)
         mealID.map(m => {
-                console.log("MMMM --> "+m)
-            let meal=parseInt(m)
+            console.log("MMMM --> " + m)
+            let meal = parseInt(m)
             if (this.mapEntree.has(meal)) {
                 console.log("I FOUND --> " + m)
                 this.choosenMenuID.push(this.mapEntree.get(meal).name)

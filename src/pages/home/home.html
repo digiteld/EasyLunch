@@ -1,76 +1,70 @@
 <ion-content>
     <div id="map">
 
-        <!-- <div class="btn"> -->
-        <ion-grid>
+        <ion-grid class="btn">
             <ion-row flex-wrap: nowrap class="z-index">
                 <ion-col class="stylecol">
-                    <ion-item>
-                        <ion-label>Pour combien ?</ion-label>
-
-                        <ion-datetime pickerFormat="HH"  displayFormat={{formatnbPers}} (ionChange)="onChangeNbPers()" [(ngModel)]="NbPers"></ion-datetime>
-
-                    </ion-item>
-                </ion-col>
-                        <!-- <button class="stylebtn" ion-button full icon-start color="blue" (click)="openNbPers()">
+                    <button class="stylebtn" ion-button full icon-start (click)="nbpicker.open()">
+                        <ion-datetime #nbpicker pickerFormat="HH" hourValues="1,2,3,4,5,6,7,8,9,10,11,12" displayFormat={{formatnbPers}} doneText="Valider"
+                            cancelText="Annuler" [(ngModel)]="NbPers"></ion-datetime>
                         <ion-icon name="combien"></ion-icon>
-                        <p>Pour combien ?</p></button> -->
-                    
-                    <!-- <button ion-button color="blue" [@elementState]="state" style="width:100%" (click)="makeInactive()"> Pour combien ? </button> -->
-
-                <ion-col class="stylecol">
-                        <ion-item>
-                            <ion-label>A quelle heure ?</ion-label>
-                            <ion-datetime pickerFormat="HH/mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}} (ionChange)="onChangeSchedule()" [(ngModel)]="Schedule"></ion-datetime>
-                        </ion-item>
+                        <p>Pour combien ?</p>
+                    </button>
                 </ion-col>
-                <!-- <button class="stylebtn" ion-button full icon-start color="blue" (click)="openSchedule()">
+                <ion-col class="stylecol">
+                    <button class="stylebtn" ion-button full icon-start (click)="schedulepicker.open()">
+                        <ion-datetime #schedulepicker pickerFormat="HH/mm" hourValues="11, 12, 13, 14" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}}
+                            doneText="Valider" cancelText="Annuler" [(ngModel)]="Schedule"></ion-datetime>
                         <ion-icon name="heure"></ion-icon>
-                        <p>A quelle heure ?</p></button> -->
+                        <p>A quelle heure ?</p>
+                    </button>
+                </ion-col>
             </ion-row>
         </ion-grid>
 
     </div>
 
     <div id="slides">
+            <ion-grid>
+                <ion-row class="z-index">
 
-        <ion-grid>
-            <ion-row class="z-index">
+                    <div class="badge">
+                        <img src="assets/icon/platdujour.svg">
+                    </div>
 
-                <ion-slides slidesPerView="1.3" (ionSlideDidChange)="slideChanged()">
-                    <ion-slide *ngFor="let r of restaurant;let i= index">
+                    <ion-slides slidesPerView="1.3" (ionSlideDidChange)="slideChanged()">
+                        <ion-slide *ngFor="let r of restaurant; let i = index">
 
-                        <ion-card (click)="openMenu(i)">
-                            <ion-card-content>
+                            <ion-card (click)="openMenu(i)">
+                                <ion-card-content>
 
-                                <ion-row>
-                                    <img src={{r.picture}}/>
+                                    <ion-row>
+                                        <img src={{r.picture}}/>
 
-                                    <ion-card-title>
-                                        <ion-row>
-                                            <h2>{{r.name}}</h2>
-                                        </ion-row>
-                                        <ion-row>
-                                            <h3>{{r.description}}</h3>
-                                        </ion-row>
-                                        <ion-row>
-                                            <h4>nom de la rue</h4>
-                                        </ion-row>
-                                        <ion-row>
-                                            <h4>code postal + ville</h4>
-                                        </ion-row>
-                                    </ion-card-title>
-                                </ion-row>
+                                        <ion-card-title>
+                                            <ion-row>
+                                                <h2>{{r.name}}</h2>
+                                            </ion-row>
+                                            <ion-row>
+                                                <h3>{{r.description}}</h3>
+                                            </ion-row>
+                                            <ion-row>
+                                                <h4>nom de la rue</h4>
+                                            </ion-row>
+                                            <ion-row>
+                                                <h4>code postal + ville</h4>
+                                            </ion-row>
+                                        </ion-card-title>
+                                    </ion-row>
 
-                            </ion-card-content>
-                        </ion-card>
+                                </ion-card-content>
+                            </ion-card>
 
-                    </ion-slide>
-                </ion-slides>
+                        </ion-slide>
+                    </ion-slides>
 
-            </ion-row>
-        </ion-grid>
-        
+                </ion-row>
+            </ion-grid>
     </div>
 
 </ion-content>
