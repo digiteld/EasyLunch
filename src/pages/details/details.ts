@@ -66,11 +66,10 @@ export class DetailsPage {
   openMenu() {
     let callback = this.navParams.get('callback');
       this.navCtrl.pop();
-      let p = this.valeur * this.navParams.get('meal').price;
+      let p = ((this.valeur)*(this.navParams.get('meal').price*100))/100;
       
     callback(p, this.valeur)
 
-    console.log("well play tu as ouvert la page menu");
   }
 
 

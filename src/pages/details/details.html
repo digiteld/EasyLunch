@@ -39,7 +39,7 @@
 
         <div id="commander"> 
             <button ion-button round (click)="openMenu()">
-                COMMANDER  &nbsp;&nbsp;&nbsp;&nbsp; x{{valeur}} &nbsp;&nbsp;&nbsp;&nbsp; {{valeur*navParams.get('meal').price}} €
+                COMMANDER  &nbsp;&nbsp;&nbsp;&nbsp; x{{valeur}} &nbsp;&nbsp;&nbsp;&nbsp; {{((valeur)*(navParams.get('meal').price*100))/100}} €
             </button>
         </div>
 

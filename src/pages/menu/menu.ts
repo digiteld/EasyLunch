@@ -260,7 +260,8 @@ if(!this.participate) {
 
 
     private callbackChild = (p, valeur) => {
-        this.total += p;
+
+        this.total = (this.total*100+valeur*100)/100;
         if (valeur > 0) {
             let objSrc;
             let objDst;
