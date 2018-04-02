@@ -28,14 +28,17 @@
             <ion-grid>
                 <ion-row class="z-index">
 
-                    <div class="badge">
-                        <img src="assets/icon/platdujour.svg">
-                    </div>
+
 
                     <ion-slides slidesPerView="1.3" (ionSlideDidChange)="slideChanged()">
                         <ion-slide *ngFor="let r of restaurant; let i = index">
 
                             <ion-card (click)="openMenu(i)">
+<ng-container *ngIf="r.mod">
+                                <div class="badge">
+                                    <img src="assets/icon/platdujour.svg">
+                                </div>
+</ng-container>
                                 <ion-card-content>
 
                                     <ion-row>

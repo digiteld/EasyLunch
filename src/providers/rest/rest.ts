@@ -13,7 +13,7 @@ import {map, catchError} from 'rxjs/operators';
 @Injectable()
 export class RestProvider {
     private prod = 'https://easy-lunch-tmp.herokuapp.com';
-    private test = 'http://192.168.1.32:5000';
+    private test = 'http://192.168.1.15:5000';
     private apiUrl = 'https://easy-lunch.herokuapp.com/api/restaurants';
     private apiUrlMeal = this.test+'/api/meal?id=';
     private apiUrlPostBooking = this.test+'/api/booking';

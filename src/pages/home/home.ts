@@ -76,6 +76,7 @@ export class HomePage {
     longitude: string;
     positionFound: boolean;
     mapLoad: boolean;
+    mod:boolean;
 
 
     @ViewChild(Slides) slides: Slides;
@@ -102,6 +103,7 @@ export class HomePage {
         this.positionFound = false;
         this.currentIndex = 0;
         this.allPin = this.allPin || [];
+        this.mod=false;
 
 
     }
