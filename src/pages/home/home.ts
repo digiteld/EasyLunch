@@ -177,24 +177,26 @@ export class HomePage {
 
 
     moveMarker(pin) {
-        let newIcon = L.icon({
-            iconUrl: '../assets/icon/pin.svg',
-            iconSize: [60, 80],
-            popupAnchor: [0, -15]
-        });
+        if (pin){
+            let newIcon = L.icon({
+                iconUrl: '../assets/icon/pin.svg',
+                iconSize: [60, 80],
+                popupAnchor: [0, -15]
+            });
 
-        let forkIcon = L.icon({
-            iconUrl: '../assets/icon/pin.svg',
-            iconSize: [37.5, 50],
-            popupAnchor: [0, -15]
-        });
-        console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex())
-
-        this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
-
-
-        pin.bounce({duration: 500, height: 100});
-        pin.setIcon(newIcon);
+            let forkIcon = L.icon({
+                iconUrl: '../assets/icon/pin.svg',
+                iconSize: [37.5, 50],
+                popupAnchor: [0, -15]
+            });
+            console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex())
+            
+                this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
+                pin.bounce({duration: 500, height: 100});
+                pin.setIcon(newIcon);
+        }
+        
+        
 
     }
 
