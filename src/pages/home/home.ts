@@ -4,7 +4,7 @@ import {NavController} from 'ionic-angular';
 import {RestProvider} from '../../providers/rest/rest';
 import L from 'leaflet';
 
-import { AndroidPermissions } from '@ionic-native/android-permissions';
+import {AndroidPermissions} from '@ionic-native/android-permissions';
 
 import {Slides} from 'ionic-angular';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
@@ -63,15 +63,19 @@ export class HomePage {
     mapPin: any;
     pinID: number[];
     sliding: any;
-    NbPers:string;
-    Schedule:string;
-    allPin:any;
-    date:Date;
-    markerArray:any[]
-    dateNbPers:any;
-    dateSchedule:any;
-    formatnbPers:string;
-    formatSchedule:string
+    NbPers: string;
+    Schedule: string;
+    allPin: any;
+    date: Date;
+    markerArray: any[]
+    dateNbPers: any;
+    dateSchedule: any;
+    formatnbPers: string;
+    formatSchedule: string
+    latitude: string;
+    longitude: string;
+    positionFound: boolean;
+    mapLoad: boolean;
 
 
     @ViewChild(Slides) slides: Slides;
@@ -83,19 +87,19 @@ export class HomePage {
     // state = 'opaque';
 
 
-    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage,private androidPermissions: AndroidPermissions) {
-    this.cleanStorage()
+    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions) {
+        this.cleanStorage()
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
         this.markerArray = this.markerArray || []
         this.NbPers = null;
         this.Schedule = null;
         this.sliding = false;
-        this.formatnbPers="none"
-        this.formatSchedule="none"
-        // HH:mm
+        this.formatnbPers = "none"
+        this.formatSchedule = "none"
+        this.mapLoad = false;        // HH:mm
         //HH
-
+        this.positionFound = false;
         this.currentIndex = 0;
         this.allPin = this.allPin || [];
 
@@ -137,21 +141,20 @@ export class HomePage {
 
     openMenu(i) {
         console.log("J'ai cliqué sur le --> " + i)
-        console.log("NBPERS --> "+this.NbPers)
-        console.log("Schedule --> "+this.Schedule)
+        console.log("NBPERS --> " + this.NbPers)
+        console.log("Schedule --> " + this.Schedule)
         let obj = this.restaurant[i]
         console.log("ID cc  --> " + obj)
         this.storage.set('id_restaurant', obj.id)
         this.storage.set('create_booking', true)
-        if(this.Schedule!=null) {
-            console.log("JE SET SCHEDULE "+this.Schedule)
+        if (this.Schedule != null) {
+            console.log("JE SET SCHEDULE " + this.Schedule)
             this.storage.set('schedule', this.Schedule)
 
         }
-        if(this.NbPers!=null)
-        {
-            console.log("JE SET NBPERS "+this.NbPers)
-            let nbpers=this.NbPers.substring(0, this.NbPers.length-3)
+        if (this.NbPers != null) {
+            console.log("JE SET NBPERS " + this.NbPers)
+            let nbpers = this.NbPers.substring(0, this.NbPers.length - 3)
             this.storage.set('nbPers', nbpers)
 
         }
@@ -201,7 +204,6 @@ export class HomePage {
     loadmap() {
 
 
-
         this.map = L.map("map", {zoomControl: false});
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -214,35 +216,41 @@ export class HomePage {
             this.locationfound(e)
         }).on('locationerror', (err) => {
             alert(err.message);
+        }).on('load', (e) => {
+            this.mapLoad=true;
+            this.initMarker()
         })
 
     }
 
 
     locationfound = (e) => {
-        let pulsingIcon = L.divIcon({
-            iconSize: [30, 30],
-            iconAnchor: [15, 15],
-            popupAnchor: [10, 0],
-            shadowSize: [0, 0],
-            className: 'css-icon',
-            html: '<div id="c" <div class="s"></div> </div>'
-        });
-        let marker: any = L.marker([e.latitude, e.longitude], {icon: pulsingIcon});
-        console.log(e)
-        this.allPin.push(marker)
-        this.markerArray.push(marker)
-        this.zoomOnNearestResto()
-        if(this.map)
-        this.map.addLayer(marker);
-        else {
-            setTimeout(() => {
-                console.log("!!!!!!!!!!! J'ai esquivé ADD LAYER !!!!!!!!!!!!!")
-                    this.map.addLayer(marker);
-                  
-                }
 
-                , 500);
+        console.log("POSITION --> "+e)
+
+        this.positionFound = true;
+        this.latitude = e.latitude;
+        this.longitude = e.longitude
+        this.initMarker()
+
+    }
+
+    initMarker() {
+        if (this.positionFound && this.mapLoad) {
+            let pulsingIcon = L.divIcon({
+                iconSize: [30, 30],
+                iconAnchor: [15, 15],
+                popupAnchor: [10, 0],
+                shadowSize: [0, 0],
+                className: 'css-icon',
+                html: '<div id="c" <div class="s"></div> </div>'
+            });
+            let marker: any = L.marker([this.latitude, this.longitude], {icon: pulsingIcon});
+
+            this.allPin.push(marker)
+            this.markerArray.push(marker)
+            this.zoomOnNearestResto()
+            this.map.addLayer(marker);
         }
     }
 
@@ -315,7 +323,7 @@ export class HomePage {
                 return false;
             }
 
-        let pin = L.marker([array[i].lat, array[i].lon], {
+            let pin = L.marker([array[i].lat, array[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}
             })
@@ -329,8 +337,8 @@ export class HomePage {
                 this.onClickLayer(event)
             });
 
-            if(i===0) {
-                console.log("JE ZOOM ON FIRST RESTO "+array[i].name)
+            if (i === 0) {
+                console.log("JE ZOOM ON FIRST RESTO " + array[i].name)
                 this.markerArray.push(pin)
                 this.zoomOnNearestResto()
             }
@@ -341,17 +349,12 @@ export class HomePage {
         })
 
 
-
-
-
-
     }
 
-    private zoomOnNearestResto()
-    {
-        if(this.markerArray.length==2) {
+    private zoomOnNearestResto() {
+        if (this.markerArray.length == 2) {
             console.log(this.markerArray.length)
-            setTimeout(()=> {
+            setTimeout(() => {
                     var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
                     this.map.fitBounds(group.getBounds(), {
                             paddingTop: 20,
@@ -362,7 +365,7 @@ export class HomePage {
                     );
                 }
 
-            , 1000);
+                , 1000);
 
 
         }
@@ -381,7 +384,6 @@ export class HomePage {
 
 
     }
-
 
 
 }

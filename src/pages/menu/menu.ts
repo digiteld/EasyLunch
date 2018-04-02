@@ -179,8 +179,11 @@ export class MenuPage {
             let _plat = []
             let _dessert = []
             let nbMeal
+            let name;
+
             if (mod) {
                 nbMeal=this.menuOfDay.nbmeals
+                name=this.menuOfDay.name
                 this.menuOfDay.id_plat.forEach(id => {
                     if (this.mapEntree.has(id))
                         _entree.push(this.mapEntree.get(id))
@@ -195,6 +198,7 @@ export class MenuPage {
                 this.formule.map(f=>{
                     if(f.id===id)
                     {
+                        name=f.name
                         nbMeal=f.nbmeals
                         console.log(JSON.stringify(f))
                         f.id_plat.forEach(idMeal=>{
@@ -213,6 +217,7 @@ export class MenuPage {
             }
 
             this.navCtrl.push(DetailMenuPage, {
+                name:name,
                 entree: _entree,
                 plat: _plat,
                 dessert: _dessert,
@@ -329,8 +334,7 @@ export class MenuPage {
         console.log(this.mapPlat)
         console.log(this.mapDessert)
         mealID.map(m => {
-            console.log("MMMM --> " + m)
-            let meal = parseInt(m)
+             let meal = parseInt(m)
             if (this.mapEntree.has(meal)) {
                 console.log("I FOUND --> " + m)
                 this.choosenMenuID.push(this.mapEntree.get(meal).name)

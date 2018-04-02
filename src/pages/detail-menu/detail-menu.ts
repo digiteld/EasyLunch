@@ -93,6 +93,10 @@ export class DetailMenuPage {
     this.navCtrl.pop()
 
   }
+  goBack()
+  {
+      this.navCtrl.pop()
+  }
 
 
 }
