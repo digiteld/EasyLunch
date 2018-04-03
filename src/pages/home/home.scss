@@ -45,6 +45,7 @@ page-home {
       width: 50%;
     }
 
+
     .ion-ios-combien,
     .ion-md-combien {
       content: url(/assets/icon/users.svg);
@@ -62,6 +63,12 @@ page-home {
       padding-left: 0.4em;
       color: #333333;
       font-weight: 500;
+      margin: 2px 0;
+    }
+
+    .btn-content {
+      display: flex;
+      justify-content: space-around;
     }
     
     ion-icon {
