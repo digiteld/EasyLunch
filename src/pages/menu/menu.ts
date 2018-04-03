@@ -61,6 +61,8 @@ export class MenuPage {
     nbPers: boolean;
     participate: boolean;
 
+    special:any
+
 
     @ViewChild(Content) content: Content;
 
@@ -89,6 +91,7 @@ export class MenuPage {
 
         this.total = 0;
 
+this.special=this.special || [];
 
         this.storage.get('id_restaurant').then(data => {
                 console.log("ID --> " + data)
@@ -247,7 +250,8 @@ export class MenuPage {
                 address: this.address,
                 desc: this.desc,
                 name: this.name,
-                city: this.city
+                city: this.city,
+                special:this.special
             });
             console.log("yeeeah this is your recap my friend !");
         }
@@ -286,9 +290,12 @@ export class MenuPage {
     }
 
 
-    private callbackChild = (p, valeur) => {
+    private callbackChild = (p, valeur,special) => {
 
-        this.total = (this.total * 100 + valeur * 100) / 100;
+        console.log(p, valeur)
+
+        this.total = (this.total*100+p*100)/100;
+        console.log("toto --> "+this.total)
         if (valeur > 0) {
             let objSrc;
             let objDst;
@@ -313,7 +320,17 @@ export class MenuPage {
                 objDst.push(objSrc[this.tmpIndex])
                 console.log("ID of meal select --> " + objSrc[this.tmpIndex].id)
                 this.choosenId.push(objSrc[this.tmpIndex].id)
+                let idPlat=objSrc[this.tmpIndex].id
+
+                console.log("S --> "+special)
+                if(special!==undefined) {
+                    console.log("SPECIAL IS DEFINE")
+                    let json = { idPlat : special}
+
+                    this.special.push(json)
+                }
             }
+
         }
 
         console.log("TOTAL --> " + this.total)

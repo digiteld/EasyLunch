@@ -33,7 +33,7 @@ export class ParticipatePage {
 
     openMenu() {
         this.storage.set('create_booking', false)
-        this.rest.getRestaurantWithCode(this.codeInput).subscribe(
+        this.rest.getRestaurantWithCode(this.codeInput.toLowerCase()).subscribe(
             data => {
 
 

@@ -60,15 +60,7 @@ export class BookPage {
             error => this.errorMessage = <any>error);
     }
 
-    getPictureResto(idResto) {
-        console.log(idResto)
-        console.log(parseInt(this.mapResto.get(idResto)))
-    }
 
-    getNameResto(idResto) {
-
-
-    }
 
     openDetail(i) {
 
@@ -78,6 +70,7 @@ export class BookPage {
         let printCode=false
         if(i===0 && this.commandeEncour)
             printCode=true;
+
         this.navCtrl.push(RecapPage,
             {
                 book:true,
@@ -91,7 +84,8 @@ export class BookPage {
                 nbPers:obj.nb_users,
                 restoId:obj.restaurant_id,
                 printCode:printCode,
-                bookingId:obj.bookingid
+                bookingId:obj.bookingid,
+                total:obj.price
 
 
             })

@@ -11,7 +11,7 @@ import { NgSwitch } from '@angular/common';
   
 export class DetailsPage {
   valeur: number;
-  ngSwitch: any;
+  special:string
   // tabBarElement: any;
 
 
@@ -23,6 +23,7 @@ export class DetailsPage {
     //   if (document.querySelector('.scroll-content')) {
     //   }
     // }
+
 
 
   }
@@ -61,10 +62,11 @@ export class DetailsPage {
 
   openMenu() {
     let callback = this.navParams.get('callback');
+    console.log("SPECIAL --> "+this.special)
       this.navCtrl.pop();
       let p = ((this.valeur)*(this.navParams.get('meal').price*100))/100;
-      
-    callback(p, this.valeur)
+      console.log()
+    callback(p, this.valeur,this.special)
 
   }
 
