@@ -336,10 +336,11 @@ export class HomePage {
         let array = this.restaurant;
 
         IntervalObservable.create(10).subscribe((i) => {
-            if (i > 4) {
+            if (i > array.length-1) {
                 return false;
             }
 
+            console.log("MOD --> "+i+" --> "+array[i].mod)
             let pin = L.marker([array[i].lat, array[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}
