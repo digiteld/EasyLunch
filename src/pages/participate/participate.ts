@@ -17,9 +17,12 @@ export class ParticipatePage {
     errorMessage: string;
     codeInput: string;
     notExist: boolean
+    validate:boolean
+
 
     constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage) {
         this.notExist = false;
+        this.validate=false;
     }
 
     ionViewDidLoad() {
@@ -76,5 +79,19 @@ export class ParticipatePage {
 
         console.log('ton code est validé');
     }
+
+    changeText()
+    {
+        if(this.codeInput.length===0)
+        {
+            this.validate=false
+
+        }
+        else {
+
+this.validate=true
+        }
+    }
+
 
 }

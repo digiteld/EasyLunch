@@ -68,8 +68,6 @@ export class HomePage {
     allPin: any;
     date: Date;
     markerArray: any[]
-    dateNbPers: any;
-    dateSchedule: any;
     formatnbPers: string;
     formatSchedule: string
     latitude: string;
@@ -77,6 +75,9 @@ export class HomePage {
     positionFound: boolean;
     mapLoad: boolean;
     mod:boolean;
+
+    scheduleBtText:string;
+    nbPersBtText:string;
 
 
     @ViewChild(Slides) slides: Slides;
@@ -104,6 +105,9 @@ export class HomePage {
         this.currentIndex = 0;
         this.allPin = this.allPin || [];
         this.mod=false;
+
+        this.scheduleBtText="A quelle heure ?"
+        this.nbPersBtText="Pour combien ?"
 
 
     }
@@ -213,15 +217,17 @@ export class HomePage {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
         }).addTo(this.map);
-        this.map.locate({
-            setView: true,
-            maxZoom: 10
-        }).on('locationfound', (e) => {
+        this.map.on('locationfound', (e) => {
             this.locationfound(e)
         }).on('locationerror', (err) => {
             alert(err.message);
         }).on('load', (e) => {
+
             this.mapLoad=true;
+            this.map.locate({
+                setView: true,
+                maxZoom: 10
+            })
             this.initMarker()
         })
 
@@ -281,11 +287,18 @@ export class HomePage {
         console.log("SIZE ARRAY --> " + this.pinID.length)
     }
 
-    openNbPers() {
+    validateSchedule() {
+        console.log("SCHEDULE")
+        this.scheduleBtText=this.Schedule
+
 
     }
 
-    openSchedule() {
+    validateNbPers() {
+
+        this.nbPersBtText=this.NbPers
+        console.log("NbPERS")
+
 
     }
 
@@ -376,7 +389,7 @@ export class HomePage {
     }
 
     private cleanStorage() {
-        console.log("CLEAR STORAGE")
+
         this.storage.remove('menuID')
         this.storage.remove('menuMealID')
         this.storage.remove('total')
