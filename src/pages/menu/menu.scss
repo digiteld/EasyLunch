@@ -242,12 +242,13 @@ page-menu {
     text-transform: uppercase;
     font-weight: 600;
   }
-  .btNotOK
-  {
+
+  .btNotOK {
     width: 100%;
     background-image: linear-gradient(#CCCCCC, #CCCCCC);
     text-transform: uppercase;
     font-weight: 600;
+    opacity: 1 !important; 
   }
 
 
