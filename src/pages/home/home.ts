@@ -170,7 +170,8 @@ export class HomePage {
             img: obj.picture,
             address: obj.address,
             name: obj.name,
-            desc: obj.description
+            desc: obj.description,
+            city: obj.city
 
 
         })
@@ -222,8 +223,8 @@ export class HomePage {
         }).on('locationerror', (err) => {
             alert(err.message);
         }).on('load', (e) => {
-
-            this.mapLoad=true;
+            
+            this.mapLoad = true;
             this.map.locate({
                 setView: true,
                 maxZoom: 10
@@ -236,7 +237,7 @@ export class HomePage {
 
     locationfound = (e) => {
 
-        console.log("POSITION --> "+e)
+        console.log("POSITION --> "+ e)
 
         this.positionFound = true;
         this.latitude = e.latitude;

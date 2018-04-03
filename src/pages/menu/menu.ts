@@ -54,6 +54,7 @@ export class MenuPage {
     address: string;
     name: string;
     desc: string;
+    city: string;
 
     //verif schedule and nbPErs
     schedule: boolean;
@@ -104,6 +105,7 @@ export class MenuPage {
                     this.address = this.navParams.get('address')
                     this.name = this.navParams.get('name')
                     this.desc = this.navParams.get('desc')
+                    this.city = this.navParams.get('city')
 
                 }
             },
@@ -244,8 +246,8 @@ export class MenuPage {
                 img: this.img,
                 address: this.address,
                 desc: this.desc,
-                name: this.name
-
+                name: this.name,
+                city: this.city
             });
             console.log("yeeeah this is your recap my friend !");
         }
@@ -277,6 +279,7 @@ export class MenuPage {
                 this.address = data.address
                 this.name = data.name
                 this.desc = data.description
+                this.city = data.city
 
             },
             error => this.errorMessage = <any>error)
