@@ -1,11 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
-import { Content, IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Content, IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import { DetailsPage } from '../details/details';
-import { RecapPage } from '../recap/recap';
-import { RestProvider } from "../../providers/rest/rest";
-import { Storage } from "@ionic/storage";
-import { DetailMenuPage } from "../detail-menu/detail-menu";
+import {DetailsPage} from '../details/details';
+import {RecapPage} from '../recap/recap';
+import {RestProvider} from "../../providers/rest/rest";
+import {Storage} from "@ionic/storage";
+import {DetailMenuPage} from "../detail-menu/detail-menu";
 
 
 @IonicPage()
@@ -16,7 +16,6 @@ import { DetailMenuPage } from "../detail-menu/detail-menu";
 export class MenuPage {
 
     errorMessage: string;
-
 
 
     //ALL ITEMS
@@ -90,25 +89,24 @@ export class MenuPage {
         this.total = 0;
 
 
-
         this.storage.get('id_restaurant').then(data => {
-            console.log("ID --> " + data)
-            this.idResto = data
-            this.getMeals(this.idResto);
-            if (navParams.get('participate')) {
-                console.log("JE VIENS DE PARTICIPATE")
-                this.getInfoResto(this.idResto)
-                this.participate = true;
-            }
-            else {
+                console.log("ID --> " + data)
+                this.idResto = data
+                this.getMeals(this.idResto);
+                if (navParams.get('participate')) {
+                    console.log("JE VIENS DE PARTICIPATE")
+                    this.getInfoResto(this.idResto)
+                    this.participate = true;
+                }
+                else {
 
-                this.img = this.navParams.get('img')
-                this.address = this.navParams.get('address')
-                this.name = this.navParams.get('name')
-                this.desc = this.navParams.get('desc')
+                    this.img = this.navParams.get('img')
+                    this.address = this.navParams.get('address')
+                    this.name = this.navParams.get('name')
+                    this.desc = this.navParams.get('desc')
 
-            }
-        },
+                }
+            },
             error => console.error(error));
         if (!this.participate) {
 
@@ -174,30 +172,57 @@ export class MenuPage {
         }
     }
 
-    openDetailMenu(id) {
+    openDetailMenu(id, mod) {
         if ((this.schedule && this.nbPers) || this.participate) {
             console.log("ID MEAL --> " + id)
             let _entree = []
             let _plat = []
             let _dessert = []
+            let nbMeal
+            let name;
+
+            if (mod) {
+                nbMeal=this.menuOfDay.nbmeals
+                name=this.menuOfDay.name
+                this.menuOfDay.id_plat.forEach(id => {
+                    if (this.mapEntree.has(id))
+                        _entree.push(this.mapEntree.get(id))
+                    if (this.mapPlat.has(id))
+                        _plat.push(this.mapPlat.get(id))
+                    if (this.mapDessert.has(id))
+                        _dessert.push(this.mapDessert.get(id))
+
+                })
+            }
+            else {
+                this.formule.map(f=>{
+                    if(f.id===id)
+                    {
+                        name=f.name
+                        nbMeal=f.nbmeals
+                        console.log(JSON.stringify(f))
+                        f.id_plat.forEach(idMeal=>{
+                            if (this.mapEntree.has(idMeal))
+                                _entree.push(this.mapEntree.get(idMeal))
+                            if (this.mapPlat.has(idMeal))
+                                _plat.push(this.mapPlat.get(idMeal))
+                            if (this.mapDessert.has(idMeal))
+                                _dessert.push(this.mapDessert.get(idMeal))
+
+                        })
 
 
-            this.menuOfDay.id_plat.forEach(id => {
-                if (this.mapEntree.has(id))
-                    _entree.push(this.mapEntree.get(id))
-                if (this.mapPlat.has(id))
-                    _plat.push(this.mapPlat.get(id))
-                if (this.mapDessert.has(id))
-                    _dessert.push(this.mapDessert.get(id))
-
-            })
+                    }
+                })
+            }
 
             this.navCtrl.push(DetailMenuPage, {
+                name:name,
                 entree: _entree,
                 plat: _plat,
                 dessert: _dessert,
                 idMeal: id,
-
+                nbMeal:nbMeal,
                 callback: this.callBackMenu
 
 
@@ -248,18 +273,19 @@ export class MenuPage {
         this.rest.getRestaurantWithCode(id).subscribe(data => {
 
 
-            this.img = data.picture
-            this.address = data.address
-            this.name = data.name
-            this.desc = data.description
+                this.img = data.picture
+                this.address = data.address
+                this.name = data.name
+                this.desc = data.description
 
-        },
+            },
             error => this.errorMessage = <any>error)
     }
 
 
     private callbackChild = (p, valeur) => {
-        this.total += p;
+
+        this.total = (this.total * 100 + valeur * 100) / 100;
         if (valeur > 0) {
             let objSrc;
             let objDst;
@@ -308,8 +334,7 @@ export class MenuPage {
         console.log(this.mapPlat)
         console.log(this.mapDessert)
         mealID.map(m => {
-            console.log("MMMM --> " + m)
-            let meal = parseInt(m)
+             let meal = parseInt(m)
             if (this.mapEntree.has(meal)) {
                 console.log("I FOUND --> " + m)
                 this.choosenMenuID.push(this.mapEntree.get(meal).name)

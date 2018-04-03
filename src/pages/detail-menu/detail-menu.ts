@@ -73,6 +73,12 @@ export class DetailMenuPage {
   {
     if(this.entreeSelect && this.platSelect && this.dessertSelect)
       this.showButton=true;
+    else if(this.entree && this.platSelect && this.navParams.get('nbMeal')===2)
+        this.showButton=true;
+    else if(this.dessert && this.platSelect && this.navParams.get('nbMeal')===2)
+        this.showButton=true;
+    else
+        this.showButton=false;
   }
 
   goBackMenu()
@@ -86,6 +92,10 @@ export class DetailMenuPage {
       callback(this.mealId, this.navParams.get('idMeal'))
     this.navCtrl.pop()
 
+  }
+  goBack()
+  {
+      this.navCtrl.pop()
   }
 
 

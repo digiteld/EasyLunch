@@ -236,9 +236,16 @@ page-menu {
     background-color: #FFFFFF;
   }
 
-  #confirmer button {
+  .btOK {
     width: 100%;
     background-image: linear-gradient(#F1C40F, #FFA300);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .btNotOK
+  {
+    width: 100%;
+    background-image: linear-gradient(#CCCCCC, #CCCCCC);
     text-transform: uppercase;
     font-weight: 600;
   }
