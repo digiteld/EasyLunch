@@ -20696,7 +20696,11 @@ ion-spinner.spinner-paused svg {
 }
 
 .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  color: linear-gradient(#F1C40F, #FFA300);
+=======
   color: #333333;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 .tabs-ios .tab-button-text {
@@ -20715,7 +20719,11 @@ ion-spinner.spinner-paused svg {
   min-width: 35px;
   height: 30px;
   font-size: 30px;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  color: #95989A;
+=======
   color: #8c8c8c;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 .tabs-ios .tab-button-icon::before {
@@ -20908,7 +20916,7 @@ ion-spinner.spinner-paused svg {
   margin-top: 1px;
   min-width: 2.4rem;
   font-size: 2.4rem;
-  color: rgba(60, 60, 60, 0.7);
+  color: #95989A;
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
@@ -20918,7 +20926,11 @@ ion-spinner.spinner-paused svg {
 }
 
 .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  color: linear-gradient(#F1C40F, #FFA300);
+=======
   color: #333333;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   -webkit-transform: translate3d(0,  -2px,  0);
   transform: translate3d(0,  -2px,  0);
 }
@@ -27989,10 +28001,14 @@ ion-navbar.toolbar {
 
 page-account-crea .content {
 <<<<<<< HEAD:platforms/ios/www/build/main.css
+  background-image: url(/assets/imgs/bg-login.png);
+=======
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   background-image: url(../assets/imgs/bg-login.png);
 =======
   background-image: url(/assets/imgs/bg-login.png);
 >>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-account-crea .scroll-content {
@@ -28075,11 +28091,14 @@ page-account-crea #btnpdc {
 page-add-card .scroll-content {
   background-color: #F9F9F9;
   padding: 25px !important;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+=======
 }
 
 page-add-card .header {
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-add-card .toolbar-ios ion-title {
@@ -28087,6 +28106,9 @@ page-add-card .toolbar-ios ion-title {
 }
 
 page-add-card .toolbar-title {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  color: #525252;
+=======
   font-weight: 600;
   font-size: 1.1em;
   color: #525252;
@@ -28098,10 +28120,11 @@ page-add-card .toolbar-background {
 
 page-add-card .toolbar-title-md {
   text-align: center;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-add-card #card {
-  background-image: url(../assets/imgs/carte.svg);
+  background-image: url(/assets/imgs/carte.svg);
   background-repeat: no-repeat;
   width: 100%;
   height: 188px;
@@ -28344,10 +28367,14 @@ page-confirm .padding {
 
 page-confirm .pattern {
 <<<<<<< HEAD:platforms/ios/www/build/main.css
+  background-image: url(/assets/imgs/pattern-little.svg);
+=======
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   background-image: url(../assets/imgs/pattern-little.svg);
 =======
   background-image: url(/assets/imgs/pattern-little.svg);
 >>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   height: 306px;
 }
 
@@ -28442,7 +28469,11 @@ page-contact #container {
   -ms-flex-pack: distribute;
   justify-content: space-around;
   color: #525252;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  font-size: 16px;
+=======
   font-size: 1.15em;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   font-weight: 500;
   line-height: 62px;
 }
@@ -28467,8 +28498,13 @@ page-detail-menu .scroll-content {
 }
 
 page-detail-menu .header {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+=======
   -webkit-box-shadow: 0 3 6px rgba(0, 0, 0, 0.06);
   box-shadow: 0 3 6px rgba(0, 0, 0, 0.06);
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-detail-menu .toolbar-background {
@@ -28514,6 +28550,7 @@ page-detail-menu .item-inner {
   font-size: 1em;
   font-weight: 500;
   color: #333333;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
 }
 
 page-detail-menu .radio-ios .radio-checked .radio-inner {
@@ -28582,6 +28619,83 @@ page-details .toolbar-title {
 
 page-details .toolbar-title-md {
   text-align: center;
+=======
+}
+
+page-detail-menu .radio-ios .radio-checked .radio-inner {
+  left: 7px;
+  top: 4px;
+  width: 7px;
+  height: 14px;
+  border-color: #F9B522;
+  -webkit-box-shadow: 0 2px #F1F1F1;
+  box-shadow: 0 2px #F1F1F1;
+}
+
+page-detail-menu .radio-md .radio-icon {
+  border-color: #F9B522;
+  -webkit-box-shadow: 0 2px #F1F1F1;
+  box-shadow: 0 2px #F1F1F1;
+  width: 22px;
+  height: 22px;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
+}
+
+page-detail-menu .radio-md .radio-inner {
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background-color: #F9B522;
+}
+
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+page-details .arrow img {
+  width: 12px;
+=======
+page-detail-menu #commander {
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
+}
+
+page-detail-menu #commander button {
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+  font-weight: 600;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+=======
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#F1C40F), to(#FFA300));
+  background-image: linear-gradient(#F1C40F, #FFA300);
+  text-transform: uppercase;
+}
+
+page-details .scroll-content {
+  padding: 30px 25px;
+  background-color: #F9F9F9;
+}
+
+page-details .header {
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+}
+
+page-details .toolbar-background {
+  background-color: #FFFFFF;
+}
+
+page-details .toolbar-title {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #525252;
+}
+
+page-details .toolbar-title-md {
+  text-align: center;
 }
 
 page-details .arrow button {
@@ -28598,6 +28712,7 @@ page-details .arrow img {
 
 page-details .name {
   font-weight: 600;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   font-size: 20px;
   color: #525252;
   margin-bottom: 20px;
@@ -28679,8 +28794,13 @@ page-details .card {
   margin: auto;
   width: 100%;
   height: 175px;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  -webkit-box-shadow: none;
+  box-shadow: none;
+=======
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-details .card .scroll-content {
@@ -28705,8 +28825,13 @@ page-details .size {
 
 page-details #commander {
   background-color: #FFFFFF;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+=======
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-details #commander button {
@@ -28760,20 +28885,28 @@ page-home .stylecol {
 page-home .ion-ios-combien,
 page-home .ion-md-combien {
 <<<<<<< HEAD:platforms/ios/www/build/main.css
+  content: url(/assets/icon/users.svg);
+=======
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/users.svg);
 =======
   content: url(/assets/icon/users.svg);
 >>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   height: 15px;
 }
 
 page-home .ion-ios-heure,
 page-home .ion-md-heure {
 <<<<<<< HEAD:platforms/ios/www/build/main.css
+  content: url(/assets/icon/clock.svg);
+=======
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/clock.svg);
 =======
   content: url(/assets/icon/clock.svg);
 >>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   height: 20px;
 }
 
@@ -28782,6 +28915,8 @@ page-home .stylebtn p {
   padding-left: 0.4em;
   color: #333333;
   font-weight: 500;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+=======
   margin: 2px 0;
 }
 
@@ -28793,6 +28928,7 @@ page-home .btn-content {
   -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
   justify-content: space-around;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-home ion-icon {
@@ -28816,7 +28952,11 @@ page-home .badge img {
   height: 35px !important;
   position: absolute;
   z-index: 2;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  margin: 15px;
+=======
   margin: -5px !important;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-home .card img {
@@ -28912,10 +29052,14 @@ page-home .s:nth-child(1) {
 
 page-login .content {
 <<<<<<< HEAD:platforms/ios/www/build/main.css
+  background-image: url(/assets/imgs/bg-login.png);
+=======
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   background-image: url(../assets/imgs/bg-login.png);
 =======
   background-image: url(/assets/imgs/bg-login.png);
 >>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-login .scroll-content {
@@ -29032,10 +29176,13 @@ page-menu #cardrestau p {
   text-align: center;
 }
 
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+=======
 page-menu p.city {
   margin-top: 0 !important;
 }
 
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 page-menu #cardrestau .card {
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -29089,7 +29236,11 @@ page-menu a {
   text-decoration: none;
   font-size: 1.15em;
   font-weight: 500;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  margin: 15px;
+=======
   margin: 15px 0 15px 15px;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-menu a:after {
@@ -29128,7 +29279,11 @@ page-menu .selection .card {
 page-menu h2 {
   font-size: 1.5em;
   font-weight: 600;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+  margin-left: 30px 0 20px 0;
+=======
   margin-bottom: 20px;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   color: #525252;
 }
 
@@ -29183,12 +29338,29 @@ page-menu #confirmer {
   background-color: #FFFFFF;
 }
 
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+page-menu #confirmer button {
+=======
 page-menu .btOK {
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   width: 100%;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#F1C40F), to(#FFA300));
   background-image: linear-gradient(#F1C40F, #FFA300);
   text-transform: uppercase;
   font-weight: 600;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+}
+
+page-menu #fixed-warning {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#F1C40F), to(#FFA300));
+  background-image: linear-gradient(#F1C40F, #FFA300);
+  color: white;
+  padding: 15px 25px;
+}
+
+page-menu #fixed-warning-text {
+  font-size: 0.9em;
+=======
 }
 
 page-menu .btNotOK {
@@ -29209,6 +29381,7 @@ page-menu #fixed-warning {
 
 page-menu #fixed-warning-text {
   font-size: 13px;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   font-weight: 600;
 }
 
@@ -29222,11 +29395,26 @@ page-participate .scroll-content {
   overflow: hidden;
 }
 
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+page-participate .code {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 86.67%;
+  margin: auto;
+  top: 3vh;
+}
+
+=======
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 page-participate .img-table {
   width: 100%;
   height: 59%;
 }
 
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+page-participate .pattern {
+  background-image: url(/assets/imgs/pattern-little.svg);
+=======
 page-participate .padding {
   padding: 0 25px;
 }
@@ -29237,6 +29425,7 @@ page-participate .pattern {
 =======
   background-image: url(/assets/imgs/pattern-little.svg);
 >>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   height: 250px;
 }
 
@@ -29250,6 +29439,8 @@ page-participate .text {
   font-size: 1.45em;
   text-align: center;
   color: #FFFFFF;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+=======
 }
 
 page-participate .code {
@@ -29258,6 +29449,7 @@ page-participate .code {
   background-color: #FFFFFF;
   margin: auto;
   top: 3vh;
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 }
 
 page-participate .item-check {
@@ -29398,6 +29590,34 @@ page-recap #cardrestau {
 page-recap #cardrestau h1 {
   font-size: 1.3em;
   font-weight: 600;
+<<<<<<< HEAD:platforms/ios/www/build/main.css
+}
+
+page-recap #cardrestau h2 {
+  font-size: 1.15em;
+  font-weight: 400;
+}
+
+page-recap #cardrestau p {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 400;
+  color: #333333;
+}
+
+page-recap #cardrestau .card {
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+page-recap .card {
+  margin: 12px 25px;
+  width: calc(100% - 50px);
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+=======
 }
 
 page-recap #cardrestau h2 {
@@ -29429,6 +29649,7 @@ page-recap .card {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
 }
 
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
 page-recap .card-content {
   margin: auto;
   text-align: center;
@@ -29554,6 +29775,9 @@ page-recap #payer button {
 .ion-ios-je-participe,
 .ion-md-je-participe {
 <<<<<<< HEAD:platforms/ios/www/build/main.css
+  content: url(../assets/icon/jeparticipe.svg);
+=======
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/jeparticipe-orange.svg);
 =======
   content: url(/assets/icon/jeparticipe-orange.svg);
@@ -29569,6 +29793,7 @@ page-recap #payer button {
 =======
   content: url(/assets/icon/jeparticipe.svg);
 >>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
+>>>>>>> 1d6f4c375dc89ed0b383bb2995b02697e07964bc:platforms/ios/www/build/main.css
   width: 25.28px;
   height: 26px;
 }
