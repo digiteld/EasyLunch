@@ -145,6 +145,7 @@ export class RecapPage {
         }
         if (this.navParams.get('menuMeal').length > 0) {
             this.menuList = this.navParams.get('menuMeal')
+
             console.log("OOOOO ---> " + JSON.stringify(this.menuList))
             this.nameMenu = this.navParams.get('menu').name
             this.menu = true
@@ -157,6 +158,8 @@ export class RecapPage {
             this.schedule = data
             console.log("DATA --> " + data)
         }, error => console.error(error))
+
+
 
         this.storage.get('nbPers').then(data => {
             this.nbPers = data
