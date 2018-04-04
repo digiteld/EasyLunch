@@ -34,6 +34,7 @@ export class RecapPage {
 
     name: string;
     desc: string;
+    city: string;
 
     schedule: any;
     nbPers: any;
@@ -54,13 +55,14 @@ export class RecapPage {
         this.address = navParams.get('address');
         this.name = navParams.get('name');
         this.desc = navParams.get('desc');
+        this.city = navParams.get('city');
 
         this.entreeList = this.entreeList || [];
         this.platList = this.platList || [];
         this.dessertList = this.dessertList || [];
         this.menuList = this.menuList || [];
         this.menuMeal = this.menuMeal || [];
-        this.total = 0
+        this.total = 0;
         this.printCode = false;
 
 
