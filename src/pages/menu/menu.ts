@@ -151,6 +151,13 @@ this.special=this.special || [];
         this.navCtrl.pop();
     }
 
+    scroolToElement(id)
+    {
+        console.log(id)
+        let yOffset = document.getElementById(id).offsetTop;
+        this.content.scrollTo(0,yOffset+290,0)
+    }
+
     openDetail(plat, index) {
         if ((this.schedule && this.nbPers) || this.participate) {
             let obj

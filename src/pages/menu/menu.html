@@ -23,11 +23,11 @@
     <!--        Menu scrollable      -->
     <div class="scroll-menu">
         <ion-scroll scrollX="true" style="width:100%; height:40px">
-                <a href="#menudujour"> Menu du jour </a>
-                <a href="#formules"> Formules </a>
-                <a href="#entrees"> Entrées </a>
-                <a href="#plats"> Plats </a>
-                <a href="#desserts"> Desserts </a>
+                <a (click)="scroolToElement('menudujour')"> Menu du jour </a>
+                <a (click)="scroolToElement('formules')"> Formules </a>
+                <a (click)="scroolToElement('entrees')"> Entrées </a>
+                <a (click)="scroolToElement('plats')"> Plats </a>
+                <a (click)="scroolToElement('desserts')"> Desserts </a>
         </ion-scroll>
     </div>
     <!--        ///////////////      -->
