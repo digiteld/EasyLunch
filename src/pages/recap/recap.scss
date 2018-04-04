@@ -43,6 +43,13 @@ page-recap {
       padding: 5px 20px;
     }
 
+    .row {
+      position: relative;
+      transform: translateX(-50%);
+      left: 50%;
+      width: calc(100% - 20px);
+    }
+
     .heure {
       height: 24.19px;
     }
@@ -109,6 +116,9 @@ page-recap {
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
+    p.city {
+      margin-top: 0!important;
+    }
 
     
   ////    Card menu

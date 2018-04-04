@@ -32,10 +32,9 @@ export class AddCardPage {
         if(this.navParams.get('param'))
             this.showValidation = false
 
-        this.nbCarteFormat = '1234 5678 9123 4567';
-        this.nbExpire = "03/19";
-        this.ccv = 963;
-        this.nameCard = "Cersei Lannister";
+        this.nbCarteFormat = "";
+        this.nbExpire = "";
+        this.nameCard = "";
     }
 
     ionViewDidLoad() {
