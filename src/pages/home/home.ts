@@ -180,13 +180,13 @@ export class HomePage {
     moveMarker(pin) {
         if (pin){
             let newIcon = L.icon({
-                iconUrl: '../assets/icon/pin.svg',
+                iconUrl: 'assets/icon/pin.svg',
                 iconSize: [60, 80],
                 popupAnchor: [0, -15]
             });
 
             let forkIcon = L.icon({
-                iconUrl: '../assets/icon/pin.svg',
+                iconUrl: 'assets/icon/pin.svg',
                 iconSize: [37.5, 50],
                 popupAnchor: [0, -15]
             });
@@ -212,14 +212,13 @@ export class HomePage {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
         }).addTo(this.map);
-        this.map.locate({
-            setView: true,
-            maxZoom: 10
-        })
+        this.tryLocate()
+
         this.map.on('locationfound', (e) => {
             this.locationfound(e)
         }).on('locationerror', (err) => {
-            alert(err.message);
+            console.log(err.message);
+            this.tryLocate()
         }).on('load', (e) => {
             console.log("MAP LOAD ")
             this.mapLoad = true;
@@ -228,6 +227,15 @@ export class HomePage {
         })
 
     }
+    tryLocate()
+    {
+        this.map.locate({
+            setView: true,
+            maxZoom: 10,
+            timeout:2000
+        })
+    }
+
 
 
     locationfound = (e) => {
@@ -322,13 +330,13 @@ export class HomePage {
         ///  Create custom icon
 
         var forkIcon = L.icon({
-            iconUrl: '../assets/icon/pin.svg',
+            iconUrl: 'assets/icon/pin.svg',
             iconSize: [37.5, 50],
             popupAnchor: [0, -15]
         });
 
         var newIcon = L.icon({
-            iconUrl: '../assets/icon/pin.svg',
+            iconUrl: 'assets/icon/pin.svg',
             iconSize: [60, 80],
             popupAnchor: [0, -15]
         });
