@@ -27988,7 +27988,11 @@ ion-navbar.toolbar {
 }
 
 page-account-crea .content {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   background-image: url(../assets/imgs/bg-login.png);
+=======
+  background-image: url(/assets/imgs/bg-login.png);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
 }
 
 page-account-crea .scroll-content {
@@ -28339,7 +28343,11 @@ page-confirm .padding {
 }
 
 page-confirm .pattern {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   background-image: url(../assets/imgs/pattern-little.svg);
+=======
+  background-image: url(/assets/imgs/pattern-little.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   height: 306px;
 }
 
@@ -28751,13 +28759,21 @@ page-home .stylecol {
 
 page-home .ion-ios-combien,
 page-home .ion-md-combien {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/users.svg);
+=======
+  content: url(/assets/icon/users.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   height: 15px;
 }
 
 page-home .ion-ios-heure,
 page-home .ion-md-heure {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/clock.svg);
+=======
+  content: url(/assets/icon/clock.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   height: 20px;
 }
 
@@ -28895,7 +28911,11 @@ page-home .s:nth-child(1) {
 }
 
 page-login .content {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   background-image: url(../assets/imgs/bg-login.png);
+=======
+  background-image: url(/assets/imgs/bg-login.png);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
 }
 
 page-login .scroll-content {
@@ -29212,7 +29232,11 @@ page-participate .padding {
 }
 
 page-participate .pattern {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   background-image: url(../assets/imgs/pattern-little.svg);
+=======
+  background-image: url(/assets/imgs/pattern-little.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   height: 250px;
 }
 
@@ -29507,56 +29531,88 @@ page-recap #payer button {
 
 .ion-ios-jorganise,
 .ion-md-jorganise {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/jorganise-orange.svg);
+=======
+  content: url(/assets/icon/jorganise-orange.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 19.5px;
   height: 26px;
 }
 
 .ion-ios-jorganise-outline,
 .ion-md-jorganise {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/jorganise.svg);
+=======
+  content: url(/assets/icon/jorganise.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 19.5px;
   height: 26px;
 }
 
 .ion-ios-je-participe,
 .ion-md-je-participe {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/jeparticipe-orange.svg);
+=======
+  content: url(/assets/icon/jeparticipe-orange.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 25.28px;
   height: 26px;
 }
 
 .ion-ios-je-participe-outline,
 .ion-md-je-participe {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/jeparticipe.svg);
+=======
+  content: url(/assets/icon/jeparticipe.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 25.28px;
   height: 26px;
 }
 
 .ion-ios-reservations,
 .ion-md-reservations {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/reservations-orange.svg);
+=======
+  content: url(/assets/icon/reservations-orange.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 21.26px;
   height: 26px;
 }
 
 .ion-ios-reservations-outline,
 .ion-md-reservations {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/reservations.svg);
+=======
+  content: url(/assets/icon/reservations.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 21.26px;
   height: 26px;
 }
 
 .ion-ios-compte,
 .ion-md-compte {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/compte-orange.svg);
+=======
+  content: url(/assets/icon/compte-orange.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 26px;
   height: 26px;
 }
 
 .ion-ios-compte-outline,
 .ion-md-compte {
+<<<<<<< HEAD:platforms/ios/www/build/main.css
   content: url(../assets/icon/compte.svg);
+=======
+  content: url(/assets/icon/compte.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/browser/www/build/main.css
   width: 26px;
   height: 26px;
 }

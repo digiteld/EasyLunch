@@ -1,6 +1,7 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+<<<<<<< HEAD
         "file": "plugins/cordova-plugin-device/www/device.js",
         "id": "cordova-plugin-device.device",
         "pluginId": "cordova-plugin-device",
@@ -29,6 +30,8 @@ module.exports = [
         "runs": true
     },
     {
+=======
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e
         "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
         "id": "cordova-plugin-statusbar.statusbar",
         "pluginId": "cordova-plugin-statusbar",
@@ -43,6 +46,7 @@ module.exports = [
         "runs": true
     },
     {
+<<<<<<< HEAD
         "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
         "id": "cordova-sqlite-storage.SQLitePlugin",
         "pluginId": "cordova-sqlite-storage",
@@ -57,12 +61,26 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.Keyboard"
         ],
+=======
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+        "id": "cordova-plugin-device.DeviceProxy",
+        "pluginId": "cordova-plugin-device",
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e
         "runs": true
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
+<<<<<<< HEAD
     "cordova-plugin-device": "1.1.7",
     "cordova-plugin-geolocation": "4.0.1",
     "cordova-plugin-ionic-webview": "1.1.16",
@@ -71,6 +89,12 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-sqlite-storage": "2.3.0",
     "ionic-plugin-keyboard": "2.2.1"
+=======
+    "cordova-plugin-geolocation": "4.0.1",
+    "cordova-plugin-ionic-webview": "1.1.19",
+    "cordova-plugin-statusbar": "2.4.1",
+    "cordova-plugin-device": "2.0.1"
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e
 }
 // BOTTOM OF METADATA
 });

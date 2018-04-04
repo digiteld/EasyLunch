@@ -20696,7 +20696,11 @@ ion-spinner.spinner-paused svg {
 }
 
 .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   color: linear-gradient(#F1C40F, #FFA300);
+=======
+  color: #333333;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 .tabs-ios .tab-button-text {
@@ -20715,7 +20719,11 @@ ion-spinner.spinner-paused svg {
   min-width: 35px;
   height: 30px;
   font-size: 30px;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   color: #95989A;
+=======
+  color: #8c8c8c;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 .tabs-ios .tab-button-icon::before {
@@ -20918,7 +20926,11 @@ ion-spinner.spinner-paused svg {
 }
 
 .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   color: linear-gradient(#F1C40F, #FFA300);
+=======
+  color: #333333;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   -webkit-transform: translate3d(0,  -2px,  0);
   transform: translate3d(0,  -2px,  0);
 }
@@ -28071,6 +28083,14 @@ page-account-crea #btnpdc {
 page-add-card .scroll-content {
   background-color: #F9F9F9;
   padding: 25px !important;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+}
+
+page-add-card .header {
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-add-card .toolbar-ios ion-title {
@@ -28078,7 +28098,21 @@ page-add-card .toolbar-ios ion-title {
 }
 
 page-add-card .toolbar-title {
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   color: #525252;
+=======
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #525252;
+}
+
+page-add-card .toolbar-background {
+  background-color: #FFFFFF;
+}
+
+page-add-card .toolbar-title-md {
+  text-align: center;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-add-card #card {
@@ -28092,55 +28126,46 @@ page-add-card #card {
 }
 
 page-add-card #card-number {
-  position: relative;
-  letter-spacing: 0.2em;
-  top: 37.23%;
-  left: 9.23%;
-  width: 73.85%;
-  height: 10.11%;
-}
-
-page-add-card #card-text-expire {
-  float: left;
-  position: relative;
-  font-size: 9px;
-  left: 9.23%;
-  top: 38.66%;
-}
-
-page-add-card #card-text-ccv {
-  font-size: 9px;
-  top: 38.66%;
-  left: 50%;
-  position: relative;
-}
-
-page-add-card #card-text-name {
-  position: relative;
-  font-size: 9px;
-  left: 9.23%;
-  top: 46%;
+  position: absolute;
+  top: 10.5vh;
+  left: 8vw;
+  width: 250px;
 }
 
 page-add-card #card-expire {
-  float: left;
-  position: relative;
-  left: -9%;
-  top: 44%;
-  letter-spacing: 0.2em;
+  position: absolute;
+  top: 14.5vh;
+  left: 8vw;
+  width: 80px;
 }
 
 page-add-card #card-name {
-  position: relative;
-  left: 9.23%;
-  top: 46%;
-  letter-spacing: 0.2em;
+  position: absolute;
+  top: 20vh;
+  left: 8vw;
 }
 
 page-add-card #card-ccv {
-  position: relative;
-  top: 38.66%;
-  left: 49%;
+  position: absolute;
+  top: 14.5vh;
+  right: 8vh;
+  width: 50px;
+}
+
+page-add-card .card-text {
+  font-size: 9px;
+}
+
+page-add-card .card-nb {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+page-add-card .card-num {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
 }
 
 page-add-card #numero {
@@ -28212,6 +28237,10 @@ page-add-card #input .item-inner {
 page-add-card #input .item {
   position: relative;
   top: 10px;
+}
+
+page-add-card .text-input {
+  letter-spacing: 0.2em;
 }
 
 page-add-card .button {
@@ -28304,7 +28333,10 @@ page-book .row h4 {
 page-confirm .all {
   position: relative;
   background-color: #FFA300;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   background-image: url(/assets/imgs/pattern-little.svg);
+=======
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   height: 100vh;
 }
 
@@ -28329,9 +28361,14 @@ page-confirm .padding {
   padding: 25px;
 }
 
+page-confirm .pattern {
+  background-image: url(/assets/imgs/pattern-little.svg);
+  height: 306px;
+}
+
 page-confirm .text1 {
   position: absolute;
-  top: 324px;
+  top: 48.5vh;
   font-size: 32px;
   color: #FFFFFF;
   font-weight: 600;
@@ -28339,7 +28376,7 @@ page-confirm .text1 {
 
 page-confirm .text2 {
   position: absolute;
-  top: 375px;
+  top: 56.2vh;
   font-size: 20px;
   color: #FFFFFF;
   font-weight: 600;
@@ -28347,7 +28384,7 @@ page-confirm .text2 {
 
 page-confirm .text3 {
   position: absolute;
-  top: 435px;
+  top: 65.2;
   font-size: 14px;
   color: #FFFFFF;
 }
@@ -28399,13 +28436,14 @@ page-contact h1 {
   color: #525252;
   font-size: 1.45em;
   font-weight: 600;
+  margin-top: 5px !important;
 }
 
 page-contact #container {
-  position: relative;
-  top: 3vh;
-  width: 100%;
-  height: 50%;
+  position: absolute;
+  top: 15vh;
+  width: calc(100% - 50px);
+  height: 54%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28419,7 +28457,11 @@ page-contact #container {
   -ms-flex-pack: distribute;
   justify-content: space-around;
   color: #525252;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   font-size: 16px;
+=======
+  font-size: 1.15em;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   font-weight: 500;
   line-height: 62px;
 }
@@ -28444,8 +28486,13 @@ page-detail-menu .scroll-content {
 }
 
 page-detail-menu .header {
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+=======
+  -webkit-box-shadow: 0 3 6px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3 6px rgba(0, 0, 0, 0.06);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-detail-menu .toolbar-background {
@@ -28491,6 +28538,7 @@ page-detail-menu .item-inner {
   font-size: 1em;
   font-weight: 500;
   color: #333333;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 }
 
 page-detail-menu .radio-ios .radio-checked .radio-inner {
@@ -28559,6 +28607,83 @@ page-details .toolbar-title {
 
 page-details .toolbar-title-md {
   text-align: center;
+=======
+}
+
+page-detail-menu .radio-ios .radio-checked .radio-inner {
+  left: 7px;
+  top: 4px;
+  width: 7px;
+  height: 14px;
+  border-color: #F9B522;
+  -webkit-box-shadow: 0 2px #F1F1F1;
+  box-shadow: 0 2px #F1F1F1;
+}
+
+page-detail-menu .radio-md .radio-icon {
+  border-color: #F9B522;
+  -webkit-box-shadow: 0 2px #F1F1F1;
+  box-shadow: 0 2px #F1F1F1;
+  width: 22px;
+  height: 22px;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
+}
+
+page-detail-menu .radio-md .radio-inner {
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background-color: #F9B522;
+}
+
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+page-details .arrow img {
+  width: 12px;
+=======
+page-detail-menu #commander {
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
+}
+
+page-detail-menu #commander button {
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+  font-weight: 600;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#F1C40F), to(#FFA300));
+  background-image: linear-gradient(#F1C40F, #FFA300);
+  text-transform: uppercase;
+}
+
+page-details .scroll-content {
+  padding: 30px 25px;
+  background-color: #F9F9F9;
+}
+
+page-details .header {
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+}
+
+page-details .toolbar-background {
+  background-color: #FFFFFF;
+}
+
+page-details .toolbar-title {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #525252;
+}
+
+page-details .toolbar-title-md {
+  text-align: center;
 }
 
 page-details .arrow button {
@@ -28575,6 +28700,7 @@ page-details .arrow img {
 
 page-details .name {
   font-weight: 600;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   font-size: 20px;
   color: #525252;
   margin-bottom: 20px;
@@ -28655,9 +28781,9 @@ page-details .card {
   display: block;
   margin: auto;
   width: 100%;
-  height: 125px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  height: 175px;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
 }
 
 page-details .card .scroll-content {
@@ -28666,18 +28792,32 @@ page-details .card .scroll-content {
   font-size: 16px;
   font-weight: 500;
   color: #525252;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+  overflow: hidden;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-details .card .text-input {
   font-size: 0.875em;
   font-weight: 300;
   font-style: italic;
+  height: 100%;
+}
+
+page-details .size {
+  height: 100%;
 }
 
 page-details #commander {
   background-color: #FFFFFF;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+=======
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-details #commander button {
@@ -28707,6 +28847,13 @@ page-home #slides img {
   height: 89px;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+page-home .btn.grid {
+  padding: 20px;
+}
+
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 page-home .item {
   background-color: #FFFFFF;
   -webkit-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
@@ -28741,6 +28888,20 @@ page-home .stylebtn p {
   padding-left: 0.4em;
   color: #333333;
   font-weight: 500;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+  margin: 2px 0;
+}
+
+page-home .btn-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-home ion-icon {
@@ -28751,11 +28912,26 @@ page-home .picker-toolbar-button {
   font-weight: 600;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+page-home ion-datetime {
+  display: none;
+}
+
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 page-home .card-content {
   padding: 0 !important;
 }
 
-page-home img {
+page-home .badge img {
+  width: 35px !important;
+  height: 35px !important;
+  position: absolute;
+  z-index: 2;
+  margin: -5px !important;
+}
+
+page-home .card img {
   margin: 10px;
 }
 
@@ -28792,6 +28968,7 @@ page-home .card-md h3 {
 
 page-home .row-ios h4 {
   color: #333333;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   font-weight: 500;
   font-size: 0.75em;
 }
@@ -28799,6 +28976,15 @@ page-home .row-ios h4 {
 page-home .row-md h4 {
   color: #333333;
   font-weight: 500;
+=======
+  font-weight: 500;
+  font-size: 0.75em;
+}
+
+page-home .row-md h4 {
+  color: #333333;
+  font-weight: 500;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   font-size: 0.55em;
 }
 
@@ -28958,16 +29144,26 @@ page-menu #cardrestau {
   position: absolute;
   z-index: 1;
   color: #333333;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 }
 
 page-menu .ios-#cardrestau {
   top: 13.7vh;
+=======
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-menu #cardrestau p {
   text-align: center;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+page-menu p.city {
+  margin-top: 0 !important;
+}
+
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 page-menu #cardrestau .card {
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -29005,25 +29201,54 @@ page-menu .card-content p {
   margin-top: 10px;
   text-align: left;
   color: #333333;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 }
 
 page-menu .row {
   padding-left: 25px;
+=======
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
-page-menu .scrollmenu {
-  top: 3vh;
+page-menu .scroll-menu {
+  white-space: nowrap;
+}
+
+page-menu .scroll-menu .scroll-content {
+  margin-top: 25px;
   height: 30px;
 }
 
 page-menu a {
   color: #525252;
   text-decoration: none;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   font-size: 1em;
   font-weight: 500;
 }
 
 page-menu a:active {
+=======
+  font-size: 1.15em;
+  font-weight: 500;
+  margin: 15px 0 15px 15px;
+}
+
+page-menu a:after {
+  content: '';
+  height: 100%;
+  left: 15px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  width: 10%;
+  border-bottom: solid;
+  border-bottom-color: #F9B522;
+  border-bottom-width: 2px;
+}
+
+page-menu a:active:after {
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   color: #333333;
   font-weight: 600;
 }
@@ -29031,7 +29256,6 @@ page-menu a:active {
 page-menu .selection {
   position: relative;
   top: 5vh;
-  color: #5E7FB1;
   text-align: center;
 }
 
@@ -29039,10 +29263,19 @@ page-menu .selection .card-content {
   padding: 20px 15px;
 }
 
+page-menu .selection .card {
+  -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.08);
+}
+
 page-menu h2 {
   font-size: 1.5em;
   font-weight: 600;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   margin: 30px 0 20px 0;
+=======
+  margin-bottom: 20px;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   color: #525252;
 }
 
@@ -29097,11 +29330,16 @@ page-menu #confirmer {
   background-color: #FFFFFF;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 page-menu #confirmer button {
+=======
+page-menu .btOK {
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   width: 100%;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#F1C40F), to(#FFA300));
   background-image: linear-gradient(#F1C40F, #FFA300);
   text-transform: uppercase;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 }
 
 page-menu #fixed-warning {
@@ -29113,6 +29351,29 @@ page-menu #fixed-warning {
 
 page-menu #fixed-warning-text {
   font-size: 0.9em;
+=======
+  font-weight: 600;
+}
+
+page-menu .btNotOK {
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#CCCCCC));
+  background-image: linear-gradient(#CCCCCC, #CCCCCC);
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 1 !important;
+}
+
+page-menu #fixed-warning {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#F1C40F), to(#FFA300));
+  background-image: linear-gradient(#F1C40F, #FFA300);
+  color: white;
+  padding: 15px 25px;
+}
+
+page-menu #fixed-warning-text {
+  font-size: 13px;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   font-weight: 600;
 }
 
@@ -29126,6 +29387,7 @@ page-participate .scroll-content {
   overflow: hidden;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 page-participate .code {
   position: relative;
   background-color: #FFFFFF;
@@ -29134,19 +29396,43 @@ page-participate .code {
   top: 3vh;
 }
 
+=======
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 page-participate .img-table {
   width: 100%;
   height: 59%;
 }
 
+page-participate .padding {
+  padding: 0 25px;
+}
+
+page-participate .pattern {
+  background-image: url(/assets/imgs/pattern-little.svg);
+  height: 250px;
+}
+
 page-participate .text {
   position: relative;
-  left: 6.665%;
-  width: 86.67%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+  width: 100%;
   font-weight: 600;
   font-size: 1.45em;
   text-align: center;
   color: #FFFFFF;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+}
+
+page-participate .code {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  margin: auto;
+  top: 3vh;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-participate .item-check {
@@ -29155,12 +29441,26 @@ page-participate .item-check {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   left: 50%;
-  top: 7vh;
+  top: 5vh;
   width: 65px;
   height: 65px;
   background-color: #F9B522;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+page-participate .item-check2 {
+  position: relative;
+  margin: auto;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+  top: 7vh;
+  width: 65px;
+  height: 65px;
+  background-color: white;
+  -webkit-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
 }
 
 page-participate .text-input {
@@ -29178,6 +29478,11 @@ page-participate span.button-inner {
   left: 50%;
   width: 29.75px;
   height: 21.64px;
+  opacity: 0.6;
+}
+
+page-recap .content {
+  background-color: #F9F9F9;
 }
 
 page-recap .content {
@@ -29213,6 +29518,14 @@ page-recap .grid {
   padding: 5px 20px;
 }
 
+page-recap .row {
+  position: relative;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+  width: calc(100% - 20px);
+}
+
 page-recap .heure {
   height: 24.19px;
 }
@@ -29226,6 +29539,7 @@ page-recap .col {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  padding: 0;
 }
 
 page-recap .col img {
@@ -29233,10 +29547,14 @@ page-recap .col img {
 }
 
 page-recap .col h3 {
-  color: #5E7FB1;
-  font-size: 16px;
+  color: #525252;
+  font-size: 1.14em;
   font-weight: 600;
-  margin: 9px;
+  margin: 9px 2px;
+}
+
+page-recap .row {
+  margin: 15px 0 10px;
 }
 
 page-recap #restau {
@@ -29245,10 +29563,9 @@ page-recap #restau {
 
 page-recap #cardrestau {
   width: 100%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   left: 50%;
-  top: 10.7vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -29257,18 +29574,33 @@ page-recap #cardrestau {
   z-index: 1;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 page-recap .card {
   margin: 12px 25px;
   width: calc(100% - 50px);
   -webkit-box-shadow: none;
   box-shadow: none;
+=======
+page-recap #cardrestau h1 {
+  font-size: 1.3em;
+  font-weight: 600;
 }
 
-page-recap .card-content {
-  margin: auto;
+page-recap #cardrestau h2 {
+  font-size: 1.1em;
+  font-weight: 300;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
+}
+
+page-recap #cardrestau p {
   text-align: center;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #333333;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
 page-recap .scrollmenu {
   top: 3vh;
   height: 30px;
@@ -29283,6 +29615,27 @@ page-recap a {
 
 page-recap #repas .card-content {
   text-align: left;
+=======
+page-recap #cardrestau .card {
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+page-recap p.city {
+  margin-top: 0 !important;
+}
+
+page-recap .card {
+  margin: 12px 25px;
+  width: calc(100% - 50px);
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+page-recap .card-content {
+  margin: auto;
+  text-align: center;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 }
 
 page-recap #repas h4 {
@@ -29305,21 +29658,29 @@ page-recap #repas p {
   color: #333333;
 }
 
-page-recap .selection {
-  position: relative;
-  top: 5vh;
-  color: #5E7FB1;
-  text-align: center;
+page-recap #repas .card-content {
+  text-align: left;
 }
 
-page-recap .selection .card-content {
-  padding: 20px 15px;
+page-recap #repas h4 {
+  font-size: 1.180em;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8px;
 }
 
-page-recap h2 {
-  font-size: 1.2em;
-  font-weight: 600;
-  margin: 30px 0 20px 0;
+page-recap #repas .card h3 {
+  font-size: 1em;
+  font-weight: 300;
+  color: #333333;
+}
+
+page-recap #repas p {
+  font-size: 1em;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 10px;
+  color: #333333;
 }
 
 page-recap .price {
@@ -29341,45 +29702,107 @@ page-recap .dessert h3 {
   margin-top: 20px;
 }
 
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+page-recap #total {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 13px 25px;
+  color: #525252;
+}
+
+page-recap .text {
+  font-size: 1.4em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+page-recap .total {
+  font-size: 1.4em;
+  font-weight: 500;
+}
+
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
 page-recap #payer {
   padding: 5px 25px;
   position: relative;
   text-align: center;
-  top: 13vh;
   background-color: #FFFFFF;
 }
 
 page-recap #payer button {
   width: 100%;
   text-transform: uppercase;
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
+=======
+  font-weight: 600;
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   background-image: -webkit-gradient(linear, left top, left bottom, from(#F1C40F), to(#FFA300));
   background-image: linear-gradient(#F1C40F, #FFA300);
 }
 
 .ion-ios-jorganise,
 .ion-md-jorganise {
-  content: url(../assets/icon/jorganise.svg);
+  content: url(/assets/icon/jorganise-orange.svg);
+  width: 19.5px;
+  height: 26px;
+}
+
+.ion-ios-jorganise-outline,
+.ion-md-jorganise {
+  content: url(/assets/icon/jorganise.svg);
   width: 19.5px;
   height: 26px;
 }
 
 .ion-ios-je-participe,
 .ion-md-je-participe {
+<<<<<<< HEAD:platforms/ios/build/emulator/EasyLunch.app/www/build/main.css
   content: url(../assets/icon/jeparticipe.svg);
+=======
+  content: url(/assets/icon/jeparticipe-orange.svg);
+  width: 25.28px;
+  height: 26px;
+}
+
+.ion-ios-je-participe-outline,
+.ion-md-je-participe {
+  content: url(/assets/icon/jeparticipe.svg);
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e:platforms/android/app/src/main/assets/www/build/main.css
   width: 25.28px;
   height: 26px;
 }
 
 .ion-ios-reservations,
 .ion-md-reservations {
-  content: url(../assets/icon/reservations.svg);
+  content: url(/assets/icon/reservations-orange.svg);
+  width: 21.26px;
+  height: 26px;
+}
+
+.ion-ios-reservations-outline,
+.ion-md-reservations {
+  content: url(/assets/icon/reservations.svg);
   width: 21.26px;
   height: 26px;
 }
 
 .ion-ios-compte,
 .ion-md-compte {
-  content: url(../assets/icon/compte.svg);
+  content: url(/assets/icon/compte-orange.svg);
+  width: 26px;
+  height: 26px;
+}
+
+.ion-ios-compte-outline,
+.ion-md-compte {
+  content: url(/assets/icon/compte.svg);
   width: 26px;
   height: 26px;
 }

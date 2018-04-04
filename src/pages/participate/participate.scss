@@ -11,8 +11,7 @@ page-participate {
   }
 
   .img-table {
-    width: 100%;
-    height: 59%;
+    height: 56vh;
   }
 
   .padding {
@@ -48,7 +47,7 @@ page-participate {
     margin: auto;
     transform: translateX(-50%);
     left: 50%;
-    top: 5vh;
+    top: 6vh;
     width: 65px;
     height: 65px;
     background-color: #F9B522;
@@ -60,20 +59,14 @@ page-participate {
     margin: auto;
     transform: translateX(-50%);
     left: 50%;
-    top: 7vh;
+    top: 6vh;
     width: 65px;
     height: 65px;
     background-color: white;
     box-shadow: 0 8px 5px rgba(0,0,0,0.2);
   }
 
-  .text-input {
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.1em;
-  }
-
-  span.button-inner {
+  .item-check span.button-inner {
     position: relative;
     margin: auto;
     transform: translate(-50%, -50%);
@@ -82,6 +75,22 @@ page-participate {
     width: 29.75px;
     height: 21.64px;
     opacity: 0.6;
+  }
+
+  .item-check2 span.button-inner {
+    position: relative;
+    margin: auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 29.75px;
+    height: 21.64px;
+  }
+
+  .text-input {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.1em;
   }
 
 }

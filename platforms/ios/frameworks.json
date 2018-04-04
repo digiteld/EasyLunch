@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
     "libz.tbd": 2,
     "CoreLocation.framework": 1,
     "WebKit.framework": 1
+=======
+    "CoreLocation.framework": 1,
+    "WebKit.framework": 1,
+    "libz.tbd": 1
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e
 }

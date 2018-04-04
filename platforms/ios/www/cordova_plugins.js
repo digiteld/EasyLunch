@@ -33,6 +33,7 @@ module.exports = [
     ]
   },
   {
+<<<<<<< HEAD
     "id": "cordova-sqlite-storage.SQLitePlugin",
     "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
     "pluginId": "cordova-sqlite-storage",
@@ -66,6 +67,8 @@ module.exports = [
     ]
   },
   {
+=======
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e
     "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
     "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
     "pluginId": "cordova-plugin-ionic-webview",
@@ -80,12 +83,24 @@ module.exports = [
     "clobbers": [
       "window.StatusBar"
     ]
+<<<<<<< HEAD
+=======
+  },
+  {
+    "id": "cordova-plugin-device.device",
+    "file": "plugins/cordova-plugin-device/www/device.js",
+    "pluginId": "cordova-plugin-device",
+    "clobbers": [
+      "device"
+    ]
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
   "cordova-plugin-geolocation": "4.0.1",
+<<<<<<< HEAD
   "cordova-sqlite-storage": "2.3.0",
   "ionic-plugin-keyboard": "2.2.1",
   "cordova-plugin-whitelist": "1.3.3",
@@ -93,6 +108,11 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-statusbar": "2.4.1"
+=======
+  "cordova-plugin-ionic-webview": "1.1.19",
+  "cordova-plugin-statusbar": "2.4.1",
+  "cordova-plugin-device": "2.0.1"
+>>>>>>> c4ac518159bf1ef8b7cf5e840a8e51587f55255e
 };
 // BOTTOM OF METADATA
 });
