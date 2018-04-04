@@ -14,38 +14,43 @@ page-account-crea {
         width: 146.8px;
     }
 
-    .compte {
-        position: relative;
-        height: 26px;
-        top: 12.5vh;
+    //      Compte
+
+    .ion-ios-compte,
+    .ion-md-compte {
+      content: url(../assets/icon/compte-noir.svg);
+      height: 26px;
     }
 
-    .envelope {
-        position: relative;
-        height: 18.6px;
-        top: 18.5vh;
-        right: 4.5vh;
+    //      Envelope
+
+    .ion-ios-envelope,
+    .ion-md-envelope {
+      content: url(../assets/icon/envelope.svg);
+      height: 18.6px;
     }
 
-    .tel {
-        position: relative;
-        height: 26px;
-        top: 26vh;
-        right: 15vw;
+    //      Tel
+
+    .ion-ios-tel,
+    .ion-md-tel {
+      content: url(../assets/icon/phone.svg);
+      height: 26px;
     }
 
-    .locked {
-        position: relative;
-        height: 26px;
-        top: 33vh;
-        right: 21vw;
+    //      Locked
+
+    .ion-ios-locked,
+    .ion-md-locked {
+      content: url(../assets/icon/password.svg);
+      height: 26px;
     }
+    
 
     #input {
         position: relative;
-        top: 6vh;
-        left: 6.7vw;
-        width: 240px;
+        top: 8vh;
+        width: 67vw;
     }
 
     .item {
@@ -76,4 +81,5 @@ page-account-crea {
         font-weight: 600;
         box-shadow: 0 8px 5px rgba(0,0,0,0.2);
     }
+
 }
