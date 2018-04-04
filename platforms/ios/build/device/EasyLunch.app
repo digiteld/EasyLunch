@@ -1,1 +1,0 @@
-/Users/jb/Library/Developer/Xcode/DerivedData/EasyLunch-dzjegeemmnduzncotpiwjeumlgim/Build/Intermediates.noindex/ArchiveIntermediates/EasyLunch/InstallationBuildProductsLocation/Applications/EasyLunch.app

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {map, catchError} from 'rxjs/operators';
+import { LoaderProvider } from './loader';
 
 /*
   Generated class for the RestProvider provider.
@@ -13,7 +14,7 @@ import {map, catchError} from 'rxjs/operators';
 @Injectable()
 export class RestProvider {
     private prod = 'https://easy-lunch-tmp.herokuapp.com';
-    private test = 'http://192.168.1.15:5000';
+    private test = 'http://192.168.1.48:5000';
     private apiUrl = 'https://easy-lunch-tmp.herokuapp.com/api/restaurants';
     private apiUrlMeal = this.prod + '/api/meal?id=';
     private apiUrlPostBooking = this.prod + '/api/booking';
@@ -25,7 +26,7 @@ export class RestProvider {
 
     // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
 
-    constructor(public http: HttpClient) {
+    constructor(public http: HttpClient,private loader: LoaderProvider) {
         console.log('Hello RestProvider Provider');
     }
 
@@ -86,6 +87,7 @@ export class RestProvider {
     }
 
     getCommandWithIdUser(arg): Observable<any> {
+        //this.loader.show();
         let url = this.apiUrlGetAllBookingUser + arg;
         console.log("URL --> " + url)
         return this.http.get(url).pipe(
@@ -95,22 +97,24 @@ export class RestProvider {
     }
 
 
-    private extractData2(res: Response) {
-
+     extractData2(res: Response) {
+        //this.loader.hide();
         let body = ((<any>res).data);
         // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
         return body;
     }
 
 
-    private extractData(res: Response) {
-
+     extractData(res: Response) {
+        //this.loader.hide();
+        console.log("extractData");
         let body = (<any>res).data;
         // Another way, is to explicitly tell TypeScript that we’re not interested in doing strict type checking
         return body || {};
     }
 
-    private handleError(error: Response | any) {
+     handleError(error: Response | any) {
+        //this.loader.hide();
         let errMsg: string;
         if (error instanceof Response) {
             const err = error || '';
