@@ -81,12 +81,6 @@ export class HomePage {
 
 
     @ViewChild(Slides) slides: Slides;
-    ////    Add variable for holds data
-
-
-    ////    TEST ANIMATION
-
-    // state = 'opaque';
 
 
     constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions) {

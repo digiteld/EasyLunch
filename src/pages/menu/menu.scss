@@ -119,7 +119,7 @@ page-menu {
     height: 30px;
   }
 
-  a {
+  .scroll {
     color: #525252;
     text-decoration: none;
     font-size: 1.15em;
@@ -127,19 +127,19 @@ page-menu {
     margin: 15px 0 15px 15px;
   }
 
-  a:after {
+  .scroll:after {
     content:'';
     height:100%;
     left: 15px;
-    box-sizing:border-box;
-    position:absolute;
-    width:10%;
-    border-bottom:solid;
+    box-sizing: border-box;
+    position: absolute;
+    width: 10%;
+    border-bottom: solid;
     border-bottom-color: #F9B522;
     border-bottom-width: 2px;
   }
 
-  a:active:after {
+  .scroll:active:after {
     color: #333333;
     font-weight: 600;
 }
@@ -270,6 +270,13 @@ page-menu {
     font-size: 13px;
     font-weight: 600;
   }
+
+  .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+    top: 0; 
+    bottom: auto;
+    background-position: left 0 top 0;
+    height: 0;
+}
 
 
 }
