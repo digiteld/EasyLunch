@@ -39,6 +39,7 @@
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-fullscreen": "^1.2.0",
     "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-secure-storage": "^2.6.8",
     "cordova-plugin-splashscreen": "^4.0.3",
@@ -75,7 +76,8 @@
       "cordova-plugin-statusbar": {}
     },
     "platforms": [
-      "ios"
+      "ios",
+      "browser"
     ]
   }
 }
