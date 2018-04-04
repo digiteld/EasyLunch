@@ -44,6 +44,8 @@ export class MenuPage {
     mapPlat: any;
     mapDessert: any;
 
+    jsonChooseMenu:any[];
+
     //API
 
     idResto: number;
@@ -68,6 +70,8 @@ export class MenuPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
+        this.jsonChooseMenu=this.jsonChooseMenu || [];
+
         this.choosenMenuID = this.choosenMenuID || [];
         this.mapEntree = new Map();
         this.mapPlat = new Map();
@@ -82,6 +86,8 @@ export class MenuPage {
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
         this.choosenId = this.choosenId || [];
+
+
         this.schedule = true;
         this.nbPers = true;
         this.participate = false;
@@ -258,7 +264,8 @@ this.special=this.special || [];
                 desc: this.desc,
                 name: this.name,
                 city: this.city,
-                special:this.special
+                special:this.special,
+                jsonChoosen:this.jsonChooseMenu
             });
             console.log("yeeeah this is your recap my friend !");
         }
@@ -341,10 +348,10 @@ f
 
     private callBackMenu = (mealID, menuId) => {
 
-        console.log("MENU ID --> " + menuId)
-        console.log("MEALS ID --> " + mealID)
+
         this.storage.set('menuID', menuId)
         this.storage.set('menuMealID', mealID)
+        let json;
 
         this.menus.map(m => {
 
@@ -353,6 +360,7 @@ f
                 this.total += m.price
             }
         })
+        let p=[]
         console.log(this.mapEntree)
         console.log(this.mapPlat)
         console.log(this.mapDessert)
@@ -360,19 +368,32 @@ f
              let meal = parseInt(m)
             if (this.mapEntree.has(meal)) {
                 console.log("I FOUND --> " + m)
-                this.choosenMenuID.push(this.mapEntree.get(meal).name)
+                p.push(this.mapEntree.get(meal).name)
             }
             if (this.mapPlat.has(meal)) {
                 console.log("I FOUND --> " + m)
-                this.choosenMenuID.push(this.mapPlat.get(meal).name)
+                p.push(this.mapPlat.get(meal).name)
             }
             if (this.mapDessert.has(meal)) {
                 console.log("I FOUND --> " + m)
-                this.choosenMenuID.push(this.mapDessert.get(meal).name)
+                p.push(this.mapDessert.get(meal).name)
             }
 
 
         })
+
+        console.log("MEAL ID --> "+mealID)
+        console.log("MENU ID --> "+menuId)
+        console.log("CHOOSEN MENU"+JSON.stringify(this.choosenMenu))
+        console.log("MENUMEALID"+this.choosenMenuID)
+        json={"name":this.choosenMenu['name'],"mealName":p}
+
+        this.jsonChooseMenu.push(json)
+
+
+
+
+
 
     }
 

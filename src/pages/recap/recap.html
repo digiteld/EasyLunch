@@ -46,12 +46,15 @@
 
         </ng-container>
 
-        <ng-container *ngIf="menu">
+
+
+        <ng-container *ngIf="navParams.get('jsonChoosen').length>0">
+            <ng-container *ngFor="let menuChoose of navParams.get('jsonChoosen')">
             <ion-card>
                 <ion-card-content>
-                    <p>{{nameMenu}}</p>
+                    <p>{{menuChoose['name']}}</p>
 
-                    <ng-container *ngFor="let item of menuList;">
+                    <ng-container *ngFor="let item of menuChoose['mealName']">
 
                         <p>{{item}}</p>
 
@@ -59,6 +62,7 @@
                     </ng-container>
                 </ion-card-content>
             </ion-card>
+            </ng-container>
         </ng-container>
 
 
