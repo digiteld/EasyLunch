@@ -11,19 +11,24 @@ page-participate {
   }
 
   .img-table {
-    height: 50vh;
+    width: 100%;
+    height: 59%;
+  }
+
+  .padding {
+    padding: 0 25px;
   }
 
   .pattern {
     background-image: url(/assets/imgs/pattern-little.svg);
-    height: 46vh;
+    height: 250px;
   }
 
   .text {
     position: relative;
     transform: translateX(-50%);
     left: 50%;
-    width: calc(100% - 50px);
+    width: 100%;
     font-weight: 600;
     font-size: 1.45em;
     text-align: center;
@@ -32,7 +37,7 @@ page-participate {
 
   .code {
     position: relative;
-    width: calc(100% - 50px);
+    width: 100%;
     background-color: #FFFFFF;
     margin: auto;
     top: 3vh;
@@ -43,7 +48,7 @@ page-participate {
     margin: auto;
     transform: translateX(-50%);
     left: 50%;
-    top: 7vh;
+    top: 5vh;
     width: 65px;
     height: 65px;
     background-color: #F9B522;
@@ -59,7 +64,7 @@ page-participate {
     width: 65px;
     height: 65px;
     background-color: white;
-    box-shadow: none;
+    box-shadow: 0 8px 5px rgba(0,0,0,0.2);
   }
 
   .text-input {

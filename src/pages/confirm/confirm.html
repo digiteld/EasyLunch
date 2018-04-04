@@ -6,27 +6,30 @@
           <ion-img width="100%" height="100%" style="background: transparent !important;" src="/assets/imgs/code-complete.png"></ion-img>
       </div>
 
-      <div class="pattern">
-      <div class="padding">
-        <div class="text1"> Merci ! </div>
-        <div class="text2"> Votre réservation a bien été prise en compte </div>
+        <div class="pattern">
 
-          <ng-container *ngIf="create">
-            
-            <div class="text3"> Partagez ce code avec les personnes qui participeront au repas avec vous </div>
+          <div class="padding">
 
-            <div class="code">
-              <!-- <ion-input placeholder="Entrez le code ici" class="text-input" [(ngModel)]= "codeInput" color= "#5E7FB1"></ion-input> -->
-              <ion-label> {{code}} </ion-label>
-            </div>
+            <div class="text1"> Merci ! </div>
+            <div class="text2"> Votre réservation a bien été prise en compte </div>
 
-          </ng-container>  
-      </div>
+              <ng-container *ngIf="create">
+                
+                <div class="text3"> Partagez ce code avec les personnes qui participeront au repas avec vous </div>
 
-      <div class="item-check" ion-button round (click)="goHome()">
-          <img src="/assets/icon/check2.svg">
-      </div>
-      </div>
+                <div class="code">
+                  <ion-label> {{code}} </ion-label>
+                </div>
+
+              </ng-container>  
+
+          </div>
+
+          <div class="item-check" ion-button round (click)="goHome()">
+              <img src="/assets/icon/check2.svg">
+          </div>
+          
+        </div>
 
   </div>
 

@@ -7,29 +7,34 @@
         </div>
 
         <div class="pattern">
-            <div class="text"> Je participe à une réservation en cours </div>
 
-            <ng-container *ngIf="error">
-                <ion-img src="/assets/imgs/error.svg"></ion-img>
-            </ng-container>
+            <div class="padding">
+            
+                <div class="text"> Je participe à une réservation en cours </div>
 
-            <div class="code">
-                <ion-input placeholder="Entrez le code ici" class="text-input" (ionChange)="changeText()" [(ngModel)]= "codeInput" color= "#5E7FB1"></ion-input>
+                <ng-container *ngIf="notExist">
+                    <ion-img src="/assets/imgs/error.svg"></ion-img>
+                </ng-container>
+
+                <div class="code">
+                    <ion-input placeholder="Entrez le code ici" class="text-input" (ionChange)="changeText()" [(ngModel)]= "codeInput" color= "#5E7FB1"></ion-input>
+                </div>
+
+                <ng-container *ngIf="validate">
+                    <div class="item-check2" ion-button round (click)="openMenu()">
+                        <img src="/assets/icon/check3.svg">
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="!validate">
+                    <div class="item-check" ion-button round (click)="openMenu()">
+                        <img src="/assets/icon/check.svg">
+                    </div>
+                </ng-container>
+
             </div>
 
-
-            <ng-container *ngIf="validate">
-            <div class="item-check2" ion-button round (click)="openMenu()">
-                <img src="/assets/icon/check3.svg">
-            </div>
-            </ng-container>
-            <ng-container *ngIf="!validate">
-            <div class="item-check" ion-button round (click)="openMenu()">
-                <img src="/assets/icon/check.svg">
-            </div>
-            </ng-container>
         </div>
-
     </div>
 
 </ion-content>
