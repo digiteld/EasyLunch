@@ -320,14 +320,10 @@ this.special=this.special || [];
                 objDst.push(objSrc[this.tmpIndex])
                 console.log("ID of meal select --> " + objSrc[this.tmpIndex].id)
                 this.choosenId.push(objSrc[this.tmpIndex].id)
-                let idPlat=objSrc[this.tmpIndex].id
 
                 console.log("S --> "+special)
                 if(special!==undefined) {
-                    console.log("SPECIAL IS DEFINE")
-                    let json = { idPlat : special}
-
-                    this.special.push(json)
+              this.special.push(objSrc[this.tmpIndex].name+" : "+special)
                 }
             }
 
