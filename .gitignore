@@ -50,6 +50,6 @@ fabric.properties
 platform
 
 www/build
-
+platforms
 .sourcemaps
 .sourcemaps/main.js.map

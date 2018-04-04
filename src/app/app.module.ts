@@ -28,6 +28,7 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
+import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountCreaPage } from '../pages/account-crea/account-crea';
 import { AccountCreaPageModule } from '../pages/account-crea/account-crea.module';
@@ -87,7 +88,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Geolocation,
     AndroidPermissions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RestProvider
+    RestProvider,
+    LoaderProvider
       
   ]
 })

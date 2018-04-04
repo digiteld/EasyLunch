@@ -2,24 +2,24 @@
 
   <div id="logo"> <img src="assets/icon/logo-easylunch.svg"> </div>
 
-    <img class="envelope" src="assets/icon/envelope.svg">
-    <img class="locked" src="assets/icon/password.svg">
+    
 
       <div id="input">
           <ion-item>
-            <ion-label color="secondary" floating > Email </ion-label>
+            <ion-label color="secondary" floating> <ion-icon name="envelope"></ion-icon> Email </ion-label>
             <ion-input type="text" clearInput></ion-input>
           </ion-item>
         
           <ion-item>
-              <ion-label color="secondary" floating> Mot de passe </ion-label>
+              <ion-label color="secondary" floating> <ion-icon name="locked"></ion-icon> Mot de passe </ion-label>
               <ion-input type="text" clearInput></ion-input>
           </ion-item>
     </div>
-      
-      <button id="btnco" ion-button round (click)="openAddCard()">Me connecter</button>
 
-      <button id="btnpdc" ion-button round (click)="openCrea()">Pas de compte ?</button>
+      
+      <button id="btnco" ion-button round (click)="openAddCard()"> Me connecter </button>
+
+      <button id="btnpdc" ion-button round (click)="openCrea()"> Pas de compte ? </button>
 
 
 </ion-content>

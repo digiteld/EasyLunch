@@ -3,7 +3,7 @@
     <div id="restau">
         <div id="img">
             <img src={{img}}/>
-            <button (click)="goBack()"><img class="arrow" src="/assets/icon/arrow-left-white.svg"></button>
+            <button (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-white.svg"></button>
         </div>
 
 
@@ -23,11 +23,11 @@
     <!--        Menu scrollable      -->
     <div class="scroll-menu">
         <ion-scroll scrollX="true" style="width:100%; height:40px">
-                <div (click)="scroolToElement('menudujour')"> Menu du jour </div>
-                <div (click)="scroolToElement('formules')"> Formules </div>
-                <div (click)="scroolToElement('entrees')"> Entrées </div>
-                <div (click)="scroolToElement('plats')"> Plats </div>
-                <div (click)="scroolToElement('desserts')"> Desserts </div>
+                <div class="scroll" (click)="scroolToElement('menudujour')"> Menu du jour </div>
+                <div class="scroll" (click)="scroolToElement('formules')"> Formules </div>
+                <div class="scroll" (click)="scroolToElement('entrees')"> Entrées </div>
+                <div class="scroll" (click)="scroolToElement('plats')"> Plats </div>
+                <div class="scroll" (click)="scroolToElement('desserts')"> Desserts </div>
         </ion-scroll>
     </div>
     <!--        ///////////////      -->
@@ -42,7 +42,7 @@
 
         <div id="menudujour">
              
-            <h2><img src="/assets/icon/cloche.svg"> Menu du jour</h2>
+            <h2><img src="assets/icon/cloche.svg"> Menu du jour</h2>
         </div>
 
         <ng-container>
