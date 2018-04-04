@@ -46,9 +46,9 @@
         </ng-container>
 
 
-        <ng-container *ngIf="navParams.get('jsonChoosen')">
-        <ng-container *ngIf="navParams.get('jsonChoosen').length>0">
-            <ng-container *ngFor="let menuChoose of navParams.get('jsonChoosen')">
+        <ng-container *ngIf="jsonChoosenMenu">
+        <ng-container *ngIf="jsonChoosenMenu.length>0">
+            <ng-container *ngFor="let menuChoose of jsonChoosenMenu">
             <ion-card>
                 <ion-card-content>
                     <h4>{{menuChoose['name']}}</h4>
@@ -58,7 +58,7 @@
                     </ng-container>
 
                     <div class="price">
-                        X €
+                        {{menuChoose['price']}} €
                     </div>
                 </ion-card-content>
             </ion-card>
