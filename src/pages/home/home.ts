@@ -9,7 +9,7 @@ import {AndroidPermissions} from '@ionic-native/android-permissions';
 import {Slides} from 'ionic-angular';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 // import { trigger, state, style, transition, animate } from '@angular/animations';
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 import {MenuPage} from '../menu/menu';
 import {Storage} from "@ionic/storage";
@@ -89,7 +89,7 @@ export class HomePage {
     // state = 'opaque';
 
 
-    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions) {
+    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions,private geolocation: Geolocation) {
         this.cleanStorage()
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
@@ -112,6 +112,20 @@ export class HomePage {
 
     }
 
+    ionViewDidLoad() {
+        console.log("JE passe bien par là")
+        this.geolocation.getCurrentPosition().then((resp) => {
+            // resp.coords.latitude
+            // resp.coords.longitude
+            console.log("totot");
+        }).catch((error) => {
+            console.log("totot2");
+            console.log('Error getting location', error);
+        });
+        this.loadmap();
+        this.getRestaurants();
+
+    }
 
     ionViewDidEnter() {
         //CHECK AND REQUEST IF NECESSARY PERMISSION FOR POSITION
@@ -124,12 +138,10 @@ export class HomePage {
         if (!this.map)
             this.loadmap();
         console.log("JE passe bien par IONDIDENTER")
+        //this.getRestaurants();
     }
 
-    ionViewDidLoad() {
-        console.log("JE passe bien par là")
-        this.getRestaurants();
-    }
+    
 
 
     slideChanged() {
@@ -241,7 +253,7 @@ export class HomePage {
             timeout:2000
         })
     }
-
+    
 
 
     locationfound = (e) => {
@@ -282,11 +294,13 @@ export class HomePage {
     ////     Create a function for calling the restaurants from the provider
 
     getRestaurants() {
-
+        console.log("getRestaurants");
         this.rest.getRestaurants()
             .subscribe(
                 restaurant => {
+
                     this.restaurant = restaurant;
+                    console.log("this.formatData in getRestaurants");
                     this.formatData();
                 },
                 error => this.errorMessage = <any>error);
@@ -332,7 +346,7 @@ export class HomePage {
 
 
     formatData() {
-
+        console.log("formatData")
         ///  Create custom icon
 
         var forkIcon = L.icon({
@@ -351,6 +365,7 @@ export class HomePage {
         let array = this.restaurant;
 
         IntervalObservable.create(10).subscribe((i) => {
+            console.log("IntervalObservable")
             if (i > array.length-1) {
                 return false;
             }
@@ -360,22 +375,21 @@ export class HomePage {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}
             })
-                .on('add', event => {
-
-                    this.onAddLayer(event)
-
-
-                }).addTo(this.map);
+            console.log("PIN1");
+            pin.on('add', event => {this.onAddLayer(event)})
+            console.log("PIN2");
+            pin.addTo(this.map);
+            console.log("PIN3");
             pin.on('click', event => {
                 this.onClickLayer(event)
             });
-
+            console.log("PIN4");
             if (i === 0) {
                 console.log("JE ZOOM ON FIRST RESTO " + array[i].name)
                 this.markerArray.push(pin)
                 this.zoomOnNearestResto()
             }
-
+            console.log("PIN5");
             this.mapPin.push(pin);
 
 

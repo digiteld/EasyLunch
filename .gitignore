@@ -48,6 +48,6 @@ crashlytics-build.properties
 fabric.properties
 
 www/build
-
+platforms
 .sourcemaps
 .sourcemaps/main.js.map
