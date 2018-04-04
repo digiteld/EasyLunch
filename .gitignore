@@ -47,6 +47,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+platform
+
 www/build
 
 .sourcemaps

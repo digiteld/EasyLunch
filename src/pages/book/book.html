@@ -19,10 +19,10 @@
 
                         <ion-card-title>
                             <ion-row>
-                                <h2>{{booking[0].name}}</h2>
+                                <h2>{{mapResto.get(booking[0].restaurant_id).name}}</h2>
                             </ion-row>
                             <ion-row>
-                                <h3>{{booking[0].created_date}} </h3>
+                                <h3>{{date[0]}} </h3>
                             </ion-row>
                             <ion-row>
                                 <h4> {{booking[0].nb_users}} </h4>
@@ -56,7 +56,7 @@
                           <h2>{{mapResto.get(item.restaurant_id).name}}</h2>
                       </ion-row>
                       <ion-row>
-                            <h3>{{booking[0].created_date}} </h3>
+                            <h3>{{date[i]}} </h3>
                       </ion-row>
                       <ion-row>
                           <h4> {{item.nb_users}} </h4>

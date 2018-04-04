@@ -149,6 +149,7 @@ export class HomePage {
         console.log("J'ai cliqué sur le --> " + i)
         console.log("NBPERS --> " + this.NbPers)
         console.log("Schedule --> " + this.Schedule)
+
         let obj = this.restaurant[i]
         console.log("ID cc  --> " + obj)
         this.storage.set('id_restaurant', obj.id)
@@ -197,13 +198,13 @@ export class HomePage {
                 popupAnchor: [0, -15]
             });
             console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex())
-            
+
                 this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
                 pin.bounce({duration: 500, height: 100});
                 pin.setIcon(newIcon);
         }
-        
-        
+
+
 
     }
 
@@ -311,7 +312,7 @@ export class HomePage {
 
     validateNbPers() {
 
-        this.nbPersBtText=this.NbPers
+        this.nbPersBtText=this.NbPers.substring(0,2)
         console.log("NbPERS")
 
 
