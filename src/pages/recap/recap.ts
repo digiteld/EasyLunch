@@ -147,6 +147,10 @@ export class RecapPage {
             this.nameMenu = this.navParams.get('menu').name
             this.menu = true
         }
+        if(this.navParams.get('special').length > 0)
+        {
+            this.storage.set('special',this.navParams.get('special'))
+        }
         this.storage.get('schedule').then(data => {
             this.schedule = data
             console.log("DATA --> " + data)
@@ -156,6 +160,7 @@ export class RecapPage {
             this.nbPers = data
             console.log("DATA --> " + data)
         }, error => console.error(error))
+
     }
 
     private getMeals(id) {

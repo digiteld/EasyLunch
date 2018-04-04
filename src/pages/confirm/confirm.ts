@@ -31,6 +31,7 @@ export class ConfirmPage {
     menuID: any;
     menuMealID: any;
     total: number;
+    special:any
 
     @ViewChild('myTabs') tabRef: Tabs;
 
@@ -42,6 +43,7 @@ export class ConfirmPage {
         this.create = null;
         this.nbPers = null;
         this.schedule = null;
+        this.special=null
 
 
     }
@@ -114,6 +116,13 @@ export class ConfirmPage {
             },
             error => console.error(error))
 
+        this.storage.get('special').then(data=>{
+
+            this.special=data
+            this.post()
+        },
+            error => console.error(error))
+
     }
 
     post() {
@@ -138,7 +147,7 @@ export class ConfirmPage {
 
             if (this.create) {
 
-                if (this.nbPers != null && this.schedule != null) {
+                if (this.nbPers != null && this.schedule != null ) {
                     this.cleanStorage()
 
                     console.log("MEAL ID  --> " + this.mealId)
@@ -153,12 +162,13 @@ export class ConfirmPage {
                         date:dateTime,
                         payment_id: 2,
                         menu: menu,
-                        total: this.total
+                        total: this.total,
+                        special:this.special
                     })
                 }
             }
             else {
-                if (this.idCommand != null) {
+                if (this.idCommand != null ) {
 
                     console.log("TOTAL --> "+this.total)
                     this.cleanStorage()
@@ -170,7 +180,8 @@ export class ConfirmPage {
                         booking_id: this.idCommand,
                         menu: menu,
                         total: this.total,
-                        date:dateTime
+                        date:dateTime,
+                        special:this.special
                     })
                 }
             }
