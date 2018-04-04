@@ -33,6 +33,7 @@ export class ConfirmPage {
     total: number;
     special:any
 
+
     @ViewChild('myTabs') tabRef: Tabs;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage,) {
@@ -55,6 +56,12 @@ export class ConfirmPage {
     }
 
     init() {
+        this.storage.get('special').then(data=>{
+
+                this.special=data
+
+            },
+            error => console.error(error))
 
         this.storage.get('menuID').then(data => {
 
@@ -116,12 +123,7 @@ export class ConfirmPage {
             },
             error => console.error(error))
 
-        this.storage.get('special').then(data=>{
 
-            this.special=data
-            this.post()
-        },
-            error => console.error(error))
 
     }
 
@@ -153,7 +155,7 @@ export class ConfirmPage {
 
                     console.log("MEAL ID  --> " + this.mealId)
 
-
+                    console.log("!!! JE CREE UNE RESERVATION !!!")
                     this.postBooking({
                         master_user_id: 1,
                         restaurant_id: 1,
@@ -235,6 +237,7 @@ export class ConfirmPage {
         this.storage.remove('idMeals')
         this.storage.remove('id_command')
         this.storage.remove('create_booking')
+        this.storage.remove('special')
 
 
     }

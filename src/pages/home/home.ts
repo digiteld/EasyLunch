@@ -406,6 +406,7 @@ export class HomePage {
         this.storage.remove('idMeals')
         this.storage.remove('id_command')
         this.storage.remove('create_booking')
+        this.storage.remove('special')
 
 
     }
