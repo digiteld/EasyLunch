@@ -241,3 +241,6 @@
 [0403/145534.745:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)
 [0403/145534.751:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
 [0403/145534.752:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)
+[0404/095256.070:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)
+[0404/095256.104:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0404/095256.105:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)
