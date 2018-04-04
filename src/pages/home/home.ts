@@ -362,7 +362,7 @@ export class HomePage {
         IntervalObservable.create(10).subscribe((i) => {
             console.log("IntervalObservable")
             if (i > array.length-1) {
-                return false;
+                 return false;
             }
 
             console.log("MOD --> "+i+" --> "+array[i].mod)
