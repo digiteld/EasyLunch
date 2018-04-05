@@ -15,6 +15,7 @@ import {DetailMenuPage} from "../detail-menu/detail-menu";
     templateUrl: 'menu.html',
 })
 export class MenuPage {
+
     @ViewChild(Content) content: Content;
     errorMessage: string;
 
@@ -67,7 +68,7 @@ export class MenuPage {
     special: any
 
 
-    @ViewChild(Content) content: Content;
+
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
