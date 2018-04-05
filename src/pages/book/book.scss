@@ -38,6 +38,14 @@ page-book {
     padding: 0 !important;
   }
 
+  #container {
+    display: flex;
+  }
+
+  #img {
+    width: 45vw;
+  }
+  
   img {
     margin: 10px;
     width: 100px;
