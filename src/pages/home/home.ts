@@ -360,7 +360,7 @@ export class HomePage {
         let array = this.restaurant;
 
         IntervalObservable.create(10).subscribe((i) => {
-            console.log("IntervalObservable")
+            
             if (i > array.length-1) {
                  return false;
             }
