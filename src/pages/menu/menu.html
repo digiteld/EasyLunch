@@ -22,15 +22,17 @@
 
     <!--        Menu scrollable      -->
 
-    <!--<div class="scroll-menu">-->
-        <!--<ion-scroll scrollX="true" style="width:100%; height:40px">-->
-                <!--<div class="scroll" (click)="scroolToElement('menudujour')"> Menu du jour </div>-->
-                <!--<div class="scroll" (click)="scroolToElement('formules')"> Formules </div>-->
-                <!--<div class="scroll" (click)="scroolToElement('entrees')"> Entrées </div>-->
-                <!--<div class="scroll" (click)="scroolToElement('plats')"> Plats </div>-->
-                <!--<div class="scroll" (click)="scroolToElement('desserts')"> Desserts </div>-->
-        <!--</ion-scroll>-->
-    <!--</div>-->
+    <div class="scroll-menu">
+        <ion-scroll scrollX="true" style="width:100%; height:40px">
+                <div class="scroll" id="scrool-menudujour" (click)="scroolToElement('menudujour')"> Menu du jour </div>
+                <div class="scroll" id="scrool-formules" (click)="scroolToElement('formules')"> Formules </div>
+                <div class="scroll" id="scrool-entrees" (click)="scroolToElement('entrees')"> Entrées </div>
+                <div class="scroll" id="scrool-plats" (click)="scroolToElement('plats')"> Plats </div>
+                <div class="scroll" id="scrool-desserts" (click)="scroolToElement('desserts')"> Desserts </div>
+            <div class="bottom-border" id="bottom-border"></div>
+        </ion-scroll>
+
+    </div>
 
     <!--        ///////////////      -->
 
@@ -38,7 +40,6 @@
     <!--        Meal choice      -->
 
     <div class="selection">
-
 
         <!--        Menu du jour      -->
 
@@ -55,7 +56,19 @@
             <ion-card (click)="openDetailMenu(menuOfDay.id, true)">
 
                 <ion-card-content>
-                    <div class="entree">
+                    <div class="choice">
+                        <p> Plat </p>
+                        <p class="price"> {{menuOfDay.price}}€ </p>
+                    </div>
+                    <div class="choice">
+                        <p> Entrée / Plat / Dessert </p>
+                        <p class="price"> {{menuOfDay.price}}€ </p> 
+                    </div>
+                    <div class="choice">
+                        <p> Entrée / Plat ou Plat / Dessert </p>
+                            <p class="price"> {{menuOfDay.price}}€ </p> 
+                    </div>
+                    <!-- <div class="entree">
                         <h3>
                             Entrée
                         </h3>
@@ -91,7 +104,7 @@
 
                     <div class="price">
                         {{menuOfDay.price}}€
-                    </div>
+                    </div> -->
                 </ion-card-content>
 
             </ion-card>
