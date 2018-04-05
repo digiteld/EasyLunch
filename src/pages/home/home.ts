@@ -55,7 +55,7 @@ export class HomePage {
 
 
     ////    Add variable for holds data
-
+    observable:any;
     map: any;
     restaurant: any;
     errorMessage: string;
@@ -347,22 +347,27 @@ export class HomePage {
         var forkIcon = L.icon({
             iconUrl: 'assets/icon/pin.svg',
             iconSize: [37.5, 50],
+            iconAnchor: [18.75, 50],
             popupAnchor: [0, -15]
         });
 
         var newIcon = L.icon({
             iconUrl: 'assets/icon/pin.svg',
             iconSize: [60, 80],
+            iconAnchor: [30, 80],
             popupAnchor: [0, -15]
         });
         ///   Diplay marker on map
 
         let array = this.restaurant;
 
-        IntervalObservable.create(10).subscribe((i) => {
-            console.log("IntervalObservable")
+        this.observable=IntervalObservable.create(10).subscribe((i) => {
+
             if (i > array.length-1) {
-                 return false;
+                if(this.observable.isStopped) {
+                    this.observable.unsubscribe();
+                }
+                return false;
             }
 
             console.log("MOD --> "+i+" --> "+array[i].mod)
