@@ -22,10 +22,10 @@
                                 <h2>{{mapResto.get(booking[0].restaurant_id).name}}</h2>
                             </ion-row>
                             <ion-row>
-                                <h3>{{date[0]}} </h3>
+                                <h3><img src="assets/icon/clock.svg" style="width: 10%;height: 50%;float:left">Auj. à {{booking[0].schedule.toString()}} </h3>
                             </ion-row>
                             <ion-row>
-                                <h3> {{booking[0].nb_users}} </h3>
+                                <h3> <img src="assets/icon/users.svg" style="width: 10%;height: 50%;float:left">{{booking[0].nb_users}} Personnes</h3>
                             </ion-row>
                             <ion-row>
                                 <h4> {{booking[0].price}} €</h4>
@@ -56,10 +56,10 @@
                           <h2>{{mapResto.get(item.restaurant_id).name}}</h2>
                       </ion-row>
                       <ion-row>
-                            <h3>{{date[i]}} </h3>
+                            <h3><img src="assets/icon/clock.svg" style="width: 10%;height: 50%;float:left">Le {{date[i]}} à {{item.schedule}}</h3>
                       </ion-row>
                       <ion-row>
-                          <h3> {{item.nb_users}} </h3>
+                          <h3> <img src="assets/icon/users.svg" style="width: 10%;height: 50%;float:left">{{item.nb_users}} Personnes</h3>
                       </ion-row>
                       <ion-row>
                           <h4> {{item.price}} € </h4>
