@@ -34,6 +34,8 @@ export class RestProvider {
 ////    Function to get the restaurants from the API
 
     getRestaurants(): Observable<{}> {
+        // lat,lon
+        //+"?lat="+lat+"&lon="+lon+"&meter=100000"
         return this.http.get(this.apiUrl).pipe(
             map(this.extractData),
             catchError(this.handleError)
