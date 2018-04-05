@@ -8,9 +8,15 @@
 
         <div class="pattern">
 
+
+            <ng-container *ngIf="error">
+                <ion-img src="assets/imgs/error.svg"></ion-img>
+            </ng-container>
+
             <div class="padding">
             
                 <div class="text"> Je participe à une réservation en cours </div>
+
 
                 <ng-container *ngIf="notExist">
                     <ion-img src="assets/imgs/error.svg"></ion-img>
@@ -32,9 +38,10 @@
                     </div>
                 </ng-container>
 
-            </div>
+
 
         </div>
+    </div>
     </div>
 
 </ion-content>

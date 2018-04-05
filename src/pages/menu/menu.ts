@@ -8,6 +8,7 @@ import {Storage} from "@ionic/storage";
 import {DetailMenuPage} from "../detail-menu/detail-menu";
 
 
+
 @IonicPage()
 @Component({
     selector: 'page-menu',
@@ -15,6 +16,7 @@ import {DetailMenuPage} from "../detail-menu/detail-menu";
 })
 export class MenuPage {
 
+    @ViewChild(Content) content: Content;
     errorMessage: string;
 
 
@@ -66,11 +68,13 @@ export class MenuPage {
     special: any
 
 
-    @ViewChild(Content) content: Content;
+
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
+
         this.jsonChooseMenu = this.jsonChooseMenu || [];
+
 
         this.choosenMenuID = this.choosenMenuID || [];
         this.mapEntree = new Map();
@@ -148,7 +152,11 @@ export class MenuPage {
 
     }
 
-
+scrollToElement(id)
+{
+    console.log("JE SCROLL")
+    this.content.scrollTo(0, 1000, 0)
+}
     ionViewDidEnter() {
         this.content.resize()
     }

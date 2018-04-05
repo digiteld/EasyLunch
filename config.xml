@@ -78,7 +78,6 @@
     </platform>
     <allow-navigation href="http://192.168.1.15:8100" />
     <allow-navigation href="http://192.168.1.16:8101" />
-    <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
@@ -89,6 +88,7 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>need location access to find things nearby</string>
     </edit-config>
-    <allow-navigation href="http://192.168.1.48:8100" />
-    <plugin name="cordova-plugin-device" spec="^2.0.1" />
+
+    <engine name="ios" spec="^4.5.4" />
+
 </widget>
