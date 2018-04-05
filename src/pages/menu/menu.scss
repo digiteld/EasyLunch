@@ -72,6 +72,11 @@ page-menu {
 ////    Card menu
 
 
+  .choice {
+    display: flex;
+    justify-content: space-between;
+  }
+  
   .card {
     margin: 12px 25px;
     width: calc(100% - 50px);
