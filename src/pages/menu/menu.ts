@@ -71,10 +71,9 @@ export class MenuPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
-<<<<<<< HEAD
-=======
+
         this.jsonChooseMenu = this.jsonChooseMenu || [];
->>>>>>> a2a45cdc9a6331e1e2fe00501b67e94c6e76ea7f
+
 
         this.choosenMenuID = this.choosenMenuID || [];
         this.mapEntree = new Map();
