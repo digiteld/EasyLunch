@@ -1,77 +1,64 @@
 <ion-content>
-  <div class="full">
-    <div class="new">
-      <h2> Mes réservations en cours </h2>
-      <ng-container *ngIf="!commandeEncour">
-      <p> Vous n'avez aucune réservation en cours ! </p>
-      
-        <button ion-button round (click)="goHome()">
-            J'organise une réservation
-        </button>
-      </ng-container>
-        <ng-container *ngIf="commandeEncour">
-            <ion-card (click)="openDetail(0)">
+    <div class="full">
+        <div class="new">
+            <h2> Mes réservations en cours </h2>
+            <ng-container *ngIf="!commandeEncour">
+                <p> Vous n'avez aucune réservation en cours ! </p>
 
-                <ion-card-content>
+                <button ion-button round (click)="goHome()">
+                    J'organise une réservation
+                </button>
+            </ng-container>
+            <ng-container *ngIf="commandeEncour">
+                <ion-card (click)="openDetail(0)">
 
-                    <ion-row>
-                        <img src={{mapResto.get(booking[0].restaurant_id).picture}}/>
-
-                        <ion-card-title>
-                            <ion-row>
+                    <ion-card-content>
+                        <div id="container">
+                            <div id="img">
+                                <img src={{mapResto.get(booking[0].restaurant_id).picture}}/>
+                            </div>
+                            <div id="info">
                                 <h2>{{mapResto.get(booking[0].restaurant_id).name}}</h2>
-                            </ion-row>
-                            <ion-row>
-                                <h3><img src="assets/icon/clock.svg" style="width: 10%;height: 50%;float:left">Auj. à {{booking[0].schedule.toString()}} </h3>
-                            </ion-row>
-                            <ion-row>
-                                <h3> <img src="assets/icon/users.svg" style="width: 10%;height: 50%;float:left">{{booking[0].nb_users}} Personnes</h3>
-                            </ion-row>
-                            <ion-row>
+                                <h3>
+                                    <img class="iconresa" src="assets/icon/clock.svg">auj. à {{booking[0].schedule.toString()}} </h3>
+                                <h3>
+                                    <img class="iconresa" src="assets/icon/users.svg">{{booking[0].nb_users}} personnes</h3>
                                 <h4> {{booking[0].price}} €</h4>
-                            </ion-row>
-                        </ion-card-title>
-                    </ion-row>
+                            </div>
+                        </div>
+                    </ion-card-content>
 
-                </ion-card-content>
+                </ion-card>
+            </ng-container>
+        </div>
 
-            </ion-card>
-        </ng-container>
+        <div class="old">
+            <p> Mes réservations précédentes
+                <p>
+
+                    <ng-container *ngFor="let item of booking;index as i">
+                        <ng-container *ngIf="!commandeEncour || (commandeEncour && i>0)">
+                            <ion-card (click)="openDetail(i)">
+
+                                <ion-card-content>
+                                    <div id="container">
+                                        <div id="img">
+                                            <img src={{mapResto.get(item.restaurant_id).picture}}/>
+                                        </div>
+                                        <div id="info">
+                                            <h2>{{mapResto.get(item.restaurant_id).name}}</h2>
+                                            <h3>
+                                                <img src="assets/icon/clock.svg">Le {{date[i]}} à {{item.schedule}}</h3>
+                                            <h3>
+                                                <img src="assets/icon/users.svg">{{item.nb_users}} Personnes</h3>
+                                            <h4> {{item.price}} € </h4>
+                                        </div>
+                                    </div>
+                                </ion-card-content>
+
+                            </ion-card>
+                        </ng-container>
+                    </ng-container>
+        </div>
     </div>
-
-    <div class="old">
-      <p> Mes réservations précédentes <p>
-    
-    <ng-container *ngFor="let item of booking;index as i">
-        <ng-container *ngIf="!commandeEncour || (commandeEncour && i>0)" >
-      <ion-card (click)="openDetail(i)">
-
-          <ion-card-content>
-
-              <ion-row>
-                  <img src={{mapResto.get(item.restaurant_id).picture}}/>
-
-                  <ion-card-title>
-                      <ion-row>
-                          <h2>{{mapResto.get(item.restaurant_id).name}}</h2>
-                      </ion-row>
-                      <ion-row>
-                            <h3><img src="assets/icon/clock.svg" style="width: 10%;height: 50%;float:left">Le {{date[i]}} à {{item.schedule}}</h3>
-                      </ion-row>
-                      <ion-row>
-                          <h3> <img src="assets/icon/users.svg" style="width: 10%;height: 50%;float:left">{{item.nb_users}} Personnes</h3>
-                      </ion-row>
-                      <ion-row>
-                          <h4> {{item.price}} € </h4>
-                      </ion-row>
-                  </ion-card-title>
-              </ion-row>
-
-          </ion-card-content>
-
-        </ion-card>
-        </ng-container>
-    </ng-container>
-    </div>
-  </div>
 </ion-content>
