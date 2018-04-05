@@ -92,8 +92,4 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>need location access to find things nearby</string>
     </edit-config>
-
-    <engine name="ios" spec="^4.5.4" />
-
->>>>>>> d6d1fca030460ccab30041bfedd058e7feba8f9a
 </widget>
