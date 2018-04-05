@@ -25,7 +25,7 @@ export class BookPage {
     }
 
     ionViewDidEnter() {
-
+        this.getBooking()
     }
 
     private getBooking() {
