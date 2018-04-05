@@ -82,12 +82,16 @@
     <plugin name="cordova-sqlite-storage" spec="^2.3.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-    <plugin name="cordova-plugin-device" spec="^1.1.7" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>need location access to find things nearby</string>
     </edit-config>
+<<<<<<< HEAD
     <engine name="ios" spec="^4.5.4" />
+=======
+    <allow-navigation href="http://192.168.1.48:8100" />
+    <plugin name="cordova-plugin-device" spec="^2.0.1" />
+>>>>>>> a2a45cdc9a6331e1e2fe00501b67e94c6e76ea7f
 </widget>

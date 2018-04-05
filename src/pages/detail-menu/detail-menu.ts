@@ -83,10 +83,19 @@ export class DetailMenuPage {
 
   goBackMenu()
   {
+      console.log("NB MEAL --> "+ this.navParams.get('nbMeal'))
       console.log("Je change")
-      this.mealId.push(this.entree)
-      this.mealId.push(this.plat)
-      this.mealId.push(this.dessert)
+      if(this.navParams.get('nbMeal')===3) {
+          this.mealId.push(this.entree)
+          this.mealId.push(this.plat)
+          this.mealId.push(this.dessert)
+      }
+      else
+      {
+          console.log("JE VAIS BIEN LA")
+          this.mealId.push(this.entree)
+          this.mealId.push(this.plat)
+      }
 
       let callback = this.navParams.get('callback');
       callback(this.mealId, this.navParams.get('idMeal'))

@@ -1,6 +1,6 @@
 page-contact {
     .scroll-content {
-        background-color: #F9F9F9;
+        background-color: #F2F2F2;
         padding: 25px!important;
     }
 
@@ -31,8 +31,23 @@ page-contact {
         box-shadow: 0 0 2px rgba(0,0,0, 0.08);
     }
 
-    img {
+    .info {
+        height: 21.59px;
+    }
+
+    .paiement {
+        height: 18.18px;
+    }
+
+    .faq {
+        height: 25px;
+    }
+
+    .contact {
         height: 28px;
+    }
+
+    img {
         vertical-align: middle;
         margin-left: 15px;
         margin-right: 5px;

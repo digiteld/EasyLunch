@@ -14,17 +14,16 @@ page-login {
         width: 146.8px;
     }
 
-    .envelope {
-        position: relative;
-        height: 18.6px;
-        top: 15.5vh;
+    .ion-ios-envelope,
+    .ion-md-envelope {
+      content: url(../assets/icon/envelope.svg);
+      height: 18.6px;
     }
 
-    .locked {
-        position: relative;
-        height: 26px;
-        top: 26vh;
-        right: 7vw;
+    .ion-ios-locked,
+    .ion-md-locked {
+      content: url(../assets/icon/password.svg);
+      height: 26px;
     }
 
     #input {

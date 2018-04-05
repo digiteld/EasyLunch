@@ -49,6 +49,8 @@ export class RecapPage {
 
     code: string;
 
+    jsonChoosenMenu: any;
+
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public rest: RestProvider) {
 
         this.img = navParams.get('img');
@@ -62,6 +64,7 @@ export class RecapPage {
         this.dessertList = this.dessertList || [];
         this.menuList = this.menuList || [];
         this.menuMeal = this.menuMeal || [];
+        this.jsonChoosenMenu = this.jsonChoosenMenu || [];
         this.total = 0;
         this.printCode = false;
 
@@ -71,7 +74,7 @@ export class RecapPage {
         }
 
         else {
-            
+
             this.platMap = new Map()
 
             this.printCode = this.navParams.get('printCode')
@@ -120,7 +123,7 @@ export class RecapPage {
         this.storage.set('dessert', this.navParams.get('dessert'))
         this.storage.set('total', this.navParams.get('total'))
         this.total = this.navParams.get('total')
-
+        this.jsonChoosenMenu=this.navParams.get('jsonChoosen')
 
         this.entree = false;
         this.plat = false;
@@ -145,18 +148,19 @@ export class RecapPage {
         }
         if (this.navParams.get('menuMeal').length > 0) {
             this.menuList = this.navParams.get('menuMeal')
+
             console.log("OOOOO ---> " + JSON.stringify(this.menuList))
             this.nameMenu = this.navParams.get('menu').name
             this.menu = true
         }
-        if(this.navParams.get('special').length > 0)
-        {
-            this.storage.set('special',this.navParams.get('special'))
+        if (this.navParams.get('special').length > 0) {
+            this.storage.set('special', this.navParams.get('special'))
         }
         this.storage.get('schedule').then(data => {
             this.schedule = data
             console.log("DATA --> " + data)
         }, error => console.error(error))
+
 
         this.storage.get('nbPers').then(data => {
             this.nbPers = data
@@ -230,26 +234,31 @@ export class RecapPage {
             this.menu = true
 
             let obj = this.navParams.get('menu')
-            let id = Object.keys(obj)
-            this.menus.map(m => {
-                if (m.id == id) {
-                    console.log(JSON.stringify(m))
-                    this.nameMenu = m.name
+            Object.keys(obj).map(key => {
+                let json
+                let name
+                let price
+                let mealName = []
 
-                }
+                this.menus.map(m => {
+                    console.log("M ID --> " + m.id + " KEY --> " + key)
 
-            })
+                    if (m.id == key) {
+                        name = m.name
+                        price = m.price
 
-            console.log("ID MOTHERFUCKA --> "+id)
-            let arrayId = []
-                id.map(i=>{
-                    arrayId=arrayId.concat(obj[i])
+                    }
                 })
-            arrayId.map(ID => {
-                this.menuList.push(this.platMap.get(ID))
-                console.log("ID AAA "+ID)
+                obj[key].map(idMeal => {
+                    mealName.push(this.platMap.get(idMeal))
+                    console.log("ID MEAL --> " + idMeal)
+
+                })
+                 json = {"name": name, "mealName": mealName, "price":price}
+                 this.jsonChoosenMenu.push(json)
 
             })
+            console.log(obj)
 
 
         }
@@ -259,7 +268,7 @@ export class RecapPage {
 
     private getCode() {
 
-        let arg=this.navParams.get('bookingId').toString()+'?booking=true'
+        let arg = this.navParams.get('bookingId').toString() + '?booking=true'
         console.log(arg)
         this.rest.getCodeByBookingId(arg)
 

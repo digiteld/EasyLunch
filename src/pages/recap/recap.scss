@@ -1,7 +1,7 @@
 page-recap {
 
   .content {
-    background-color: #F9F9F9;
+    background-color: F2F2F2;
   }
 
 
@@ -203,16 +203,6 @@ page-recap {
     }
   
 
-        ////   Card formules
-  
-
-  
-  
-        ////   Card entrées / plats / dessert
-  
-  
-
-
       ////    FOOTER
 
           //  TOTAL
@@ -251,7 +241,42 @@ page-recap {
             font-weight: 600;
             background-image: linear-gradient(#F1C40F, #FFA300);
           }
-  
+
+
+
+        ////    RECAP RESERVATION
+
+        .resacode {
+          display: flex;
+          flex-direction: column;
+          margin: 5px 30px 30px;
+        }
+
+        .resa {
+          margin: auto;
+          margin-bottom: 20px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #525252;
+        }
+
+        .code {
+          margin: auto;
+          display: flex;
+          height: 8.8vh;
+          width: 100%;
+          background-color: #F2F2F2;
+        }
+
+        .code p {
+          margin: auto !important;
+          font-size: 18px !important;
+          font-weight: 500 !important;
+          color: #333333 !important;
+          font-style: normal !important;
+        }
+        
+
 
   }
   

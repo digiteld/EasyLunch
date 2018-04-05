@@ -5,7 +5,7 @@
             <ion-row flex-wrap: nowrap class="z-index">
                 <ion-col class="stylecol">
                     <button class="stylebtn" ion-button full icon-start (click)="nbpicker.open()">
-                        <ion-datetime #nbpicker pickerFormat="HH" hourValues="1,2,3,4,5,6,7,8,9,10,11,12" displayFormat={{formatnbPers}} doneText="Valider"
+                        <ion-datetime #nbpicker pickerFormat="hh" hourValues="1,2,3,4,5,6,7,8,9,10,11,12" displayFormat={{formatnbPers}} doneText="Valider"
                             cancelText="Annuler" [(ngModel)]="NbPers" (ionChange)="validateNbPers()" ></ion-datetime>
                         <ion-icon name="combien"></ion-icon>
                         <p>{{nbPersBtText}}</p>

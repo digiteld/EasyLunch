@@ -45,6 +45,8 @@ export class MenuPage {
     mapPlat: any;
     mapDessert: any;
 
+    jsonChooseMenu: any[];
+
     //API
 
     idResto: number;
@@ -62,13 +64,17 @@ export class MenuPage {
     nbPers: boolean;
     participate: boolean;
 
-    special:any
+    special: any
 
 
     @ViewChild(Content) content: Content;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
+<<<<<<< HEAD
+=======
+        this.jsonChooseMenu = this.jsonChooseMenu || [];
+>>>>>>> a2a45cdc9a6331e1e2fe00501b67e94c6e76ea7f
 
         this.choosenMenuID = this.choosenMenuID || [];
         this.mapEntree = new Map();
@@ -84,6 +90,8 @@ export class MenuPage {
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
         this.choosenId = this.choosenId || [];
+
+
         this.schedule = true;
         this.nbPers = true;
         this.participate = false;
@@ -93,7 +101,7 @@ export class MenuPage {
 
         this.total = 0;
 
-this.special=this.special || [];
+        this.special = this.special || [];
 
         this.storage.get('id_restaurant').then(data => {
                 console.log("ID --> " + data)
@@ -157,6 +165,12 @@ scrollToElement(id)
         this.navCtrl.pop();
     }
 
+    scroolToElement(id) {
+        console.log(id)
+        let yOffset = document.getElementById(id).offsetTop;
+        this.content.scrollTo(0, yOffset + 290, 0)
+    }
+
     openDetail(plat, index) {
         if ((this.schedule && this.nbPers) || this.participate) {
             let obj
@@ -193,8 +207,8 @@ scrollToElement(id)
             let name;
 
             if (mod) {
-                nbMeal=this.menuOfDay.nbmeals
-                name=this.menuOfDay.name
+                nbMeal = this.menuOfDay.nbmeals
+                name = this.menuOfDay.name
                 this.menuOfDay.id_plat.forEach(id => {
                     if (this.mapEntree.has(id))
                         _entree.push(this.mapEntree.get(id))
@@ -206,13 +220,12 @@ scrollToElement(id)
                 })
             }
             else {
-                this.formule.map(f=>{
-                    if(f.id===id)
-                    {
-                        name=f.name
-                        nbMeal=f.nbmeals
+                this.formule.map(f => {
+                    if (f.id === id) {
+                        name = f.name
+                        nbMeal = f.nbmeals
                         console.log(JSON.stringify(f))
-                        f.id_plat.forEach(idMeal=>{
+                        f.id_plat.forEach(idMeal => {
                             if (this.mapEntree.has(idMeal))
                                 _entree.push(this.mapEntree.get(idMeal))
                             if (this.mapPlat.has(idMeal))
@@ -228,12 +241,12 @@ scrollToElement(id)
             }
 
             this.navCtrl.push(DetailMenuPage, {
-                name:name,
+                name: name,
                 entree: _entree,
                 plat: _plat,
                 dessert: _dessert,
                 idMeal: id,
-                nbMeal:nbMeal,
+                nbMeal: nbMeal,
                 callback: this.callBackMenu
 
 
@@ -257,7 +270,8 @@ scrollToElement(id)
                 desc: this.desc,
                 name: this.name,
                 city: this.city,
-                special:this.special
+                special: this.special,
+                jsonChoosen: this.jsonChooseMenu
             });
             console.log("yeeeah this is your recap my friend !");
         }
@@ -294,14 +308,15 @@ scrollToElement(id)
             },
             error => this.errorMessage = <any>error)
     }
-f
 
-    private callbackChild = (p, valeur,special) => {
+
+
+    private callbackChild = (p, valeur, special) => {
 
         console.log(p, valeur)
 
-        this.total = (this.total*100+p*100)/100;
-        console.log("toto --> "+this.total)
+        this.total = (this.total * 100 + p * 100) / 100;
+        console.log("toto --> " + this.total)
         if (valeur > 0) {
             let objSrc;
             let objDst;
@@ -327,9 +342,9 @@ f
                 console.log("ID of meal select --> " + objSrc[this.tmpIndex].id)
                 this.choosenId.push(objSrc[this.tmpIndex].id)
 
-                console.log("S --> "+special)
-                if(special!==undefined) {
-              this.special.push(objSrc[this.tmpIndex].name+" : "+special)
+                console.log("S --> " + special)
+                if (special !== undefined) {
+                    this.special.push(objSrc[this.tmpIndex].name + " : " + special)
                 }
             }
 
@@ -340,10 +355,10 @@ f
 
     private callBackMenu = (mealID, menuId) => {
 
-        console.log("MENU ID --> " + menuId)
-        console.log("MEALS ID --> " + mealID)
+
         this.storage.set('menuID', menuId)
         this.storage.set('menuMealID', mealID)
+        let json;
 
         this.menus.map(m => {
 
@@ -352,26 +367,36 @@ f
                 this.total += m.price
             }
         })
+        let p = []
         console.log(this.mapEntree)
         console.log(this.mapPlat)
         console.log(this.mapDessert)
         mealID.map(m => {
-             let meal = parseInt(m)
+            let meal = parseInt(m)
             if (this.mapEntree.has(meal)) {
                 console.log("I FOUND --> " + m)
-                this.choosenMenuID.push(this.mapEntree.get(meal).name)
+                p.push(this.mapEntree.get(meal).name)
             }
             if (this.mapPlat.has(meal)) {
                 console.log("I FOUND --> " + m)
-                this.choosenMenuID.push(this.mapPlat.get(meal).name)
+                p.push(this.mapPlat.get(meal).name)
             }
             if (this.mapDessert.has(meal)) {
                 console.log("I FOUND --> " + m)
-                this.choosenMenuID.push(this.mapDessert.get(meal).name)
+                p.push(this.mapDessert.get(meal).name)
             }
 
 
         })
+
+        console.log("MEAL ID --> " + mealID)
+        console.log("MENU ID --> " + menuId)
+        console.log("CHOOSEN MENU" + JSON.stringify(this.choosenMenu))
+        console.log("MENUMEALID" + this.choosenMenuID)
+        json = {"name": this.choosenMenu['name'], "mealName": p, "price":this.choosenMenu['price']}
+
+        this.jsonChooseMenu.push(json)
+
 
     }
 

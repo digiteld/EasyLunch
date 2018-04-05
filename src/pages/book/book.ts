@@ -11,6 +11,7 @@ export class BookPage {
 
     errorMessage: string;
     booking: any;
+    date:any;
     tabs: any;
     mapResto: any;
 
@@ -30,6 +31,7 @@ export class BookPage {
     private getBooking() {
         this.rest.getCommandWithIdUser(1).subscribe(
             _booking => {
+                this.date=_booking.date
                 this.booking = _booking.booking;
                 console.log(JSON.stringify(this.booking[0]))
                 let date = this.booking[0].created_date
@@ -42,6 +44,7 @@ export class BookPage {
                             if (date.substr(8, 2) == (new Date()).getDate()) {
 
                                 this.commandeEncour = true;
+                                console.log(JSON.stringify(this.booking[0]))
                             }
                         }
 
@@ -102,6 +105,11 @@ export class BookPage {
         this.tabs.select(0)
         console.log('FELICITATION !!! Parcours terminé');
     }
+
+  test()
+  {
+
+  }
 
 
 }

@@ -19,16 +19,16 @@
 
                         <ion-card-title>
                             <ion-row>
-                                <h2>{{booking[0].name}}</h2>
+                                <h2>{{mapResto.get(booking[0].restaurant_id).name}}</h2>
                             </ion-row>
                             <ion-row>
-                                <h3>{{booking[0].created_date}} </h3>
+                                <h3><img src="assets/icon/clock.svg" style="width: 10%;height: 50%;float:left">Auj. à {{booking[0].schedule.toString()}} </h3>
                             </ion-row>
                             <ion-row>
-                                <h4> {{booking[0].nb_users}} </h4>
+                                <h3> <img src="assets/icon/users.svg" style="width: 10%;height: 50%;float:left">{{booking[0].nb_users}} Personnes</h3>
                             </ion-row>
                             <ion-row>
-                                <h4> {{booking[0].price}} </h4>
+                                <h4> {{booking[0].price}} €</h4>
                             </ion-row>
                         </ion-card-title>
                     </ion-row>
@@ -56,13 +56,13 @@
                           <h2>{{mapResto.get(item.restaurant_id).name}}</h2>
                       </ion-row>
                       <ion-row>
-                            <h3>{{booking[0].created_date}} </h3>
+                            <h3><img src="assets/icon/clock.svg" style="width: 10%;height: 50%;float:left">Le {{date[i]}} à {{item.schedule}}</h3>
                       </ion-row>
                       <ion-row>
-                          <h4> {{item.nb_users}} </h4>
+                          <h3> <img src="assets/icon/users.svg" style="width: 10%;height: 50%;float:left">{{item.nb_users}} Personnes</h3>
                       </ion-row>
                       <ion-row>
-                          <h4> {{item.price}} </h4>
+                          <h4> {{item.price}} € </h4>
                       </ion-row>
                   </ion-card-title>
               </ion-row>

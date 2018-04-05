@@ -38,27 +38,32 @@
         </ion-grid>
 
         <ng-container *ngIf="printCode">
-
-            Le code de réservation à partager :
-            <div> 
-                {{code}} 
+            <div class="resacode">
+                <div class="resa"> Le code de réservation à partager : </div>
+                <div class="code">  <p>{{code}}</p> </div>
             </div>
 
         </ng-container>
 
-        <ng-container *ngIf="menu">
+
+        <ng-container *ngIf="jsonChoosenMenu">
+        <ng-container *ngIf="jsonChoosenMenu.length>0">
+            <ng-container *ngFor="let menuChoose of jsonChoosenMenu">
             <ion-card>
                 <ion-card-content>
-                    <p>{{nameMenu}}</p>
+                    <h4>{{menuChoose['name']}}</h4>
 
-                    <ng-container *ngFor="let item of menuList;">
-
-                        <p>{{item}}</p>
-
-
+                    <ng-container *ngFor="let item of menuChoose['mealName']">
+                        <h3>{{item}}</h3>
                     </ng-container>
+
+                    <div class="price">
+                        {{menuChoose['price']}} €
+                    </div>
                 </ion-card-content>
             </ion-card>
+            </ng-container>
+        </ng-container>
         </ng-container>
 
 
@@ -69,7 +74,6 @@
                         <h4>Entrée</h4>
                         <div class="choix">
                             <h3> {{item.name}} </h3>
-                            <!-- <p> {{item.description}} </p> -->
                         </div>
 
                         <div class="price">
@@ -90,7 +94,6 @@
                         <h4>Plat</h4>
                         <div class="choix">
                             <h3> {{item.name}} </h3>
-                            <!-- <p> {{item.description}} </p> -->
                         </div>
 
                         <div class="price">
@@ -112,7 +115,6 @@
                         <h4>Dessert</h4>
                         <div class="choix">
                             <h3> {{item.name}} </h3>
-                            <!-- <p> {{item.description}} </p> -->
                         </div>
 
                         <div class="price">
@@ -137,7 +139,7 @@
 
     <ng-container *ngIf="total!==0">
         <div id="payer">
-            <button ion-button round (click)="openLogin()">Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}}€ </button>
+            <button ion-button round (click)="openLogin()"> Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}} € </button>
         </div>
     </ng-container>
 </ion-footer>

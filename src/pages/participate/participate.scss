@@ -11,19 +11,27 @@ page-participate {
   }
 
   .img-table {
-    height: 50vh;
+    height: 56vh;
+  }
+
+  .padding {
+    padding: 0 25px;
   }
 
   .pattern {
     background-image: url(../assets/imgs/pattern-little.svg);
+<<<<<<< HEAD
     height: 46vh;
+=======
+    height: 250px;
+>>>>>>> a2a45cdc9a6331e1e2fe00501b67e94c6e76ea7f
   }
 
   .text {
     position: relative;
     transform: translateX(-50%);
     left: 50%;
-    width: calc(100% - 50px);
+    width: 100%;
     font-weight: 600;
     font-size: 1.45em;
     text-align: center;
@@ -32,7 +40,7 @@ page-participate {
 
   .code {
     position: relative;
-    width: calc(100% - 50px);
+    width: 100%;
     background-color: #FFFFFF;
     margin: auto;
     top: 3vh;
@@ -43,7 +51,7 @@ page-participate {
     margin: auto;
     transform: translateX(-50%);
     left: 50%;
-    top: 7vh;
+    top: 6vh;
     width: 65px;
     height: 65px;
     background-color: #F9B522;
@@ -55,20 +63,14 @@ page-participate {
     margin: auto;
     transform: translateX(-50%);
     left: 50%;
-    top: 7vh;
+    top: 6vh;
     width: 65px;
     height: 65px;
     background-color: white;
-    box-shadow: none;
+    box-shadow: 0 8px 5px rgba(0,0,0,0.2);
   }
 
-  .text-input {
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.1em;
-  }
-
-  span.button-inner {
+  .item-check span.button-inner {
     position: relative;
     margin: auto;
     transform: translate(-50%, -50%);
@@ -77,6 +79,22 @@ page-participate {
     width: 29.75px;
     height: 21.64px;
     opacity: 0.6;
+  }
+
+  .item-check2 span.button-inner {
+    position: relative;
+    margin: auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 29.75px;
+    height: 21.64px;
+  }
+
+  .text-input {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.1em;
   }
 
 }
