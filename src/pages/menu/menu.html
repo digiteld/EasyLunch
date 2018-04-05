@@ -41,7 +41,6 @@
 
     <div class="selection">
 
-
         <!--        Menu du jour      -->
 
         <div id="menudujour" >
@@ -57,7 +56,19 @@
             <ion-card (click)="openDetailMenu(menuOfDay.id, true)">
 
                 <ion-card-content>
-                    <div class="entree">
+                    <div class="choice">
+                        <p> Plat </p>
+                        <p class="price"> {{menuOfDay.price}}€ </p>
+                    </div>
+                    <div class="choice">
+                        <p> Entrée / Plat / Dessert </p>
+                        <p class="price"> {{menuOfDay.price}}€ </p> 
+                    </div>
+                    <div class="choice">
+                        <p> Entrée / Plat ou Plat / Dessert </p>
+                            <p class="price"> {{menuOfDay.price}}€ </p> 
+                    </div>
+                    <!-- <div class="entree">
                         <h3>
                             Entrée
                         </h3>
@@ -93,7 +104,7 @@
 
                     <div class="price">
                         {{menuOfDay.price}}€
-                    </div>
+                    </div> -->
                 </ion-card-content>
 
             </ion-card>
