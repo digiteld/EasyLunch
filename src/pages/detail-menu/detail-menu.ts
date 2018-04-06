@@ -47,30 +47,28 @@ export class DetailMenuPage {
   }
 
 
-    onChangeEntree()
-  {
+    onChangeEntree() {
 
     console.log(this.entree)
       this.entreeSelect=true;
 
       this.showValidation()
-  }
-  onChangePlat()
-  {
+    }
+    
+  onChangePlat() {
       console.log(this.plat)
       this.platSelect=true;
       this.showValidation()
   }
-  onChangeDessert()
-  {
+    
+  onChangeDessert() {
       console.log(this.dessert)
       this.dessertSelect=true;
       this.showValidation()
   }
 
 
-  showValidation()
-  {
+  showValidation() {
     if(this.entreeSelect && this.platSelect && this.dessertSelect)
       this.showButton=true;
     else if(this.entree && this.platSelect && this.navParams.get('nbMeal')===2)
@@ -81,8 +79,7 @@ export class DetailMenuPage {
         this.showButton=false;
   }
 
-  goBackMenu()
-  {
+  goBackMenu() {
       console.log("NB MEAL --> "+ this.navParams.get('nbMeal'))
       console.log("Je change")
       if(this.navParams.get('nbMeal')===3) {
@@ -90,8 +87,7 @@ export class DetailMenuPage {
           this.mealId.push(this.plat)
           this.mealId.push(this.dessert)
       }
-      else
-      {
+      else {
           console.log("JE VAIS BIEN LA")
           this.mealId.push(this.entree)
           this.mealId.push(this.plat)
@@ -102,8 +98,9 @@ export class DetailMenuPage {
     this.navCtrl.pop()
 
   }
-  goBack()
-  {
+  
+    
+    goBack() {
       this.navCtrl.pop()
   }
 

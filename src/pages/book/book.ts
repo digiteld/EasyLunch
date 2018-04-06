@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {RestProvider} from '../../providers/rest/rest';
-import {RecapPage} from "../recap/recap";
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
+import { RecapPage } from "../recap/recap";
 
 @Component({
     selector: 'page-book',
     templateUrl: 'book.html'
 })
+    
 export class BookPage {
 
     errorMessage: string;
@@ -89,8 +90,6 @@ export class BookPage {
                 printCode:printCode,
                 bookingId:obj.bookingid,
                 total:obj.price
-
-
             })
 
     }

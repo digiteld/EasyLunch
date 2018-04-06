@@ -1,46 +1,23 @@
-import {Component, ViewChild, ElementRef} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
-import {RestProvider} from '../../providers/rest/rest';
+import { RestProvider } from '../../providers/rest/rest';
 import L from 'leaflet';
 
-import {AndroidPermissions} from '@ionic-native/android-permissions';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
-import {Slides} from 'ionic-angular';
-import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
-// import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Slides } from 'ionic-angular';
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+
 import { Geolocation } from '@ionic-native/geolocation';
 
-import {MenuPage} from '../menu/menu';
-import {Storage} from "@ionic/storage";
-
-
-// import { WheelSelector } from '@ionic-native/wheel-selector';
-
-// import { trigger, state, style, transition, animate } from '@angular/animations';
+import { MenuPage } from '../menu/menu';
+import { Storage } from "@ionic/storage";
 
 
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html',
-
-    // animations: [
-
-    //Animation here ...
-    //   trigger('elementState', [
-    //     state('inactive', style({
-    //       backgroundColor: '#eee',
-    //       transform: 'scale(1)'
-    //     })),
-    //     state('active', style({
-    //       backgroundColor: '#cfd8dc',
-    //       transform: 'scale(1.1)'
-    //     })),
-    //     transition('inactive => active', animate('100ms ease-in')),
-    //     transition('active => inactive', animate('100ms ease-out'))
-    //   ])
-
-    // ]
 
 })
 
@@ -55,6 +32,7 @@ export class HomePage {
 
 
     ////    Add variable for holds data
+    
     observable:any;
     map: any;
     restaurant: any;

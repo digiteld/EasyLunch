@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {ConfirmPage} from '../confirm/confirm';
+import { ConfirmPage } from '../confirm/confirm';
 
 
 @IonicPage()

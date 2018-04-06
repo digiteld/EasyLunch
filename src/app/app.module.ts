@@ -24,18 +24,22 @@ import { ConfirmPage } from '../pages/confirm/confirm';
 import { ConfirmPageModule } from '../pages/confirm/confirm.module';
 import { LoginPage } from '../pages/login/login';
 import { LoginPageModule } from '../pages/login/login.module';
- 
+import { AccountCreaPage } from '../pages/account-crea/account-crea';
+import { AccountCreaPageModule } from '../pages/account-crea/account-crea.module';
+import { AddCardPage } from '../pages/add-card/add-card';
+import { AddCardPageModule } from '../pages/add-card/add-card.module';
+import { DetailMenuPage } from "../pages/detail-menu/detail-menu";
+import { DetailMenuPageModule } from "../pages/detail-menu/detail-menu.module";
+import { OnboardingPage } from "../pages/onboarding/onboarding";
+import { OnboardingPageModule } from "../pages/onboarding/onboarding.module";
+import { OnboardingStepPage } from "../pages/onboarding-step/onboarding-step";
+import { OnboardingStepPageModule } from "../pages/onboarding-step/onboarding-step.module";
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
-import { AccountCreaPage } from '../pages/account-crea/account-crea';
-import { AccountCreaPageModule } from '../pages/account-crea/account-crea.module';
-import { AddCardPage } from '../pages/add-card/add-card';
-import { AddCardPageModule } from '../pages/add-card/add-card.module';
-import {DetailMenuPage} from "../pages/detail-menu/detail-menu";
-import {DetailMenuPageModule} from "../pages/detail-menu/detail-menu.module";
 import { IonicStorageModule } from '@ionic/storage';
 
 
@@ -59,12 +63,14 @@ import { IonicStorageModule } from '@ionic/storage';
     LoginPageModule,
     MenuPageModule,
     RecapPageModule,
+    OnboardingPageModule,
+    OnboardingStepPageModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,
     }),
     HttpClientModule,
-      IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,7 +86,10 @@ import { IonicStorageModule } from '@ionic/storage';
     ConfirmPage,
     LoginPage,
     AccountCreaPage,
-    AddCardPage,DetailMenuPage
+    AddCardPage,
+    DetailMenuPage,
+    OnboardingPage,
+    OnboardingStepPage
   ],
   providers: [
     StatusBar,
@@ -90,8 +99,8 @@ import { IonicStorageModule } from '@ionic/storage';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider,
     LoaderProvider
-      
+
   ]
 })
-  
+
 export class AppModule { }
