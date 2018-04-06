@@ -148,15 +148,14 @@ export class MenuPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MenuPage');
-
-
     }
 
-scrollToElement(id)
+    scrollToElement(id)
 {
     console.log("JE SCROLL")
     this.content.scrollTo(0, 1000, 0)
 }
+
     ionViewDidEnter() {
         this.content.resize()
     }
@@ -167,35 +166,26 @@ scrollToElement(id)
 
     scroolToElement(id) {
         console.log(id)
-
-
-
         switch(id)
         {
             case "menudujour":
                 document.getElementById("bottom-border").style.left="4%";
-
-
                 break;
+
             case "formules":
                 document.getElementById("bottom-border").style.left="37%";
-
-
                 break;
+
             case "entrees":
                 document.getElementById("bottom-border").style.left="62%";
-
-
                 break;
+
             case "plats":
                 document.getElementById("bottom-border").style.left="82%";
-
-
                 break;
+
             case "desserts":
                 document.getElementById("bottom-border").style.left="97%";
-
-
                 break;
 
         }

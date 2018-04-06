@@ -19,6 +19,11 @@ export class DetailMenuPage {
   plat:any;
   dessert:any;
 
+
+  previousEntree:any;
+  previousPlat:any;
+  previousDessert:any;
+
   entreeSelect:boolean;
   platSelect:boolean;
   dessertSelect:boolean;
@@ -50,7 +55,7 @@ export class DetailMenuPage {
     onChangeEntree()
   {
 
-    console.log(this.entree)
+
       this.entreeSelect=true;
 
       this.showValidation()
