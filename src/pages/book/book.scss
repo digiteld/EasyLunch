@@ -43,9 +43,32 @@ page-book {
   }
 
   #img {
-    width: 45vw;
+    width: 32vw;
+  }
+
+  #info {
+    width: 52vw;
+  }
+
+  #info h2 {
+    margin: 10px 0;
+  }
+
+  #info h3 {
+    display: flex;
   }
   
+  #info h4 {
+    text-align: right;
+  }
+
+  #info img {
+    height: 15px;
+    margin: 0;
+    width: 20px;
+    margin: 0 5px 0 0;
+  }
+
   img {
     margin: 10px;
     width: 100px;
@@ -74,5 +97,6 @@ page-book {
     font-size: 14px;
     font-weight: 500;
   }
+
 
 }

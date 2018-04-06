@@ -19,10 +19,7 @@ page-menu {
     object-fit: cover;
   }
 
-
-
 ////    Btn return
-
 
   #img button {
     position: absolute;
@@ -36,10 +33,7 @@ page-menu {
     height: 20px;
   }
 
-
-
 ////    Card restau
-
 
   #restau {
     height: 32vh;
@@ -121,7 +115,7 @@ page-menu {
 
   .scroll-menu .scroll-content {
     margin-top: 25px;
-    height: 30px;
+    height: 45px;
   }
 
   .scroll {
@@ -130,12 +124,15 @@ page-menu {
     font-size: 1.15em;
     font-weight: 500;
     margin: 15px 0 15px 15px;
+    float:left;
+
+
   }
 
-  .scroll:after {
+  .bottom-border {
     content:'';
-    height:100%;
-    left: 15px;
+    height:83%;
+    left: 4%;
     box-sizing: border-box;
     position: absolute;
     width: 10%;
@@ -258,6 +255,10 @@ page-menu {
     text-transform: uppercase;
     font-weight: 600;
     opacity: 1 !important; 
+  }
+  .scroll-zoom-wrapper
+  {
+    width: 1000px;
   }
 
 
