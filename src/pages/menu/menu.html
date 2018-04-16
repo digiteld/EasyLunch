@@ -45,7 +45,7 @@
 
         <div id="menudujour" >
 
-             
+
             <h2><img src="assets/icon/cloche.svg"> Menu du jour</h2>
 
         </div >
@@ -62,11 +62,11 @@
                     </div>
                     <div class="choice">
                         <p> Entrée / Plat / Dessert </p>
-                        <p class="price"> {{menuOfDay.price}}€ </p> 
+                        <p class="price"> {{menuOfDay.price}}€ </p>
                     </div>
                     <div class="choice">
                         <p> Entrée / Plat ou Plat / Dessert </p>
-                            <p class="price"> {{menuOfDay.price}}€ </p> 
+                            <p class="price"> {{menuOfDay.price}}€ </p>
                     </div>
                     <!-- <div class="entree">
                         <h3>
@@ -240,7 +240,7 @@
     <!--        Total price      -->
 
 <ion-footer>
-        <div id="confirmer"> 
+        <div id="confirmer">
             <ng-container *ngIf="total !==0 &&(((schedule && nbPers)) || participate)">
                 <button ion-button round (click)="openRecap()" class="btOK"> Confirmer  &nbsp;&nbsp;&nbsp;&nbsp; {{total}} € </button>
             </ng-container>

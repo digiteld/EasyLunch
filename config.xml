@@ -3,7 +3,7 @@
     <name>EasyLunch</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.102:8101" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -79,8 +79,6 @@
     <allow-navigation href="http://192.168.1.15:8100" />
     <allow-navigation href="http://192.168.1.16:8101" />
     <allow-navigation href="http://192.168.1.48:8100" />
-    <engine name="ios" spec="^4.5.4" />
-    <engine name="browser" spec="^5.0.3" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
@@ -92,4 +90,11 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>need location access to find things nearby</string>
     </edit-config>
+    <allow-navigation href="http://192.168.182.24:8101" />
+    <allow-navigation href="http://192.168.1.10:8101" />
+    <allow-navigation href="http://192.168.1.10:8100" />
+    <allow-navigation href="http://192.168.182.81:8101" />
+    <allow-navigation href="http://192.168.1.102:8101" />
+    <engine name="ios" spec="4.5.4" />
+    <engine name="browser" spec="^5.0.3" />
 </widget>

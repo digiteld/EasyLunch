@@ -1,203 +1,218 @@
 page-home {
 
-//////      CSS home
+  //////      CSS home
 
-
-    #map {
-        height: 100%;
-    }
-
-    .z-index {
-        z-index: 999;
-    }
-
-    #slides {
-        position: absolute; 
-        bottom: 1.5vh;
-    }
-
-    #slides img {
-        width: 100px;
-        height: 89px;
-    }
-
-
-
-    ////   BTN
-
-
-    .btn.grid {
-      padding: 20px;
-    }
-
-    .item {
-      background-color: #FFFFFF;
-      box-shadow: 0 8px 5px rgba(0,0,0,0.2);
-    }
-
-    .stylebtn {
-      text-transform: none;
-      background-color: #FFFFFF;
-      box-shadow: 0 8px 5px rgba(0,0,0,0.2);
-    }
-
-    .stylecol {
-      width: 50%;
-    }
-
-
-    .ion-ios-combien,
-    .ion-md-combien {
-      content: url(../assets/icon/users.svg);
-      height: 15px;
-    }
-
-    .ion-ios-heure,
-    .ion-md-heure {
-      content: url(../assets/icon/clock.svg);
-      height: 20px;
-    }
-
-    .stylebtn p {
-      font-size: 0.875em;
-      padding-left: 0.4em;
-      color: #333333;
-      font-weight: 500;
-      margin: 2px 0;
-    }
-
-    .btn-content {
-      display: flex;
-      justify-content: space-around;
-    }
-    
-    ion-icon {
-      padding-right: 0 !important;
-    }
-
-    .picker-toolbar-button {
-      font-weight: 600;
-    }
-
-    ion-datetime {
-      display: none;
-    }
-
-
-
-    ////   CARD
-
-
-    .card-content {
-      padding: 0 !important;
-    }
-
-    .badge img {
-      width: 35px !important;
-      height: 35px !important;
-      position: absolute;
-      z-index: 2;
-      margin: -5px!important;
+  #map {
+    height: 100%;
   }
 
-    .card img {
-      margin: 10px;
+  .z-index {
+    z-index: 999;
+  }
+
+  #slides {
+    position: absolute;
+    bottom: 1.5vh;
+  }
+
+  #slides img {
+    width: 100px;
+    height: 89px;
+  }
+
+  ////   BTN
+
+  .btn.grid {
+    padding-top: 20px;
+    padding-bottom:20px;
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .item {
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .stylebtn {
+    text-transform: none;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+  }
+
+
+
+  .stylecol {
+    /*
+    width: 50%;
+    */
+    max-width: 50%;
+  }
+
+  .stylecol .button-ios{
+    min-height: 3.4em;
+  }
+
+  .ion-ios-combien,
+  .ion-md-combien {
+    /*
+    content: url(../assets/icon/users.svg);
+    height: 15px;
+    */
+    background-image: url(../assets/icon/users.svg);
+    min-height: 15px;
+    min-width: 20px;
+    background-repeat: no-repeat;
+  }
+
+  .ion-ios-heure,
+  .ion-md-heure {
+    /*
+    content: url(../assets/icon/clock.svg);
+    height: 20px;
+    */
+    background-image: url(../assets/icon/clock.svg);
+    min-height: 15px;
+    min-width: 20px;
+    background-repeat: no-repeat;
+  }
+
+  .stylebtn p {
+    font-size: 0.875em;
+    padding-left: 0.4em;
+    color: #333333;
+    font-weight: 500;
+    margin: 2px 0;
+  }
+
+  .btn-content {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  ion-icon {
+    padding-right: 0 !important;
+  }
+
+  .picker-toolbar-button {
+    font-weight: 600;
+  }
+
+  ion-datetime {
+    display: none;
+  }
+
+  ////   CARD
+
+  .card-content {
+    padding: 0 !important;
+  }
+
+  .badge img {
+    width: 35px !important;
+    height: 35px !important;
+    position: absolute;
+    z-index: 2;
+    margin: -5px !important;
+  }
+
+  .card img {
+    margin: 10px;
+  }
+
+  .card {
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-ios h2 {
+    color: #333333;
+    font-weight: 600;
+    font-size: 1em;
+  }
+
+  .card-md h2 {
+    color: #333333;
+    font-weight: 600;
+    font-size: 0.75em;
+  }
+
+  .card-ios h3 {
+    color: #333333;
+    margin-bottom: 0.7vh;
+    font-weight: 400;
+    font-size: 0.875em;
+  }
+
+  .card-md h3 {
+    color: #333333;
+    margin-bottom: 0.7vh;
+    font-weight: 400;
+    font-size: 0.675em;
+  }
+
+  .row-ios h4 {
+    color: #333333;
+    font-weight: 500;
+    font-size: 0.75em;
+  }
+
+  .row-md h4 {
+    color: #333333;
+    font-weight: 500;
+    font-size: 0.55em;
+  }
+
+  //////      Animation pin "geolocalisation"
+
+  .s {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  .s:nth-child(1) {
+    background: #95989A;
+    -webkit-animation: r0 2s 0s ease-out infinite;
+    -moz-animation: r0 2s 0s ease-out infinite;
+    animation: r0 2s 0s ease-out infinite;
+  }
+
+  @-webkit-keyframes r0 {
+    0% {
+      box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
     }
-
-    .card {
-      box-shadow: 0 8px 5px rgba(0,0,0,0.2);
+    10% {
+      box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px #333, 0 0 12px 14px #95989A;
     }
-
-    .card-ios h2 {
-      color: #333333;
-      font-weight: 600;
-      font-size: 1em;
+    100% {
+      box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
     }
-
-    .card-md h2 {
-      color: #333333;
-      font-weight: 600;
-      font-size: 0.75em;
+  }
+  @-moz-keyframes r0 {
+    0% {
+      box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
     }
-
-    .card-ios h3 {
-      color: #333333;
-      margin-bottom: 0.7vh;
-      font-weight: 400;
-      font-size: 0.875em;
+    10% {
+      box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px #333, 0 0 12px 14px #95989A;
     }
-
-    .card-md h3 {
-      color: #333333;
-      margin-bottom: 0.7vh;
-      font-weight: 400;
-      font-size: 0.675em;
+    100% {
+      box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
     }
-
-    .row-ios h4 {
-      color: #333333;
-      font-weight: 500;
-      font-size: 0.75em;
+  }
+  @keyframes r0 {
+    0% {
+      box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px rgba(242, 242, 242, 0.5), 0 0 0px 0px rgba(26, 255, 179, 0);
     }
-
-    .row-md h4 {
-      color: #333333;
-      font-weight: 500;
-      font-size: 0.55em;
+    10% {
+      box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px rgba(242, 242, 242, 0.5), 0 0 12px 14px #95989A;
     }
-    
+    100% {
+      box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px rgba(242, 242, 242, 0.5), 0 0 0px 40px rgba(26, 255, 179, 0);
+    }
+  }
 
-//////      Animation pin "geolocalisation"
-    
-    .s {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        -webkit-transition: all 0.2s;
-        -moz-transition: all 0.2s;
-        transition: all 0.2s;
-      }
-  
-      .s:nth-child(1) {
-        background: #95989A;
-        -webkit-animation: r0 2s 0s ease-out infinite;
-        -moz-animation: r0 2s 0s ease-out infinite;
-        animation: r0 2s 0s ease-out infinite;
-      }
-      
-      @-webkit-keyframes r0 {
-        0% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
-        }
-        10% {
-          box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px #333, 0 0 12px 14px #95989A;
-        }
-        100% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
-        }
-      }
-      @-moz-keyframes r0 {
-        0% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px #333, 0 0 0px 0px rgba(26, 255, 179, 0);
-        }
-        10% {
-          box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px #333, 0 0 12px 14px #95989A;
-        }
-        100% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px #333, 0 0 0px 40px rgba(26, 255, 179, 0);
-        }
-      }
-      @keyframes r0 {
-        0% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 0px rgba(242,242,242,0.5), 0 0 0px 0px rgba(26, 255, 179, 0);
-        }
-        10% {
-          box-shadow: 0 0 8px 6px #95989A, 0 0 12px 10px rgba(242,242,242,0.5), 0 0 12px 14px #95989A;
-        }
-        100% {
-          box-shadow: 0 0 8px 6px rgba(26, 255, 179, 0), 0 0 0px 40px rgba(242,242,242,0.5), 0 0 0px 40px rgba(26, 255, 179, 0);
-        }
-      }
-
-    
 }

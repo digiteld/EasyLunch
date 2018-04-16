@@ -1,16 +1,26 @@
 <ion-content>
-  <div id="img">
 
-  </div>
 
   <div id="text">
-    <h1> Choisissez votre restaurant </h1>
-    <p> Trouvez un restaurant près de votre lieu de travail </p>
+    <h1>Bienvenue</h1>
+    <p>Simplifiez votre pause-déjeuner au restaurant</p>
+  </div>
 
-    <button ion-button round (click)="goStep()"> Étape suivante </button>
-  
-    <div class="next" (click)="goHome()">
-      <p> > Passer, j'ai faim ! </p> 
+  <div class="bubble-container">
+    <div class="info-bubble">
+      <p>Commandez votre repas en ligne</p>
     </div>
-  </div> 
+
+    <div class="info-bubble">
+      <p>Soyez servi dès votre arrivée</p>
+    </div>
+
+    <div class="info-bubble">
+      <p>Partez sans payer à la fin du déjeuner</p>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button ion-button round (click)="goStep()"> Démarrer </button>
+  </div>
 </ion-content>

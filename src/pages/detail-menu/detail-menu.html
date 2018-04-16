@@ -36,10 +36,10 @@
     <ng-container *ngFor="let item of navParams.get('plat')">
       <ion-card>
 
-  <ion-item>
-          <ion-label>{{item.name}}</ion-label>
-          <ion-radio (ionSelect)="onChangePlat()" value={{item.id}}></ion-radio>
-        </ion-item>
+    <ion-item>
+      <ion-label>{{item.name}}</ion-label>
+      <ion-radio (ionSelect)="onChangePlat()" value={{item.id}}></ion-radio>
+    </ion-item>
 
 
 
@@ -90,10 +90,10 @@
   <ion-footer>
     <ng-container *ngIf="showButton">
 
-      <div id="commander"> 
+      <div id="commander">
           <button ion-button round (click)="goBackMenu()"> Commander &nbsp;&nbsp;&nbsp;&nbsp; x1 &nbsp;&nbsp;&nbsp;&nbsp; {{navParams.get('price')}} € </button>
       </div>
-      
+
     </ng-container>
   </ion-footer>
 

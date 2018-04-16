@@ -48,7 +48,7 @@ page-menu {
     z-index: 1;
     color: #333333;
   }
-  
+
   #cardrestau p {
     text-align: center;
   }
@@ -70,7 +70,7 @@ page-menu {
     display: flex;
     justify-content: space-between;
   }
-  
+
   .card {
     margin: 12px 25px;
     width: calc(100% - 50px);
@@ -148,7 +148,7 @@ page-menu {
 
 
 
-////   Card menu 
+////   Card menu
 
 
   .selection {
@@ -182,12 +182,12 @@ page-menu {
 
 
       ////   Card menu du jour
-  
+
 
   h2 img {
     height: 14.27px;
   }
-  
+
   .plat h3 {
     margin-top: 20px;
   }
@@ -254,7 +254,7 @@ page-menu {
     background-image: linear-gradient(#CCCCCC, #CCCCCC);
     text-transform: uppercase;
     font-weight: 600;
-    opacity: 1 !important; 
+    opacity: 1 !important;
   }
   .scroll-zoom-wrapper
   {
@@ -278,7 +278,7 @@ page-menu {
   }
 
   .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
-    top: 0; 
+    top: 0;
     bottom: auto;
     background-position: left 0 top 0;
     height: 0;

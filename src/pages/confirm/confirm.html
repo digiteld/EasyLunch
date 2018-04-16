@@ -3,7 +3,8 @@
   <div class="all">
 
       <div class="img-table">
-          <ion-img width="100%" height="100%" style="background: transparent !important;" src="assets/imgs/code-complete.png"></ion-img>
+          <!--<ion-img width="100%" height="100%" style="background: transparent !important;" src="assets/imgs/code-complete.png"></ion-img>
+          -->
       </div>
 
         <div class="pattern">
@@ -14,7 +15,7 @@
             <div class="text2"> Votre réservation a bien été prise en compte </div>
 
               <ng-container *ngIf="create">
-                
+
                 <div class="text3"> Partagez ce code avec les personnes qui participeront au repas avec vous </div>
 
 
@@ -22,14 +23,16 @@
                   <ion-label> {{code}} </ion-label>
                 </div>
 
-              </ng-container>  
+              </ng-container>
+
+              <div class="item-check" ion-button round (click)="goHome()">
+                <img src="assets/icon/check2.svg">
+            </div>
 
           </div>
 
-          <div class="item-check" ion-button round (click)="goHome()">
-              <img src="assets/icon/check2.svg">
-          </div>
-          
+
+
         </div>
 
 

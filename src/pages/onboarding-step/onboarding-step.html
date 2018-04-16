@@ -4,13 +4,18 @@
     </div>
   
     <div id="text">
-      <h1> Choisissez votre restaurant </h1>
-      <p> Trouvez un restaurant près de votre lieu de travail </p>
-  
-      <button ion-button round (click)="goStep()"> Étape suivante </button>
-    
+       <h1> {{titre}} </h1>
+       <p> {{sousTitre}} </p>
+
+    </div>
+
+    <div class="button-container">
+
+      <button ion-button round (click)="goStep()"> {{buttonText}} </button>
       <div class="next" (click)="goHome()">
-        <p> > Passer, j'ai faim ! </p> 
+        <p> > Passer, j'ai faim ! </p>
       </div>
-    </div> 
+
+    </div>
+
   </ion-content>
