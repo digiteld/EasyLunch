@@ -1,6 +1,8 @@
 page-confirm {
   .all {
+    /* old
     position: relative;
+    */
     background-color: #FFA300;
     height: 100vh;
   }
@@ -10,56 +12,98 @@ page-confirm {
   }
 
   .code {
+    /*old
     position: relative;
-    background-color: white;
     width: 100%;
     top: 9.7vh;
+    */
+    /* new */
+    margin-top: 1vh;
+
+    background-color: white;
     height: 59px;
   }
 
   .img-table {
-    width: 100%;
+    /*new*/
+    background-image: url(../assets/imgs/code-complete.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+
+    min-width: 100%;
     height: 59%;
   }
 
   .padding {
-    padding: 25px;
+    /* new */
+    max-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    /* old
+    padding: 25px;*/
   }
 
   .pattern {
     background-image: url(../assets/imgs/pattern-little.svg);
-    height: 306px;
+
+    /* old
+    height: 306px;*/
+
+    /* new */
+    width:100%;
+    position:absolute;
+    bottom:2vh;
+    background-position: center;
+    background-size: cover;
   }
 
   .text1 {
+    /* old
     position: absolute;
     top: 48.5vh;
+    */
     font-size: 32px;
     color: #FFFFFF;
     font-weight: 600;
-  } 
-  
+  }
+
   .text2 {
+    /* old
     position: absolute;
     top: 56.2vh;
+    */
     font-size: 20px;
     color: #FFFFFF;
     font-weight: 600;
-  } 
-  
+    /* new */
+    margin-top: 1vh;
+  }
+
   .text3 {
+    /*
     position: absolute;
     top: 65.2vh;
+    */
     font-size: 14px;
     color: #FFFFFF;
+    /* new */
+    margin-top: 1vh;
   }
 
   .item-check {
+    /* old
     position: relative;
     margin: auto;
     transform: translateX(-50%);
     left: 50%;
     top: 9vh;
+    */
+    /* new */
+    margin: auto;
+    margin-top: 1vh;
+
     width: 65px;
     height: 65px;
     background-color: #FFFFFF;
@@ -73,6 +117,12 @@ page-confirm {
     font-weight: 500;
     color: #333333;
   }
+
+  /* new */
+  .label-ios{
+    margin:0;
+  }
+
 
   .text-input {
     height: 7.50%;

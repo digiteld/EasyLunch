@@ -1,25 +1,38 @@
 <ion-content padding>
+<!--
+ <button class="arrow-btn" (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-grey.svg"></button>
+-->
+<div id="img">
+    <img src={{img}}/>
+    <button class="arrow-btn" (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-grey.svg"></button>
+</div>
 
   <div id="logo"> <img src="assets/icon/logo-easylunch.svg"> </div>
-
-    
 
       <div id="input">
           <ion-item>
             <ion-label color="secondary" floating> <ion-icon name="envelope"></ion-icon> Email </ion-label>
             <ion-input type="text" clearInput></ion-input>
           </ion-item>
-        
+
           <ion-item>
               <ion-label color="secondary" floating> <ion-icon name="locked"></ion-icon> Mot de passe </ion-label>
               <ion-input type="text" clearInput></ion-input>
           </ion-item>
     </div>
 
-      
-      <button id="btnco" ion-button round (click)="openAddCard()"> Me connecter </button>
+    <div id="btn-login">
+        <button id="btnco" ion-button round (click)="openAddCard()"> Me connecter </button>
 
-      <button id="btnpdc" ion-button round (click)="openCrea()"> Pas de compte ? </button>
+        <button id="btnpdc" ion-button round (click)="openCrea()"> Pas de compte ? </button>
+    </div>
 
+    <div id="social-icons">
+        <ng-container>
+            <p>Me connecter via</p>
+            <a href="#"><img src="assets/icon/Facebook.svg" width="50px"></a>
+            <a href="#"><img src="assets/icon/Google+.svg" width="50px"></a>
+        </ng-container>
+    </div>
 
 </ion-content>

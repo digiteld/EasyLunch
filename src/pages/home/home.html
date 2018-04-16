@@ -5,16 +5,20 @@
             <ion-row flex-wrap: nowrap class="z-index">
                 <ion-col class="stylecol">
                     <button class="stylebtn" ion-button full icon-start (click)="nbpicker.open()">
-                        <ion-datetime #nbpicker pickerFormat="hh" hourValues="1,2,3,4,5,6,7,8,9,10,11,12" displayFormat={{formatnbPers}} doneText="Valider"
-                            cancelText="Annuler" [(ngModel)]="NbPers" (ionChange)="validateNbPers()" ></ion-datetime>
+                        <ion-datetime #nbpicker pickerFormat="hh" hourValues="1,2,3,4,5,6,7,8,9,10,11,12"
+                                      displayFormat={{formatnbPers}} doneText="Valider"
+                                      cancelText="Annuler" [(ngModel)]="NbPers"
+                                      (ionChange)="validateNbPers()"></ion-datetime>
                         <ion-icon name="combien"></ion-icon>
                         <p>{{nbPersBtText}}</p>
                     </button>
                 </ion-col>
                 <ion-col class="stylecol">
                     <button class="stylebtn" ion-button full icon-start (click)="schedulepicker.open()">
-                        <ion-datetime #schedulepicker pickerFormat="HH/mm" hourValues="11, 12, 13, 14" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}}
-                            doneText="Valider" cancelText="Annuler" (ionChange)="validateSchedule()" [(ngModel)]="Schedule"></ion-datetime>
+                        <ion-datetime #schedulepicker pickerFormat="HH/mm" hourValues="11, 12, 13, 14"
+                                      minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}}
+                                      doneText="Valider" cancelText="Annuler" (ionChange)="validateSchedule()"
+                                      [(ngModel)]="Schedule"></ion-datetime>
                         <ion-icon name="heure"></ion-icon>
                         <p>{{scheduleBtText}}</p>
                     </button>
@@ -25,49 +29,49 @@
     </div>
 
     <div id="slides">
-            <ion-grid>
-                <ion-row class="z-index">
+        <ion-grid>
+            <ion-row class="z-index">
 
-                    <ion-slides slidesPerView="1" (ionSlideDidChange)="slideChanged()">
-                        <ion-slide *ngFor="let r of restaurant; let i = index">
-                            
-                            <ion-card (click)="openMenu(i)">
-                                <ng-container *ngIf="r.mod">
+                <ion-slides slidesPerView="1" (ionSlideDidChange)="slideChanged()">
+                    <ion-slide *ngFor="let r of restaurant; let i = index">
+
+                        <ion-card (click)="openMenu(i)">
+                            <ng-container *ngIf="r.mod">
                                 <div class="badge">
                                     <img src="assets/icon/platdujour.svg">
                                 </div>
-                                </ng-container>
-                                <ion-card-content>
+                            </ng-container>
+                            <ion-card-content>
 
 
-                                    <ion-row>
+                                <ion-row>
 
-                                        <img src={{r.picture}}/>
+                                    <img src={{r.picture}}/>
 
-                                        <ion-card-title>
-                                            <ion-row>
-                                                <h2>{{r.name}}</h2>
-                                            </ion-row>
-                                            <ion-row>
-                                                <h3>{{r.description}}</h3>
-                                            </ion-row>
-                                            <ion-row>
-                                                <h4>{{r.address}}</h4>
-                                            </ion-row>
-                                            <ion-row>
-                                                <h4>{{r.city}}</h4>
-                                            </ion-row>
-                                        </ion-card-title>
-                                    </ion-row>
+                                    <ion-card-title>
+                                        <ion-row>
+                                            <h2>{{r.name}}</h2>
+                                        </ion-row>
+                                        <ion-row>
+                                            <h3>{{r.description}}</h3>
+                                        </ion-row>
+                                        <ion-row>
+                                            <h4>{{r.address}}</h4>
+                                        </ion-row>
+                                        <ion-row>
+                                            <h4>{{r.city}}</h4>
+                                        </ion-row>
+                                    </ion-card-title>
+                                </ion-row>
 
-                                </ion-card-content>
-                            </ion-card>
+                            </ion-card-content>
+                        </ion-card>
 
-                        </ion-slide>
-                    </ion-slides>
+                    </ion-slide>
+                </ion-slides>
 
-                </ion-row>
-            </ion-grid>
+            </ion-row>
+        </ion-grid>
     </div>
 
 </ion-content>

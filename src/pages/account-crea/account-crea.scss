@@ -1,17 +1,36 @@
 page-account-crea {
+    .arrow-btn{
+        background-color:transparent;
+        padding-left:0;
+    }
+    .arrow{
+        width: 22px;
+        height: 20px;
+    }
 
     .content {
         background-image: url(../assets/imgs/bg-login.png);
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     .scroll-content {
+        /* old
         padding: 25px !important;
+        */
+        /* new */
+        display: flex;
+        flex-direction: column;
+        margin-top:5vh;
     }
 
     #logo {
+        /* old
         top: 8vh;
         position: relative;
+        */
         width: 146.8px;
+        margin-top:5vh;
     }
 
     //      Compte
@@ -45,11 +64,13 @@ page-account-crea {
       content: url(../assets/icon/password.svg);
       height: 26px;
     }
-    
+
 
     #input {
+        /* old
         position: relative;
         top: 8vh;
+        */
         width: 67vw;
     }
 
@@ -57,11 +78,17 @@ page-account-crea {
         background-color: transparent;
     }
 
+    #btn-login{
+        margin-top:7vh;
+    }
+
     #btnco {
         width: 100%;
         height: 50px;
-        margin: auto;
+        margin-bottom:4vh;
+        /*
         top: 14vh;
+        */
         background-image: linear-gradient(#F1C40F, #FFA300);
         background-color: #F9F9F9;
         text-transform: uppercase;
@@ -73,13 +100,21 @@ page-account-crea {
         width: 200px;
         height: 50px;
         margin: auto;
+        /* old
         top: 18vh;
+        */
         background-image: linear-gradient(#F9F9F9, #F2F2F2);
         background-color: #F9F9F9;
         text-transform: uppercase;
         color:  #F9B522;
         font-weight: 600;
         box-shadow: 0 8px 5px rgba(0,0,0,0.2);
+    }
+
+    #social-icons {
+        align-self: flex-end;
+        margin-top: 2vh;
+        padding-right: 9vw;
     }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AddCardPage } from "../add-card/add-card";
 import { OnboardingPage } from "../onboarding/onboarding";
+import { AboutPage } from "../about/about";
 
 
 @Component({
@@ -22,8 +23,13 @@ export class ContactPage {
   // }
 
   openOnBoarding() {
-    this.navCtrl.push(OnboardingPage) 
-    
+    this.navCtrl.push(OnboardingPage)
+
+  }
+
+  openAbout() {
+    this.navCtrl.push(AboutPage)
+
   }
   
 }

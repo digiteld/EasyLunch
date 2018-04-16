@@ -24,7 +24,7 @@ page-book {
     background-image: linear-gradient(#F1C40F, #FFA300);
     text-transform: uppercase;
     color: #FFFFFF;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
   }
 
@@ -48,6 +48,8 @@ page-book {
 
   #info {
     width: 52vw;
+    /* new */
+    padding-left:15px;
   }
 
   #info h2 {
@@ -57,7 +59,7 @@ page-book {
   #info h3 {
     display: flex;
   }
-  
+
   #info h4 {
     text-align: right;
   }

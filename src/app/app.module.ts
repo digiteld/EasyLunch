@@ -34,6 +34,8 @@ import { OnboardingPage } from "../pages/onboarding/onboarding";
 import { OnboardingPageModule } from "../pages/onboarding/onboarding.module";
 import { OnboardingStepPage } from "../pages/onboarding-step/onboarding-step";
 import { OnboardingStepPageModule } from "../pages/onboarding-step/onboarding-step.module";
+import { AboutPage } from "../pages/about/about";
+import { AboutPageModule } from "../pages/about/about.module";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -41,6 +43,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+
 
 
 
@@ -65,6 +68,7 @@ import { IonicStorageModule } from '@ionic/storage';
     RecapPageModule,
     OnboardingPageModule,
     OnboardingStepPageModule,
+    AboutPageModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,
@@ -89,7 +93,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AddCardPage,
     DetailMenuPage,
     OnboardingPage,
-    OnboardingStepPage
+    OnboardingStepPage,
+    AboutPage
   ],
   providers: [
     StatusBar,

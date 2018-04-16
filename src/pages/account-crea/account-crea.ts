@@ -16,7 +16,7 @@ import { AddCardPage } from '../add-card/add-card';
   selector: 'page-account-crea',
   templateUrl: 'account-crea.html',
   })
-  
+
 export class AccountCreaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -36,5 +36,8 @@ export class AccountCreaPage {
      this.navCtrl.push(AddCardPage);
   }
 
+  goBack() {
+    this.navCtrl.pop()
+  }
 
 }

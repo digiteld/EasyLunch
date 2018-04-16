@@ -35,4 +35,8 @@ export class LoginPage {
     this.navCtrl.push(AccountCreaPage);
   }
 
+  goBack() {
+    this.navCtrl.pop()
+}
+
 }

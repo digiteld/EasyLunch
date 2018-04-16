@@ -1,0 +1,15 @@
+page-about .arrow-btn {
+  background-color: transparent;
+  padding-left: 0; }
+page-about .arrow {
+  width: 22px;
+  height: 20px; }
+page-about .scroll-content {
+  padding: 25px !important; }
+page-about h1 {
+  color: #525252;
+  font-size: 1.45em;
+  font-weight: 600;
+  margin-top: 20px !important; }
+
+/*# sourceMappingURL=about.css.map */
