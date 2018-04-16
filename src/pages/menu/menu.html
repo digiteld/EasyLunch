@@ -68,43 +68,7 @@
                         <p> Entrée / Plat ou Plat / Dessert </p>
                             <p class="price"> {{menuOfDay.price}}€ </p> 
                     </div>
-                    <!-- <div class="entree">
-                        <h3>
-                            Entrée
-                        </h3>
-                        <ng-container *ngFor="let item of menuOfDay.id_plat">
-                            <ng-container *ngIf="mapEntree.has(item)">
-                                <p>{{mapEntree.get(item).name}}</p>
-                            </ng-container>
 
-                        </ng-container>
-                    </div>
-                    <div class="plat">
-                        <h3>
-                            Plat
-                        </h3>
-                        <ng-container *ngFor="let item of menuOfDay.id_plat">
-                            <ng-container *ngIf="mapPlat.has(item)">
-                                <p>{{mapPlat.get(item).name}}</p>
-                            </ng-container>
-
-                        </ng-container>
-                    </div>
-                    <div class="dessert">
-                        <h3>
-                            Dessert
-                        </h3>
-                        <ng-container *ngFor="let item of menuOfDay.id_plat">
-                            <ng-container *ngIf="mapDessert.has(item)">
-                                <p>{{mapDessert.get(item).name}}</p>
-                            </ng-container>
-
-                        </ng-container>
-                    </div>
-
-                    <div class="price">
-                        {{menuOfDay.price}}€
-                    </div> -->
                 </ion-card-content>
 
             </ion-card>
@@ -165,13 +129,17 @@
 
                     <ion-card-content>
                         <div class="choix">
+                            <div class="choice">
                             <h3> {{item.name}} </h3>
+                            <p class="price-plat">{{item.price}}€ </p>
+                            </div>
                             <p> {{item.description}} </p>
+
                         </div>
 
-                        <div class="price">
-                            {{item.price}}€
-                        </div>
+                        <!--<div class="price">-->
+                            <!--{{item.price}}€-->
+                        <!--</div>-->
                     </ion-card-content>
 
                 </ion-card>
