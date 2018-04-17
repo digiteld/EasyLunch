@@ -1,3 +1,6 @@
+$break-iphoneSE: 321px;
+$break-iphone6: 376px;
+$break-iphonePlus: 414px;
 page-login {
 
     .arrow-btn{
@@ -95,7 +98,17 @@ page-login {
 
     #social-icons {
         align-self: flex-end;
-        margin-top: 2vh;
         padding-right: 9vw;
+        color:#95989A;
+        @media screen and (max-width: $break-iphoneSE){
+            margin-top: 2vh;
+            font-size:1.2rem;
+        }
+        @media screen and (min-width: $break-iphoneSE) and (max-width: $break-iphone6) {
+            margin-top: 7vh;
+        }
+        @media screen and (min-width: $break-iphone6) and (max-width: $break-iphonePlus) {
+            margin-top: 12vh;
+        }
     }
 }

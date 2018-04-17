@@ -173,12 +173,14 @@ export class HomePage {
             let newIcon = L.icon({
                 iconUrl: 'assets/icon/pin.svg',
                 iconSize: [60, 80],
+                iconAnchor:[30,80],
                 popupAnchor: [0, -15]
             });
 
             let forkIcon = L.icon({
                 iconUrl: 'assets/icon/pin.svg',
                 iconSize: [37.5, 50],
+                iconAnchor: [18.75, 50],
                 popupAnchor: [0, -15]
             });
             console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex())
@@ -383,19 +385,26 @@ export class HomePage {
             console.log(this.markerArray.length)
             setTimeout(() => {
                     var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
+
+                    var buttonContainer = document.getElementById("btn-container");
+                    var topMaxPos = buttonContainer.offsetTop + buttonContainer.offsetHeight;
+                    var slidesContainer = document.getElementById("slides");
+                    var bottomMaxPos = slidesContainer.offsetTop - 170;
+
                     this.map.fitBounds(group.getBounds(), {
-                            paddingTop: 20,
-                            paddingBottom: 20,
-                            paddingLeft: 20,
-                            paddingRight: 20
+                            paddingTopLeft: [0,topMaxPos],
+                            paddingBottomRight: [0,bottomMaxPos]
                         }
                     );
+
+//                    this.map.setZoom(this.map.getZoom()-1);
+this.map.zoomOut(25)
                 }
 
                 , 1000);
 
-
         }
+
     }
 
     private cleanStorage() {
