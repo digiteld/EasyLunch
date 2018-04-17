@@ -15,7 +15,7 @@
                 </ion-col>
                 <ion-col class="stylecol">
                     <button class="stylebtn" ion-button full icon-start (click)="schedulepicker.open()">
-                        <ion-datetime #schedulepicker pickerFormat="HH/mm" hourValues="11, 12, 13, 14"
+                        <ion-datetime #schedulepicker pickerFormat="HH/mm" hourValues="12, 13, 14"
                                       minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" displayFormat={{formatSchedule}}
                                       doneText="Valider" cancelText="Annuler" (ionChange)="validateSchedule()"
                                       [(ngModel)]="Schedule"></ion-datetime>

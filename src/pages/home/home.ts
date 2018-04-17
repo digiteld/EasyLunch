@@ -267,6 +267,7 @@ export class HomePage {
     ////     Create a function for calling the restaurants from the provider
 
     getRestaurants() {
+
         console.log("getRestaurants");
         this.rest.getRestaurants()
             .subscribe(
@@ -277,6 +278,7 @@ export class HomePage {
                     this.formatData();
                 },
                 error => this.errorMessage = <any>error);
+
     }
 
 
