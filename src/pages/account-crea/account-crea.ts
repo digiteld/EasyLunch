@@ -60,7 +60,7 @@ export class AccountCreaPage {
                 result => {
 
                     console.log("RESULT CREATE USER --> " + JSON.stringify(result))
-                    if (result.code === 0) {
+                    if (result['code'] === 0) {
                         console.log("USER ALREADY EXIST")
                     }
                     else {
