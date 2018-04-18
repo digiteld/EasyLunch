@@ -140,6 +140,10 @@
     <ng-container *ngIf="total!==0">
         <div id="payer">
             <button ion-button round (click)="openLogin()"> Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}} € </button>
+            <p>En passant commande vous acceptez automatiquement les CGV de Easy Lunch <br>
+               Commande préparée par (nom du restaurant) 
+            </p>
+
         </div>
     </ng-container>
 </ion-footer>
