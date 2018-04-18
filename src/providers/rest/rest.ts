@@ -14,7 +14,7 @@ import { LoaderProvider } from './loader';
 @Injectable()
 export class RestProvider {
     private prod = 'https://easy-lunch-tmp.herokuapp.com';
-    private test = 'http://192.168.1.48:5000';
+    private test = 'http://192.168.1.15:5000';
     private apiUrl = 'https://easy-lunch-tmp.herokuapp.com/api/restaurants';
     private apiUrlMeal = this.prod + '/api/meal?id=';
     private apiUrlPostBooking = this.prod + '/api/booking';
@@ -22,6 +22,7 @@ export class RestProvider {
     private apiUtlGetSingleResto = this.prod + '/api/restaurants/';
     private apiUrlGetAllBookingUser = this.prod + '/api/command?iduser=';
     private apiUrlGetCodeByBooking = this.prod + '/api/code/';
+    private apiCreateUSer='http://192.168.1.15:5000/api/user/app'
 
 
     // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
@@ -29,7 +30,6 @@ export class RestProvider {
     constructor(public http: HttpClient,private loader: LoaderProvider) {
         console.log('Hello RestProvider Provider');
     }
-
 
 ////    Function to get the restaurants from the API
 
@@ -126,6 +126,22 @@ export class RestProvider {
         }
         console.error(errMsg);
         return Observable.throw(errMsg);
+    }
+
+    createUser(arg):Observable<string> {
+        return this.http.post(this.apiCreateUSer,arg).pipe(
+            map(this.extractData),
+            catchError(this.handleError)
+        );
+    }
+
+    getUser(arg): Observable<any> {
+        let url = this.apiCreateUSer + arg;
+        console.log("URL --> " + url)
+        return this.http.get(url).pipe(
+            map(this.extractData),
+            catchError(this.handleError)
+        );
     }
 
 }

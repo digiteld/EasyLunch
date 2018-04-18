@@ -43,6 +43,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { SecureStorage } from "@ionic-native/secure-storage";
 
 
 
@@ -74,7 +75,8 @@ import { IonicStorageModule } from '@ionic/storage';
       tabsHideOnSubPages: true,
     }),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+      SecureStorage
   ],
   bootstrap: [IonicApp],
   entryComponents: [

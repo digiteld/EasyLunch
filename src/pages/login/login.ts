@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import { AddCardPage } from '../add-card/add-card';
-import { AccountCreaPage } from '../account-crea/account-crea';
+import {AddCardPage} from '../add-card/add-card';
+import {AccountCreaPage} from '../account-crea/account-crea';
+import {RestProvider} from "../../providers/rest/rest";
+
+import {SecureStorage} from "@ionic-native/secure-storage";
 
 /**
  * Generated class for the LoginPage page.
@@ -13,30 +16,77 @@ import { AccountCreaPage } from '../account-crea/account-crea';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+    selector: 'page-login',
+    templateUrl: 'login.html',
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    mail: string
+    password: string;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
 
-  openAddCard() {
-    console.log('ajoutes ta CB');
-     this.navCtrl.push(AddCardPage);
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private secureStorage:SecureStorage) {
 
-  openCrea() {
-    console.log("ici tu peux te connecter");
-    this.navCtrl.push(AccountCreaPage);
-  }
 
-  goBack() {
-    this.navCtrl.pop()
-}
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad LoginPage');
+    }
+
+    openAddCard() {
+        console.log('ajoutes ta CB');
+
+        if (this.validateEmail() && this.validatePassword()) {
+
+
+            this.rest.getUser("?mail=" + this.mail + "&pass=" + this.password)
+                .subscribe(
+                    result => {
+                        console.log("RESULT --> " + JSON.stringify(result))
+                        if (result['code'] === 1)
+                            this.navCtrl.push(AddCardPage);
+                        else
+                            console.log("Identifiant invalide")
+
+                    },
+                    error => console.log("ERR --> " + <any>error));
+
+
+
+        }
+    }
+
+    openCrea() {
+        console.log("ici tu peux te connecter");
+        this.navCtrl.push(AccountCreaPage);
+    }
+
+    goBack() {
+        this.navCtrl.pop()
+    }
+
+
+    validateEmail() {
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (this.mail.match(mailformat)) {
+            return true;
+        }
+
+        else {
+            console.log("You have entered an invalid email address!");
+            return false;
+        }
+
+
+    }
+
+    validatePassword() {
+        if (this.password.length > 0) {
+            return true;
+        }
+        else
+            return false;
+    }
 
 }
