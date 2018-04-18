@@ -36,6 +36,12 @@ import { OnboardingStepPage } from "../pages/onboarding-step/onboarding-step";
 import { OnboardingStepPageModule } from "../pages/onboarding-step/onboarding-step.module";
 import { AboutPage } from "../pages/about/about";
 import { AboutPageModule } from "../pages/about/about.module";
+import { PassRecoverPage } from "../pages/pass-recover/pass-recover";
+import { PassRecoverModule } from "../pages/pass-recover/pass-recover.module";
+import { CguPage } from "../pages/cgu/cgu";
+import { CguPageModule } from "../pages/cgu/cgu.module";
+import { CgvPage } from "../pages/cgv/cgv";
+import { CgvPageModule } from "../pages/cgv/cgv.module";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +49,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { SecureStorage } from "@ionic-native/secure-storage";
+
 
 
 
@@ -70,13 +76,15 @@ import { SecureStorage } from "@ionic-native/secure-storage";
     OnboardingPageModule,
     OnboardingStepPageModule,
     AboutPageModule,
+    PassRecoverModule,
+    CguPageModule,
+    CgvPageModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,
     }),
     HttpClientModule,
-    IonicStorageModule.forRoot(),
-      SecureStorage
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -96,7 +104,10 @@ import { SecureStorage } from "@ionic-native/secure-storage";
     DetailMenuPage,
     OnboardingPage,
     OnboardingStepPage,
-    AboutPage
+    AboutPage,
+    PassRecoverPage,
+    CguPage,
+    CgvPage
   ],
   providers: [
     StatusBar,

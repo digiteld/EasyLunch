@@ -15,7 +15,7 @@ page-contact {
         position: absolute;
         top: 15vh;
         width: calc(100% - 50px);
-        height: 54%;
+        min-height: 54%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -29,6 +29,7 @@ page-contact {
         height: 62px;
         background-color: #FFFFFF;
         box-shadow: 0 0 2px rgba(0,0,0, 0.08);
+        margin-bottom: 20px;
     }
 
     .info {

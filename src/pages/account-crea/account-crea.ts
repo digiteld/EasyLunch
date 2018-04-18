@@ -26,8 +26,16 @@ export class AccountCreaPage {
     phone: number;
     password: string;
 
+    errorMail: boolean;
+    errorPass: boolean;
+    errorName : boolean;
+    errorPhone : boolean;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
+        this.errorMail = false;
+        this.errorPass = false;
+        this.errorName = false;
+        this.errorPhone = false;
     }
 
     ionViewDidLoad() {
@@ -59,13 +67,13 @@ export class AccountCreaPage {
             ).subscribe(
                 result => {
 
-                    console.log("RESULT CREATE USER --> " + JSON.stringify(result))
+                    console.log("RESULT CREATE USER --> " + JSON.stringify(result));
                     if (result['code'] === 0) {
                         console.log("USER ALREADY EXIST")
                     }
                     else {
                         this.navCtrl.push(AddCardPage);
-                        console.log("IT'S GOOD !!!")
+                        console.log("IT'S GOOD !!!");
                     }
                 },
                 error => console.log('ERROR REQUEST CREATE USER --> ' + <any>error));
@@ -73,43 +81,61 @@ export class AccountCreaPage {
     }
 
     goBack() {
-
-
-        this.navCtrl.pop()
+        this.navCtrl.pop();
     }
 
     validateEmail() {
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.email.match(mailformat)) {
-
+            if(this.errorMail === true){
+                this.errorMail = false;
+            }
             return true;
         }
         else {
             console.log("You have entered an invalid email address!");
-
+            this.errorMail = true;
             return false;
         }
     }
 
     validatePhone() {
-        if (this.phone < 1000000000)
+        if (this.phone < 1000000000){
+            if(this.errorPhone === true){
+                this.errorPhone = false;
+            }
             return true;
-        else
+        } else{
+            this.errorPhone = true;
             return false;
+        }
+
     }
 
     validateName() {
-        if (this.name.length > 0)
+        if (this.name.length > 0){
+            if(this.errorName === true){
+                this.errorName = false;
+            }
             return true;
-        else
+
+        } else{
+            this.errorName = true;
             return false;
+        }
     }
 
     validatePassword() {
-        if (this.password.length > 0)
+        if (this.password.length > 0){
+            if(this.errorPass === true){
+                this.errorPass = false;
+            }
             return true;
-        else
+
+        } else {
+            this.errorPass = true;
             return false;
+        }
     }
 
 }

@@ -74,6 +74,17 @@ page-account-crea {
         width: 67vw;
     }
 
+    .display-error{
+        width:240px;
+        display: flex;
+        padding-left:16px;
+        p{
+            margin-left:10px;
+            color: #FF3131;
+            font-size: 9px;
+        }
+    }
+
     .item {
         background-color: transparent;
     }

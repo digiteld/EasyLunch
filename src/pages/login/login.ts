@@ -4,8 +4,8 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AddCardPage} from '../add-card/add-card';
 import {AccountCreaPage} from '../account-crea/account-crea';
 import {RestProvider} from "../../providers/rest/rest";
+import {PassRecoverPage} from "../pass-recover/pass-recover";
 
-import {SecureStorage} from "@ionic-native/secure-storage";
 
 /**
  * Generated class for the LoginPage page.
@@ -21,16 +21,18 @@ import {SecureStorage} from "@ionic-native/secure-storage";
 })
 export class LoginPage {
 
-    mail: string
+    mail: string;
     password: string;
+    errorMail: boolean;
+    errorPass: boolean;
 
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private secureStorage:SecureStorage) {
-
-
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
+        this.errorMail = false;
+        this.errorPass = false;
     }
 
     ionViewDidLoad() {
+
         console.log('ionViewDidLoad LoginPage');
     }
 
@@ -62,6 +64,10 @@ export class LoginPage {
         this.navCtrl.push(AccountCreaPage);
     }
 
+    openRecover(){
+        this.navCtrl.push(PassRecoverPage);
+    }
+
     goBack() {
         this.navCtrl.pop()
     }
@@ -70,11 +76,15 @@ export class LoginPage {
     validateEmail() {
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.mail.match(mailformat)) {
+            if(this.errorMail === true){
+                this.errorMail = false;
+            }
             return true;
         }
 
         else {
             console.log("You have entered an invalid email address!");
+            this.errorMail = true;
             return false;
         }
 
@@ -83,9 +93,13 @@ export class LoginPage {
 
     validatePassword() {
         if (this.password.length > 0) {
+            if(this.errorPass === true){
+                this.errorPass = false;
+            }
             return true;
         }
         else
+            this.errorPass = true;
             return false;
     }
 

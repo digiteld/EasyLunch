@@ -1,0 +1,19 @@
+<ion-content padding>
+    <div class="scroll-content">
+        <div id="img">
+            <img src={{img}}/>
+            <button class="arrow-btn" (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-grey.svg"></button>
+        </div>
+
+        <div id="logo"> <img src="assets/icon/logo-easylunch.svg"> </div>
+        <p>Veuillez renseigner votre adresse e-mail afin de recevoir un lien pour réinitialiser votre mot de passe.</p>
+        <div id="input">
+            <ion-item>
+                <ion-label color="secondary" floating> <ion-icon name="envelope"></ion-icon> Email </ion-label>
+                <ion-input type="text" [(ngModel)]="mail" clearInput></ion-input>
+            </ion-item>
+        </div>
+
+        <button id="btnco" ion-button>Envoyer</button>
+    </div>
+</ion-content>

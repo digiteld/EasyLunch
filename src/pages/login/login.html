@@ -10,19 +10,34 @@
   <div id="logo"> <img src="assets/icon/logo-easylunch.svg"> </div>
 
       <div id="input">
+
           <ion-item>
             <ion-label color="secondary" floating> <ion-icon name="envelope"></ion-icon> Email </ion-label>
             <ion-input type="text" [(ngModel)]="mail" clearInput></ion-input>
           </ion-item>
+          <div class="display-error" *ngIf="errorMail">
+              <img src="/assets/icon/error-5.svg" alt="" width="20px" *ngIf="errorMail">
+              <p>Adresse e-mail invalide</p>
+          </div>
+
           <ion-item>
               <ion-label color="secondary" floating> <ion-icon name="locked"></ion-icon> Mot de passe </ion-label>
               <ion-input type="password" [(ngModel)]="password" clearInput></ion-input>
           </ion-item>
+          <div class="display-error" *ngIf="errorPass">
+              <img src="/assets/icon/error-5.svg" alt="" width="20px" >
+              <p>Mot de passe invalide</p>
+          </div>
 
     </div>
 
+
     <div id="btn-login">
         <button id="btnco" ion-button round (click)="openAddCard()"> Me connecter </button>
+
+        <div class="recover-btn" (click)="openRecover()">
+            <p>Mot de passe oublié ?</p>
+        </div>
 
         <button id="btnpdc" ion-button round (click)="openCrea()"> Pas de compte ? </button>
     </div>

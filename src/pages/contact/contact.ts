@@ -3,6 +3,9 @@ import { NavController } from 'ionic-angular';
 import { AddCardPage } from "../add-card/add-card";
 import { OnboardingPage } from "../onboarding/onboarding";
 import { AboutPage } from "../about/about";
+import { CguPage } from "../cgu/cgu";
+import { CgvPage } from "../cgv/cgv";
+
 
 
 @Component({
@@ -31,5 +34,13 @@ export class ContactPage {
     this.navCtrl.push(AboutPage)
 
   }
-  
+
+  openCgu(){
+      this.navCtrl.push(CguPage)
+  }
+
+    openCgv(){
+        this.navCtrl.push(CgvPage)
+    }
+
 }
