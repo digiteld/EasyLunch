@@ -5,7 +5,8 @@ import {AddCardPage} from '../add-card/add-card';
 import {AccountCreaPage} from '../account-crea/account-crea';
 import {RestProvider} from "../../providers/rest/rest";
 
-import {SecureStorage} from "@ionic-native/secure-storage";
+
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the LoginPage page.
@@ -25,7 +26,9 @@ export class LoginPage {
     password: string;
 
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private secureStorage:SecureStorage) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
+
+
 
 
     }
@@ -36,24 +39,21 @@ export class LoginPage {
 
     openAddCard() {
         console.log('ajoutes ta CB');
-
         if (this.validateEmail() && this.validatePassword()) {
-
 
             this.rest.getUser("?mail=" + this.mail + "&pass=" + this.password)
                 .subscribe(
                     result => {
                         console.log("RESULT --> " + JSON.stringify(result))
-                        if (result['code'] === 1)
+                        if (result['code'] === 1) {
+                            this.storage.set("isConnected",true)
                             this.navCtrl.push(AddCardPage);
+                        }
                         else
                             console.log("Identifiant invalide")
 
                     },
                     error => console.log("ERR --> " + <any>error));
-
-
-
         }
     }
 
@@ -72,13 +72,10 @@ export class LoginPage {
         if (this.mail.match(mailformat)) {
             return true;
         }
-
         else {
             console.log("You have entered an invalid email address!");
             return false;
         }
-
-
     }
 
     validatePassword() {

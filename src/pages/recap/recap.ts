@@ -4,6 +4,7 @@ import {Storage} from '@ionic/storage';
 
 import {LoginPage} from '../login/login';
 import {RestProvider} from "../../providers/rest/rest";
+import {AddCardPage} from "../add-card/add-card";
 
 
 @IonicPage()
@@ -109,7 +110,19 @@ export class RecapPage {
 
     openLogin() {
         console.log("ok commande validé !");
-        this.navCtrl.push(LoginPage);
+        this.storage.get("isConnected").then(
+                data=> {if(data===true)
+                {
+                    this.navCtrl.push(AddCardPage);
+                }
+                else
+                {
+                    this.navCtrl.push(LoginPage);
+                }},
+            error=>console.log("err --> "+error)
+
+        )
+
     }
 
     goBack() {
@@ -277,5 +290,6 @@ export class RecapPage {
                     this.code = data.name
                 },
                 error => this.errorMessage = <any>error);
+
     }
 }

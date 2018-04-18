@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ConfirmPage } from '../confirm/confirm';
+import {LoginPage} from "../login/login";
+import {Storage} from '@ionic/storage';
 
 
 @IonicPage()
@@ -20,7 +22,7 @@ export class AddCardPage {
     showValidation: boolean;
 
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage) {
 
         this.init()
 
@@ -35,6 +37,38 @@ export class AddCardPage {
         this.nbCarteFormat = "";
         this.nbExpire = "";
         this.nameCard = "";
+
+        this.storage.get("ccv").then(
+            data=> {if(data!=null)
+                this.ccv=data
+            },
+            error=>console.log("err --> "+error)
+        )
+
+        this.storage.get("nbCarte").then(
+            data=> {if(data!=null)
+                this.nbCarte=data
+                this.formatCardNumber()
+            },
+            error=>console.log("err --> "+error)
+        )
+
+        this.storage.get("nbExpire").then(
+            data=> {if(data!=null)
+                this.nbExpire=data
+            },
+            error=>console.log("err --> "+error)
+        )
+
+        this.storage.get("nameCard").then(
+            data=> {if(data!=null)
+                this.nameCard=data
+            },
+            error=>console.log("err --> "+error)
+        )
+
+
+
     }
 
     ionViewDidLoad() {
@@ -42,6 +76,10 @@ export class AddCardPage {
     }
 
     openConfirm() {
+        this.storage.set("ccv",this.ccv)
+        this.storage.set("nbCarte",this.nbCarte)
+        this.storage.set("nbExpire",this.nbExpire)
+        this.storage.set("nameCard",this.nameCard)
         this.navCtrl.push(ConfirmPage);
         console.log("check point !");
     }
