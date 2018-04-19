@@ -7,7 +7,7 @@
 
   <div id="logo"> <img src = "assets/icon/logo-easylunch.svg"> </div>
 
-      <div id="input">
+      <div id="input" >
           <ion-item>
             <ion-label color="secondary"> <ion-icon name="compte"></ion-icon> </ion-label>
             <ion-input type="text" [(ngModel)]="name" placeholder="Prénom et Nom" clearInput> </ion-input>
@@ -30,7 +30,7 @@
 
           <ion-item>
             <ion-label color="secondary"> <ion-icon name="tel"></ion-icon> </ion-label>
-            <ion-input type="number" [(ngModel)]="phone" placeholder="Portable" (maxlength)="10" clearInput> </ion-input>
+            <ion-input type="tel" [(ngModel)]="phone" placeholder="Portable" maxlength="10" clearInput> </ion-input>
           </ion-item>
 
           <div class="display-error" *ngIf="errorPhone">

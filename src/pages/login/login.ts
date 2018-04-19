@@ -7,6 +7,9 @@ import {RestProvider} from "../../providers/rest/rest";
 import {PassRecoverPage} from "../pass-recover/pass-recover";
 
 
+import {Storage} from "@ionic/storage";
+
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -26,9 +29,11 @@ export class LoginPage {
     errorMail: boolean;
     errorPass: boolean;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
         this.errorMail = false;
         this.errorPass = false;
+
     }
 
     ionViewDidLoad() {
@@ -38,24 +43,21 @@ export class LoginPage {
 
     openAddCard() {
         console.log('ajoutes ta CB');
-
         if (this.validateEmail() && this.validatePassword()) {
-
 
             this.rest.getUser("?mail=" + this.mail + "&pass=" + this.password)
                 .subscribe(
                     result => {
                         console.log("RESULT --> " + JSON.stringify(result))
-                        if (result['code'] === 1)
+                        if (result['code'] === 1) {
+                            this.storage.set("isConnected",true)
                             this.navCtrl.push(AddCardPage);
+                        }
                         else
                             console.log("Identifiant invalide")
 
                     },
                     error => console.log("ERR --> " + <any>error));
-
-
-
         }
     }
 
@@ -81,14 +83,11 @@ export class LoginPage {
             }
             return true;
         }
-
         else {
             console.log("You have entered an invalid email address!");
             this.errorMail = true;
             return false;
         }
-
-
     }
 
     validatePassword() {

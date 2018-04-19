@@ -21,9 +21,12 @@ import {RestProvider} from "../../providers/rest/rest";
 
 export class AccountCreaPage {
 
+
+
+
     name: string;
     email: string;
-    phone: number;
+    phone: string;
     password: string;
 
     errorMail: boolean;
@@ -36,6 +39,10 @@ export class AccountCreaPage {
         this.errorPass = false;
         this.errorName = false;
         this.errorPhone = false;
+        this.email="";
+        this.name="";
+        this.phone="";
+        this.password="";
     }
 
     ionViewDidLoad() {
@@ -53,10 +60,12 @@ export class AccountCreaPage {
         console.log("MAIL --> " + this.email)
         console.log("PHONE --> " + this.phone)
         console.log("PASSWORD --> " + this.password)
-        console.log("MAIL VALIDE --> " + this.validateEmail())
-        console.log("phone VALIDE --> " + this.validatePhone())
+        this.validateName();
+        this.validateEmail();
+        this.validatePassword();
+        this.validatePhone();
 
-        if (this.validateEmail() && this.validateEmail() && this.validateName() && this.validatePassword()) {
+        if (!this.errorMail && !this.errorPhone && !this.errorName && !this.errorPass) {
             this.rest.createUser(
                 {
                     name: this.name,
@@ -85,6 +94,7 @@ export class AccountCreaPage {
     }
 
     validateEmail() {
+        console.log("AAAAAA")
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.email.match(mailformat)) {
             if(this.errorMail === true){
@@ -100,7 +110,7 @@ export class AccountCreaPage {
     }
 
     validatePhone() {
-        if (this.phone < 1000000000){
+        if (this.phone.length > 0){
             if(this.errorPhone === true){
                 this.errorPhone = false;
             }
@@ -113,13 +123,18 @@ export class AccountCreaPage {
     }
 
     validateName() {
+        console.log(this.name);
         if (this.name.length > 0){
+            console.log("condition length ici" );
             if(this.errorName === true){
+
                 this.errorName = false;
             }
+
             return true;
 
         } else{
+            console.log("condition else ici" );
             this.errorName = true;
             return false;
         }
