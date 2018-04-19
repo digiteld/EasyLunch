@@ -21,9 +21,6 @@ import {RestProvider} from "../../providers/rest/rest";
 
 export class AccountCreaPage {
 
-
-
-
     name: string;
     email: string;
     phone: string;
@@ -110,7 +107,7 @@ export class AccountCreaPage {
     }
 
     validatePhone() {
-        if (this.phone.length > 0){
+        if (this.phone.length > 0 && this.phone.length === 10 && !Number.isNaN(parseInt(this.phone))){
             if(this.errorPhone === true){
                 this.errorPhone = false;
             }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 
 import { ConfirmPage } from '../confirm/confirm';
-import {LoginPage} from "../login/login";
+
 import {Storage} from '@ionic/storage';
 import {RestProvider} from "../../providers/rest/rest";
 
@@ -51,6 +51,20 @@ export class AddCardPage {
         )
 
 
+        // this.storage.get("nbCarte").then(
+        //
+        //     data=> {
+        //         console.log("NB CARTE --> "+data);
+        //         if(data!==null)
+        //         {
+        //         this.nbCarte=data;
+        //         this.formatCardNumber()
+        //         }
+        //         },
+        //     error=>console.log("err --> "+error)
+        // )
+
+
 
         // this.storage.get("ccv").then(
         //     data=> {if(data!=null)
@@ -59,13 +73,7 @@ export class AddCardPage {
         //     error=>console.log("err --> "+error)
         // )
         //
-        // this.storage.get("nbCarte").then(
-        //     data=> {if(data!=null)
-        //         this.nbCarte=data
-        //         this.formatCardNumber()
-        //     },
-        //     error=>console.log("err --> "+error)
-        // )
+
         //
         // this.storage.get("nbExpire").then(
         //     data=> {if(data!=null)

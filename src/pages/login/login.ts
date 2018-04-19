@@ -33,7 +33,8 @@ export class LoginPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
         this.errorMail = false;
         this.errorPass = false;
-
+        this.mail = "";
+        this.password = "";
     }
 
     ionViewDidLoad() {
@@ -42,8 +43,11 @@ export class LoginPage {
     }
 
     openAddCard() {
+        this.validateEmail();
+        this.validatePassword();
+
         console.log('ajoutes ta CB');
-        if (this.validateEmail() && this.validatePassword()) {
+        if (!this.errorMail && !this.errorPass) {
 
             this.rest.getUser("?mail=" + this.mail + "&pass=" + this.password)
                 .subscribe(
@@ -78,9 +82,11 @@ export class LoginPage {
     validateEmail() {
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.mail.match(mailformat)) {
+
             if(this.errorMail === true){
                 this.errorMail = false;
             }
+
             return true;
         }
         else {

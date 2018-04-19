@@ -22,8 +22,11 @@ export class RestProvider {
     private apiUtlGetSingleResto = this.prod + '/api/restaurants/';
     private apiUrlGetAllBookingUser = this.prod + '/api/command?iduser=';
     private apiUrlGetCodeByBooking = this.prod + '/api/code/';
-    private apiCreateUSer='http://192.168.1.15:5000/api/user/app';
+
     private apiAydenPayment='http://192.168.1.15:5000/api/adyen/payment';
+
+
+    private apiCreateUSer='https://easy-lunch-tmp.herokuapp.com/api/user/app';
 
 
 
