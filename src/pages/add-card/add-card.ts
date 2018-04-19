@@ -46,10 +46,15 @@ export class AddCardPage {
         )
 
         this.storage.get("nbCarte").then(
-            data=> {if(data!=null)
-                this.nbCarte=data
+
+            data=> {
+                console.log("NB CARTE --> "+data);
+                if(data!==null)
+                {
+                this.nbCarte=data;
                 this.formatCardNumber()
-            },
+                }
+                },
             error=>console.log("err --> "+error)
         )
 
