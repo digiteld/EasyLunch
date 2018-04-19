@@ -22,7 +22,7 @@ export class AddCardPage {
     nbCarteFormat:string;
     showValidation: boolean;
     total:number;
-
+user:any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public rest:RestProvider,private toastCtrl: ToastController) {
 
@@ -48,6 +48,16 @@ export class AddCardPage {
                 this.total=data
             },
             error=>console.log("err --> "+error)
+        )
+        this.storage.get("user").then(
+            data => {
+                console.log("USER DATA --> "+data)
+                if(data!=null)
+                this.user=data
+            },
+            error =>{
+                console.log("Err When i load get user "+error)
+            }
         )
 
 
@@ -95,6 +105,7 @@ export class AddCardPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad AddCardPage');
+
     }
 
     openConfirm() {
@@ -105,30 +116,29 @@ export class AddCardPage {
 
         //
         // this.navCtrl.push(ConfirmPage);
-
-
         this.rest.postPayment(
             {
                 nbCard:this.nbCarte,
                 expire:this.nbExpire,
                 ccv:this.ccv,
                 name:this.nameCard,
-                total:this.total
+                total:this.total,
+                userId:this.user.data.id
             }
         ).subscribe(data =>{
             console.log("DATA --> "+JSON.stringify(data))
-            if(data.resultCode==="Error")
+            if(data.data.resultCode==="Error")
             {
                 console.log("Payment Refused")
 
             }
-            if(data.resultCode==="Authorised")
+            if(data.data.resultCode==="Authorised")
             {
                     console.log("Payment Accepted")
-                    this.navCtrl.push(ConfirmPage);
+                    this.navCtrl.push(ConfirmPage, {idPayment:data.idPayment});
 
             }
-            if(data.resultCode==="Refused")
+            if(data.data.resultCode==="Refused")
             {
                 console.log("Payment Refused")
             }

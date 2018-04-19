@@ -55,6 +55,7 @@ export class LoginPage {
                         console.log("RESULT --> " + JSON.stringify(result))
                         if (result['code'] === 1) {
                             this.storage.set("isConnected",true)
+                            this.storage.set("user",result)
                             this.navCtrl.push(AddCardPage);
                         }
                         else

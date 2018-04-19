@@ -36,11 +36,7 @@
                     <ion-slide *ngFor="let r of restaurant; let i = index">
 
                         <ion-card (click)="openMenu(i)">
-                            <ng-container *ngIf="r.mod">
-                                <div class="badge">
-                                    <img src="assets/icon/platdujour.svg">
-                                </div>
-                            </ng-container>
+
                             <ion-card-content>
 
 
