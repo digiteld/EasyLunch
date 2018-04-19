@@ -40,7 +40,7 @@ export class ContactPage {
   }
 
     openCgv(){
-        this.navCtrl.push(CgvPage)
+        this.navCtrl.push(CgvPage, {contact:true})
     }
 
 }
