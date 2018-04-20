@@ -47,7 +47,7 @@ export class HomePage {
     date: Date;
     markerArray: any[]
     formatnbPers: string;
-    formatSchedule: string
+    formatSchedule: string;
     latitude: string;
     longitude: string;
     positionFound: boolean;

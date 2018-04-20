@@ -24,8 +24,10 @@ export class AddCardPage {
     total:number;
 
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public rest:RestProvider,private toastCtrl: ToastController) {
+    formatExpire: string;
+    Expire: string;
 
+    constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public rest:RestProvider,private toastCtrl: ToastController) {
 
         this.init()
 
@@ -33,10 +35,14 @@ export class AddCardPage {
 
 
     init() {
-        this.showValidation=true
+
+        this.Expire = "08/18";
+        this.formatExpire = null;
+
+        this.showValidation=true;
         if(this.navParams.get('param'))
-            this.showValidation = false
-        this.nbCarte=4111111111111111
+            this.showValidation = false;
+        this.nbCarte=4111111111111111;
 
         this.formatCardNumber()
 
@@ -105,7 +111,8 @@ export class AddCardPage {
 
         //
         // this.navCtrl.push(ConfirmPage);
-
+        this.validateCardNumber();
+        this.validateCcv();
 
         this.rest.postPayment(
             {
@@ -154,6 +161,40 @@ export class AddCardPage {
 
         console.log("FORMAT --> " + formatstring);
         this.nbCarteFormat = formatstring;
+    }
+
+    validateCardNumber(){
+        let cardString = this.nbCarte.toString();
+        if(this.nbCarte > 0 && cardString.length === 16){
+            console.log("Numéro de carte valide");
+            return true;
+        }else{
+            console.log("Numéro de carte invalide");
+            return false;
+        }
+    }
+
+    validateCcv(){
+        let ccvString = this.ccv.toString();
+        if(this.ccv > 0 && ccvString.length === 3){
+            console.log("Numéro CCV valide");
+            return true;
+        }else{
+            console.log("Numéro CCV invalide");
+            return false;
+        }
+    }
+
+    validateExpire() {
+        console.log("Expire ---->" + this.nbExpire);
+        this.nbExpire = this.Expire;
+
+
+    }
+
+
+    goBack() {
+        this.navCtrl.pop()
     }
 
 }
