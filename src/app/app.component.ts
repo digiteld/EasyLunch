@@ -20,8 +20,8 @@ export class MyApp {
       statusBar.styleDefault();
 
         splashScreen.hide();
-        let splash = modalCtrl.create(SplashPage);
-        splash.present();
+        //let splash = modalCtrl.create(SplashPage);
+        //splash.present();
     });
   }
 }

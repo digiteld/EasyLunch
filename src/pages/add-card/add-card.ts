@@ -205,7 +205,7 @@ export class AddCardPage {
 
     displayError() {
         let toast = this.toastCtrl.create({
-            message: 'Identifiants incorrects ou paiement refusé',
+            message: 'Paiement refusé : vérifiez vos identifiants bancaires',
             duration: 3000
         });
         toast.present();
