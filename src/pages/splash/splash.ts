@@ -24,7 +24,7 @@ export class SplashPage {
 
       setTimeout(() => {
           this.viewCtrl.dismiss();
-      }, 10000);
+      }, 2000);
   }
 
   ionViewDidLoad() {

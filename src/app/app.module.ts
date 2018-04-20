@@ -50,6 +50,7 @@ import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import {SplashPage} from "../pages/splash/splash";
+import {SplashPageModule} from "../pages/splash/splash.module";
 
 
 
@@ -62,8 +63,7 @@ import {SplashPage} from "../pages/splash/splash";
     BookPage,
     HomePage,
     ContactPage,
-    TabsPage,
-      SplashPage
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -81,6 +81,7 @@ import {SplashPage} from "../pages/splash/splash";
     PassRecoverModule,
     CguPageModule,
     CgvPageModule,
+    SplashPageModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,

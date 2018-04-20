@@ -1,8 +1,15 @@
+$break-iphoneSE: 321px;
+$break-iphone6: 376px;
+$break-iphonePlus: 414px;
+
 page-add-card {
     .scroll-content {
         background-color: #F2F2F2;
         padding: 25px!important;
+
+
     }
+
 
     .header {
         box-shadow: 0 3px 6px rgba(0,0,0,0.06);
@@ -14,20 +21,25 @@ page-add-card {
         color: #525252;
     }
 
-    .toolbar-title-md {
-        text-align: center;
+    .toolbar-content {
+        width:100%;
+        display: flex;
+        justify-content: flex-start;
+
+        ion-content{
+            margin-left: 43px;
+        }
     }
 
     .toolbar-background {
         background-color: #FFFFFF;
     }
     
-
+    .arrow{
+        height:100%;
+    }
     .arrow button {
-        position: absolute;
         background-color: transparent;
-        left: 12px;
-        top:11px;
     }
 
     .arrow img {
@@ -115,6 +127,8 @@ page-add-card {
         width: 50%;
         height: 86px;
         margin-right: 10px;
+
+
     }
 
     #CCV {
@@ -142,6 +156,13 @@ page-add-card {
         font-size: 14px;
         font-weight: 500;
         color: #333333;
+
+
+        @media screen and (min-width: $break-iphoneSE) and (max-width: $break-iphone6) {
+            h2 {
+                font-size:12px;
+            }
+        }
     }
 
     
