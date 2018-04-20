@@ -15,16 +15,14 @@ import {RestProvider} from "../../providers/rest/rest";
 export class AddCardPage {
 
     nbCarte: number;
-    nbExpire: string;
     ccv: number;
     nameCard: string;
 
     nbCarteFormat:string;
     showValidation: boolean;
     total:number;
-user:any;
+    user:any;
 
-    formatExpire: string;
     Expire: string;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public rest:RestProvider,private toastCtrl: ToastController) {
@@ -36,19 +34,19 @@ user:any;
 
     init() {
 
-        this.Expire = "08/18";
-        this.formatExpire = null;
-
-        this.showValidation=true;
-        if(this.navParams.get('param'))
-            this.showValidation = false;
+        this.Expire = "2018-08";
+        this.nameCard = "Cersei Lannister";
+        this.ccv=737;
         this.nbCarte=4111111111111111;
 
-        this.formatCardNumber()
+        this.showValidation=true;
 
-        this.nbExpire = "08/18";
-        this.nameCard = "Cersei Lannister";
-        this.ccv=737
+        if(this.navParams.get('param'))
+            this.showValidation = false;
+
+        this.formatCardNumber();
+
+
         this.storage.get("total").then(
             data=> {if(data!=null)
                 this.total=data
@@ -122,6 +120,7 @@ user:any;
 
         //
         // this.navCtrl.push(ConfirmPage);
+        console.log("DATE --> "+this.Expire);
 
         this.validateCardNumber();
         this.validateCcv();
@@ -129,7 +128,8 @@ user:any;
         this.rest.postPayment(
             {
                 nbCard:this.nbCarte,
-                expire:this.nbExpire,
+                expireM:this.Expire.split('-')[1],
+                expireY:this.Expire.split('-')[0],
                 ccv:this.ccv,
                 name:this.nameCard,
                 total:this.total,
@@ -140,7 +140,7 @@ user:any;
             if(data.data.resultCode==="Error")
             {
                 console.log("Payment Refused")
-
+                this.displayError();
             }
             if(data.data.resultCode==="Authorised")
             {
@@ -151,6 +151,7 @@ user:any;
             if(data.data.resultCode==="Refused")
             {
                 console.log("Payment Refused")
+                this.displayError();
             }
         },
             error => console.log("ERR in request Payment --> "+<any>error))
@@ -199,12 +200,16 @@ user:any;
     }
 
     validateExpire() {
-        console.log("Expire ---->" + this.nbExpire);
-        this.nbExpire = this.Expire;
-
-
+        console.log("Expire ---->" + this.Expire);
     }
 
+    displayError() {
+        let toast = this.toastCtrl.create({
+            message: 'Identifiants de carte bancaire incorrects',
+            duration: 3000
+        });
+        toast.present();
+    }
 
     goBack() {
         this.navCtrl.pop()
