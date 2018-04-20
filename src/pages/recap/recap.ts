@@ -52,6 +52,8 @@ export class RecapPage {
 
     jsonChoosenMenu: any;
 
+
+
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public rest: RestProvider) {
 
         this.img = navParams.get('img');
@@ -179,6 +181,7 @@ export class RecapPage {
             this.nbPers = data
             console.log("DATA --> " + data)
         }, error => console.error(error))
+
 
     }
 

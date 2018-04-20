@@ -32,6 +32,7 @@ export class ConfirmPage {
     menuMealID: any;
     total: number;
     special:any
+    user:any;
 
 
     @ViewChild('myTabs') tabRef: Tabs;
@@ -56,6 +57,9 @@ export class ConfirmPage {
     }
 
     init() {
+        this.storage.get('user').then(data=>{
+            if(data!=null)this.user=data
+        }, error=>console.log("ERR on get USER IN STORAGE"))
         this.storage.get('special').then(data=>{
 
                 this.special=data
@@ -156,14 +160,15 @@ export class ConfirmPage {
                     console.log("MEAL ID  --> " + this.mealId)
 
                     console.log("!!! JE CREE UNE RESERVATION !!!")
+                    console.log("USER --> "+JSON.stringify(this.user))
                     this.postBooking({
-                        master_user_id: 1,
+                        master_user_id: this.user.data.id,
                         restaurant_id: 1,
                         nb_users: this.nbPers,
                         schedule: this.schedule,
                         meal_id: meal,
                         date:dateTime,
-                        payment_id: 2,
+                        payment_id: this.navParams.get('idPayment'),
                         menu: menu,
                         total: this.total,
                         special:this.special
@@ -177,14 +182,16 @@ export class ConfirmPage {
                     this.cleanStorage()
                     console.log("AT INSTANT T --> " + this.idCommand)
                     this.postCommand({
-                        user_id: 1,
+
+                        user_id: this.user.data.id,
                         meal_id: meal,
-                        payment_id: 2,
+                        payment_id: this.navParams.get('idPayment'),
                         booking_id: this.idCommand,
                         menu: menu,
                         total: this.total,
                         date:dateTime,
                         special:this.special
+
                     })
                 }
             }
