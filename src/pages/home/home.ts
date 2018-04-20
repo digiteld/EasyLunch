@@ -89,7 +89,9 @@ export class HomePage {
         this.geolocation.getCurrentPosition().then((resp) => {
             // resp.coords.latitude
             // resp.coords.longitude
-            console.log("totot");
+            // console.log("LAT --> "+resp.coords.latitude);
+            // console.log("LON --> "+resp.coords.longitude);
+
         }).catch((error) => {
             console.log("totot2");
             console.log('Error getting location', error);

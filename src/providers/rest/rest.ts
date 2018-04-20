@@ -24,6 +24,7 @@ export class RestProvider {
     private apiUrlGetCodeByBooking = this.prod + '/api/code/';
     private apiAydenPayment=this.prod+'/api/adyen/payment';
     private apiCreateUSer=this.prod+'/api/user/app';
+
     // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
     
     constructor(public http: HttpClient,private loader: LoaderProvider) {

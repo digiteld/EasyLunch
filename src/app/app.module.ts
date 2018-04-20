@@ -49,6 +49,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import {SplashPage} from "../pages/splash/splash";
 
 
 
@@ -61,7 +62,8 @@ import { IonicStorageModule } from '@ionic/storage';
     BookPage,
     HomePage,
     ContactPage,
-    TabsPage
+    TabsPage,
+      SplashPage
   ],
   imports: [
     BrowserModule,
@@ -107,7 +109,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     PassRecoverPage,
     CguPage,
-    CgvPage
+    CgvPage,
+      SplashPage
   ],
   providers: [
     StatusBar,
