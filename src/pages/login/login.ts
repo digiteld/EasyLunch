@@ -58,9 +58,10 @@ export class LoginPage {
                             this.storage.set("user",result)
                             this.navCtrl.push(AddCardPage);
                         }
-                        else
+                        else {
                             console.log("Identifiant invalide")
-
+                            this.errorPass=true;
+                        }
                     },
                     error => console.log("ERR --> " + <any>error));
         }

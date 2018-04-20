@@ -1,8 +1,10 @@
 <ion-header>
-
-  <ion-toolbar>
-    <ion-title> Mon moyen de paiement </ion-title>
-  </ion-toolbar>
+    <ion-navbar hideBackButton>
+        <ion-title> Mon moyen de paiement </ion-title>
+        <div class="arrow">
+            <button (click)="goBack()"> <img src="assets/icon/arrow-left-grey.svg"> </button>
+        </div>
+    </ion-navbar>
 
 </ion-header>
 
@@ -56,10 +58,21 @@
 
     <div class="flex">
         <div id="date"> 
-            <h2> Date d'expiration </h2> 
+            <h2> Date d'expiration </h2>
+            <!--
             <ion-item>
                 <ion-input type="text" maxlength="5" [(ngModel)]="nbExpire" placeholder="03/19"></ion-input>
             </ion-item>
+            -->
+            <button class="expire-date-btn" ion-button (click)="schedulepicker.open()">
+                <ion-datetime #schedulepicker pickerFormat="MM/YYYY" monthValues="01,02,03,04,05,06,07,08,09,10,11,12"
+                              yearValues="2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028"
+                              doneText="Valider" cancelText="Annuler" (ionChange)="validateExpire()"
+                              [(ngModel)]="Expire">
+                </ion-datetime>
+                <p>{{Expire}}</p>
+            </button>
+
         </div>
 
         <div id="CCV"> 
