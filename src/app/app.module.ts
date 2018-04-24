@@ -38,10 +38,10 @@ import { AboutPage } from "../pages/about/about";
 import { AboutPageModule } from "../pages/about/about.module";
 import { PassRecoverPage } from "../pages/pass-recover/pass-recover";
 import { PassRecoverModule } from "../pages/pass-recover/pass-recover.module";
-import { CguPage } from "../pages/cgu/cgu";
-import { CguPageModule } from "../pages/cgu/cgu.module";
-import { CgvPage } from "../pages/cgv/cgv";
-import { CgvPageModule } from "../pages/cgv/cgv.module";
+import { CgPage } from "../pages/cg/cg";
+import { CgPageModule } from "../pages/cg/cg.module";
+import { FaqPage } from "../pages/faq/faq";
+import { FaqPageModule } from "../pages/faq/faq.module";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -79,8 +79,8 @@ import {SplashPageModule} from "../pages/splash/splash.module";
     OnboardingStepPageModule,
     AboutPageModule,
     PassRecoverModule,
-    CguPageModule,
-    CgvPageModule,
+    CgPageModule,
+    FaqPageModule,
     SplashPageModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
@@ -109,9 +109,9 @@ import {SplashPageModule} from "../pages/splash/splash.module";
     OnboardingStepPage,
     AboutPage,
     PassRecoverPage,
-    CguPage,
-    CgvPage,
-      SplashPage
+    CgPage,
+    FaqPage,
+    SplashPage
   ],
   providers: [
     StatusBar,

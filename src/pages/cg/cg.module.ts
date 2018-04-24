@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CgvPage } from './cgv';
+import { CgPage } from './cg';
 
 
 @NgModule({
     declarations: [
-        CgvPage,
+        CgPage,
     ],
     imports: [
-        IonicPageModule.forChild(CgvPage),
+        IonicPageModule.forChild(CgPage),
     ],
 })
 
-export class CgvPageModule {}
+export class CgPageModule {}

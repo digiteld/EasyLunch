@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
+
 @IonicPage()
 @Component({
-    selector: 'page-cgu',
-    templateUrl: 'cgu.html'
+    selector: 'page-faq',
+    templateUrl: 'faq.html',
 })
 
-export class CguPage {
+export class FaqPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad CguPage');
+        console.log('ionViewDidLoad FaqPage');
     }
 
     goBack() {

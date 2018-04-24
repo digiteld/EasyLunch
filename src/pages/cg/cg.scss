@@ -1,0 +1,49 @@
+page-cg {
+  ////    NavBar
+
+  .header {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+  }
+
+  .toolbar-background {
+    background-color: #FFFFFF;
+  }
+
+  .toolbar-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #525252;
+  }
+
+  .toolbar-title-md {
+    text-align: center;
+  }
+
+  .arrow button {
+    position: absolute;
+    background-color: transparent;
+    transform: translateY(-50%);
+    left: 12px;
+  }
+
+  .arrow img {
+    width: 12px;
+  }
+
+  .scroll-content{
+    padding:20px;
+    background-color:#F2F2F2;
+
+    p {
+      font-size: 1em;
+      font-weight: 500;
+      color: #333333;
+    }
+  }
+
+  .global-content{
+    background-color:#fff;
+    padding:4vw;
+  }
+
+}

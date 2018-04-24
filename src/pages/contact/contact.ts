@@ -3,8 +3,8 @@ import { NavController } from 'ionic-angular';
 import { AddCardPage } from "../add-card/add-card";
 import { OnboardingPage } from "../onboarding/onboarding";
 import { AboutPage } from "../about/about";
-import { CguPage } from "../cgu/cgu";
-import { CgvPage } from "../cgv/cgv";
+import { CgPage } from "../cg/cg";
+import { FaqPage } from "../faq/faq";
 
 
 
@@ -35,12 +35,12 @@ export class ContactPage {
 
   }
 
-  openCgu(){
-      this.navCtrl.push(CguPage)
+  openCg(){
+      this.navCtrl.push(CgPage)
   }
 
-    openCgv(){
-        this.navCtrl.push(CgvPage, {contact:true})
+    openFaq(){
+        this.navCtrl.push(FaqPage)
     }
 
 }

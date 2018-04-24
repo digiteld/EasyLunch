@@ -3,18 +3,18 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 @IonicPage()
 @Component({
-    selector: 'page-cgv',
-    templateUrl: 'cgv.html'
+    selector: 'page-cg',
+    templateUrl: 'cg.html'
 })
 
-export class CgvPage {
+export class CgPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad CgvPage');
+        console.log('ionViewDidLoad CgPage');
     }
 
     goBack() {
