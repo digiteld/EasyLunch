@@ -23,6 +23,10 @@ page-contact {
         font-size: 1.15em;
         font-weight: 500;
         line-height: 62px;
+
+        @media screen and (max-width: $break-iphoneSE){
+            font-size:1em;
+        }
     }
 
     .card {

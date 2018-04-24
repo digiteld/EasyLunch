@@ -48,10 +48,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import {SplashPage} from "../pages/splash/splash";
 import {SplashPageModule} from "../pages/splash/splash.module";
-
-
-
-
+import {FaqPage} from "../pages/faq/faq";
+import {FaqPageModule} from "../pages/faq/faq.module";
+import { ConfidentialPolicyPage } from '../pages/confidential-policy/confidential-policy';
+import { ConfidentialPolicyPageModule } from '../pages/confidential-policy/confidential-policy.module';
 
 @NgModule({
   declarations: [
@@ -77,6 +77,8 @@ import {SplashPageModule} from "../pages/splash/splash.module";
     AboutPageModule,
     PassRecoverModule,
     CgPageModule,
+    FaqPageModule,
+    ConfidentialPolicyPageModule,
     SplashPageModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
@@ -106,6 +108,8 @@ import {SplashPageModule} from "../pages/splash/splash.module";
     AboutPage,
     PassRecoverPage,
     CgPage,
+    FaqPage,
+    ConfidentialPolicyPage,
     SplashPage
   ],
   providers: [

@@ -14,7 +14,7 @@
           </ion-item>
 
           <div class="display-error" *ngIf="errorName">
-              <img src="/assets/icon/error-5.svg" alt="" width="20px">
+              <img src="assets/icon/error-5.svg" alt="" width="20px">
               <p>Veuillez renseigner le nom ou prénom</p>
           </div>
 
@@ -24,17 +24,21 @@
           </ion-item>
 
           <div class="display-error" *ngIf="errorMail">
-              <img src="/assets/icon/error-5.svg" alt="" width="20px">
+              <img src="assets/icon/error-5.svg" alt="" width="20px">
               <p>Adresse e-mail invalide</p>
           </div>
 
+          <div class="display-error" *ngIf="mailExist">
+              <img src="assets/icon/error-5.svg" alt="" width="20px">
+              <p>Cette adresse e-mail existe déjà</p>
+          </div>
           <ion-item>
             <ion-label color="secondary"> <ion-icon name="tel"></ion-icon> </ion-label>
             <ion-input type="tel" [(ngModel)]="phone" placeholder="Portable" maxlength="10" clearInput> </ion-input>
           </ion-item>
 
           <div class="display-error" *ngIf="errorPhone">
-              <img src="/assets/icon/error-5.svg" alt="" width="20px">
+              <img src="assets/icon/error-5.svg" alt="" width="20px">
               <p>Numéro de téléphone invalide</p>
           </div>
 
@@ -44,7 +48,7 @@
           </ion-item>
 
           <div class="display-error" *ngIf="errorPass">
-              <img src="/assets/icon/error-5.svg" alt="" width="20px" >
+              <img src="assets/icon/error-5.svg" alt="" width="20px" >
               <p>Mot de passe invalide</p>
           </div>
 

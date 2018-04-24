@@ -27,15 +27,18 @@ export class AccountCreaPage {
     password: string;
 
     errorMail: boolean;
+    mailExist : boolean;
     errorPass: boolean;
     errorName : boolean;
     errorPhone : boolean;
+
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
         this.errorMail = false;
         this.errorPass = false;
         this.errorName = false;
         this.errorPhone = false;
+        this.mailExist = false;
         this.email="";
         this.name="";
         this.phone="";
@@ -77,6 +80,12 @@ export class AccountCreaPage {
                     if (result['code'] === 0) {
 
                         console.log("USER ALREADY EXIST")
+                        if(this.errorMail === true){
+                            this.errorMail = false;
+                            this.mailExist = true;
+                        }else{
+                            this.mailExist = true;
+                        }
                     }
                     else {
                         this.navCtrl.push(AddCardPage);
@@ -95,12 +104,14 @@ export class AccountCreaPage {
         console.log("AAAAAA")
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.email.match(mailformat)) {
-            if(this.errorMail === true){
+
+            if (this.errorMail === true) {
                 this.errorMail = false;
-            }
-            return true;
-        }
-        else {
+                }
+
+                return true;
+
+        } else {
             console.log("You have entered an invalid email address!");
             this.errorMail = true;
             return false;

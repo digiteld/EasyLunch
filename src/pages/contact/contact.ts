@@ -4,8 +4,8 @@ import { AddCardPage } from "../add-card/add-card";
 import { OnboardingPage } from "../onboarding/onboarding";
 import { AboutPage } from "../about/about";
 import { CgPage } from "../cg/cg";
-
-
+import {FaqPage} from "../faq/faq";
+import {ConfidentialPolicyPage} from "../confidential-policy/confidential-policy";
 
 
 @Component({
@@ -38,6 +38,12 @@ export class ContactPage {
   openCg(){
       this.navCtrl.push(CgPage)
   }
+    openFaq(){
+        this.navCtrl.push(FaqPage)
+    }
 
+    openPolicy(){
+        this.navCtrl.push(ConfidentialPolicyPage)
+    }
 
 }

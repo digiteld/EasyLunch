@@ -15,11 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FaqPage {
 
+  answerNumber: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.answerNumber = 0;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FaqPage');
   }
 
+  openAnswer(n){
+    this.answerNumber = n;
+  }
+
+    goBack() {
+        this.navCtrl.pop()
+    }
 }
