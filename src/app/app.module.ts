@@ -40,9 +40,6 @@ import { PassRecoverPage } from "../pages/pass-recover/pass-recover";
 import { PassRecoverModule } from "../pages/pass-recover/pass-recover.module";
 import { CgPage } from "../pages/cg/cg";
 import { CgPageModule } from "../pages/cg/cg.module";
-import { FaqPage } from "../pages/faq/faq";
-import { FaqPageModule } from "../pages/faq/faq.module";
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
@@ -80,7 +77,6 @@ import {SplashPageModule} from "../pages/splash/splash.module";
     AboutPageModule,
     PassRecoverModule,
     CgPageModule,
-    FaqPageModule,
     SplashPageModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
@@ -110,7 +106,6 @@ import {SplashPageModule} from "../pages/splash/splash.module";
     AboutPage,
     PassRecoverPage,
     CgPage,
-    FaqPage,
     SplashPage
   ],
   providers: [
