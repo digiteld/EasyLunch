@@ -34,7 +34,6 @@ export class ConfirmPage {
     special:any
     user:any;
 
-
     @ViewChild('myTabs') tabRef: Tabs;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage,) {
@@ -203,8 +202,7 @@ export class ConfirmPage {
         // this.tabRef.select(0)
         console.log(this.navCtrl.length())
 
-       // this.navCtrl.setPages(this.navCtrl[0])
-        this.navCtrl.popToRoot()
+        this.navCtrl.popToRoot();
         console.log('FELICITATION !!! Parcours terminé');
     }
 

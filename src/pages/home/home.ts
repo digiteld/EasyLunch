@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, ToastController} from 'ionic-angular';
 
 import { RestProvider } from '../../providers/rest/rest';
 import L from 'leaflet';
@@ -57,11 +57,13 @@ export class HomePage {
     scheduleBtText:string;
     nbPersBtText:string;
 
+    dateTime : any;
+    timeOut : boolean;
 
     @ViewChild(Slides) slides: Slides;
 
 
-    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions,private geolocation: Geolocation) {
+    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions,private geolocation: Geolocation, private toastCtrl: ToastController) {
         this.cleanStorage()
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
@@ -81,21 +83,23 @@ export class HomePage {
         this.scheduleBtText="A quelle heure ?"
         this.nbPersBtText="Pour combien ?"
 
-
+        this.dateTime = new Date();
+        this.timeOut = false;
     }
 
     ionViewDidLoad() {
-        console.log("JE passe bien par là")
+        this.checkForTimeOut();
         this.geolocation.getCurrentPosition().then((resp) => {
             // resp.coords.latitude
             // resp.coords.longitude
-            // console.log("LAT --> "+resp.coords.latitude);
-            // console.log("LON --> "+resp.coords.longitude);
+             console.log("LAT --> "+resp.coords.latitude);
+             console.log("LON --> "+resp.coords.longitude);
 
         }).catch((error) => {
-            console.log("totot2");
             console.log('Error getting location', error);
         });
+
+
         this.loadmap();
         this.getRestaurants();
 
@@ -161,8 +165,7 @@ export class HomePage {
             city: obj.city
 
 
-        })
-        ;
+        });
         console.log("well play tu as ouvert la page menu");
     }
 
@@ -201,7 +204,6 @@ export class HomePage {
 
     loadmap() {
 
-
         this.map = L.map("map", {zoomControl: false});
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -210,14 +212,17 @@ export class HomePage {
         this.tryLocate()
 
         this.map.on('locationfound', (e) => {
-            this.locationfound(e)
+            console.log(e);
+            this.locationfound(e);
+
         }).on('locationerror', (err) => {
             console.log(err.message);
+            console.log("erreur de localisation");
             this.tryLocate()
+
         }).on('load', (e) => {
             console.log("MAP LOAD ")
             this.mapLoad = true;
-
             this.initMarker()
         })
 
@@ -234,14 +239,13 @@ export class HomePage {
 
 
     locationfound = (e) => {
-
         console.log("POSITION --> "+ e)
-
         this.positionFound = true;
-        this.latitude = e.latitude;
-        this.longitude = e.longitude
+        //this.latitude = e.latitude;
+        //this.longitude = e.longitude;
+        e === true  ? this.latitude = e.latitude : this.latitude = "44.849104";
+        e === true  ? this.longitude = e.longitude : this.longitude = "-0.571037";
         this.initMarker()
-
     }
 
     initMarker() {
@@ -424,5 +428,27 @@ this.map.zoomOut(25)
 
     }
 
+    // Désactivate button picker if time is over 11:30 am
+
+    checkForTimeOut(){
+
+        if (this.dateTime.getHours() >= 11 && this.dateTime.getMinutes() >= 30 || this.dateTime.getHours >= 12){
+                this.timeOut = true;
+                this.displayError();
+        }else{
+            this.timeOut = false;
+        }
+    }
+
+    displayError() {
+        let toast = this.toastCtrl.create({
+            message: 'Les commandes ne sont plus possibles après 11h30, merci de votre compréhension.',
+            showCloseButton: true,
+            closeButtonText: "X",
+            dismissOnPageChange: true,
+            position: 'middle'
+        });
+        toast.present();
+    }
 
 }

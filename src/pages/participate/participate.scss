@@ -1,3 +1,8 @@
+$break-iphoneX: 720px;
+$break-iphoneSE: 321px;
+$break-iphone6: 376px;
+$break-iphonePlus: 414px;
+
 page-participate {
 
   .all {
@@ -25,7 +30,10 @@ page-participate {
     flex-direction: column;
     max-width: 80vw;
     position: absolute;
-    bottom:17vh;
+    @media screen and (min-height: $break-iphoneX) {
+      bottom:17vh;
+    }
+    bottom:14vh;
     /* old
     padding: 0 25px;
     */

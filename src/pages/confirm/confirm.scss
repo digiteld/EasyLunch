@@ -1,3 +1,8 @@
+$break-iphoneX: 720px;
+$break-iphoneSE: 321px;
+$break-iphone6: 376px;
+$break-iphonePlus: 414px;
+
 page-confirm {
   .all {
     /* old
@@ -54,9 +59,12 @@ page-confirm {
     /* new */
     width:100%;
     position:absolute;
-    bottom:2vh;
+    bottom:12vh;
     background-position: center;
     background-size: cover;
+    @media screen and (min-height: $break-iphoneX) {
+      bottom:2vh;
+    }
   }
 
   .text1 {
