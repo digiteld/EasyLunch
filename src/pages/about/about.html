@@ -1,13 +1,20 @@
-<ion-content padding>
-    <div class="scroll-content">
-        <div id="img">
-            <img src={{img}}/>
-            <button class="arrow-btn" (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-grey.svg"></button>
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <ion-title>A propos</ion-title>
+        <div class="arrow">
+            <button (click)="goBack()"><img src="assets/icon/arrow-left-grey.svg"></button>
         </div>
-        <h1>A propos</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Adipisci eveniet expedita ipsum laudantium sequi! Architecto aut,
-            distinctio nihil recusandae repellendus sint vel.
-            Earum maiores mollitia nostrum perferendis, rem sed! Accusantium.</p>
-    </div>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h1>A propos</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Adipisci eveniet expedita ipsum laudantium sequi! Architecto aut,
+        distinctio nihil recusandae repellendus sint vel.
+        Earum maiores mollitia nostrum perferendis, rem sed! Accusantium.</p>
+
 </ion-content>

@@ -1,20 +1,31 @@
 page-about {
-  .arrow-btn{
-    background-color:transparent;
-    padding-left:0;
+  .header {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.6);
   }
-  .arrow{
-    width: 22px;
-    height: 20px;
+
+  .toolbar-background {
+    background-color: #FFFFFF;
   }
-  .scroll-content{
-    padding: 25px !important;
-  }
-  h1{
-    color: #525252;
-    font-size: 1.45em;
+
+  .toolbar-title {
     font-weight: 600;
-    margin-top: 20px !important;
+    font-size: 1.1em;
+    color: #525252;
+  }
+
+  .toolbar-title-md {
+    text-align: center;
+  }
+
+  .arrow button {
+    position: absolute;
+    background-color: transparent;
+    transform: translateY(-50%);
+    left: 12px;
+  }
+
+  .arrow img {
+    width: 10px;
   }
 
 }

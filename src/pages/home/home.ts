@@ -1,18 +1,18 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 import {NavController, ToastController} from 'ionic-angular';
 
-import { RestProvider } from '../../providers/rest/rest';
+import {RestProvider} from '../../providers/rest/rest';
 import L from 'leaflet';
 
-import { AndroidPermissions } from '@ionic-native/android-permissions';
+import {AndroidPermissions} from '@ionic-native/android-permissions';
 
-import { Slides } from 'ionic-angular';
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import {Slides} from 'ionic-angular';
+import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 
-import { Geolocation } from '@ionic-native/geolocation';
+import {Geolocation} from '@ionic-native/geolocation';
 
-import { MenuPage } from '../menu/menu';
-import { Storage } from "@ionic/storage";
+import {MenuPage} from '../menu/menu';
+import {Storage} from "@ionic/storage";
 
 
 @Component({
@@ -32,8 +32,8 @@ export class HomePage {
 
 
     ////    Add variable for holds data
-    
-    observable:any;
+
+    observable: any;
     map: any;
     restaurant: any;
     errorMessage: string;
@@ -45,25 +45,25 @@ export class HomePage {
     Schedule: string;
     allPin: any;
     date: Date;
-    markerArray: any[]
+    markerArray: any[];
     formatnbPers: string;
     formatSchedule: string;
     latitude: string;
     longitude: string;
     positionFound: boolean;
     mapLoad: boolean;
-    mod:boolean;
+    mod: boolean;
 
-    scheduleBtText:string;
-    nbPersBtText:string;
+    scheduleBtText: string;
+    nbPersBtText: string;
 
-    dateTime : any;
-    timeOut : boolean;
+    dateTime: any;
+    timeOut: boolean;
 
     @ViewChild(Slides) slides: Slides;
 
 
-    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions,private geolocation: Geolocation, private toastCtrl: ToastController) {
+    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions, private geolocation: Geolocation, private toastCtrl: ToastController) {
         this.cleanStorage()
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
@@ -78,10 +78,10 @@ export class HomePage {
         this.positionFound = false;
         this.currentIndex = 0;
         this.allPin = this.allPin || [];
-        this.mod=false;
+        this.mod = false;
 
-        this.scheduleBtText="A quelle heure ?"
-        this.nbPersBtText="Pour combien ?"
+        this.scheduleBtText = "A quelle heure ?"
+        this.nbPersBtText = "Pour combien ?"
 
         this.dateTime = new Date();
         this.timeOut = false;
@@ -92,8 +92,8 @@ export class HomePage {
         this.geolocation.getCurrentPosition().then((resp) => {
             // resp.coords.latitude
             // resp.coords.longitude
-             console.log("LAT --> "+resp.coords.latitude);
-             console.log("LON --> "+resp.coords.longitude);
+            console.log("LAT --> " + resp.coords.latitude);
+            console.log("LON --> " + resp.coords.longitude);
 
         }).catch((error) => {
             console.log('Error getting location', error);
@@ -118,8 +118,6 @@ export class HomePage {
         console.log("JE passe bien par IONDIDENTER")
         //this.getRestaurants();
     }
-
-    
 
 
     slideChanged() {
@@ -174,11 +172,11 @@ export class HomePage {
 
 
     moveMarker(pin) {
-        if (pin){
+        if (pin) {
             let newIcon = L.icon({
                 iconUrl: 'assets/icon/pin.svg',
                 iconSize: [60, 80],
-                iconAnchor:[30,80],
+                iconAnchor: [30, 80],
                 popupAnchor: [0, -15]
             });
 
@@ -190,11 +188,10 @@ export class HomePage {
             });
             console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex())
 
-                this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
-                pin.bounce({duration: 500, height: 100});
-                pin.setIcon(newIcon);
+            this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
+            pin.bounce({duration: 500, height: 100});
+            pin.setIcon(newIcon);
         }
-
 
 
     }
@@ -203,7 +200,6 @@ export class HomePage {
     ////     Function to initialize map   -   we using leaflet with mapbox
 
     loadmap() {
-
         this.map = L.map("map", {zoomControl: false});
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -218,34 +214,32 @@ export class HomePage {
         }).on('locationerror', (err) => {
             console.log(err.message);
             console.log("erreur de localisation");
-            this.tryLocate()
+            this.tryLocate();
 
         }).on('load', (e) => {
             console.log("MAP LOAD ")
             this.mapLoad = true;
-            this.initMarker()
+            this.initMarker();
         })
 
     }
-    tryLocate()
-    {
+
+    tryLocate() {
         this.map.locate({
             setView: true,
             maxZoom: 10,
-            timeout:2000
+            timeout: 2000
         })
+
     }
-    
 
 
     locationfound = (e) => {
-        console.log("POSITION --> "+ e)
+        console.log("POSITION --> " + e)
         this.positionFound = true;
-        //this.latitude = e.latitude;
-        //this.longitude = e.longitude;
-        e === true  ? this.latitude = e.latitude : this.latitude = "44.849104";
-        e === true  ? this.longitude = e.longitude : this.longitude = "-0.571037";
-        this.initMarker()
+        this.latitude = e.latitude;
+        this.longitude = e.longitude;
+        this.initMarker();
     }
 
     initMarker() {
@@ -260,16 +254,31 @@ export class HomePage {
             });
             let marker: any = L.marker([this.latitude, this.longitude], {icon: pulsingIcon});
 
-            this.allPin.push(marker)
-            this.markerArray.push(marker)
-            console.log("position found --> "+ this.positionFound)
-            console.log("this map --> "+this.map)
-            console.log("mapload --> "+this.mapLoad)
+            this.allPin.push(marker);
+            this.markerArray.push(marker);
+            console.log("position found --> " + this.positionFound)
+            console.log("this map --> " + this.map)
+            console.log("mapload --> " + this.mapLoad)
             this.map.addLayer(marker);
             this.zoomOnNearestResto()
 
-
+        }else if(!this.positionFound){
+            this.initMarkerOffLine();
         }
+    }
+
+
+    initMarkerOffLine(){
+
+        this.latitude = "44.849104";
+        this.longitude = "-0.571037";
+        let marker: any = L.marker([this.latitude, this.longitude]);
+        this.allPin.push(marker);
+        this.markerArray.push(marker);
+
+        var latlng = L.latLng(this.latitude, this.longitude);
+        this.map.setView(latlng, 12);
+
     }
 
     ////     Create a function for calling the restaurants from the provider
@@ -301,14 +310,14 @@ export class HomePage {
 
     validateSchedule() {
         console.log("SCHEDULE")
-        this.scheduleBtText=this.Schedule
+        this.scheduleBtText = this.Schedule
 
 
     }
 
     validateNbPers() {
 
-        this.nbPersBtText=this.NbPers.substring(0,2)
+        this.nbPersBtText = this.NbPers.substring(0, 2)
         console.log("NbPERS")
 
 
@@ -349,22 +358,24 @@ export class HomePage {
 
         let array = this.restaurant;
 
-        this.observable=IntervalObservable.create(10).subscribe((i) => {
+        this.observable = IntervalObservable.create(10).subscribe((i) => {
 
-            if (i > array.length-1) {
-                if(this.observable.isStopped) {
+            if (i > array.length - 1) {
+                if (this.observable.isStopped) {
                     this.observable.unsubscribe();
                 }
                 return false;
             }
 
-            console.log("MOD --> "+i+" --> "+array[i].mod)
+            console.log("MOD --> " + i + " --> " + array[i].mod)
             let pin = L.marker([array[i].lat, array[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}
             })
             console.log("PIN1");
-            pin.on('add', event => {this.onAddLayer(event)})
+            pin.on('add', event => {
+                this.onAddLayer(event)
+            })
             console.log("PIN2");
             pin.addTo(this.map);
             console.log("PIN3");
@@ -398,13 +409,13 @@ export class HomePage {
                     var bottomMaxPos = slidesContainer.offsetTop - 170;
 
                     this.map.fitBounds(group.getBounds(), {
-                            paddingTopLeft: [0,topMaxPos],
-                            paddingBottomRight: [0,bottomMaxPos]
+                            paddingTopLeft: [0, topMaxPos],
+                            paddingBottomRight: [0, bottomMaxPos]
                         }
                     );
 
 //                    this.map.setZoom(this.map.getZoom()-1);
-this.map.zoomOut(25)
+                    this.map.zoomOut(25)
                 }
 
                 , 1000);
@@ -430,12 +441,12 @@ this.map.zoomOut(25)
 
     // Désactivate button picker if time is over 11:30 am
 
-    checkForTimeOut(){
-
-        if (this.dateTime.getHours() >= 11 && this.dateTime.getMinutes() >= 30 || this.dateTime.getHours >= 12){
-                this.timeOut = true;
-                this.displayError();
-        }else{
+    checkForTimeOut() {
+        console.log("IL EST -------> " + this.dateTime.getHours());
+        if (this.dateTime.getHours() >= 11 && this.dateTime.getMinutes() >= 30 || this.dateTime.getHours >= 12) {
+            this.timeOut = true;
+            this.displayError();
+        } else {
             this.timeOut = false;
         }
     }
