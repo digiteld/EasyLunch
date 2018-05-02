@@ -120,7 +120,7 @@ export class AccountCreaPage {
     }
 
     validatePhone() {
-        if (this.phone.length > 0 && this.phone.length === 10 && !Number.isNaN(parseInt(this.phone))){
+        if (this.phone.length > 0 && this.phone.length === 10 && parseInt(this.phone) < 1000000000 && !Number.isNaN(parseInt(this.phone))){
             if(this.errorPhone === true){
                 this.errorPhone = false;
             }

@@ -46,8 +46,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { LoaderProvider } from '../providers/rest/loader';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
-import {SplashPage} from "../pages/splash/splash";
-import {SplashPageModule} from "../pages/splash/splash.module";
+
 import {FaqPage} from "../pages/faq/faq";
 import {FaqPageModule} from "../pages/faq/faq.module";
 import { ConfidentialPolicyPage } from '../pages/confidential-policy/confidential-policy';
@@ -79,7 +78,7 @@ import { ConfidentialPolicyPageModule } from '../pages/confidential-policy/confi
     CgPageModule,
     FaqPageModule,
     ConfidentialPolicyPageModule,
-    SplashPageModule,
+
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,
@@ -110,7 +109,7 @@ import { ConfidentialPolicyPageModule } from '../pages/confidential-policy/confi
     CgPage,
     FaqPage,
     ConfidentialPolicyPage,
-    SplashPage
+
   ],
   providers: [
     StatusBar,

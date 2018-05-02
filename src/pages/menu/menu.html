@@ -56,15 +56,15 @@
             <ion-card (click)="openDetailMenu(menuOfDay.id, true)">
 
                 <ion-card-content>
-                    <div class="choice">
+                    <div class="menu-choice">
                         <p> Plat </p>
                         <p class="price"> {{menuOfDay.price}}€ </p>
                     </div>
-                    <div class="choice">
+                    <div class="menu-choice">
                         <p> Entrée / Plat / Dessert </p>
                         <p class="price"> {{menuOfDay.price}}€ </p>
                     </div>
-                    <div class="choice">
+                    <div class="menu-choice">
                         <p> Entrée / Plat ou Plat / Dessert </p>
                             <p class="price"> {{menuOfDay.price}}€ </p>
                     </div>
@@ -87,6 +87,7 @@
             <ion-card (click)="openDetailMenu(item.id,false)">
 
                 <ion-card-content>
+                    <div class="choix">
                     <div class="menu">
                         <h3>
                             {{item.name}}
@@ -96,17 +97,20 @@
                                 Entrée / Plat ou Plat / Dessert
                             </p>
                         </ng-container>
+
                         <ng-container *ngIf="item.nbmeals===3">
                             <p>
                                 Entrée / Plat / Dessert
                             </p>
+
                         </ng-container>
+
                     </div>
 
                     <div class="price">
-                        {{item.price}}€
+                            {{item.price}}€
                     </div>
-
+                </div>
         </ion-card-content>
 
         </ion-card>
@@ -129,11 +133,16 @@
 
                     <ion-card-content>
                         <div class="choix">
+
                             <div class="choice">
-                            <h3> {{item.name}} </h3>
-                            <p class="price-plat">{{item.price}}€ </p>
+                                <h3> {{item.name}} </h3>
+                                <p> {{item.description}} </p>
                             </div>
-                            <p> {{item.description}} </p>
+
+                            <div class="price-plat">
+                                {{item.price}} €
+                            </div>
+
 
                         </div>
 
@@ -160,13 +169,17 @@
 
                     <ion-card-content>
                         <div class="choix">
-                            <h3> {{item.name}} </h3>
-                            <p> {{item.description}} </p>
+                            <div class="choice">
+                                <h3> {{item.name}} </h3>
+                                <p> {{item.description}} </p>
+                            </div>
+
+                            <div class="price">
+                                    {{item.price}}€
+                            </div>
                         </div>
 
-                        <div class="price">
-                            {{item.price}}€
-                        </div>
+
                     </ion-card-content>
 
                 </ion-card>
@@ -187,13 +200,17 @@
 
                     <ion-card-content>
                         <div class="choix">
-                            <h3> {{item.name}} </h3>
-                            <p> {{item.description}} </p>
+                            <div class="choice">
+                                <h3> {{item.name}} </h3>
+                                <p> {{item.description}} </p>
+                            </div>
+
+                            <div class="price">
+                                    {{item.price}}€
+                            </div>
                         </div>
 
-                        <div class="price">
-                            {{item.price}}€
-                        </div>
+
                     </ion-card-content>
 
                 </ion-card>

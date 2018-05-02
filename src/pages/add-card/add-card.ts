@@ -125,7 +125,7 @@ export class AddCardPage {
 
         this.validateCardNumber();
         this.validateCcv();
-
+        this.navCtrl.push(ConfirmPage);
 
         /*this.rest.postPayment(
             {

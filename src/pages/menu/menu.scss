@@ -69,8 +69,20 @@ page-menu {
 ////    Card menu
 
 
-  .choice {
+  .menu-choice{
     display: flex;
+    justify-content: space-between;
+  }
+
+  .choix{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .choice {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
 
@@ -180,12 +192,11 @@ page-menu {
     text-align: right;
     color: #333333;
     font-weight: 500;
-    margin-top: 3vh;
   }
+
   .price-plat {
-    text-align: right;
+    max-width:20%;
     font-weight: 500 !important;
-    margin-top: 3vh;
   }
 
 
@@ -210,12 +221,14 @@ page-menu {
 
       ////   Card formules
 
+  .menu{
+    max-width: 80%;
+  }
 
   .menu h3 {
     text-align: left !important;
     font-size: 16px;
     font-weight: 500;
-    margin-top: 5px;
     margin-bottom: 10px;
   }
 

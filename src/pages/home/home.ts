@@ -85,16 +85,16 @@ export class HomePage {
 
         this.dateTime = new Date();
         this.timeOut = false;
+
     }
 
     ionViewDidLoad() {
-        //this.checkForTimeOut();
+        this.checkForTimeOut();
         this.geolocation.getCurrentPosition().then((resp) => {
             // resp.coords.latitude
             // resp.coords.longitude
             console.log("LAT --> " + resp.coords.latitude);
             console.log("LON --> " + resp.coords.longitude);
-
         }).catch((error) => {
             console.log('Error getting location', error);
         });
@@ -440,7 +440,6 @@ export class HomePage {
     }
 
     // Désactivate button picker if time is over 11:30 am
-    /*
     checkForTimeOut() {
         console.log("IL EST -------> " + this.dateTime.getHours());
         if (this.dateTime.getHours() >= 11 && this.dateTime.getMinutes() >= 30 || this.dateTime.getHours >= 12) {
@@ -450,7 +449,7 @@ export class HomePage {
             this.timeOut = false;
         }
     }
-*/
+
     displayError() {
         let toast = this.toastCtrl.create({
             message: 'Les commandes ne sont plus possibles après 11h30, merci de votre compréhension.',
