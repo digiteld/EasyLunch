@@ -88,7 +88,8 @@ export class AccountCreaPage {
                         }
                     }
                     else {
-                        this.navCtrl.push(AddCardPage);
+                        /*this.navCtrl.push(AddCardPage);*/
+                        this.navCtrl.push(LoginPage);
                         console.log("IT'S GOOD !!!");
                     }
                 },

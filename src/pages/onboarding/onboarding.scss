@@ -1,26 +1,41 @@
 $break-iphoneSE: 320px;
 
 page-onboarding {
+    .scroll-content{
+        background-color:#F6BB1A;
+        background-image: url('../assets/imgs/onboard1.png');
+        background-size:contain;
+        overflow-y:hidden;
+        }
 
     h1 {
         text-align: center;
-        color: #5E7FB1;
+        color: #fff;
         font-weight: 600;
         font-size: 32px;
-        margin: 30px 30px 14px;
+        margin: 20px 30px 14px;
         @media screen and (max-width: $break-iphoneSE) {
-            font-size:28px;
+            margin-top:30px;
+            font-size: 28px;
         }
     }
 
     p {
-        color: #5E7FB1;
+        color: #fff;
         font-size: 18px;
     }
 
     #text{
         padding-left: 42px;
         padding-right: 42px;
+
+        p{
+            text-align:center;
+            font-weight:500;
+            @media screen and (max-width: $break-iphoneSE) {
+                font-size:14px;
+            }
+        }
     }
 
     .next p {
@@ -38,7 +53,7 @@ page-onboarding {
     button {
         width: 200px;
         height: 50px;
-        background-color: #5E7FB1 !important;
+        background-image: linear-gradient(#F1C40F, #FFA300);
         margin-bottom: 25px;
     }
 
@@ -57,7 +72,10 @@ page-onboarding {
         padding-right: 15px;
         margin-top:45px;
         @media screen and (max-width: $break-iphoneSE) {
-            margin-top:0px;
+            margin-top:60px;
+        }
+        @media screen and (min-height: 700px) and (max-height: 800px) {
+            margin-top:120px;
         }
 
         :first-child, :last-child {
@@ -78,7 +96,7 @@ page-onboarding {
             justify-content: flex-start;
             width:155px;
             height:155px;
-            background-color:#eee;
+            background-color:#fff;
             border-radius: 50%;
             padding:18px;
             @media screen and (max-width: $break-iphoneSE) {
@@ -92,6 +110,7 @@ page-onboarding {
                 font-size: 18px;
                 text-align: center;
                 margin-bottom:25px;
+                color:#333333;
 
                 @media screen and (max-width: $break-iphoneSE) {
                 font-size: 14px;

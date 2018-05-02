@@ -5,6 +5,7 @@ import { ConfirmPage } from '../confirm/confirm';
 
 import {Storage} from '@ionic/storage';
 import {RestProvider} from "../../providers/rest/rest";
+import { LoginPage } from '../login/login';
 
 
 @IonicPage()
@@ -125,7 +126,8 @@ export class AddCardPage {
         this.validateCardNumber();
         this.validateCcv();
 
-        this.rest.postPayment(
+
+        /*this.rest.postPayment(
             {
                 nbCard:this.nbCarte,
                 expireM:this.Expire.split('-')[1],
@@ -155,9 +157,10 @@ export class AddCardPage {
             }
         },
             error => console.log("ERR in request Payment --> "+<any>error))
-
+        */
         console.log("check point !");
     }
+
 
     formatCardNumber() {
         console.log(this.nbCarte)
