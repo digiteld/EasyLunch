@@ -166,31 +166,50 @@ export class MenuPage {
 
     scroolToElement(id) {
         console.log(id)
+
+        let menu = document.getElementById("scrool-menudujour");
+        let formules = document.getElementById("scrool-formules");
+        let entrees = document.getElementById("scrool-entrees");
+        let plats = document.getElementById("scrool-plats");
+        let desserts = document.getElementById("scrool-desserts");
+        let boissons = document.getElementById("scrool-boissons");
+
+        menu.style.borderBottomColor = "#F2F2F2";
+        formules.style.borderBottomColor = "#F2F2F2";
+        entrees.style.borderBottomColor = "#F2F2F2";
+        plats.style.borderBottomColor = "#F2F2F2";
+        desserts.style.borderBottomColor = "#F2F2F2";
+        boissons.style.borderBottomColor = "#F2F2F2";
+
         switch(id)
         {
             case "menudujour":
-                document.getElementById("bottom-border").style.left="4%";
+                menu.style.borderBottomColor = "#F9B522";
                 break;
 
             case "formules":
-                document.getElementById("bottom-border").style.left="37%";
+                formules.style.borderBottomColor = "#F9B522";
                 break;
 
             case "entrees":
-                document.getElementById("bottom-border").style.left="62%";
+                entrees.style.borderBottomColor = "#F9B522";
                 break;
 
             case "plats":
-                document.getElementById("bottom-border").style.left="82%";
+                plats.style.borderBottomColor = "#F9B522";
                 break;
 
             case "desserts":
-                document.getElementById("bottom-border").style.left="97%";
+                desserts.style.borderBottomColor = "#F9B522";
+                break;
+
+            case "boissons":
+                boissons.style.borderBottomColor = "#F9B522";
                 break;
 
         }
         let yOffset = document.getElementById(id).offsetTop;
-        this.content.scrollTo(0, yOffset + 290, 0)
+        /*this.content.scrollTo(0, yOffset + 290, 0)*/
     }
 
     openDetail(plat, index) {
