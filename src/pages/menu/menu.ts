@@ -70,10 +70,26 @@ export class MenuPage {
     mapBoisson:any;
     choosenBoisson: any;
 
+    // OPEN TAB MENU NAV
+
+    openMenuDuJour: boolean;
+    openFormules: boolean;
+    openPlats: boolean;
+    openEntrees: boolean;
+    openDesserts: boolean;
+    openBoissons: boolean;
 
 
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
+
+        this.openMenuDuJour = true;
+        this.openFormules = false;
+        this.openPlats = false;
+        this.openEntrees = false;
+        this.openDesserts = false;
+        this.openBoissons = false;
+
 
 
         this.jsonChooseMenu = this.jsonChooseMenu || [];
@@ -170,16 +186,17 @@ export class MenuPage {
         this.navCtrl.pop();
     }
 
-    scroolToElement(id) {
+    openToElement(id) {
         console.log(id)
 
-        let menu = document.getElementById("scrool-menudujour");
-        let formules = document.getElementById("scrool-formules");
-        let entrees = document.getElementById("scrool-entrees");
-        let plats = document.getElementById("scrool-plats");
-        let desserts = document.getElementById("scrool-desserts");
-        let boissons = document.getElementById("scrool-boissons");
+        var menu = document.getElementById("scrool-menudujour");
+        var formules = document.getElementById("scrool-formules");
+        var entrees = document.getElementById("scrool-entrees");
+        var plats = document.getElementById("scrool-plats");
+        var desserts = document.getElementById("scrool-desserts");
+        var boissons = document.getElementById("scrool-boissons");
 
+        // reset border bottom style for active selection
         menu.style.borderBottomColor = "#F2F2F2";
         formules.style.borderBottomColor = "#F2F2F2";
         entrees.style.borderBottomColor = "#F2F2F2";
@@ -187,34 +204,50 @@ export class MenuPage {
         desserts.style.borderBottomColor = "#F2F2F2";
         boissons.style.borderBottomColor = "#F2F2F2";
 
+
+        // reset
+        this.openMenuDuJour = false;
+        this.openMenuDuJour = false;
+        this.openFormules = false;
+        this.openPlats = false;
+        this.openEntrees = false;
+        this.openDesserts = false;
+        this.openBoissons = false;
+
         switch(id)
         {
             case "menudujour":
+                this.openMenuDuJour = true;
                 menu.style.borderBottomColor = "#F9B522";
                 break;
 
             case "formules":
+                this.openFormules = true;
                 formules.style.borderBottomColor = "#F9B522";
                 break;
 
             case "entrees":
+                this.openEntrees = true;
                 entrees.style.borderBottomColor = "#F9B522";
                 break;
 
             case "plats":
+                this.openPlats = true;
                 plats.style.borderBottomColor = "#F9B522";
                 break;
 
             case "desserts":
+                this.openDesserts = true;
                 desserts.style.borderBottomColor = "#F9B522";
                 break;
 
             case "boissons":
+                this.openBoissons = true;
                 boissons.style.borderBottomColor = "#F9B522";
                 break;
 
         }
-        let yOffset = document.getElementById(id).offsetTop;
+        /*let yOffset = document.getElementById(id).offsetTop;*/
         /*this.content.scrollTo(0, yOffset + 290, 0)*/
     }
 
