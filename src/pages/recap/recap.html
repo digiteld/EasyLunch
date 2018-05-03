@@ -125,7 +125,26 @@
 
             </ng-container>
         </ng-container>
-    
+
+        <ng-container *ngIf="boisson">
+            <ng-container *ngFor="let item of boissonList;">
+
+                <ion-card>
+                    <ion-card-content>
+                        <h4>Boisson</h4>
+                        <div class="choix">
+                            <h3> {{item.name}} </h3>
+                        </div>
+
+                        <div class="price">
+                            {{item.price}}€
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+
+            </ng-container>
+        </ng-container>
+
     </div>
 
     <div id="total">

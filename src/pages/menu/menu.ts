@@ -66,6 +66,9 @@ export class MenuPage {
     participate: boolean;
 
     special: any
+    boisson:any;
+    mapBoisson:any;
+    choosenBoisson: any;
 
 
 
@@ -80,15 +83,18 @@ export class MenuPage {
         this.mapEntree = new Map();
         this.mapPlat = new Map();
         this.mapDessert = new Map();
+        this.mapBoisson=new Map()
         this.entree = this.entree || [];
         this.formule = this.formule || [];
 
         this.plat = this.plat || [];
         this.dessert = this.dessert || [];
+        this.boisson=this.boisson || [];
         this.menuOfDay = this.menuOfDay || {}
         this.choosenEntree = this.choosenEntree || [];
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
+        this.choosenBoisson=this.choosenBoisson || [];
         this.choosenId = this.choosenId || [];
 
 
@@ -225,6 +231,9 @@ export class MenuPage {
                 case 2:
                     obj = this.dessert;
                     break;
+                case 3:
+                    obj=this.boisson;
+                    break;
 
             }
             this.tmpType = plat;
@@ -244,6 +253,7 @@ export class MenuPage {
             let _entree = []
             let _plat = []
             let _dessert = []
+            let _boisson =[]
             let nbMeal
             let name;
 
@@ -257,6 +267,9 @@ export class MenuPage {
                         _plat.push(this.mapPlat.get(id))
                     if (this.mapDessert.has(id))
                         _dessert.push(this.mapDessert.get(id))
+                    if(this.mapBoisson.has(id))
+                        _boisson.push(this.mapDessert.get(id))
+
 
                 })
             }
@@ -286,6 +299,7 @@ export class MenuPage {
                 entree: _entree,
                 plat: _plat,
                 dessert: _dessert,
+                boisson: _boisson,
                 idMeal: id,
                 nbMeal: nbMeal,
                 callback: this.callBackMenu
@@ -304,6 +318,7 @@ export class MenuPage {
                 plat: this.choosenPlat,
                 dessert: this.choosenDessert,
                 total: this.total,
+                boisson:this.choosenBoisson,
                 menu: this.choosenMenu,
                 menuMeal: this.choosenMenuID,
                 img: this.img,
@@ -374,6 +389,10 @@ export class MenuPage {
                 case 2:
                     objSrc = this.dessert;
                     objDst = this.choosenDessert;
+                    break;
+                case 3:
+                    objSrc=this.boisson;
+                    objDst=this.choosenBoisson;
                     break;
 
             }
@@ -460,6 +479,9 @@ export class MenuPage {
                     this.dessert.push(meal)
                     this.mapDessert.set(meal.id, meal);
                     break;
+                case 3:
+                    this.boisson.push(meal)
+                    this.mapBoisson.set(meal.id,meal)
             }
 
         })
