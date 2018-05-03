@@ -236,32 +236,97 @@ export class MenuPage {
     }
 
     openDetail(plat, index) {
+
         if ((this.schedule && this.nbPers) || this.participate) {
-            let obj
+
+            let objSrc
+            let objDst
             switch (plat) {
                 case 0:
-                    obj = this.entree;
+
+                    objSrc = this.entree;
+                    objDst = this.choosenEntree;
                     break;
                 case 1:
-                    obj = this.plat;
+                    objSrc = this.plat;
+                    objDst = this.choosenPlat;
                     break;
                 case 2:
-                    obj = this.dessert;
+                    objSrc = this.dessert;
+                    objDst = this.choosenDessert;
                     break;
                 case 3:
-                    obj=this.boisson;
+                    objSrc=this.boisson;
+                    objDst=this.choosenBoisson;
                     break;
-
             }
-            this.tmpType = plat;
-            this.tmpIndex = index;
-            console.log("AVANT crash --> " + obj[index].name)
-            this.navCtrl.push(DetailsPage, {
-                meal: obj[index],
-                callback: this.callbackChild
-            });
-            console.log("well done tu as ouvert la page detail");
+
+            console.log("JE PASSE LA ")
+
+            if(this.choosenId.indexOf(objSrc[index].id)===-1)
+            {
+                objDst.push(objSrc[index])
+                this.choosenId.push(objSrc[index].id)
+                this.total = (this.total * 100 + objSrc[index].price * 100) / 100;
+            }
+            else
+            {
+                let indexInListObject=objDst.indexOf(objSrc[index])
+                objDst.splice(indexInListObject,1)
+                console.log("INDEX --> "+index)
+                let indexInList=this.choosenId.indexOf(objSrc[index].id)
+                console.log("INDEX TO DELETE --> "+indexInList)
+                console.log("J'enlève ITEM --> "+JSON.stringify(objSrc[index]))
+                console.log("J'enlève --> "+objSrc[index].price)
+                this.choosenId.splice(indexInList,1)
+                this.total = ((this.total * 100) - (objSrc[index].price * 100)) / 100;
+            }
+
+
         }
+
+
+        // if ((this.schedule && this.nbPers) || this.participate) {
+        //     let obj
+        //     switch (plat) {
+        //         case 0:
+        //             obj = this.entree;
+        //             break;
+        //         case 1:
+        //             obj = this.plat;
+        //             break;
+        //         case 2:
+        //             obj = this.dessert;
+        //             break;
+        //         case 3:
+        //             obj=this.boisson;
+        //             break;
+        //
+        //     }
+        //     this.tmpType = plat;
+        //     this.tmpIndex = index;
+        //     console.log("AVANT crash --> " + obj[index].name)
+        //     this.navCtrl.push(DetailsPage, {
+        //         meal: obj[index],
+        //         callback: this.callbackChild
+        //     });
+        //     console.log("well done tu as ouvert la page detail");
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     openDetailMenu(id, mod) {
@@ -328,7 +393,13 @@ export class MenuPage {
 
 
     openRecap() {
+
+
+
         if ((this.schedule && this.nbPers) || this.participate) {
+
+
+
             this.storage.set('idMeals', this.choosenId)
             this.navCtrl.push(RecapPage, {
                 entree: this.choosenEntree,
