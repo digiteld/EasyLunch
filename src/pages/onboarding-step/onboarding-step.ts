@@ -23,19 +23,19 @@ export class OnboardingStepPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
       this.steps= [
           {
-          img : '../assets/imgs/onboard2.png',
+          img : 'assets/imgs/onboard2.png',
           titre: 'Choisissez votre restaurant',
           sousTitre: 'Trouvez un restaurant près de votre lieu de travail',
           buttonText: 'Étape suivante'
           },
           {
-          img : '../assets/imgs/onboard3.png',
+          img : 'assets/imgs/onboard3.png',
           titre: 'Réservez et passez votre commande avant 11h30',
           sousTitre: 'Plat du jour ou à la carte ? Faites votre choix !',
           buttonText: 'Étape suivante'
           },
           {
-          img : '../assets/imgs/onboard4.png',
+          img : 'assets/imgs/onboard4.png',
           titre: 'Partagez un moment convivial',
           sousTitre: 'Envoyez votre réservation pour inviter vos amis et collègues',
           buttonText: 'C\'est parti !'

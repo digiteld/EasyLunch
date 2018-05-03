@@ -151,7 +151,7 @@ export class AccountCreaPage {
     }
 
     validatePassword() {
-        if (this.password.length > 0){
+        if (this.password.length >= 8){
             if(this.errorPass === true){
                 this.errorPass = false;
             }

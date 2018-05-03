@@ -29,6 +29,7 @@
                 <div class="scroll" id="scrool-entrees" (click)="scroolToElement('entrees')"> Entrées </div>
                 <div class="scroll" id="scrool-plats" (click)="scroolToElement('plats')"> Plats </div>
                 <div class="scroll" id="scrool-desserts" (click)="scroolToElement('desserts')"> Desserts </div>
+                <div class="scroll" id="scrool-boissons" (click)="scroolToElement('boissons')"> Boissons </div>
             <div class="bottom-border" id="bottom-border"></div>
         </ion-scroll>
 
@@ -124,7 +125,6 @@
         <div id="repas">
 
             <div id="entrees" >
-
                 <h2>Entrées</h2>
             </div>
 
@@ -192,6 +192,35 @@
             <div id="desserts" >
 
                 <h2>Desserts</h2>
+            </div>
+
+            <ng-container *ngFor="let item of dessert;index as i">
+
+                <ion-card (click)="openDetail(2,i)">
+
+                    <ion-card-content>
+                        <div class="choix">
+                            <div class="choice">
+                                <h3> {{item.name}} </h3>
+                                <p> {{item.description}} </p>
+                            </div>
+
+                            <div class="price">
+                                    {{item.price}}€
+                            </div>
+                        </div>
+
+
+                    </ion-card-content>
+
+                </ion-card>
+
+            </ng-container>
+
+
+            <div id="boissons" >
+
+                <h2>Boissons</h2>
             </div>
 
             <ng-container *ngFor="let item of dessert;index as i">
