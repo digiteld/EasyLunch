@@ -174,14 +174,14 @@ export class HomePage {
     moveMarker(pin) {
         if (pin) {
             let newIcon = L.icon({
-                iconUrl: 'assets/icon/pin.svg',
+                iconUrl: 'assets/icona/pin.svg',
                 iconSize: [60, 80],
                 iconAnchor: [30, 80],
                 popupAnchor: [0, -15]
             });
 
             let forkIcon = L.icon({
-                iconUrl: 'assets/icon/pin.svg',
+                iconUrl: 'assets/icona/pin.svg',
                 iconSize: [37.5, 50],
                 iconAnchor: [18.75, 50],
                 popupAnchor: [0, -15]
@@ -249,7 +249,7 @@ export class HomePage {
                 iconAnchor: [15, 15],
                 popupAnchor: [10, 0],
                 shadowSize: [0, 0],
-                className: 'css-icon',
+                className: 'css-icona',
                 html: '<div id="c" <div class="s"></div> </div>'
             });
             let marker: any = L.marker([this.latitude, this.longitude], {icon: pulsingIcon});
@@ -342,14 +342,14 @@ export class HomePage {
         ///  Create custom icon
 
         var forkIcon = L.icon({
-            iconUrl: 'assets/icon/pin.svg',
+            iconUrl: 'assets/icona/pin.svg',
             iconSize: [37.5, 50],
             iconAnchor: [18.75, 50],
             popupAnchor: [0, -15]
         });
 
         var newIcon = L.icon({
-            iconUrl: 'assets/icon/pin.svg',
+            iconUrl: 'assets/icona/pin.svg',
             iconSize: [60, 80],
             iconAnchor: [30, 80],
             popupAnchor: [0, -15]
