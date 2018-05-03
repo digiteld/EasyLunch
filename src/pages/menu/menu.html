@@ -24,12 +24,12 @@
 
     <div class="scroll-menu">
         <ion-scroll scrollX="true" style="max-width:100vw; height:40px">
-                <div class="scroll" id="scrool-menudujour" (click)="openToElement('menudujour')"> Menu du jour </div>
-                <div class="scroll" id="scrool-formules" (click)="openToElement('formules')"> Formules </div>
-                <div class="scroll" id="scrool-entrees" (click)="openToElement('entrees')"> Entrées </div>
-                <div class="scroll" id="scrool-plats" (click)="openToElement('plats')"> Plats </div>
-                <div class="scroll" id="scrool-desserts" (click)="openToElement('desserts')"> Desserts </div>
-                <div class="scroll" id="scrool-boissons" (click)="openToElement('boissons')"> Boissons </div>
+                <div class="scroll" id="menudujour" (click)="openToElement('menudujour')"> Menu du jour </div>
+                <div class="scroll" id="formules" (click)="openToElement('formules')"> Formules </div>
+                <div class="scroll" id="entrees" (click)="openToElement('entrees')"> Entrées </div>
+                <div class="scroll" id="plats" (click)="openToElement('plats')"> Plats </div>
+                <div class="scroll" id="desserts" (click)="openToElement('desserts')"> Desserts </div>
+                <div class="scroll" id="boissons" (click)="openToElement('boissons')"> Boissons </div>
         </ion-scroll>
 
     </div>
@@ -39,10 +39,10 @@
 
     <!--        Meal choice      -->
 
-    <div class="selection">
+    <div class="selection" [ngSwitch]="openMenu">
 
         <!--        Menu du jour      -->
-        <div *ngIf="openMenuDuJour">
+        <div *ngSwitchCase="'menudujour'">
             <div id="menudujour">
                 <h2><img src="assets/icon/cloche.svg"> Menu du jour</h2>
             </div >
@@ -68,7 +68,7 @@
 
         <!--        Formules      -->
 
-        <div *ngIf="openFormules">
+        <div *ngSwitchCase="'formules'">
             <div id="formules">
                 <h2>Formules</h2>
             </div>
@@ -105,7 +105,7 @@
 
         <!--        Entrées      -->
 
-        <div *ngIf="openEntrees">
+        <div *ngSwitchCase="'entrees'">
             <div id="repas">
                 <div id="entrees" >
                     <h2>Entrées</h2>
@@ -132,7 +132,7 @@
             </div>
         </div>
         <!--       Plats      -->
-        <div *ngIf="openPlats">
+        <div *ngSwitchCase="'plats'">
             <div id="plats" >
                 <h2>Plats</h2>
             </div>
@@ -155,7 +155,7 @@
 
         <!--        Desserts      -->
 
-        <div *ngIf="openDesserts">
+        <div *ngSwitchCase="'desserts'">
             <div id="desserts" >
                 <h2>Desserts</h2>
             </div>
@@ -176,11 +176,11 @@
             </ng-container>
         </div>
 
-        <div *ngIf="openBoissons">
+        <div *ngSwitchCase="'boissons'">
             <div id="boissons" >
                 <h2>Boissons</h2>
             </div>
-            <ng-container *ngFor="let item of boissons;index as i">
+            <ng-container *ngFor="let item of dessert;index as i">
                 <ion-card (click)="openDetail(2,i)">
                     <ion-card-content>
                         <div class="choix">

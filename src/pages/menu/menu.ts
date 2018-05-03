@@ -68,25 +68,15 @@ export class MenuPage {
     special: any
 
     // OPEN TAB MENU NAV
+    openMenu : any;
 
-    openMenuDuJour: boolean;
-    openFormules: boolean;
-    openPlats: boolean;
-    openEntrees: boolean;
-    openDesserts: boolean;
-    openBoissons: boolean;
 
 
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
-        this.openMenuDuJour = true;
-        this.openFormules = false;
-        this.openPlats = false;
-        this.openEntrees = false;
-        this.openDesserts = false;
-        this.openBoissons = false;
 
+        this.openMenu = 'menudujour';
 
 
         this.jsonChooseMenu = this.jsonChooseMenu || [];
@@ -183,12 +173,14 @@ export class MenuPage {
     openToElement(id) {
         console.log(id)
 
-        var menu = document.getElementById("scrool-menudujour");
-        var formules = document.getElementById("scrool-formules");
-        var entrees = document.getElementById("scrool-entrees");
-        var plats = document.getElementById("scrool-plats");
-        var desserts = document.getElementById("scrool-desserts");
-        var boissons = document.getElementById("scrool-boissons");
+        this.openMenu = id;
+
+        var menu = document.getElementById("menudujour");
+        var formules = document.getElementById("formules");
+        var entrees = document.getElementById("entrees");
+        var plats = document.getElementById("plats");
+        var desserts = document.getElementById("desserts");
+        var boissons = document.getElementById("boissons");
 
         // reset border bottom style for active selection
         menu.style.borderBottomColor = "#F2F2F2";
@@ -199,44 +191,34 @@ export class MenuPage {
         boissons.style.borderBottomColor = "#F2F2F2";
 
 
-        // reset
-        this.openMenuDuJour = false;
-        this.openMenuDuJour = false;
-        this.openFormules = false;
-        this.openPlats = false;
-        this.openEntrees = false;
-        this.openDesserts = false;
-        this.openBoissons = false;
 
         switch(id)
         {
             case "menudujour":
-                this.openMenuDuJour = true;
                 menu.style.borderBottomColor = "#F9B522";
                 break;
 
             case "formules":
-                this.openFormules = true;
                 formules.style.borderBottomColor = "#F9B522";
                 break;
 
             case "entrees":
-                this.openEntrees = true;
+
                 entrees.style.borderBottomColor = "#F9B522";
                 break;
 
             case "plats":
-                this.openPlats = true;
+
                 plats.style.borderBottomColor = "#F9B522";
                 break;
 
             case "desserts":
-                this.openDesserts = true;
+
                 desserts.style.borderBottomColor = "#F9B522";
                 break;
 
             case "boissons":
-                this.openBoissons = true;
+
                 boissons.style.borderBottomColor = "#F9B522";
                 break;
 
