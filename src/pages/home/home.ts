@@ -60,11 +60,14 @@ export class HomePage {
     dateTime: any;
     timeOut: boolean;
 
+    nbTryLocation:number
+
     @ViewChild(Slides) slides: Slides;
 
 
     constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions, private geolocation: Geolocation, private toastCtrl: ToastController) {
         this.cleanStorage()
+        this.nbTryLocation=0;
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
         this.markerArray = this.markerArray || []
@@ -260,16 +263,20 @@ export class HomePage {
             console.log("this map --> " + this.map)
             console.log("mapload --> " + this.mapLoad)
             this.map.addLayer(marker);
-            this.zoomOnNearestResto()
+            // this.zoomOnNearestResto()
 
         }else if(!this.positionFound){
+            if(this.nbTryLocation>1)
             this.initMarkerOffLine();
+            else
+                this.nbTryLocation++
+
         }
     }
 
 
     initMarkerOffLine(){
-
+        console.log("TRY !!!")
         this.latitude = "44.849104";
         this.longitude = "-0.571037";
         let marker: any = L.marker([this.latitude, this.longitude]);
@@ -303,9 +310,6 @@ export class HomePage {
 
     onAddLayer(event) {
         this.pinID.push(event.target._leaflet_id);
-
-
-        console.log("SIZE ARRAY --> " + this.pinID.length)
     }
 
     validateSchedule() {
@@ -358,37 +362,44 @@ export class HomePage {
 
         let array = this.restaurant;
 
+        console.log("JE PLACE MES PINS")
         this.observable = IntervalObservable.create(10).subscribe((i) => {
 
             if (i > array.length - 1) {
-                if (this.observable.isStopped) {
+
+
+                if (!this.observable.isStopped) {
                     this.observable.unsubscribe();
                 }
+                // setTimeout(() => {
+                    this.zoomOnNearestResto()
+                // },800)
+
                 return false;
             }
 
-            console.log("MOD --> " + i + " --> " + array[i].mod)
+
             let pin = L.marker([array[i].lat, array[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}
             })
-            console.log("PIN1");
+
             pin.on('add', event => {
                 this.onAddLayer(event)
             })
-            console.log("PIN2");
+
             pin.addTo(this.map);
-            console.log("PIN3");
+
             pin.on('click', event => {
                 this.onClickLayer(event)
             });
-            console.log("PIN4");
+
             if (i === 0) {
                 console.log("JE ZOOM ON FIRST RESTO " + array[i].name)
                 this.markerArray.push(pin)
-                this.zoomOnNearestResto()
+                // this.zoomOnNearestResto()
             }
-            console.log("PIN5");
+
             this.mapPin.push(pin);
 
 
@@ -398,7 +409,9 @@ export class HomePage {
     }
 
     private zoomOnNearestResto() {
-        if (this.markerArray.length == 2) {
+
+        console.log("ZOOM ON NEAREST --> "+this.markerArray.length)
+        // if (this.markerArray.length == 2) {
             console.log(this.markerArray.length)
             setTimeout(() => {
                     var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
@@ -420,7 +433,7 @@ export class HomePage {
 
                 , 1000);
 
-        }
+        // }
 
     }
 
