@@ -143,9 +143,11 @@ page-menu {
     float:left;
     border-bottom: 2px solid #F2F2F2;
     padding-bottom: 3px;
-
   }
 
+  .scroll:first-child{
+    border-bottom: 2px solid #F9B522;
+  }
 
   .scroll:active:after {
     color: #333333;
