@@ -31,7 +31,7 @@ page-home .stylecol .button-ios {
 page-home .ion-ios-combien,
 page-home .ion-md-combien {
   /*
-  content: url(../assets/icona/users.svg);
+  content: url(../assets/icon/users.svg);
   height: 15px;
   */
   background-image: url(../assets/icon/users.svg);
@@ -41,7 +41,7 @@ page-home .ion-md-combien {
 page-home .ion-ios-heure,
 page-home .ion-md-heure {
   /*
-  content: url(../assets/icona/clock.svg);
+  content: url(../assets/icon/clock.svg);
   height: 20px;
   */
   background-image: url(../assets/icon/clock.svg);
