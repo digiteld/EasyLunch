@@ -61,11 +61,8 @@ export class BookPage {
                 console.log(JSON.stringify(this.booking[0]))
                 if (date != null) {
                     if (date.substr(0, 4) == (new Date()).getFullYear()) {
-
                         if (parseInt(date.substr(5, 2)) - 1 == (new Date()).getMonth()) {
-
                             if (date.substr(8, 2) == (new Date()).getDate()) {
-
                                 this.commandeEncour = true;
                                 console.log(JSON.stringify(this.booking[0]))
                             }
@@ -96,6 +93,8 @@ export class BookPage {
         let printCode=false
         if(i===0 && this.commandeEncour)
             printCode=true;
+
+
 
         this.navCtrl.push(RecapPage,
             {
