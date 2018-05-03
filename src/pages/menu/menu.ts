@@ -80,8 +80,7 @@ export class MenuPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
 
-        this.openMenuDuJour = false;
-        this.openMenuDuJour = false;
+        this.openMenuDuJour = true;
         this.openFormules = false;
         this.openPlats = false;
         this.openEntrees = false;
