@@ -79,6 +79,8 @@ export class MenuPage {
     openDesserts: boolean;
     openBoissons: boolean;
 
+    test:any;
+
 
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
