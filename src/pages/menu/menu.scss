@@ -141,21 +141,11 @@ page-menu {
     font-weight: 500;
     margin: 15px 0 15px 15px;
     float:left;
-
+    border-bottom: 2px solid #F2F2F2;
+    padding-bottom: 3px;
 
   }
 
-  .bottom-border {
-    content:'';
-    height:83%;
-    left: 4%;
-    box-sizing: border-box;
-    position: absolute;
-    width: 10%;
-    border-bottom: solid;
-    border-bottom-color: #F9B522;
-    border-bottom-width: 2px;
-  }
 
   .scroll:active:after {
     color: #333333;
