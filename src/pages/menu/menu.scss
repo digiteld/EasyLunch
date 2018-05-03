@@ -72,6 +72,10 @@ page-menu {
   .menu-choice{
     display: flex;
     justify-content: space-between;
+
+    p{
+      font-weight: 500 !important;
+    }
   }
 
   .choix{
@@ -108,14 +112,15 @@ page-menu {
   }
 
   .card-content h3 {
-    font-size: 1em;
-    font-weight: 400;
-    color: #333333;
+    text-align: left !important;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
   }
 
   .card-content p {
     font-size: 1.1em;
-    font-weight: 500 ;
+    font-weight: 200;
     margin-top: 10px;
     text-align: left;
     color: #333333;
@@ -163,6 +168,7 @@ page-menu {
     position:relative;
     top: 5vh;
     text-align: center;
+    padding-bottom: 1vh;
   }
 
   .selection .card-content {
