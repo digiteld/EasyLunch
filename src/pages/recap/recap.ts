@@ -17,13 +17,13 @@ export class RecapPage {
     entree: boolean;
     plat: boolean;
     dessert: boolean;
-    boisson:boolean;
+    boisson: boolean;
     menu: boolean;
 
     entreeList: any[]
     platList: any[]
     dessertList: any[]
-    boissonList:any [];
+    boissonList: any [];
     menuList: any[];
     menuMeal: any[];
 
@@ -55,7 +55,6 @@ export class RecapPage {
     jsonChoosenMenu: any;
 
 
-
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public rest: RestProvider) {
 
         this.img = navParams.get('img');
@@ -80,6 +79,8 @@ export class RecapPage {
         }
 
         else {
+
+            console.log("JE SUIS DANs CE CAS LA")
 
             this.platMap = new Map()
 
@@ -116,16 +117,15 @@ export class RecapPage {
     openLogin() {
         console.log("ok commande validé !");
         this.storage.get("isConnected").then(
-                data=> {if(data===true)
-                {
+            data => {
+                if (data === true) {
                     this.navCtrl.push(AddCardPage);
                 }
-                else
-                {
+                else {
                     this.navCtrl.push(LoginPage);
-                }},
-            error=>console.log("err --> "+error)
-
+                }
+            },
+            error => console.log("err --> " + error)
         )
 
     }
@@ -141,12 +141,12 @@ export class RecapPage {
         this.storage.set('dessert', this.navParams.get('dessert'))
         this.storage.set('total', this.navParams.get('total'))
         this.total = this.navParams.get('total')
-        this.jsonChoosenMenu=this.navParams.get('jsonChoosen')
+        this.jsonChoosenMenu = this.navParams.get('jsonChoosen')
 
         this.entree = false;
         this.plat = false;
         this.dessert = false;
-        this.boisson=false;
+        this.boisson = false;
         this.menu = false;
 
         if (this.navParams.get('plat').length > 0) {
@@ -229,38 +229,80 @@ export class RecapPage {
                     this.platMap.set(m.id, m.name)
                     break;
                 case 3:
-                    this.platMap.set(m.id,m.name)
+                    this.platMap.set(m.id, m.name)
             }
 
         })
 
         if (this.navParams.get('mealId') != null) {
-            this.meals.map(m => {
 
-                if (this.navParams.get('mealId').indexOf(m.id) != -1) {
-                    switch (m.plat) {
-                        case 0:
-                            this.entreeList.push(m)
-                            this.entree = true;
+            this.navParams.get('mealId').map(mId => {
 
-                            break;
-                        case 1:
-                            this.platList.push(m)
-                            this.plat = true;
 
-                            break;
-                        case 2:
-                            this.dessertList.push(m)
-                            this.dessert = true;
-                            break;
-                        case 3:
-                            this.boissonList.push(m)
-                            this.boisson=true
+                this.meals.map(m => {
+                    if (m.id === mId)
 
-                    }
-                }
+                        switch (m.plat) {
+                            case 0:
+                                this.entreeList.push(m)
+                                this.entree = true;
+
+                                break;
+                            case 1:
+                                this.platList.push(m)
+                                this.plat = true;
+
+                                break;
+                            case 2:
+                                this.dessertList.push(m)
+                                this.dessert = true;
+                                break;
+                            case 3:
+                                this.boissonList.push(m)
+                                this.boisson = true
+
+                        }
+
+                })
+
 
             })
+
+
+            // this.meals.map(m => {
+            //
+            //
+            //
+            //
+            //     if (this.navParams.get('mealId').indexOf(m.id) != -1) {
+            //         console.log("BOISSON M --> "+JSON.stringify(m))
+            //         switch (m.plat) {
+            //             case 0:
+            //                 this.entreeList.push(m)
+            //                 this.entree = true;
+            //
+            //                 break;
+            //             case 1:
+            //                 this.platList.push(m)
+            //                 this.plat = true;
+            //
+            //                 break;
+            //             case 2:
+            //                 this.dessertList.push(m)
+            //                 this.dessert = true;
+            //                 break;
+            //             case 3:
+            //                 this.boissonList.push(m)
+            //                 this.boisson=true
+            //
+            //         }
+            //     }
+            //
+            // })
+
+            console.log("DESSERT LIST --> " + this.dessertList)
+
+            console.log("BOISSON LIST --> " + this.boissonList)
         }
         if (this.navParams.get('menu') != null) {
             this.menu = true
@@ -286,8 +328,8 @@ export class RecapPage {
                     console.log("ID MEAL --> " + idMeal)
 
                 })
-                 json = {"name": name, "mealName": mealName, "price":price}
-                 this.jsonChoosenMenu.push(json)
+                json = {"name": name, "mealName": mealName, "price": price}
+                this.jsonChoosenMenu.push(json)
 
             })
             console.log(obj)

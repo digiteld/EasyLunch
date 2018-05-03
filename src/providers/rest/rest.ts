@@ -20,7 +20,7 @@ export class RestProvider {
     private apiUrlPostBooking = this.prod + '/api/booking';
     private apiUrlPostCommand = this.prod + '/api/command';
     private apiUtlGetSingleResto = this.prod + '/api/restaurants/';
-    private apiUrlGetAllBookingUser = this.test + '/api/1/command?iduser=';
+    private apiUrlGetAllBookingUser = this.prod + '/api/1/command?iduser=';
     private apiUrlGetCodeByBooking = this.prod + '/api/code/';
     private apiAydenPayment=this.prod+'/api/adyen/payment';
     private apiCreateUSer=this.prod+'/api/user/app';
