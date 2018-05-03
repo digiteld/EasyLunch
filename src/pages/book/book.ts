@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { RecapPage } from "../recap/recap";
+import {Storage} from '@ionic/storage';
+
+
 
 @Component({
     selector: 'page-book',
@@ -15,22 +18,41 @@ export class BookPage {
     date:any;
     tabs: any;
     mapResto: any;
-
+    user:any;
     commandeEncour: boolean;
 
-    constructor(public navCtrl: NavController, public rest: RestProvider) {
+    constructor(public navCtrl: NavController, public rest: RestProvider, public storage:Storage) {
         this.tabs = navCtrl.parent;
-        this.getBooking()
+        this.booking =this.booking || [];
+
+        this.storage.get('user').then(data=>{
+            if(data!=null)
+            {
+                this.user=data
+                this.getBooking()
+            }
+
+        }, error=>console.log("ERR on get USER IN STORAGE"))
+
         this.mapResto = new Map();
         this.commandeEncour = false;
+
     }
 
     ionViewDidEnter() {
-        this.getBooking()
+        this.storage.get('user').then(data=>{
+            if(data!=null)
+            {
+                this.user=data
+                this.getBooking()
+            }
+
+        }, error=>console.log("ERR on get USER IN STORAGE"))
+
     }
 
     private getBooking() {
-        this.rest.getCommandWithIdUser(1).subscribe(
+        this.rest.getCommandWithIdUser(this.user.data.id).subscribe(
             _booking => {
                 this.date=_booking.date
                 this.booking = _booking.booking;

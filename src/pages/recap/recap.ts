@@ -17,11 +17,13 @@ export class RecapPage {
     entree: boolean;
     plat: boolean;
     dessert: boolean;
+    boisson:boolean;
     menu: boolean;
 
     entreeList: any[]
     platList: any[]
     dessertList: any[]
+    boissonList:any [];
     menuList: any[];
     menuMeal: any[];
 
@@ -65,6 +67,7 @@ export class RecapPage {
         this.entreeList = this.entreeList || [];
         this.platList = this.platList || [];
         this.dessertList = this.dessertList || [];
+        this.boissonList = this.boissonList || [];
         this.menuList = this.menuList || [];
         this.menuMeal = this.menuMeal || [];
         this.jsonChoosenMenu = this.jsonChoosenMenu || [];
@@ -143,7 +146,7 @@ export class RecapPage {
         this.entree = false;
         this.plat = false;
         this.dessert = false;
-
+        this.boisson=false;
         this.menu = false;
 
         if (this.navParams.get('plat').length > 0) {
@@ -161,6 +164,14 @@ export class RecapPage {
             this.dessert = true
 
         }
+
+        if (this.navParams.get('boisson').length > 0) {
+            this.boissonList = this.navParams.get('boisson')
+            this.boisson = true
+
+        }
+
+
         if (this.navParams.get('menuMeal').length > 0) {
             this.menuList = this.navParams.get('menuMeal')
 
@@ -217,6 +228,8 @@ export class RecapPage {
 
                     this.platMap.set(m.id, m.name)
                     break;
+                case 3:
+                    this.platMap.set(m.id,m.name)
             }
 
         })
@@ -239,8 +252,11 @@ export class RecapPage {
                         case 2:
                             this.dessertList.push(m)
                             this.dessert = true;
-
                             break;
+                        case 3:
+                            this.boissonList.push(m)
+                            this.boisson=true
+
                     }
                 }
 

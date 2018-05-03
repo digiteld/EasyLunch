@@ -89,7 +89,7 @@ export class HomePage {
     }
 
     ionViewDidLoad() {
-        this.checkForTimeOut();
+        //this.checkForTimeOut();
         this.geolocation.getCurrentPosition().then((resp) => {
             // resp.coords.latitude
             // resp.coords.longitude
