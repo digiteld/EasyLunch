@@ -131,11 +131,12 @@
                                     <h3> {{item.name}} </h3>
                                     <p> {{item.description}} </p>
                                 </div>
-                                <div class="price-plat">
+                                <div class="price">
                                     {{item.price}} €
+                                    <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
+                                    <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                                 </div>
-                                <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
-                                <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
+
                             </div>
 
                             <!--<div class="price">-->
@@ -161,9 +162,10 @@
                             </div>
                             <div class="price">
                                     {{item.price}} €
+                                <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
+                                <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>
-                            <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
-                            <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
+
                         </div>
                     </ion-card-content>
                 </ion-card>
@@ -186,9 +188,10 @@
                             </div>
                             <div class="price">
                                     {{item.price}} €
+                                <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
+                                <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>
-                            <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
-                            <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
+
                         </div>
                     </ion-card-content>
                 </ion-card>
@@ -215,9 +218,10 @@
                             </div>
                             <div class="price">
                                     {{item.price}} €
+                                <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
+                                <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>
-                            <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
-                            <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
+
                         </div>
                     </ion-card-content>
                 </ion-card>
