@@ -54,20 +54,18 @@ export class DetailMenuPage {
 
     onChangeEntree() {
 
-
       this.entreeSelect=true;
-
       this.showValidation()
     }
     
   onChangePlat() {
-      console.log(this.plat)
+
       this.platSelect=true;
       this.showValidation()
   }
     
   onChangeDessert() {
-      console.log(this.dessert)
+
       this.dessertSelect=true;
       this.showValidation()
   }
@@ -80,6 +78,7 @@ export class DetailMenuPage {
         this.showButton=true;
     else if(this.dessert && this.platSelect && this.navParams.get('nbMeal')===2)
         this.showButton=true;
+    // else if(this.platSelect && )
     else
         this.showButton=false;
   }

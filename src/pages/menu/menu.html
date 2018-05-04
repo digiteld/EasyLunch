@@ -46,34 +46,34 @@
             <div id="menudujour">
                 <h2><img src="assets/icon/cloche.svg"> Menu du jour</h2>
             </div >
-            <ng-container>
-                <ion-card (click)="openDetailMenu(menuOfDay.id, true)">
+            <ng-container *ngIf="menuOfDayOne">
+                <ion-card (click)="openDetailMenu(menuOfDayObjectOne.id, true)">
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Plat </p>
-                            <p class="price"> {{menuOfDay.price}}€ </p>
+                            <p class="price"> {{menuOfDayObjectOne.price}}€ </p>
                         </div>
                     </ion-card-content>
                 </ion-card>
             </ng-container>
 
-            <ng-container>
-                <ion-card (click)="openDetailMenu(menuOfDay.id, true)">
+            <ng-container *ngIf="menuOfDayThree">
+                <ion-card (click)="openDetailMenu(menuOfDayObjectThree.id, true)">
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat / Dessert </p>
-                            <p class="price"> {{menuOfDay.price}}€ </p>
+                            <p class="price"> {{menuOfDayObjectThree.price}}€ </p>
                         </div>
                     </ion-card-content>
                 </ion-card>
             </ng-container>
 
-            <ng-container>
-                <ion-card (click)="openDetailMenu(menuOfDay.id, true)">
+            <ng-container *ngIf="menuOfDayTwo">
+                <ion-card (click)="openDetailMenu(menuOfDayObjectTwo.id, true)">
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat ou Plat / Dessert </p>
-                            <p class="price"> {{menuOfDay.price}}€ </p>
+                            <p class="price"> {{menuOfDayObjectTwo.price}}€ </p>
                         </div>
                     </ion-card-content>
                 </ion-card>

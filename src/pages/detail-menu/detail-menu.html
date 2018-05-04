@@ -12,7 +12,7 @@
 
 <ion-content>
 
-
+<ng-container *ngIf="navParams.get('entree').length>0">
   <p>Entrée</p>
  <ion-list radio-group  [(ngModel)]="entree">
 
@@ -29,6 +29,7 @@
 </ng-container>
 
  </ion-list>
+</ng-container>
 
   <p>Plat</p>
  <ion-list radio-group  [(ngModel)]="plat">
@@ -48,6 +49,7 @@
     </ng-container>
 
  </ion-list>
+    <ng-container *ngIf="navParams.get('dessert').length>0">
   <p>Dessert</p>
 <ng-container *ngIf="navParams.get('nbMeal')===3">
  <ion-list radio-group  [(ngModel)]="dessert">
@@ -67,6 +69,8 @@
  </ion-list>
 </ng-container>
 
+
+
     <ng-container *ngIf="navParams.get('nbMeal')===2">
         <ion-list radio-group  [(ngModel)]="entree">
 
@@ -84,7 +88,7 @@
 
         </ion-list>
     </ng-container>
-
+    </ng-container>
   </ion-content>
 
   <ion-footer>
