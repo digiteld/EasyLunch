@@ -38,9 +38,12 @@
                 <ion-slides slidesPerView="1" (ionSlideDidChange)="slideChanged()">
                     <ion-slide *ngFor="let r of restaurant; let i = index">
 
-                        <ion-card (click)="openMenu(i)">
+                        <ion-card
+                                (click)="listAvailable[i]?openMenu(i):openErrorAvailable()"    [class.restoNotAvailable]="!listAvailable[i]"
 
-                            <ion-card-content>
+                        >
+                            <!---->
+                            <ion-card-content  >
 
 
                                 <ion-row>

@@ -6,6 +6,7 @@ import {RecapPage} from '../recap/recap';
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
 import {DetailMenuPage} from "../detail-menu/detail-menu";
+import {LoaderProvider} from "../../providers/rest/loader";
 
 
 
@@ -85,11 +86,11 @@ export class MenuPage {
     test:any;
 
 //REQUEST FOR SUM NBUSERS BY RESTAURANT
-   // SELECT restaurant_id, SUM(nb_users)
-    //   FROM booking WHERE created_date::date=NOW()::date
-    //  GROUP BY restaurant_id;
+//    SELECT restaurant_id, SUM(nb_users)
+//       FROM booking WHERE created_date::date=NOW()::date
+//      GROUP BY restaurant_id;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage, private loader:LoaderProvider) {
 
 
         this.openMenu = 'menudujour';
@@ -353,13 +354,14 @@ export class MenuPage {
             let _dessert = []
             let _boisson =[]
             let nbMeal
+            let price
             let name;
 
             if (mod) {
 
                 let obj=this.mapMenu.get(id)
                 nbMeal = obj.nbmeals
-
+                price=obj.price
                 name = obj.name
                 obj.id_plat.forEach(id => {
                     console.log("ID PLAT --> "+id)
@@ -378,6 +380,7 @@ export class MenuPage {
             else {
                 this.formule.map(f => {
                     if (f.id === id) {
+                        price=f.price
                         name = f.name
                         nbMeal = f.nbmeals
                         console.log(JSON.stringify(f))
@@ -404,6 +407,7 @@ export class MenuPage {
                 boisson: _boisson,
                 idMeal: id,
                 nbMeal: nbMeal,
+                price:price,
                 callback: this.callBackMenu
 
 
@@ -443,6 +447,7 @@ export class MenuPage {
 
 
     private getMeals(id) {
+
         this.rest.getMeals(id)
 
             .subscribe(

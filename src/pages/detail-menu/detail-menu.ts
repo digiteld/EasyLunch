@@ -78,7 +78,8 @@ export class DetailMenuPage {
         this.showButton=true;
     else if(this.dessert && this.platSelect && this.navParams.get('nbMeal')===2)
         this.showButton=true;
-    // else if(this.platSelect && )
+    else if(this.platSelect && this.navParams.get('nbMeal')===1)
+        this.showButton=true
     else
         this.showButton=false;
   }

@@ -73,9 +73,18 @@ export class BookPage {
 
                 _booking.infoResto.map(resto => {
 
+                    console.log("INFO RESTO --> "+JSON.stringify(resto.name))
                     if (!this.mapResto.has(resto.id))
+                    {
+                        console.log("J'ADD")
                         this.mapResto.set(resto.id, resto)
+                    }
+
+
+
+                    console.log("MAP RESTO LENGTH --> "+this.mapResto.size )
                 })
+
 
 
             },
