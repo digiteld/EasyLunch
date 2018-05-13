@@ -27,6 +27,7 @@ export class AddCardPage {
     user:any;
 
     Expire: string;
+    cryptedCard:any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public rest:RestProvider,private toastCtrl: ToastController) {
 
@@ -124,43 +125,44 @@ export class AddCardPage {
         //
         // this.navCtrl.push(ConfirmPage);
         console.log("DATE --> "+this.Expire);
-
+        this.testCrypt()
         this.validateCardNumber();
         this.validateCcv();
         // this.navCtrl.push(ConfirmPage);
-        this.testCrypt()
+
+
+        console.log("check point !");
+    }
+
+    sendRequestPayment()
+    {
+        console.log("CRYPTCARD --> "+this.cryptedCard)
         this.rest.postPayment(
             {
-                nbCard:this.nbCarte,
-                expireM:this.Expire.split('-')[1],
-                expireY:this.Expire.split('-')[0],
-                ccv:this.ccv,
-                name:this.nameCard,
+                cardCrypt:this.cryptedCard,
                 total:this.total,
                 userId:this.user.data.id
             }
         ).subscribe(data =>{
-            console.log("DATA --> "+JSON.stringify(data))
-            if(data.data.resultCode==="Error")
-            {
-                console.log("Payment Refused")
-                this.displayError();
-            }
-            if(data.data.resultCode==="Authorised")
-            {
+                console.log("DATA --> "+JSON.stringify(data))
+                if(data.data.resultCode==="Error")
+                {
+                    console.log("Payment Refused")
+                    this.displayError();
+                }
+                if(data.data.resultCode==="Authorised")
+                {
                     console.log("Payment Accepted")
                     this.navCtrl.push(ConfirmPage, {idPayment:data.idPayment});
 
-            }
-            if(data.data.resultCode==="Refused")
-            {
-                console.log("Payment Refused")
-                this.displayError();
-            }
-        },
+                }
+                if(data.data.resultCode==="Refused")
+                {
+                    console.log("Payment Refused")
+                    this.displayError();
+                }
+            },
             error => console.log("ERR in request Payment --> "+<any>error))
-
-        console.log("check point !");
     }
 
 
@@ -196,9 +198,6 @@ export class AddCardPage {
     testCrypt() {
 
         var key = "10001|AABEDA463F453CF0263D1181B1F3835C2F23A264F5589995CA0D86EC9AF5E0BFA55E758C7B7D73F3E31E96FBB4E4D09AE1C1B3A723CB2F9338CA82204879203F400AC5BC8639E4ABEA9EA45EA78596CDA7EC4520779ADD441E3B7A9BDC0BCD5A1AB8A9CB96955745269E33D5EFE72D234F608C6E4E20DC4FC35FE81B890923F2591E26A24908532C8900468705E510832EDD03B4F616C40B2EE29B9844653CF504531087ECAFE9E5F8A35848BCFCE911769928AB02BBD290041AE0336E14EF31115C96427A07CC1A1317BF6E382D7393C01725F87529483C996730DD36DF060693385579A1F6DB998A420C4EE98DA78719F8EE2EE12FE4195FFD5BDEA01A8C87";
-        var options = {}; // See adyen.encrypt.nodom.html for details
-
-
 
         var cardData = {
             number: this.nbCarte,
@@ -209,8 +208,10 @@ export class AddCardPage {
 
         }
         adyenEncrypt.encrypt(key, cardData)
-            .then(function(dataEncrypted){
-                console.log("DATA ENCRYPTED --> "+dataEncrypted)
+            .then((dataEncrypted)=>{
+                console.log("DATAENCRYPTED --> "+dataEncrypted)
+                this.cryptedCard=dataEncrypted
+                this.sendRequestPayment()
             });
 
     }
