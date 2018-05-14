@@ -33,6 +33,7 @@ export class ConfirmPage {
     total: number;
     special:any
     user:any;
+    restaurantId:any
 
     @ViewChild('myTabs') tabRef: Tabs;
 
@@ -65,6 +66,10 @@ export class ConfirmPage {
 
             },
             error => console.error(error))
+        this.storage.get('id_restaurant').then(data =>{
+
+            this.restaurantId=data
+        })
 
         this.storage.get('menuID').then(data => {
 
@@ -162,7 +167,7 @@ export class ConfirmPage {
                     console.log("USER --> "+JSON.stringify(this.user))
                     this.postBooking({
                         master_user_id: this.user.data.id,
-                        restaurant_id: 1,
+                        restaurant_id: this.restaurantId,
                         nb_users: this.nbPers,
                         schedule: this.schedule,
                         meal_id: meal,

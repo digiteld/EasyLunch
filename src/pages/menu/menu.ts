@@ -6,6 +6,7 @@ import {RecapPage} from '../recap/recap';
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
 import {DetailMenuPage} from "../detail-menu/detail-menu";
+import {LoaderProvider} from "../../providers/rest/loader";
 
 
 
@@ -34,7 +35,10 @@ export class MenuPage {
 
     choosenMenu: any;
     choosenMenuID: any[]
-    menuOfDay: any;
+
+    menuOfDayObjectOne:any
+    menuOfDayObjectTwo:any
+    menuOfDayObjectThree:any
     formule: any[];
 
     tmpType: any;
@@ -45,6 +49,7 @@ export class MenuPage {
     mapEntree: any;
     mapPlat: any;
     mapDessert: any;
+    mapMenu:any;
 
     jsonChooseMenu: any[];
 
@@ -73,16 +78,25 @@ export class MenuPage {
     // OPEN TAB MENU NAV
     openMenu : any;
 
+    menuOfDayOne:boolean
+    menuOfDayTwo:boolean
+    menuOfDayThree:boolean
+
 
     test:any;
 
+//REQUEST FOR SUM NBUSERS BY RESTAURANT
+//    SELECT restaurant_id, SUM(nb_users)
+//       FROM booking WHERE created_date::date=NOW()::date
+//      GROUP BY restaurant_id;
 
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage, private loader:LoaderProvider) {
 
 
         this.openMenu = 'menudujour';
-
+            this.menuOfDayOne=false
+            this.menuOfDayTwo=false
+            this.menuOfDayThree=false
 
         this.jsonChooseMenu = this.jsonChooseMenu || [];
 
@@ -92,13 +106,16 @@ export class MenuPage {
         this.mapPlat = new Map();
         this.mapDessert = new Map();
         this.mapBoisson=new Map()
+        this.mapMenu=new Map();
         this.entree = this.entree || [];
         this.formule = this.formule || [];
 
         this.plat = this.plat || [];
         this.dessert = this.dessert || [];
         this.boisson=this.boisson || [];
-        this.menuOfDay = this.menuOfDay || {}
+        this.menuOfDayObjectOne = this.menuOfDayObjectOne || {}
+        this.menuOfDayObjectTwo = this.menuOfDayObjectTwo || {}
+        this.menuOfDayObjectThree = this.menuOfDayObjectThree || {}
         this.choosenEntree = this.choosenEntree || [];
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
@@ -337,12 +354,17 @@ export class MenuPage {
             let _dessert = []
             let _boisson =[]
             let nbMeal
+            let price
             let name;
 
             if (mod) {
-                nbMeal = this.menuOfDay.nbmeals
-                name = this.menuOfDay.name
-                this.menuOfDay.id_plat.forEach(id => {
+
+                let obj=this.mapMenu.get(id)
+                nbMeal = obj.nbmeals
+                price=obj.price
+                name = obj.name
+                obj.id_plat.forEach(id => {
+                    console.log("ID PLAT --> "+id)
                     if (this.mapEntree.has(id))
                         _entree.push(this.mapEntree.get(id))
                     if (this.mapPlat.has(id))
@@ -358,6 +380,7 @@ export class MenuPage {
             else {
                 this.formule.map(f => {
                     if (f.id === id) {
+                        price=f.price
                         name = f.name
                         nbMeal = f.nbmeals
                         console.log(JSON.stringify(f))
@@ -384,6 +407,7 @@ export class MenuPage {
                 boisson: _boisson,
                 idMeal: id,
                 nbMeal: nbMeal,
+                price:price,
                 callback: this.callBackMenu
 
 
@@ -423,6 +447,7 @@ export class MenuPage {
 
 
     private getMeals(id) {
+
         this.rest.getMeals(id)
 
             .subscribe(
@@ -430,6 +455,7 @@ export class MenuPage {
 
 
                     this.meals = data[0].meal;
+
                     this.menus = data[0].menu;
                     this.formatData()
 
@@ -570,16 +596,50 @@ export class MenuPage {
                 case 3:
                     this.boisson.push(meal)
                     this.mapBoisson.set(meal.id,meal)
+                    break;
+                case 4:
+                    this.mapEntree.set(meal.id, meal);
+                    break;
+                case 5:
+                    this.mapPlat.set(meal.id, meal);
+                    break;
+                case 6:
+                    this.mapDessert.set(meal.id,meal)
+                    break;
+
+
             }
 
         })
 
         this.menus.map(m => {
+            this.mapMenu.set(m.id,m)
+            console.log("MENU --> "+JSON.stringify(m))
             if (m.mod)
-                this.menuOfDay = m
+            {
+
+                console.log("MOD --> "+JSON.stringify(m))
+                switch (m.nbmeals)
+                {
+                    case 1:
+                        this.menuOfDayOne=true;
+                        this.menuOfDayObjectOne=m
+                        break;
+                    case 2:
+                        this.menuOfDayTwo=true
+                        this.menuOfDayObjectTwo=m
+                        break;
+                    case 3:
+                        this.menuOfDayThree=true
+                        this.menuOfDayObjectThree=m
+                        break;
+
+                }
+            }
+
             else {
                 this.formule.push(m)
-                console.log("AAA --> " + JSON.stringify(m))
+
                 console.log(m.name)
                 console.log(m.nbmeals)
 

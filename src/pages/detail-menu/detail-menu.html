@@ -12,12 +12,12 @@
 
 <ion-content>
 
-
+<ng-container *ngIf="navParams.get('entree').length>0">
   <p>Entrée</p>
  <ion-list radio-group  [(ngModel)]="entree">
 
-<ng-container *ngFor="let item of navParams.get('entree'); let i = index">
-    <ion-card>
+<ng-container *ngFor="let item of navParams.get('entree')">
+    <ion-card *ngIf="item.available">
    <ion-item>
       <ion-label>{{item.name}}</ion-label>
       <ion-radio (ionSelect)="onChangeEntree()" value={{item.id}}></ion-radio>
@@ -29,12 +29,13 @@
 </ng-container>
 
  </ion-list>
+</ng-container>
 
   <p>Plat</p>
  <ion-list radio-group  [(ngModel)]="plat">
 
     <ng-container *ngFor="let item of navParams.get('plat')">
-      <ion-card>
+      <ion-card *ngIf="item.available">
 
     <ion-item>
       <ion-label>{{item.name}}</ion-label>
@@ -48,12 +49,13 @@
     </ng-container>
 
  </ion-list>
+    <ng-container *ngIf="navParams.get('dessert').length>0">
   <p>Dessert</p>
 <ng-container *ngIf="navParams.get('nbMeal')===3">
  <ion-list radio-group  [(ngModel)]="dessert">
 
     <ng-container *ngFor="let item of navParams.get('dessert')">
-      <ion-card>
+      <ion-card *ngIf="item.available">
         <ion-item>
           <ion-label>{{item.name}}</ion-label>
           <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
@@ -67,11 +69,13 @@
  </ion-list>
 </ng-container>
 
+
+
     <ng-container *ngIf="navParams.get('nbMeal')===2">
         <ion-list radio-group  [(ngModel)]="entree">
 
             <ng-container *ngFor="let item of navParams.get('dessert')">
-                <ion-card>
+                <ion-card *ngIf="item.available">
                     <ion-item>
                         <ion-label>{{item.name}}</ion-label>
                         <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
@@ -84,14 +88,14 @@
 
         </ion-list>
     </ng-container>
-
+    </ng-container>
   </ion-content>
 
   <ion-footer>
     <ng-container *ngIf="showButton">
 
       <div id="commander">
-          <button ion-button round (click)="goBackMenu()"> Commander &nbsp;&nbsp;&nbsp;&nbsp; x1 &nbsp;&nbsp;&nbsp;&nbsp; {{navParams.get('price')}} € </button>
+          <button ion-button round (click)="goBackMenu()"> Commander &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{navParams.get('price')}} € </button>
       </div>
 
     </ng-container>

@@ -54,6 +54,7 @@ export class RecapPage {
 
     jsonChoosenMenu: any;
 
+    special:any
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public rest: RestProvider) {
 
@@ -116,6 +117,9 @@ export class RecapPage {
 
     openLogin() {
         console.log("ok commande validé !");
+        let s=[]
+        s.push(this.special)
+        this.storage.set('special',s)
         this.storage.get("isConnected").then(
             data => {
                 if (data === true) {

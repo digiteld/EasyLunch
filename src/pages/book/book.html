@@ -13,20 +13,20 @@
                 <ion-card (click)="openDetail(0)">
 
                     <ion-card-content>
-                        <div id="container">
-                            <div id="img">
-                                <img src={{mapResto.get(booking[0].restaurant_id).picture}}/>
-                            </div>
-                            <div id="info">
-                                <h2>{{mapResto.get(booking[0].restaurant_id).name}}</h2>
-                                <h3>
-                                    <img class="iconresa" src="assets/icon/clock.svg">auj. à {{booking[0].schedule.toString()}} </h3>
-                                <h3>
-                                    <img class="iconresa" src="assets/icon/users.svg">{{booking[0].nb_users}} personnes</h3>
-                                <h4> {{booking[0].price}} €</h4>
-                            </div>
+                    <div id="container">
+                        <div id="img">
+                            <img src={{mapResto.get(booking[0].restaurant_id).picture}}/>
                         </div>
-                    </ion-card-content>
+                        <div id="info">
+                            <h2>{{mapResto.get(booking[0].restaurant_id).name}}</h2>
+                            <h3>
+                                <img class="iconresa" src="assets/icon/clock.svg">auj. à {{booking[0].schedule.toString()}} </h3>
+                            <h3>
+                                <img class="iconresa" src="assets/icon/users.svg">{{booking[0].nb_users}} personnes</h3>
+                            <h4> {{booking[0].price}} €</h4>
+                        </div>
+                    </div>
+                </ion-card-content>
 
                 </ion-card>
             </ng-container>
