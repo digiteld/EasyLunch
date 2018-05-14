@@ -1,12 +1,9 @@
-<ion-content>
-
+<ion-content on-scroll="changeArrowBackground()">
+    <div id="img">
+        <img src={{img}}/>
+        <button (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-white.svg"></button>
+    </div>
     <div id="restau">
-        <div id="img">
-            <img src={{img}}/>
-            <button (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-white.svg"></button>
-        </div>
-
-
         <div id="cardrestau">
             <ion-card>
                 <ion-card-content>

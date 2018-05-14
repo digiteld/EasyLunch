@@ -85,6 +85,9 @@ export class MenuPage {
 
     test:any;
 
+
+
+
 //REQUEST FOR SUM NBUSERS BY RESTAURANT
 //    SELECT restaurant_id, SUM(nb_users)
 //       FROM booking WHERE created_date::date=NOW()::date
@@ -179,7 +182,10 @@ export class MenuPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MenuPage');
+
     }
+
+
 
     scrollToElement(id)
 {
@@ -191,9 +197,6 @@ export class MenuPage {
         this.content.resize()
     }
 
-    goBack() {
-        this.navCtrl.pop();
-    }
 
     openToElement(id) {
         console.log(id)
@@ -648,6 +651,14 @@ export class MenuPage {
 
 
     }
+
+
+    goBack() {
+        this.navCtrl.pop();
+    }
+
+
+
 
 
 }

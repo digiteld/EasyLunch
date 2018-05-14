@@ -11,6 +11,7 @@ page-menu {
     position: relative;
     z-index: 1;
     height: 22.3vh;
+    background-image: #fff;
   }
 
   #img img {
@@ -36,7 +37,7 @@ page-menu {
 ////    Card restau
 
   #restau {
-    height: 32vh;
+    height: 9vh;
   }
 
   #cardrestau {
@@ -151,6 +152,10 @@ page-menu {
     padding-bottom: 3px;
   }
 
+  .scroll:last-child{
+    padding-right: 3px;
+  }
+
   .scroll:first-child{
     border-bottom: 2px solid #F9B522;
   }
@@ -159,6 +164,7 @@ page-menu {
     color: #333333;
     font-weight: 600;
 }
+
 
 
 
