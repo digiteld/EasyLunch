@@ -3,8 +3,9 @@
   <ion-navbar hideBackButton>
     <ion-title>{{navParams.get('name')}} </ion-title>
     <div class="arrow">
-        <button (click)="goBack()"> <img src="assets/icon/arrow-left-grey.svg"> </button>
-      </div>
+      <button (click)="goBack()">
+        <img src="assets/icon/arrow-left-grey.svg"> </button>
+    </div>
   </ion-navbar>
 
 </ion-header>
@@ -12,94 +13,91 @@
 
 <ion-content>
 
-<ng-container *ngIf="navParams.get('entree').length>0">
-  <p>Entrée</p>
- <ion-list radio-group  [(ngModel)]="entree">
+  <ng-container *ngIf="navParams.get('entree').length>0">
+    <p>Entrée</p>
+    <ion-list radio-group [(ngModel)]="entree">
 
-<ng-container *ngFor="let item of navParams.get('entree')">
-    <ion-card *ngIf="item.available">
-   <ion-item>
-      <ion-label>{{item.name}}</ion-label>
-      <ion-radio (ionSelect)="onChangeEntree()" value={{item.id}}></ion-radio>
-    </ion-item>
+      <ng-container *ngFor="let item of navParams.get('entree')">
+        <ion-card *ngIf="item.available">
+          <ion-item>
+            <ion-label>{{item.name}}</ion-label>
+            <ion-radio (ionSelect)="onChangeEntree()" value={{item.id}}></ion-radio>
+          </ion-item>
 
 
-  </ion-card>
+        </ion-card>
 
-</ng-container>
+      </ng-container>
 
- </ion-list>
-</ng-container>
+    </ion-list>
+  </ng-container>
 
   <p>Plat</p>
- <ion-list radio-group  [(ngModel)]="plat">
+  <ion-list radio-group [(ngModel)]="plat">
 
     <ng-container *ngFor="let item of navParams.get('plat')">
       <ion-card *ngIf="item.available">
 
-    <ion-item>
-      <ion-label>{{item.name}}</ion-label>
-      <ion-radio (ionSelect)="onChangePlat()" value={{item.id}}></ion-radio>
-    </ion-item>
-
-
-
-      </ion-card>
-
-    </ng-container>
-
- </ion-list>
-    <ng-container *ngIf="navParams.get('dessert').length>0">
-  <p>Dessert</p>
-<ng-container *ngIf="navParams.get('nbMeal')===3">
- <ion-list radio-group  [(ngModel)]="dessert">
-
-    <ng-container *ngFor="let item of navParams.get('dessert')">
-      <ion-card *ngIf="item.available">
         <ion-item>
           <ion-label>{{item.name}}</ion-label>
-          <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
+          <ion-radio (ionSelect)="onChangePlat()" value={{item.id}}></ion-radio>
         </ion-item>
 
 
+
       </ion-card>
 
     </ng-container>
 
- </ion-list>
-</ng-container>
+  </ion-list>
+  <ng-container *ngIf="navParams.get('dessert').length>0">
+    <p>Dessert</p>
+    <ng-container *ngIf="navParams.get('nbMeal')===3">
+      <ion-list radio-group [(ngModel)]="dessert">
+
+        <ng-container *ngFor="let item of navParams.get('dessert')">
+          <ion-card *ngIf="item.available">
+            <ion-item>
+              <ion-label>{{item.name}}</ion-label>
+              <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
+            </ion-item>
+
+
+          </ion-card>
+
+        </ng-container>
+
+      </ion-list>
+    </ng-container>
 
 
 
     <ng-container *ngIf="navParams.get('nbMeal')===2">
-        <ion-list radio-group  [(ngModel)]="entree">
+      <ion-list radio-group [(ngModel)]="entree">
 
-            <ng-container *ngFor="let item of navParams.get('dessert')">
-                <ion-card *ngIf="item.available">
-                    <ion-item>
-                        <ion-label>{{item.name}}</ion-label>
-                        <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
-                    </ion-item>
+        <ng-container *ngFor="let item of navParams.get('dessert')">
+          <ion-card *ngIf="item.available">
+            <ion-item>
+              <ion-label>{{item.name}}</ion-label>
+              <ion-radio (ionSelect)="onChangeDessert()" value={{item.id}}></ion-radio>
+            </ion-item>
 
 
-                </ion-card>
+          </ion-card>
 
-            </ng-container>
+        </ng-container>
 
-        </ion-list>
+      </ion-list>
     </ng-container>
-    </ng-container>
-  </ion-content>
+  </ng-container>
+</ion-content>
 
-  <ion-footer>
-    <ng-container *ngIf="showButton">
+<ion-footer>
+  <ng-container *ngIf="showButton">
 
-      <div id="commander">
-          <button ion-button round (click)="goBackMenu()"> Commander &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{navParams.get('price')}} € </button>
-      </div>
+    <div id="commander">
+      <button ion-button round (click)="goBackMenu()"> Commander &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{navParams.get('price')}} € </button>
+    </div>
 
-    </ng-container>
-  </ion-footer>
-
-
-
+  </ng-container>
+</ion-footer>

@@ -1,4 +1,4 @@
-<ion-content on-scroll="changeArrowBackground()">
+<ion-content (scroll)="changeArrowBackground()">
     <div id="img">
         <img src={{img}}/>
         <button (click)="goBack()"><img class="arrow" src="assets/icon/arrow-left-white.svg"></button>

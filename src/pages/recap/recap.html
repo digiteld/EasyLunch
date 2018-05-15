@@ -1,197 +1,200 @@
 <ion-content>
 
-    <div id="restau">
-        <div id="img">
-            <img src={{img}}/>
-            <button (click)="goBack()">
-                <img class="arrow" src="assets/icon/arrow-left-white.svg"> </button>
-        </div>
-
-
-        <div id="cardrestau">
-            <ion-card>
-                <ion-card-content>
-                    <h1>{{ name }}</h1>
-                    <h2>{{ desc }}</h2>
-                    <p>{{ address }}</p>
-                    <p class="city">{{ city }}</p>
-                </ion-card-content>
-            </ion-card>
-        </div>
+  <div id="restau">
+    <div id="img">
+      <img src={{img}}/>
+      <button (click)="goBack()">
+        <img class="arrow" src="assets/icon/arrow-left-white.svg"> </button>
     </div>
 
 
+    <div id="cardrestau">
+      <ion-card>
+        <ion-card-content>
+          <h1>{{ name }}</h1>
+          <h2>{{ desc }}</h2>
+          <p>{{ address }}</p>
+          <p class="city">{{ city }}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
 
-    <div id="repas">
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <img class="heure" src="assets/icon/clock2.svg">
-                    <h3> Auj. à {{schedule}} </h3>
-                </ion-col>
 
-                <ion-col>
-                    <img class="cmb" src="assets/icon/users2.svg">
-                    <h3> {{nbPers}} personnes </h3>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
 
-        <ng-container *ngIf="printCode">
-            <div class="resacode">
-                <div class="resa"> Le code de réservation à partager : </div>
-                <div class="code">  <p>{{code}}</p> </div>
+  <div id="repas">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img class="heure" src="assets/icon/clock2.svg">
+          <h3> Auj. à {{schedule}} </h3>
+        </ion-col>
+
+        <ion-col>
+          <img class="cmb" src="assets/icon/users2.svg">
+          <h3> {{nbPers}} personnes </h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ng-container *ngIf="printCode">
+      <div class="resacode">
+        <div class="resa"> Le code de réservation à partager : </div>
+        <div class="code">
+          <p>{{code}}</p>
+        </div>
+      </div>
+
+    </ng-container>
+
+
+    <ng-container *ngIf="jsonChoosenMenu">
+      <ng-container *ngIf="jsonChoosenMenu.length>0">
+        <ng-container *ngFor="let menuChoose of jsonChoosenMenu">
+          <ion-card>
+            <ion-card-content>
+              <h4>{{menuChoose['name']}}</h4>
+
+              <div class="choix">
+                <div class="choice">
+                  <ng-container *ngFor="let item of menuChoose['mealName']">
+                    <h3>{{item}}</h3>
+                  </ng-container>
+                </div>
+
+                <div class="price">
+                  {{menuChoose['price']}} €
+                </div>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+
+    <ng-container *ngIf="entree">
+      <ng-container *ngFor="let item of entreeList;">
+        <ion-card>
+          <ion-card-content>
+            <h4>Entrée</h4>
+            <div class="choix">
+              <div class="choice">
+                <h3> {{item.name}} </h3>
+              </div>
+
+              <div class="price">
+                {{item.price}}€
+              </div>
             </div>
-
-        </ng-container>
-
-
-        <ng-container *ngIf="jsonChoosenMenu">
-        <ng-container *ngIf="jsonChoosenMenu.length>0">
-            <ng-container *ngFor="let menuChoose of jsonChoosenMenu">
-            <ion-card>
-                <ion-card-content>
-                    <h4>{{menuChoose['name']}}</h4>
-
-                    <ng-container *ngFor="let item of menuChoose['mealName']">
-                        <h3>{{item}}</h3>
-                    </ng-container>
-
-                    <div class="price">
-                        {{menuChoose['price']}} €
-                    </div>
-                </ion-card-content>
-            </ion-card>
-            </ng-container>
-        </ng-container>
-        </ng-container>
+          </ion-card-content>
+        </ion-card>
 
 
-        <ng-container *ngIf="entree">
-            <ng-container *ngFor="let item of entreeList;">
-                <ion-card>
-                    <ion-card-content>
-                        <h4>Entrée</h4>
-                        <div class="choix">
-                            <div class="choice">
-                                <h3> {{item.name}} </h3>
-                            </div>
+      </ng-container>
+    </ng-container>
 
-                            <div class="price">
-                                {{item.price}}€
-                            </div>
-                        </div>
-                    </ion-card-content>
-                </ion-card>
+    <ng-container *ngIf="plat">
 
+      <ng-container *ngFor="let item of platList;">
+        <ion-card>
+          <ion-card-content>
+            <h4>Plat</h4>
+            <div class="choix">
+              <div class="choice">
+                <h3> {{item.name}} </h3>
+              </div>
 
-            </ng-container>
-        </ng-container>
+              <div class="price">
+                {{item.price}}€
+              </div>
+            </div>
+          </ion-card-content>
 
-        <ng-container *ngIf="plat">
-
-            <ng-container *ngFor="let item of platList;">
-                <ion-card>
-                    <ion-card-content>
-                        <h4>Plat</h4>
-                        <div class="choix">
-                            <div class="choice">
-                                <h3> {{item.name}} </h3>
-                            </div>
-
-                            <div class="price">
-                                {{item.price}}€
-                            </div>
-                        </div>
-                    </ion-card-content>
-
-                </ion-card>
-            </ng-container>
+        </ion-card>
+      </ng-container>
 
 
-        </ng-container>
+    </ng-container>
 
-        <ng-container *ngIf="dessert">
-            <ng-container *ngFor="let item of dessertList;">
+    <ng-container *ngIf="dessert">
+      <ng-container *ngFor="let item of dessertList;">
 
-                <ion-card>
-                    <ion-card-content>
-                        <h4>Dessert</h4>
-                        <div class="choix">
-                            <div class="choice">
-                                <h3> {{item.name}} </h3>
-                            </div>
+        <ion-card>
+          <ion-card-content>
+            <h4>Dessert</h4>
+            <div class="choix">
+              <div class="choice">
+                <h3> {{item.name}} </h3>
+              </div>
 
-                            <div class="price">
-                                {{item.price}}€
-                            </div>
-                        </div>
-                    </ion-card-content>
-                </ion-card>
+              <div class="price">
+                {{item.price}}€
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
 
-            </ng-container>
-        </ng-container>
+      </ng-container>
+    </ng-container>
 
-        <ng-container *ngIf="boisson">
-            <ng-container *ngFor="let item of boissonList;">
+    <ng-container *ngIf="boisson">
+      <ng-container *ngFor="let item of boissonList;">
 
-                <ion-card>
-                    <ion-card-content>
-                        <h4>Boisson</h4>
-                        <div class="choix">
-                            <div class="choice">
-                                <h3> {{item.name}} </h3>
-                            </div>
+        <ion-card>
+          <ion-card-content>
+            <h4>Boisson</h4>
+            <div class="choix">
+              <div class="choice">
+                <h3> {{item.name}} </h3>
+              </div>
 
-                            <div class="price">
-                                {{item.price}}€
-                            </div>
-                        </div>
-                    </ion-card-content>
-                </ion-card>
+              <div class="price">
+                {{item.price}}€
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
 
-            </ng-container>
-        </ng-container>
+      </ng-container>
+    </ng-container>
 
 
-    </div>
+  </div>
 
-    <div class="special">
+  <div class="special">
 
     <ion-card>
-        <ion-content>
-            Instructions spéciales
-            <ion-item>
-                <ion-textarea class="size" type="text" placeholder="Rentrez ici vos commentaires sur la commande (cuisson de la viande, pas de champignons, etc...)" [(ngModel)]="special">  </ion-textarea>
-            </ion-item>
-        </ion-content>
+      <ion-content>
+        Instructions spéciales
+        <ion-item>
+          <ion-textarea class="size" type="text" placeholder="Rentrez ici vos commentaires sur la commande (cuisson de la viande, pas de champignons, etc...)"
+            [(ngModel)]="special"> </ion-textarea>
+        </ion-item>
+      </ion-content>
     </ion-card>
 
 
-    </div>
+  </div>
 
 
-    <div id="total">
-        <div class="text"> TOTAL </div>
-        <div class="total"> {{navParams.get('total')}}€ </div>
-    </div>
+  <div id="total">
+    <div class="text"> TOTAL </div>
+    <div class="total"> {{navParams.get('total')}}€ </div>
+  </div>
 
 </ion-content>
 
 <ion-footer>
 
 
-    <ng-container *ngIf="total!==0">
-        <div id="payer">
-            <p>En passant commande vous acceptez automatiquement les CGV de Easy Lunch <br>
-                Commande préparée par {{ name }} 
-            </p>
-            <button ion-button round (click)="openLogin()"> Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}} € </button>
-        </div>
-    </ng-container>
+  <ng-container *ngIf="total!==0">
+    <div id="payer">
+      <p>En passant commande vous acceptez automatiquement les CGV de Easy Lunch
+        <br> Commande préparée par {{ name }}
+      </p>
+      <button ion-button round (click)="openLogin()"> Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}} € </button>
+    </div>
+  </ng-container>
 </ion-footer>
-
-
-
-
-
