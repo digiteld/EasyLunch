@@ -1,126 +1,121 @@
 $break-iphoneSE: 320px;
-
+$break-iphoneX: 800px; // Hauteur
 page-onboarding {
-    .scroll-content{
-        background-color:#F6BB1A;
-        background-image: url('../assets/imgs/onboard1.png');
-        background-size:contain;
-        overflow-y:hidden;
-        }
-
-    h1 {
-        text-align: center;
-        color: #fff;
-        font-weight: 600;
-        font-size: 32px;
-        margin: 20px 30px 14px;
-        @media screen and (max-width: $break-iphoneSE) {
-            margin-top:30px;
-            font-size: 28px;
-        }
+  .scroll-content {
+    background-color: #F6BB1A;
+    background-image: url('../assets/imgs/onboard1.png');
+    background-size: contain;
+    overflow-y: hidden;
+    background-repeat: no-repeat;
+    @media screen and (min-height: $break-iphoneX) {
+      background-position: bottom;
+      background-repeat: no-repeat;
     }
-
+  }
+  h1 {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 20px 30px 14px;
+    @media screen and (max-width: $break-iphoneSE) {
+      margin-top:30px;
+      font-size: 28px;
+    }
+    @media screen and (min-height: $break-iphoneX) {
+        margin-top: 100px;
+        font-size: 40px;
+      }
+  }
+  p {
+    color: #fff;
+    font-size: 18px;
+  }
+  #text {
+    padding-left: 42px;
+    padding-right: 42px;
     p {
-        color: #fff;
+      text-align: center;
+      font-weight: 500;
+      @media screen and (max-width: $break-iphoneSE) {
+        font-size:14px;
+      }
+    }
+  }
+  .next p {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .button-container {
+    width: 100vw;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    @media screen and (min-height: $break-iphoneX) {
+      margin-top: 40px;
+    }
+  }
+  button {
+    width: 200px;
+    height: 50px;
+    background-image: linear-gradient(#F1C40F, #FFA300);
+    margin-bottom: 25px;
+  }
+  .button-inner {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 16px;
+  }
+  .bubble-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 45px;
+    @media screen and (max-width: $break-iphoneSE) {
+      margin-top:60px;
+    }
+    @media screen and (min-height: 700px) and (max-height: 800px) {
+      margin-top: 120px;
+    }
+    @media screen and (min-height: $break-iphoneX) {
+        margin-top: 100px;
+      }
+    :first-child,
+    :last-child {
+      align-self: flex-end;
+    }
+    :first-child {
+      margin-bottom: -30px;
+    }
+    :last-child {
+      margin-top: -30px;
+    }
+    .info-bubble {
+      display: flex;
+      justify-content: flex-start;
+      width: 155px;
+      height: 155px;
+      background-color: #fff;
+      border-radius: 50%;
+      padding: 18px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+      @media screen and (max-width: $break-iphoneSE) {
+        width:120px;
+        height: 120px;
+        padding: 12px;
+      }
+      p {
         font-size: 18px;
-    }
-
-    #text{
-        padding-left: 42px;
-        padding-right: 42px;
-
-        p{
-            text-align:center;
-            font-weight:500;
-            @media screen and (max-width: $break-iphoneSE) {
-                font-size:14px;
-            }
-        }
-    }
-
-    .next p {
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .button-container{
-        width: 100vw;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-    }
-
-    button {
-        width: 200px;
-        height: 50px;
-        background-image: linear-gradient(#F1C40F, #FFA300);
+        text-align: center;
         margin-bottom: 25px;
-    }
-
-    .button-inner {
-        text-transform: uppercase;
-        font-weight: 600;
-        color: #FFFFFF;
-        font-size: 16px;
-    }
-
-    .bubble-container{
-
-        display: flex;
-        flex-direction: column;
-        padding-left: 15px;
-        padding-right: 15px;
-        margin-top:45px;
+        color: #333333;
         @media screen and (max-width: $break-iphoneSE) {
-            margin-top:60px;
+          font-size: 14px;
+          margin-bottom: 20px;
         }
-        @media screen and (min-height: 700px) and (max-height: 800px) {
-            margin-top:120px;
-        }
-
-        :first-child, :last-child {
-            align-self: flex-end;
-        }
-
-        :first-child{
-            margin-bottom: -30px;
-        }
-
-        :last-child{
-            margin-top: -30px;
-        }
-
-
-        .info-bubble{
-            display: flex;
-            justify-content: flex-start;
-            width:155px;
-            height:155px;
-            background-color:#fff;
-            border-radius: 50%;
-            padding:18px;
-            box-shadow: 0px 2px 10px rgba(0,0,0, 0.08);
-
-            @media screen and (max-width: $break-iphoneSE) {
-                width:120px;
-                height:120px;
-                padding:12px;
-            }
-
-
-            p{
-                font-size: 18px;
-                text-align: center;
-                margin-bottom:25px;
-                color:#333333;
-
-                @media screen and (max-width: $break-iphoneSE) {
-                font-size: 14px;
-                margin-bottom:20px;
-                }
-            }
-        }
+      }
     }
-
-
+  }
 }

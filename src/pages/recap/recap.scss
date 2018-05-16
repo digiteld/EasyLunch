@@ -21,39 +21,39 @@ page-recap {
 
 
   ////    Image restaurant
-  
-  
+
+
     #img {
       position: relative;
       z-index: 1;
       height: 22.3vh;
     }
-  
+
     #img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-  
-  
-  
+
+
+
   ////    Btn return
-  
-  
+
+
     #img button {
       position: absolute;
       background-color: transparent;
       top: 25px;
       left: 14px;
     }
-  
+
     #img .arrow {
       width: 22px;
       height: 20px;
     }
 
   ////    Pour combien / A quelle heure
-    
+
     .grid {
       padding: 5px 20px;
     }
@@ -94,12 +94,12 @@ page-recap {
     }
 
   ////    Card restau
-  
-  
+
+
     #restau {
       height: 32vh;
     }
-  
+
     #cardrestau {
       width: 100%;
       transform: translate(-50%, -50%);
@@ -113,12 +113,12 @@ page-recap {
       font-size: 1.3em;
       font-weight: 600;
     }
-  
+
     #cardrestau h2 {
       font-size: 1.1em;
       font-weight: 300;
     }
-  
+
     #cardrestau p {
       text-align: center;
       font-size: 1.1em;
@@ -135,39 +135,39 @@ page-recap {
       margin-top: 0!important;
     }
 
-    
+
   ////    Card menu
-  
-  
+
+
     .card {
       margin: 12px 25px;
       width: calc(100% - 50px);
       box-shadow: 0 0 2px rgba(0,0,0, 0.08);
     }
-  
+
     .card-content {
       margin: auto;
       text-align: center;
     }
 
-  
-  
+
+
   ////   Menu scroll
-  
-  
+
+
     .scrollmenu {
       top: 3vh;
       height: 30px;
     }
-  
+
     a {
       color: #5E7FB1;
       text-decoration: none;
       font-size: 16px;
       font-weight: 600;
     }
-  
-  
+
+
   ////   Card repas
 
     #repas .card-content {
@@ -194,29 +194,37 @@ page-recap {
       margin-top: 10px;
       color: #333333;
     }
-  
+
     .price {
       text-align: right;
       margin-top: 3vh;
       color: #333333;
       font-weight: 500;
     }
-  
-  
+
+
         ////   Card menu du jour
-    
+
     h2 img {
       height: 14.27px;
     }
-    
+
     .plat h3 {
       margin-top: 20px;
     }
-  
+
     .dessert h3 {
       margin-top: 20px;
     }
-  
+
+
+    .special-content{
+      min-height: 100px;
+    }
+
+    .special-content h4{
+      margin-bottom: 10px;
+    }
 
       ////    FOOTER
 
@@ -256,7 +264,7 @@ page-recap {
 
             }
           }
-        
+
           #payer button {
             width: 100%;
             text-transform: uppercase;
@@ -297,9 +305,9 @@ page-recap {
           color: #333333 !important;
           font-style: normal !important;
         }
-        
+
 
 
   }
-  
+
 

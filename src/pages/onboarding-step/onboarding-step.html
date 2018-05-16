@@ -1,20 +1,36 @@
 <ion-content>
-    <div id="img">
-      <img src="{{img}}" alt="">
+  <div id="img">
+    <img src="{{img}}" alt="">
+  </div>
+
+  <div id="text">
+    <h1> {{titre}} </h1>
+    <p> {{sousTitre}} </p>
+  </div>
+
+  <div class="next-bubbles">
+
+    <span class="round-bubble">
+      <span class="round-bubble-bg" *ngIf="bubbleActive === 1"></span>
+      <span class="round-bubble-active" *ngIf="bubbleActive === 1"></span>
+    </span>
+    <span class="round-bubble">
+      <span class="round-bubble-bg" *ngIf="bubbleActive === 2"></span>
+      <span class="round-bubble-active" *ngIf="bubbleActive === 2"></span>
+    </span>
+    <span class="round-bubble">
+      <span class="round-bubble-bg" *ngIf="bubbleActive === 3"></span>
+      <span class="round-bubble-active" *ngIf="bubbleActive === 3"></span>
+    </span>
+  </div>
+
+  <div class="button-container">
+
+    <button ion-button round (click)="goStep()"> {{buttonText}} </button>
+    <div class="next" (click)="goHome()">
+      <p> > Passer, j'ai faim ! </p>
     </div>
 
-    <div id="text">
-       <h1> {{titre}} </h1>
-       <p> {{sousTitre}} </p>
-    </div>
+  </div>
 
-    <div class="button-container">
-
-      <button ion-button round (click)="goStep()"> {{buttonText}} </button>
-      <div class="next" (click)="goHome()">
-        <p> > Passer, j'ai faim ! </p>
-      </div>
-
-    </div>
-
-  </ion-content>
+</ion-content>

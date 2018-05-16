@@ -1,5 +1,6 @@
-$break-iphoneSE: 320px;
+$break-iphoneSE: 321px;
 $break-iphonePLUS: 720px;
+$break-iphoneX: 800px; // Hauteur
 
 page-onboarding-step {
 
@@ -8,20 +9,29 @@ page-onboarding-step {
         }
 
     #img {
-        height: 48vh;
+        height: 55vh;
         background-color: #F6BB1A;
         overflow-y:hidden;
+
+        @media screen and (min-height: $break-iphoneX) {
+            height: 50vh;
+        }
+
     }
 
     h1 {
         text-align: center;
         color: #333333;
         font-weight: 600;
-        font-size: 28px;
+        font-size: 24px;
         margin: 30px 30px 14px;
         @media screen and (max-width: $break-iphoneSE) {
-            font-size: 26px;
+            font-size: 18px;
             margin: 16px 30px 14px;
+        }
+        @media screen and (min-height: $break-iphoneX) {
+            font-size: 30px;
+            margin: 55px 30px 14px;
         }
     }
 
@@ -30,6 +40,9 @@ page-onboarding-step {
         color: #333333;
         font-size: 18px;
         margin: 0 40px 25px;
+        @media screen and (max-width: $break-iphoneSE) {
+            font-size: 16px;
+        }
     }
 
     .next p {
@@ -44,6 +57,9 @@ page-onboarding-step {
         transform: translateX(-50%);
         left: 50%;
         bottom:0px;
+        @media screen and (min-height: $break-iphoneX) {
+            bottom:20px;
+        }
     }
 
     button {
@@ -60,6 +76,54 @@ page-onboarding-step {
         font-weight: 600;
         color: #FFFFFF;
         font-size: 16px;
+    }
+
+    .next-bubbles{
+        height:20px;
+        width:20%;
+        margin-left:auto;
+        margin-right:auto;
+        display: flex;
+        justify-content: space-between;
+        @media screen and (max-width: $break-iphonePLUS) {
+            margin-top:40px;
+        }
+        @media screen and (max-width: 640px) {
+            margin-top:10px;
+        }
+        @media screen and (max-width: $break-iphoneSE) {
+            margin-top:0px;
+        }
+
+
+        .round-bubble{
+            border-radius:50%;
+            width:6px;
+            height:6px;
+            display: block;
+            background-color:#e9e9e9;
+        }
+
+        .round-bubble-active{
+            border-radius:50%;
+            width:12px;
+            height:12px;
+            display: block;
+            border: 1px solid #f9b522;
+            margin-top:-9px;
+            margin-left:-3px;
+
+        }
+
+        .round-bubble-bg{
+            border-radius:50%;
+            width:6px;
+            height:6px;
+            display: block;
+            background-color:#f9b522;
+        }
+
+
     }
 
 

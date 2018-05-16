@@ -566,7 +566,7 @@ export class HomePage {
 
     displayError() {
         let toast = this.toastCtrl.create({
-            message: 'Les commandes ne sont plus possibles après 11h30, merci de votre compréhension.',
+            message: 'Oups, vous arrivez trop tard, rendez-vous demain avant 11h30, merci de votre compréhension.',
             showCloseButton: true,
             closeButtonText: "X",
             dismissOnPageChange: true,
