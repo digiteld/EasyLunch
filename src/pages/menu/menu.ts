@@ -9,7 +9,6 @@ import {DetailMenuPage} from "../detail-menu/detail-menu";
 import {LoaderProvider} from "../../providers/rest/loader";
 
 
-
 @IonicPage()
 @Component({
     selector: 'page-menu',
@@ -36,9 +35,9 @@ export class MenuPage {
     choosenMenu: any;
     choosenMenuID: any[]
 
-    menuOfDayObjectOne:any
-    menuOfDayObjectTwo:any
-    menuOfDayObjectThree:any
+    menuOfDayObjectOne: any
+    menuOfDayObjectTwo: any
+    menuOfDayObjectThree: any
     formule: any[];
 
     tmpType: any;
@@ -49,7 +48,7 @@ export class MenuPage {
     mapEntree: any;
     mapPlat: any;
     mapDessert: any;
-    mapMenu:any;
+    mapMenu: any;
 
     jsonChooseMenu: any[];
 
@@ -71,19 +70,19 @@ export class MenuPage {
     participate: boolean;
 
     special: any
-    boisson:any;
-    mapBoisson:any;
+    boisson: any;
+    mapBoisson: any;
     choosenBoisson: any;
 
     // OPEN TAB MENU NAV
-    openMenu : any;
+    openMenu: any;
 
-    menuOfDayOne:boolean
-    menuOfDayTwo:boolean
-    menuOfDayThree:boolean
+    menuOfDayOne: boolean
+    menuOfDayTwo: boolean
+    menuOfDayThree: boolean
 
 
-    test:any;
+    test: any;
 
 
 //REQUEST FOR SUM NBUSERS BY RESTAURANT
@@ -91,13 +90,13 @@ export class MenuPage {
 //       FROM booking WHERE created_date::date=NOW()::date
 //      GROUP BY restaurant_id;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage, private loader:LoaderProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage, private loader: LoaderProvider) {
 
 
         this.openMenu = 'menudujour';
-            this.menuOfDayOne=false
-            this.menuOfDayTwo=false
-            this.menuOfDayThree=false
+        this.menuOfDayOne = false
+        this.menuOfDayTwo = false
+        this.menuOfDayThree = false
 
         this.jsonChooseMenu = this.jsonChooseMenu || [];
 
@@ -106,21 +105,21 @@ export class MenuPage {
         this.mapEntree = new Map();
         this.mapPlat = new Map();
         this.mapDessert = new Map();
-        this.mapBoisson=new Map()
-        this.mapMenu=new Map();
+        this.mapBoisson = new Map()
+        this.mapMenu = new Map();
         this.entree = this.entree || [];
         this.formule = this.formule || [];
 
         this.plat = this.plat || [];
         this.dessert = this.dessert || [];
-        this.boisson=this.boisson || [];
+        this.boisson = this.boisson || [];
         this.menuOfDayObjectOne = this.menuOfDayObjectOne || {}
         this.menuOfDayObjectTwo = this.menuOfDayObjectTwo || {}
         this.menuOfDayObjectThree = this.menuOfDayObjectThree || {}
         this.choosenEntree = this.choosenEntree || [];
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
-        this.choosenBoisson=this.choosenBoisson || [];
+        this.choosenBoisson = this.choosenBoisson || [];
         this.choosenId = this.choosenId || [];
 
 
@@ -183,11 +182,10 @@ export class MenuPage {
     }
 
 
-    scrollToElement(id)
-{
-    console.log("JE SCROLL")
-    this.content.scrollTo(0, 1000, 0)
-}
+    scrollToElement(id) {
+        console.log("JE SCROLL")
+        this.content.scrollTo(0, 1000, 0)
+    }
 
     ionViewDidEnter() {
         this.content.resize()
@@ -215,9 +213,7 @@ export class MenuPage {
         boissons.style.borderBottomColor = "#F2F2F2";
 
 
-
-        switch(id)
-        {
+        switch (id) {
             case "menudujour":
                 menu.style.borderBottomColor = "#F9B522";
                 break;
@@ -272,76 +268,31 @@ export class MenuPage {
                     objDst = this.choosenDessert;
                     break;
                 case 3:
-                    objSrc=this.boisson;
-                    objDst=this.choosenBoisson;
+                    objSrc = this.boisson;
+                    objDst = this.choosenBoisson;
                     break;
             }
 
             console.log("JE PASSE LA ")
 
-            if(this.choosenId.indexOf(objSrc[index].id)===-1)
-            {
+            if (this.choosenId.indexOf(objSrc[index].id) === -1) {
                 objDst.push(objSrc[index])
                 this.choosenId.push(objSrc[index].id)
                 this.total = (this.total * 100 + objSrc[index].price * 100) / 100;
             }
-            else
-            {
-                let indexInListObject=objDst.indexOf(objSrc[index])
-                objDst.splice(indexInListObject,1)
-                console.log("INDEX --> "+index)
-                let indexInList=this.choosenId.indexOf(objSrc[index].id)
-                console.log("INDEX TO DELETE --> "+indexInList)
-                console.log("J'enlève ITEM --> "+JSON.stringify(objSrc[index]))
-                console.log("J'enlève --> "+objSrc[index].price)
-                this.choosenId.splice(indexInList,1)
+            else {
+                let indexInListObject = objDst.indexOf(objSrc[index])
+                objDst.splice(indexInListObject, 1)
+                console.log("INDEX --> " + index)
+                let indexInList = this.choosenId.indexOf(objSrc[index].id)
+                console.log("INDEX TO DELETE --> " + indexInList)
+                console.log("J'enlève ITEM --> " + JSON.stringify(objSrc[index]))
+                console.log("J'enlève --> " + objSrc[index].price)
+                this.choosenId.splice(indexInList, 1)
                 this.total = ((this.total * 100) - (objSrc[index].price * 100)) / 100;
             }
 
-
         }
-
-
-        // if ((this.schedule && this.nbPers) || this.participate) {
-        //     let obj
-        //     switch (plat) {
-        //         case 0:
-        //             obj = this.entree;
-        //             break;
-        //         case 1:
-        //             obj = this.plat;
-        //             break;
-        //         case 2:
-        //             obj = this.dessert;
-        //             break;
-        //         case 3:
-        //             obj=this.boisson;
-        //             break;
-        //
-        //     }
-        //     this.tmpType = plat;
-        //     this.tmpIndex = index;
-        //     console.log("AVANT crash --> " + obj[index].name)
-        //     this.navCtrl.push(DetailsPage, {
-        //         meal: obj[index],
-        //         callback: this.callbackChild
-        //     });
-        //     console.log("well done tu as ouvert la page detail");
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -351,26 +302,26 @@ export class MenuPage {
             let _entree = []
             let _plat = []
             let _dessert = []
-            let _boisson =[]
+            let _boisson = []
             let nbMeal
             let price
             let name;
 
             if (mod) {
 
-                let obj=this.mapMenu.get(id)
+                let obj = this.mapMenu.get(id)
                 nbMeal = obj.nbmeals
-                price=obj.price
+                price = obj.price
                 name = obj.name
                 obj.id_plat.forEach(id => {
-                    console.log("ID PLAT --> "+id)
+                    console.log("ID PLAT --> " + id)
                     if (this.mapEntree.has(id))
                         _entree.push(this.mapEntree.get(id))
                     if (this.mapPlat.has(id))
                         _plat.push(this.mapPlat.get(id))
                     if (this.mapDessert.has(id))
                         _dessert.push(this.mapDessert.get(id))
-                    if(this.mapBoisson.has(id))
+                    if (this.mapBoisson.has(id))
                         _boisson.push(this.mapDessert.get(id))
 
 
@@ -379,7 +330,7 @@ export class MenuPage {
             else {
                 this.formule.map(f => {
                     if (f.id === id) {
-                        price=f.price
+                        price = f.price
                         name = f.name
                         nbMeal = f.nbmeals
                         console.log(JSON.stringify(f))
@@ -406,7 +357,7 @@ export class MenuPage {
                 boisson: _boisson,
                 idMeal: id,
                 nbMeal: nbMeal,
-                price:price,
+                price: price,
                 callback: this.callBackMenu
 
 
@@ -418,9 +369,7 @@ export class MenuPage {
     openRecap() {
 
 
-
         if ((this.schedule && this.nbPers) || this.participate) {
-
 
 
             this.storage.set('idMeals', this.choosenId)
@@ -429,7 +378,7 @@ export class MenuPage {
                 plat: this.choosenPlat,
                 dessert: this.choosenDessert,
                 total: this.total,
-                boisson:this.choosenBoisson,
+                boisson: this.choosenBoisson,
                 menu: this.choosenMenu,
                 menuMeal: this.choosenMenuID,
                 img: this.img,
@@ -443,7 +392,6 @@ export class MenuPage {
             console.log("yeeeah this is your recap my friend !");
         }
     }
-
 
     private getMeals(id) {
 
@@ -476,54 +424,6 @@ export class MenuPage {
 
             },
             error => this.errorMessage = <any>error)
-    }
-
-
-
-    private callbackChild = (p, valeur, special) => {
-
-        console.log(p, valeur)
-
-        this.total = (this.total * 100 + p * 100) / 100;
-        console.log("toto --> " + this.total)
-        if (valeur > 0) {
-            let objSrc;
-            let objDst;
-            switch (this.tmpType) {
-                case 0:
-
-                    objSrc = this.entree;
-                    objDst = this.choosenEntree;
-                    break;
-                case 1:
-                    objSrc = this.plat;
-                    objDst = this.choosenPlat;
-                    break;
-                case 2:
-                    objSrc = this.dessert;
-                    objDst = this.choosenDessert;
-                    break;
-                case 3:
-                    objSrc=this.boisson;
-                    objDst=this.choosenBoisson;
-                    break;
-
-            }
-
-            for (let i = 0; i < valeur; i++) {
-                objDst.push(objSrc[this.tmpIndex])
-                console.log("ID of meal select --> " + objSrc[this.tmpIndex].id)
-                this.choosenId.push(objSrc[this.tmpIndex].id)
-
-                console.log("S --> " + special)
-                if (special !== undefined) {
-                    this.special.push(objSrc[this.tmpIndex].name + " : " + special)
-                }
-            }
-
-        }
-
-        console.log("TOTAL --> " + this.total)
     }
 
     private callBackMenu = (mealID, menuId) => {
@@ -566,13 +466,12 @@ export class MenuPage {
         console.log("MENU ID --> " + menuId)
         console.log("CHOOSEN MENU" + JSON.stringify(this.choosenMenu))
         console.log("MENUMEALID" + this.choosenMenuID)
-        json = {"name": this.choosenMenu['name'], "mealName": p, "price":this.choosenMenu['price']}
+        json = {"name": this.choosenMenu['name'], "mealName": p, "price": this.choosenMenu['price']}
 
         this.jsonChooseMenu.push(json)
 
 
     }
-
 
     private formatData() {
         this.meals.map(meal => {
@@ -594,7 +493,7 @@ export class MenuPage {
                     break;
                 case 3:
                     this.boisson.push(meal)
-                    this.mapBoisson.set(meal.id,meal)
+                    this.mapBoisson.set(meal.id, meal)
                     break;
                 case 4:
                     this.mapEntree.set(meal.id, meal);
@@ -603,7 +502,7 @@ export class MenuPage {
                     this.mapPlat.set(meal.id, meal);
                     break;
                 case 6:
-                    this.mapDessert.set(meal.id,meal)
+                    this.mapDessert.set(meal.id, meal)
                     break;
 
 
@@ -612,25 +511,23 @@ export class MenuPage {
         })
 
         this.menus.map(m => {
-            this.mapMenu.set(m.id,m)
-            console.log("MENU --> "+JSON.stringify(m))
-            if (m.mod)
-            {
+            this.mapMenu.set(m.id, m)
+            console.log("MENU --> " + JSON.stringify(m))
+            if (m.mod) {
 
-                console.log("MOD --> "+JSON.stringify(m))
-                switch (m.nbmeals)
-                {
+                console.log("MOD --> " + JSON.stringify(m))
+                switch (m.nbmeals) {
                     case 1:
-                        this.menuOfDayOne=true;
-                        this.menuOfDayObjectOne=m
+                        this.menuOfDayOne = true;
+                        this.menuOfDayObjectOne = m
                         break;
                     case 2:
-                        this.menuOfDayTwo=true
-                        this.menuOfDayObjectTwo=m
+                        this.menuOfDayTwo = true
+                        this.menuOfDayObjectTwo = m
                         break;
                     case 3:
-                        this.menuOfDayThree=true
-                        this.menuOfDayObjectThree=m
+                        this.menuOfDayThree = true
+                        this.menuOfDayObjectThree = m
                         break;
 
                 }
@@ -648,13 +545,9 @@ export class MenuPage {
 
     }
 
-
     goBack() {
         this.navCtrl.pop();
     }
-
-
-
 
 
 }

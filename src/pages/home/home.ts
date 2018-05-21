@@ -58,16 +58,16 @@ export class HomePage {
 
     dateTime: any;
     timeOut: boolean;
-    listAvailable:boolean[];
-    nbTryLocation:number
-    dataNbCover:any;
+    listAvailable: boolean[];
+    nbTryLocation: number
+    dataNbCover: any;
 
     @ViewChild(Slides) slides: Slides;
 
 
     constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions, private geolocation: Geolocation, private toastCtrl: ToastController) {
         this.cleanStorage()
-        this.nbTryLocation=0;
+        this.nbTryLocation = 0;
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
         this.markerArray = this.markerArray || []
@@ -82,15 +82,12 @@ export class HomePage {
         this.currentIndex = 0;
         this.allPin = this.allPin || [];
         this.mod = false;
-        this.listAvailable=this.listAvailable || [];
+        this.listAvailable = this.listAvailable || [];
         this.scheduleBtText = "A quelle heure ?"
         this.nbPersBtText = "Pour combien ?"
 
         this.dateTime = new Date();
         this.timeOut = false;
-
-
-
 
 
     }
@@ -113,12 +110,6 @@ export class HomePage {
     }
 
     ionViewDidEnter() {
-        //CHECK AND REQUEST IF NECESSARY PERMISSION FOR POSITION
-
-        // this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION).then(
-        //     result => console.log('Has permission?',result.hasPermission),
-        //     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION)
-        // );
 
         if (!this.map)
             this.loadmap();
@@ -128,14 +119,21 @@ export class HomePage {
 
 
     slideChanged() {
-        console.log("Tu as slidé !");
+
+        if(this.slides.getActiveIndex()!==this.slides.length())
+        {
+
         this.currentIndex = this.slides.getActiveIndex();
-        console.log("Current index is ", this.currentIndex)
+
         let marker = this.mapPin[this.currentIndex]
+        console.log("MARKER --> "+marker)
+        this.moveMarker(marker)
+
+        console.log("Current index is ", this.currentIndex)
+
         console.log("SIZE SLIDE --> " + this.slides.length())
 
-        this.moveMarker(marker)
-        console.log("SIZE ARRAY --> " + this.pinID.length)
+        }
 
     }
 
@@ -194,9 +192,14 @@ export class HomePage {
                 iconAnchor: [18.75, 50],
                 popupAnchor: [0, -15]
             });
-            console.log("FUCKING INDEX --> " + this.slides.getPreviousIndex())
+            console.log("Previous INDEX --> " + this.slides.getPreviousIndex())
 
-            this.mapPin[this.slides.getPreviousIndex()].setIcon(forkIcon);
+
+            let previousIndex=this.slides.getPreviousIndex()
+            if(previousIndex===this.slides.length())
+                previousIndex--
+            this.mapPin[previousIndex].setIcon(forkIcon);
+
             pin.bounce({duration: 500, height: 100});
             pin.setIcon(newIcon);
         }
@@ -270,9 +273,9 @@ export class HomePage {
             this.map.addLayer(marker);
             // this.zoomOnNearestResto()
 
-        }else if(!this.positionFound){
-            if(this.nbTryLocation>1)
-            this.initMarkerOffLine();
+        } else if (!this.positionFound) {
+            if (this.nbTryLocation > 1)
+                this.initMarkerOffLine();
             else
                 this.nbTryLocation++
 
@@ -280,7 +283,7 @@ export class HomePage {
     }
 
 
-    initMarkerOffLine(){
+    initMarkerOffLine() {
         console.log("TRY !!!")
         this.latitude = "44.849104";
         this.longitude = "-0.571037";
@@ -303,9 +306,9 @@ export class HomePage {
                 restaurant => {
 
                     this.restaurant = restaurant['restaurant'];
-                    this.dataNbCover=restaurant['nbCover']
+                    this.dataNbCover = restaurant['nbCover']
 
-                    console.log("DATA NB COVER --> "+JSON.stringify(this.dataNbCover))
+                    console.log("DATA NB COVER --> " + JSON.stringify(this.dataNbCover))
 
                     this.formatData();
                 },
@@ -325,34 +328,30 @@ export class HomePage {
         this.scheduleBtText = this.Schedule
 
 
-
-
     }
 
     validateNbPers() {
 
         this.nbPersBtText = this.NbPers.substring(0, 2)
-        console.log("NbPERS --> "+this.nbPersBtText)
-        let index=0
-        this.restaurant.map(r =>{
+        console.log("NbPERS --> " + this.nbPersBtText)
+        let index = 0
+        this.restaurant.map(r => {
 
-            let nbCover=0
+            let nbCover = 0
 
-            this.dataNbCover.map(nb =>{
+            this.dataNbCover.map(nb => {
 
-                if(nb.restaurant_id==r.id)
-                {
-                    nbCover=parseInt(nb.sum)+parseInt(this.nbPersBtText);
-                    console.log("nbCOVER --> "+nbCover)
+                if (nb.restaurant_id == r.id) {
+                    nbCover = parseInt(nb.sum) + parseInt(this.nbPersBtText);
+                    console.log("nbCOVER --> " + nbCover)
                 }
 
             })
 
-            if(nbCover>r.person_capacity)
-                this.listAvailable[index]=false
-            else
-            {
-                if(r.schedule !==null) {
+            if (nbCover > r.person_capacity)
+                this.listAvailable[index] = false
+            else {
+                if (r.schedule !== null) {
                     if (r.available && r.schedule.indexOf(this.dateTime.getDay()) !== -1)
                         this.listAvailable[index] = true
 
@@ -360,11 +359,8 @@ export class HomePage {
             }
 
 
-
-
             index++;
         })
-
 
 
     }
@@ -403,7 +399,6 @@ export class HomePage {
         ///   Diplay marker on map
 
 
-
         console.log("JE PLACE MES PINS")
         this.observable = IntervalObservable.create(10).subscribe((i) => {
 
@@ -414,7 +409,7 @@ export class HomePage {
                     this.observable.unsubscribe();
                 }
                 // setTimeout(() => {
-                    this.zoomOnNearestResto()
+                this.zoomOnNearestResto()
                 // },800)
 
                 return false;
@@ -444,41 +439,37 @@ export class HomePage {
 
             this.mapPin.push(pin);
 
-            console.log("SCHEDULE --> "+this.restaurant[i].schedule)
-            if(this.restaurant[i].schedule!==null)
-            {
-                if(this.restaurant[i].available===true) {
+            console.log("SCHEDULE --> " + this.restaurant[i].schedule)
+            if (this.restaurant[i].schedule !== null) {
+                if (this.restaurant[i].available === true) {
 
 
                     console.log("CONDITION --> " + this.restaurant[i].schedule.indexOf(this.dateTime.getDay()))
-                    let availableToDay=this.restaurant[i].schedule.indexOf(this.dateTime.getDay()) !== -1
+                    let availableToDay = this.restaurant[i].schedule.indexOf(this.dateTime.getDay()) !== -1
                     let result
-                    let nbCover=true
+                    let nbCover = true
 
 
-                    this.dataNbCover.map(n=>{
+                    this.dataNbCover.map(n => {
 
-                        if(n.restaurant_id===this.restaurant[i].id)
-                        {
-                            console.log("NB SUM --> "+n.sum)
+                        if (n.restaurant_id === this.restaurant[i].id) {
+                            console.log("NB SUM --> " + n.sum)
                             console.log(this.restaurant[i].person_capacity)
 
-                            if(n.sum==this.restaurant[i].person_capacity)
-                            {
+                            if (n.sum == this.restaurant[i].person_capacity) {
                                 console.log("NB COVER ATTEINT")
-                                nbCover=false
+                                nbCover = false
                             }
                         }
 
                     })
 
 
-                    if(availableToDay && nbCover)
-                    {
-                        result=true
+                    if (availableToDay && nbCover) {
+                        result = true
                     }
 
-                    else result=false
+                    else result = false
 
 
                     this.listAvailable.push(result)
@@ -486,7 +477,7 @@ export class HomePage {
                 else this.listAvailable.push(false)
 
 
-                }
+            }
 
             else
                 this.listAvailable.push(true)
@@ -498,28 +489,28 @@ export class HomePage {
 
     private zoomOnNearestResto() {
 
-        console.log("ZOOM ON NEAREST --> "+this.markerArray.length)
+        console.log("ZOOM ON NEAREST --> " + this.markerArray.length)
         // if (this.markerArray.length == 2) {
-            console.log(this.markerArray.length)
-            setTimeout(() => {
-                    var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
+        console.log(this.markerArray.length)
+        setTimeout(() => {
+                var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
 
-                    var buttonContainer = document.getElementById("btn-container");
-                    var topMaxPos = buttonContainer.offsetTop + buttonContainer.offsetHeight;
-                    var slidesContainer = document.getElementById("slides");
-                    var bottomMaxPos = slidesContainer.offsetTop - 170;
+                var buttonContainer = document.getElementById("btn-container");
+                var topMaxPos = buttonContainer.offsetTop + buttonContainer.offsetHeight;
+                var slidesContainer = document.getElementById("slides");
+                var bottomMaxPos = slidesContainer.offsetTop - 170;
 
-                    this.map.fitBounds(group.getBounds(), {
-                            paddingTopLeft: [0, topMaxPos],
-                            paddingBottomRight: [0, bottomMaxPos]
-                        }
-                    );
+                this.map.fitBounds(group.getBounds(), {
+                        paddingTopLeft: [0, topMaxPos],
+                        paddingBottomRight: [0, bottomMaxPos]
+                    }
+                );
 
 //                    this.map.setZoom(this.map.getZoom()-1);
-                    this.map.zoomOut(25)
-                }
+                this.map.zoomOut(25)
+            }
 
-                , 1000);
+            , 1000);
 
         // }
 
@@ -552,8 +543,7 @@ export class HomePage {
     }
 
 
-    openErrorAvailable()
-    {
+    openErrorAvailable() {
         let toast = this.toastCtrl.create({
             message: 'Le Restaurant est complet ou indisponible ',
             showCloseButton: true,
