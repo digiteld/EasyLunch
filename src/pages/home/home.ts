@@ -159,6 +159,10 @@ export class HomePage {
 
         }
 
+
+        if(this.Schedule!=null && this.NbPers!=null)
+        {
+
         this.navCtrl.push(MenuPage, {
 
             img: obj.picture,
@@ -169,7 +173,21 @@ export class HomePage {
 
 
         });
-        console.log("well play tu as ouvert la page menu");
+
+        }
+        else
+        {
+            let toast = this.toastCtrl.create({
+                message: 'Merci de renseigner le nombre de personnes et l\'heure d\'arrivée pour accéder à la carte du restaurant',
+                showCloseButton: true,
+                closeButtonText: "X",
+                dismissOnPageChange: true,
+                position: 'middle'
+            });
+            toast.present();
+        }
+
+
     }
 
 
@@ -325,7 +343,27 @@ export class HomePage {
 
     validateSchedule() {
         console.log("SCHEDULE")
-        this.scheduleBtText = this.Schedule
+        console.log(typeof this.Schedule)
+        let scheduleIntervale
+        if(parseInt(this.Schedule.substring(3,5))>=45)
+        {
+            console.log("PARSE --> "+this.Schedule.substring(3,5))
+            let diff=parseInt(this.Schedule.substring(3,5))+15-60
+            console.log("DIFF --> "+diff)
+            if(diff<10)
+            {
+                diff=diff.toString()
+                diff="0"+diff
+            }
+
+            scheduleIntervale=(parseInt(this.Schedule.substring(0,2))+1)+":"+diff
+        }
+        else
+        {
+            scheduleIntervale=this.Schedule.substring(0,3)+(parseInt(this.Schedule.substring(3,5))+15).toString()
+        }
+
+        this.scheduleBtText = this.Schedule +" "+scheduleIntervale
 
 
     }

@@ -43,6 +43,7 @@ export class BookPage {
         this.storage.get('user').then(data=>{
             if(data!=null)
             {
+
                 this.user=data
                 this.getBooking()
             }

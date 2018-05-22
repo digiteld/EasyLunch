@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Content, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Content, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 
 import {DetailsPage} from '../details/details';
 import {RecapPage} from '../recap/recap';
@@ -90,7 +90,7 @@ export class MenuPage {
 //       FROM booking WHERE created_date::date=NOW()::date
 //      GROUP BY restaurant_id;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage, private loader: LoaderProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage, private loader: LoaderProvider,private toastCtrl: ToastController) {
 
 
         this.openMenu = 'menudujour';
@@ -179,6 +179,15 @@ export class MenuPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MenuPage');
+
+        let toast = this.toastCtrl.create({
+            message: 'Merçi d\'effectuer uniquement votre commande. A la fin de celle-ci, vous recevrez un code que vous transmettrez à vos collègues pour qu\'ils effectuent eux-mêmes leur commande',
+            showCloseButton: true,
+            closeButtonText: "X",
+            dismissOnPageChange: false,
+            position: 'middle'
+        });
+        toast.present();
     }
 
 

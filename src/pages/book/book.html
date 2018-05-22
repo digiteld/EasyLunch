@@ -1,5 +1,5 @@
 <ion-content>
-    <div class="full">
+    <div class="full" *ngIf="storage.get('user')!=null">
         <div class="new">
             <h2> Mes réservations en cours </h2>
             <ng-container *ngIf="!commandeEncour">
