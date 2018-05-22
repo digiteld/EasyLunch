@@ -164,17 +164,17 @@
   </div>
 
 
-
+<ng-container *ngIf="!navParams.get('book')">
     <ion-card>
       <ion-content class="special-content">
-        <h4>Instructions spéciales</h4>
+        <h4>Instructions spéciales (cuisson, allergie ...)</h4>
         <ion-item>
-          <ion-textarea class="size" type="text" placeholder="Rentrez ici vos commentaires sur la commande (cuisson de la viande, pas de champignons, etc...)"
+          <ion-textarea class="size" type="text" placeholder="Rentrez ici vos commentaires sur la commande"
             [(ngModel)]="special"> </ion-textarea>
         </ion-item>
       </ion-content>
     </ion-card>
-
+</ng-container>
 
 
 
@@ -191,7 +191,7 @@
 
   <ng-container *ngIf="total!==0">
     <div id="payer">
-      <p>En passant commande vous acceptez automatiquement les CGV de Easy Lunch
+      <p>En passant commande vous acceptez automatiquement les CGS de Easy Lunch
         <br> Commande préparée par {{ name }}
       </p>
       <button ion-button round (click)="openLogin()"> Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}} € </button>

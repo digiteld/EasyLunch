@@ -44,7 +44,7 @@ export class OnboardingStepPage {
           {
           img : 'assets/imgs/onboard4.png',
           titre: 'Partagez un moment convivial',
-          sousTitre: 'Envoyez le code généré pour inviter vos collègues',
+          sousTitre: 'Envoyez le code généré pour que vos collègues rejoignent votre table',
           buttonText: 'C\'est parti !',
           bubbleActive: 3
           }

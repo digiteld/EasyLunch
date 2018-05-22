@@ -30,10 +30,10 @@ export class ContactPage {
 
   }
 
-  openAbout() {
-    this.navCtrl.push(AboutPage)
-
-  }
+  // openAbout() {
+  //   this.navCtrl.push(AboutPage)
+  //
+  // }
 
   openCg(){
       this.navCtrl.push(CgPage)
