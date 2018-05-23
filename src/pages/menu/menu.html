@@ -48,7 +48,7 @@
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Plat </p>
-                            <p class="price"> {{menuOfDayObjectOne.price}}€ </p>
+                            <p class="price"> {{menuOfDayObjectOne.price.toFixed(2)}}€ </p>
                         </div>
                     </ion-card-content>
                 </ion-card>
@@ -59,7 +59,7 @@
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat / Dessert </p>
-                            <p class="price"> {{menuOfDayObjectThree.price}}€ </p>
+                            <p class="price"> {{menuOfDayObjectThree.price.toFixed(2)}}€ </p>
                         </div>
                     </ion-card-content>
                 </ion-card>
@@ -70,7 +70,7 @@
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat ou Plat / Dessert </p>
-                            <p class="price"> {{menuOfDayObjectTwo.price}}€ </p>
+                            <p class="price"> {{menuOfDayObjectTwo.price.toFixed(2)}}€ </p>
                         </div>
                     </ion-card-content>
                 </ion-card>
@@ -103,7 +103,7 @@
                                 </ng-container>
                             </div>
                             <div class="price">
-                                    {{item.price}}€
+                                    {{item.price.toFixed(2)}}€
                             </div>
                         </div>
                     </ion-card-content>
@@ -129,7 +129,7 @@
                                     <p> {{item.description}} </p>
                                 </div>
                                 <div class="price">
-                                    {{item.price}} €
+                                    {{item.price.toFixed(2)}} €
                                     <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                     <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                                 </div>
@@ -158,7 +158,7 @@
                                 <p> {{item.description}} </p>
                             </div>
                             <div class="price">
-                                    {{item.price}} €
+                                    {{item.price.toFixed(2)}} €
                                 <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                 <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>
@@ -184,7 +184,7 @@
                                 <p> {{item.description}} </p>
                             </div>
                             <div class="price">
-                                    {{item.price}} €
+                                    {{item.price.toFixed(2)}} €
                                 <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                 <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>
@@ -214,7 +214,7 @@
                                 <p> {{item.description}} </p>
                             </div>
                             <div class="price">
-                                    {{item.price}} €
+                                    {{item.price.toFixed(2)}} €
                                 <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                 <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>

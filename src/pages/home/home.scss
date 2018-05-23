@@ -103,6 +103,19 @@ page-home {
     display: none;
   }
 
+
+
+  .picker-md .picker-prefix, .picker-md .picker-suffix, .picker-md .picker-opt.picker-opt-selected {
+    color:#F1C40F ;
+  }
+  .picker-md .picker-button.activated {
+    color:#F1C40F ;
+  }
+  .button.picker-opt.picker-opt-selected {
+    color:#F1C40F ;
+  }
+
+
   ////   CARD
 
   .card-content {

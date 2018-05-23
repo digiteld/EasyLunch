@@ -13,6 +13,7 @@ import {Geolocation} from '@ionic-native/geolocation';
 
 import {MenuPage} from '../menu/menu';
 import {Storage} from "@ionic/storage";
+import {SplashScreen} from "@ionic-native/splash-screen";
 
 
 @Component({
@@ -65,7 +66,15 @@ export class HomePage {
     @ViewChild(Slides) slides: Slides;
 
 
-    constructor(public navCtrl: NavController, public rest: RestProvider, private storage: Storage, private androidPermissions: AndroidPermissions, private geolocation: Geolocation, private toastCtrl: ToastController) {
+    constructor(
+        public navCtrl: NavController,
+        public rest: RestProvider,
+        private storage: Storage,
+        private androidPermissions: AndroidPermissions,
+        private geolocation: Geolocation,
+        private toastCtrl: ToastController,
+        private splash:SplashScreen
+                ) {
         this.cleanStorage()
         this.nbTryLocation = 0;
         this.mapPin = this.mapPin || [];
@@ -110,6 +119,8 @@ export class HomePage {
     }
 
     ionViewDidEnter() {
+
+        this.splash.hide()
 
         if (!this.map)
             this.loadmap();
@@ -352,11 +363,17 @@ export class HomePage {
             console.log("DIFF --> "+diff)
             if(diff<10)
             {
-                diff=diff.toString()
-                diff="0"+diff
+                let dif=diff.toString()
+                dif="0"+diff
+                scheduleIntervale=(parseInt(this.Schedule.substring(0,2))+1)+":"+dif
+
+            }
+            else
+            {
+                scheduleIntervale=(parseInt(this.Schedule.substring(0,2))+1)+":"+diff
             }
 
-            scheduleIntervale=(parseInt(this.Schedule.substring(0,2))+1)+":"+diff
+
         }
         else
         {

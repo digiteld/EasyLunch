@@ -288,6 +288,7 @@ export class MenuPage {
                 objDst.push(objSrc[index])
                 this.choosenId.push(objSrc[index].id)
                 this.total = (this.total * 100 + objSrc[index].price * 100) / 100;
+                this.total=parseFloat(this.total.toFixed(2))
             }
             else {
                 let indexInListObject = objDst.indexOf(objSrc[index])
@@ -298,7 +299,8 @@ export class MenuPage {
                 console.log("J'enlève ITEM --> " + JSON.stringify(objSrc[index]))
                 console.log("J'enlève --> " + objSrc[index].price)
                 this.choosenId.splice(indexInList, 1)
-                this.total = ((this.total * 100) - (objSrc[index].price * 100)) / 100;
+                this.total = (this.total * 100 - objSrc[index].price * 100) / 100;
+                this.total=parseFloat(this.total.toFixed(2))
             }
 
         }

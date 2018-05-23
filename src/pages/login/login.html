@@ -13,7 +13,7 @@
 
           <ion-item>
             <ion-label color="secondary" floating> <ion-icon name="envelope"></ion-icon> Email </ion-label>
-            <ion-input type="mail" [(ngModel)]="mail" clearInput></ion-input>
+            <ion-input type="email" [(ngModel)]="mail" clearInput></ion-input>
           </ion-item>
           <div class="display-error" *ngIf="errorMail">
               <img src="assets/icon/error-5.svg" alt="" width="20px" *ngIf="errorMail">
