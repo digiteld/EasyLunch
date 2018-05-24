@@ -44,33 +44,41 @@
                 <h2><img src="assets/icon/cloche.svg"> Menu du jour</h2>
             </div >
             <ng-container *ngIf="menuOfDayOne">
-                <ion-card (click)="openDetailMenu(menuOfDayObjectOne.id, true)">
+                <ion-card (click)="openDetailMenu(menuOfDayObjectOne.id, true)" [ngClass]="{'cardBlock' : choosenMenuID!==null && choosenMenuID!==menuOfDayObjectOne.id}">
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Plat </p>
-                            <p class="price"> {{menuOfDayObjectOne.price.toFixed(2)}}€ </p>
+                            <p class="price"> {{menuOfDayObjectOne.price.toFixed(2)}}€
+                                <img *ngIf="choosenMenuID===menuOfDayObjectOne.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
+
+                            </p>
+
                         </div>
                     </ion-card-content>
                 </ion-card>
             </ng-container>
 
             <ng-container *ngIf="menuOfDayThree">
-                <ion-card (click)="openDetailMenu(menuOfDayObjectThree.id, true)">
+                <ion-card (click)="openDetailMenu(menuOfDayObjectThree.id, true)" [ngClass]="{'cardBlock' : choosenMenuID!==null && choosenMenuID!==menuOfDayObjectThree.id}">
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat / Dessert </p>
                             <p class="price"> {{menuOfDayObjectThree.price.toFixed(2)}}€ </p>
+                            <img *ngIf="choosenMenuID===menuOfDayObjectThree.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
+
                         </div>
                     </ion-card-content>
                 </ion-card>
             </ng-container>
 
             <ng-container *ngIf="menuOfDayTwo">
-                <ion-card (click)="openDetailMenu(menuOfDayObjectTwo.id, true)">
+                <ion-card (click)="openDetailMenu(menuOfDayObjectTwo.id, true)" [ngClass]="{'cardBlock' : choosenMenuID!==null && choosenMenuID!==menuOfDayObjectTwo.id}">
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat ou Plat / Dessert </p>
                             <p class="price"> {{menuOfDayObjectTwo.price.toFixed(2)}}€ </p>
+                            <img *ngIf="choosenMenuID===menuOfDayObjectTwo.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
+
                         </div>
                     </ion-card-content>
                 </ion-card>
@@ -84,7 +92,7 @@
                 <h2>Formules</h2>
             </div>
             <ng-container *ngFor="let item of formule">
-                <ion-card (click)="openDetailMenu(item.id,false)">
+                <ion-card (click)="openDetailMenu(item.id,false)" [ngClass]="{'cardBlock' : choosenMenuID!==null && choosenMenuID!==item.id}">
                     <ion-card-content>
                         <div class="choix">
                             <div class="menu">
@@ -104,6 +112,8 @@
                             </div>
                             <div class="price">
                                     {{item.price.toFixed(2)}}€
+                                <img *ngIf="choosenMenuID===item.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
+
                             </div>
                         </div>
                     </ion-card-content>

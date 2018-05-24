@@ -24,7 +24,7 @@ export class RecapPage {
     platList: any[]
     dessertList: any[]
     boissonList: any [];
-    menuList: any[];
+    menuList: any;
     menuMeal: any[];
 
     nameMenu: string;
@@ -68,7 +68,7 @@ export class RecapPage {
         this.platList = this.platList || [];
         this.dessertList = this.dessertList || [];
         this.boissonList = this.boissonList || [];
-        this.menuList = this.menuList || [];
+        this.menuList = this.menuList;
         this.menuMeal = this.menuMeal || [];
         this.jsonChoosenMenu = this.jsonChoosenMenu || [];
         this.total = 0;
@@ -176,7 +176,7 @@ export class RecapPage {
         }
 
 
-        if (this.navParams.get('menuMeal').length > 0) {
+        if (this.navParams.get('menuMeal')) {
             this.menuList = this.navParams.get('menuMeal')
 
             console.log("OOOOO ---> " + JSON.stringify(this.menuList))

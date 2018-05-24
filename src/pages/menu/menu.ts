@@ -33,7 +33,7 @@ export class MenuPage {
     choosenDessert: any[];
 
     choosenMenu: any;
-    choosenMenuID: any[]
+    choosenMenuID: any
 
     menuOfDayObjectOne: any
     menuOfDayObjectTwo: any
@@ -101,21 +101,27 @@ export class MenuPage {
         this.jsonChooseMenu = this.jsonChooseMenu || [];
 
 
-        this.choosenMenuID = this.choosenMenuID || [];
+        this.choosenMenuID = null ;
+
         this.mapEntree = new Map();
         this.mapPlat = new Map();
         this.mapDessert = new Map();
         this.mapBoisson = new Map()
         this.mapMenu = new Map();
+
+
         this.entree = this.entree || [];
         this.formule = this.formule || [];
-
         this.plat = this.plat || [];
         this.dessert = this.dessert || [];
         this.boisson = this.boisson || [];
+
+
         this.menuOfDayObjectOne = this.menuOfDayObjectOne || {}
         this.menuOfDayObjectTwo = this.menuOfDayObjectTwo || {}
         this.menuOfDayObjectThree = this.menuOfDayObjectThree || {}
+
+
         this.choosenEntree = this.choosenEntree || [];
         this.choosenPlat = this.choosenPlat || [];
         this.choosenDessert = this.choosenDessert || [];
@@ -308,7 +314,7 @@ export class MenuPage {
     }
 
     openDetailMenu(id, mod) {
-        if ((this.schedule && this.nbPers) || this.participate) {
+        if ( this.participate || this.choosenMenuID===null ) {
             console.log("ID MEAL --> " + id)
             let _entree = []
             let _plat = []
@@ -373,6 +379,30 @@ export class MenuPage {
 
 
             })
+        }
+        else if(this.choosenMenuID===id)
+        {
+            this.choosenMenuID=null
+
+
+            this.storage.remove('menuID')
+            this.storage.remove('menuMealID')
+            this.choosenMenu = null
+            this.total =(this.total*100 -this.mapMenu.get(id).price*100)/100
+            this.total=parseInt(this.total.toFixed(2))
+            this.jsonChooseMenu=[]
+        }
+        else
+        {
+
+            let toast = this.toastCtrl.create({
+                message: 'Vous ne pouvez commander qu\'un menu ou qu\'une formule par commande' ,
+                showCloseButton: true,
+                closeButtonText: "X",
+                dismissOnPageChange: false,
+                position: 'middle'
+            });
+            toast.present();
         }
     }
 
@@ -475,6 +505,8 @@ export class MenuPage {
 
         console.log("MEAL ID --> " + mealID)
         console.log("MENU ID --> " + menuId)
+        this.choosenMenuID=menuId;
+
         console.log("CHOOSEN MENU" + JSON.stringify(this.choosenMenu))
         console.log("MENUMEALID" + this.choosenMenuID)
         json = {"name": this.choosenMenu['name'], "mealName": p, "price": this.choosenMenu['price']}
