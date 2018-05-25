@@ -48,7 +48,7 @@
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Plat </p>
-                            <p class="price"> {{menuOfDayObjectOne.price.toFixed(2)}}€
+                            <p class="price"> {{menuOfDayObjectOne.price}}€
                                 <img *ngIf="choosenMenuID===menuOfDayObjectOne.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
 
                             </p>
@@ -63,7 +63,7 @@
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat / Dessert </p>
-                            <p class="price"> {{menuOfDayObjectThree.price.toFixed(2)}}€ </p>
+                            <p class="price"> {{menuOfDayObjectThree.price}}€ </p>
                             <img *ngIf="choosenMenuID===menuOfDayObjectThree.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
 
                         </div>
@@ -76,7 +76,7 @@
                     <ion-card-content>
                         <div class="menu-choice">
                             <p> Entrée / Plat ou Plat / Dessert </p>
-                            <p class="price"> {{menuOfDayObjectTwo.price.toFixed(2)}}€ </p>
+                            <p class="price"> {{menuOfDayObjectTwo.price}}€ </p>
                             <img *ngIf="choosenMenuID===menuOfDayObjectTwo.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
 
                         </div>
@@ -111,7 +111,7 @@
                                 </ng-container>
                             </div>
                             <div class="price">
-                                    {{item.price.toFixed(2)}}€
+                                    {{item.price}}€
                                 <img *ngIf="choosenMenuID===item.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
 
                             </div>
@@ -139,7 +139,7 @@
                                     <p> {{item.description}} </p>
                                 </div>
                                 <div class="price">
-                                    {{item.price.toFixed(2)}} €
+                                    {{item.price}} €
                                     <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                     <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                                 </div>
@@ -168,7 +168,7 @@
                                 <p> {{item.description}} </p>
                             </div>
                             <div class="price">
-                                    {{item.price.toFixed(2)}} €
+                                    {{item.price}} €
                                 <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                 <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>
@@ -194,7 +194,7 @@
                                 <p> {{item.description}} </p>
                             </div>
                             <div class="price">
-                                    {{item.price.toFixed(2)}} €
+                                    {{item.price}} €
                                 <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                 <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>
@@ -224,7 +224,7 @@
                                 <p> {{item.description}} </p>
                             </div>
                             <div class="price">
-                                    {{item.price.toFixed(2)}} €
+                                    {{item.price}} €
                                 <img *ngIf="choosenId.indexOf(item.id)===-1" src="assets/icon/check-box-empty.svg"  class="iconNotCheck"/>
                                 <img *ngIf="!(choosenId.indexOf(item.id)===-1)" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheck" />
                             </div>

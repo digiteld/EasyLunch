@@ -313,6 +313,21 @@ export class MenuPage {
 
     }
 
+    verifyDate(dateToday,dateCompare)
+    {
+
+
+        let splitedDate=dateCompare.substring(0,10).split("-")
+
+        if(dateToday.getFullYear()==splitedDate[0] && dateToday.getMonth()+1==splitedDate[1] && dateToday.getDate()==splitedDate[2])
+            return true
+        else return false
+
+
+    }
+
+
+
     openDetailMenu(id, mod) {
         if ( this.participate || this.choosenMenuID===null ) {
             console.log("ID MEAL --> " + id)
@@ -330,19 +345,61 @@ export class MenuPage {
                 nbMeal = obj.nbmeals
                 price = obj.price
                 name = obj.name
-                obj.id_plat.forEach(id => {
-                    console.log("ID PLAT --> " + id)
-                    if (this.mapEntree.has(id))
-                        _entree.push(this.mapEntree.get(id))
-                    if (this.mapPlat.has(id))
-                        _plat.push(this.mapPlat.get(id))
-                    if (this.mapDessert.has(id))
-                        _dessert.push(this.mapDessert.get(id))
-                    if (this.mapBoisson.has(id))
-                        _boisson.push(this.mapDessert.get(id))
 
 
+                let date=new Date()
+
+                console.log("I'm a menu of day")
+                this.plat.map(plat =>{
+                    if(plat.plat===5)
+                    {
+                        if(this.verifyDate(date,plat.created_date))
+                            _plat.push(plat)
+                    }
                 })
+
+                if(nbMeal>1)
+                {
+                    this.entree.map(plat =>{
+                        console.log("PLAT --> "+JSON.stringify(plat))
+                        if(plat.plat===4)
+                        {
+                            console.log("Je suis une entrée du jour")
+                            if(this.verifyDate(date,plat.created_date))
+                            {
+                                console.log("Je dois add entree")
+                                _entree.push(plat)
+                            }
+
+                        }
+                    })
+                    this.dessert.map(plat =>{
+                        if(plat.plat===6)
+                        {
+                            if(this.verifyDate(date,plat.created_date))
+                                _dessert.push(plat)
+                        }
+                    })
+                }
+
+
+
+
+
+
+                // obj.id_plat.forEach(id => {
+                //     console.log("ID PLAT --> " + id)
+                //     if (this.mapEntree.has(id))
+                //         _entree.push(this.mapEntree.get(id))
+                //     if (this.mapPlat.has(id))
+                //         _plat.push(this.mapPlat.get(id))
+                //     if (this.mapDessert.has(id))
+                //         _dessert.push(this.mapDessert.get(id))
+                //     if (this.mapBoisson.has(id))
+                //         _boisson.push(this.mapDessert.get(id))
+                //
+                //
+                // })
             }
             else {
                 this.formule.map(f => {
@@ -516,6 +573,8 @@ export class MenuPage {
 
     }
 
+
+
     private formatData() {
         this.meals.map(meal => {
 
@@ -539,13 +598,16 @@ export class MenuPage {
                     this.mapBoisson.set(meal.id, meal)
                     break;
                 case 4:
+                    this.entree.push(meal)
                     this.mapEntree.set(meal.id, meal);
                     break;
                 case 5:
+                    this.plat.push(meal)
                     this.mapPlat.set(meal.id, meal);
                     break;
                 case 6:
                     this.mapDessert.set(meal.id, meal)
+                    this.dessert.push(meal)
                     break;
 
 

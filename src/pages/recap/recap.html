@@ -53,7 +53,9 @@
         <ng-container *ngFor="let menuChoose of jsonChoosenMenu">
           <ion-card>
             <ion-card-content>
+              <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(0,menuChoose.id)"></ion-img>
               <h4>{{menuChoose['name']}}</h4>
+
 
               <div class="choix">
                 <div class="choice">
@@ -78,7 +80,9 @@
       <ng-container *ngFor="let item of entreeList;">
         <ion-card>
           <ion-card-content>
+            <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(1,item.id)"></ion-img>
             <h4>Entrée</h4>
+
             <div class="choix">
               <div class="choice">
                 <h3> {{item.name}} </h3>
@@ -100,7 +104,9 @@
       <ng-container *ngFor="let item of platList;">
         <ion-card>
           <ion-card-content>
+            <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(2,item.id)"></ion-img>
             <h4>Plat</h4>
+
             <div class="choix">
               <div class="choice">
                 <h3> {{item.name}} </h3>
@@ -123,7 +129,9 @@
 
         <ion-card>
           <ion-card-content>
+            <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(3,item.id)"></ion-img>
             <h4>Dessert</h4>
+
             <div class="choix">
               <div class="choice">
                 <h3> {{item.name}} </h3>
@@ -144,7 +152,9 @@
 
         <ion-card>
           <ion-card-content>
+            <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(4,item.id)"></ion-img>
             <h4>Boisson</h4>
+
             <div class="choix">
               <div class="choice">
                 <h3> {{item.name}} </h3>
@@ -181,7 +191,7 @@
 
   <div id="total">
     <div class="text"> TOTAL </div>
-    <div class="total"> {{navParams.get('total')}}€ </div>
+    <div class="total"> {{total}}€ </div>
   </div>
 
 </ion-content>
@@ -194,7 +204,7 @@
       <p>En passant commande vous acceptez automatiquement les CGS de Easy Lunch
         <br> Commande préparée par {{ name }}
       </p>
-      <button ion-button round (click)="openLogin()"> Payer et Réserver &nbsp;&nbsp;&nbsp; {{navParams.get('total')}} € </button>
+      <button ion-button round (click)="openLogin()"> Payer et Réserver &nbsp;&nbsp;&nbsp; {{total}} € </button>
     </div>
   </ng-container>
 </ion-footer>

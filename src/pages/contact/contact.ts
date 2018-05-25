@@ -6,7 +6,7 @@ import { AboutPage } from "../about/about";
 import { CgPage } from "../cg/cg";
 import {FaqPage} from "../faq/faq";
 import {ConfidentialPolicyPage} from "../confidential-policy/confidential-policy";
-
+import {Storage} from '@ionic/storage';
 
 @Component({
   selector: 'page-contact',
@@ -15,7 +15,22 @@ import {ConfidentialPolicyPage} from "../confidential-policy/confidential-policy
   
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
+
+  isConnected:boolean;
+
+  constructor(public navCtrl: NavController,private storage:Storage) {
+
+    this.isConnected=false;
+    this.storage.get('isConnected').then(data =>{
+
+      console.log("IS CONNECTED --> "+data)
+        if(data===true)
+          this.isConnected=true
+
+        else this.isConnected=false
+
+
+    })
 
   }
 
@@ -37,6 +52,14 @@ export class ContactPage {
 
   openCg(){
       this.navCtrl.push(CgPage)
+  }
+
+  deconnect()
+  {
+    console.log("Je vais bien là ")
+        this.isConnected=false
+      this.storage.remove("isConnected")
+      this.storage.remove("user")
   }
     openFaq(){
         this.navCtrl.push(FaqPage)

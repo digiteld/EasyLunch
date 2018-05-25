@@ -470,7 +470,10 @@ export class HomePage {
                 return false;
             }
 
-
+            console.log(this.restaurant[i].name)
+            console.log('INDEX --> '+i)
+            console.log(this.restaurant[i].lat )
+            console.log(this.restaurant[i].lon)
             let pin = L.marker([this.restaurant[i].lat, this.restaurant[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}

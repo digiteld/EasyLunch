@@ -344,6 +344,75 @@ export class RecapPage {
 
     }
 
+    private deleteItem(type,id)
+    {
+        console.log("Je delete l'item ")
+
+        if([1,2,3,4].indexOf(type)!==-1)
+        {
+            console.log("Je suis un plat")
+            this.storage.get('idMeals').then(data=>{
+                console.log("DATA BEFORE -->"+data)
+                let index=data.indexOf(id)
+                data.splice(index,1)
+                    this.storage.set('idMeals',data)
+                console.log("DATA AFTER -->"+data)
+                let objList=null
+
+                switch (type)
+                {
+                    case 1:
+                        objList=this.entreeList
+                        break;
+                    case 2:
+                        objList=this.platList
+                        break;
+                    case 3:
+                        objList=this.dessertList
+                        break;
+                    case 4:
+                        objList=this.boissonList
+                        break;
+
+                }
+                let objPlat
+                let price
+                objList.map(m=>{
+                    if(m.id===id)
+                    {
+                        objPlat=m
+                        price=m.price
+                    }
+
+
+                    }
+                )
+
+                console.log("PRICE --> "+price)
+
+                let indexList=objList.indexOf(objPlat)
+                objList.splice(indexList,1)
+                this.total=(this.total*100 - price*100)/100
+
+
+            })
+        }
+
+        else
+        {
+           this.storage.remove("menuID")
+            this.storage.remove("menuMealID")
+            let price=this.jsonChoosenMenu[0].price
+            this.total=(this.total *100 - price*100)/100
+            this.jsonChoosenMenu.splice(0,1)
+
+        }
+
+
+    }
+
+
+
     private getCode() {
 
         let arg = this.navParams.get('bookingId').toString() + '?booking=true'
