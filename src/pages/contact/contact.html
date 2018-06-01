@@ -3,13 +3,13 @@
     <h1>Mon compte</h1>
 
     <div id="container">
-        <div class="card" *ngIf="!isConnected">
+        <div class="card" *ngIf="!isConnected"  (click)="openLogin()">
 
             <img class="info" src="assets/icon/mes-infos.svg">
             Connexion
         </div>
 
-        <div class="card" *ngIf="isConnected">
+        <div class="card" *ngIf="isConnected" (click)="openInfo()">
             <img class="info" src="assets/icon/mes-infos.svg">
             Mes informations
         </div>

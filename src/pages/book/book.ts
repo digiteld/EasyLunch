@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { RecapPage } from "../recap/recap";
 import {Storage} from '@ionic/storage';
+import {LoginPage} from "../login/login";
 
 
 
@@ -24,6 +25,7 @@ export class BookPage {
     constructor(public navCtrl: NavController, public rest: RestProvider, public storage:Storage) {
         this.tabs = navCtrl.parent;
         this.booking =this.booking || [];
+        this.user=null
 
         this.storage.get('user').then(data=>{
             if(data!=null)
@@ -31,6 +33,7 @@ export class BookPage {
                 this.user=data
                 this.getBooking()
             }
+
 
         }, error=>console.log("ERR on get USER IN STORAGE"))
 
@@ -41,11 +44,18 @@ export class BookPage {
 
     ionViewDidEnter() {
         this.storage.get('user').then(data=>{
+            console.log("USER --> "+data)
             if(data!=null)
             {
 
                 this.user=data
                 this.getBooking()
+            }
+            else {
+               this.user=null
+                this.date=null
+                this.commandeEncour=false
+                this.booking=null
             }
 
         }, error=>console.log("ERR on get USER IN STORAGE"))
@@ -80,8 +90,6 @@ export class BookPage {
                         console.log("J'ADD")
                         this.mapResto.set(resto.id, resto)
                     }
-
-
 
                     console.log("MAP RESTO LENGTH --> "+this.mapResto.size )
                 })
@@ -136,10 +144,10 @@ export class BookPage {
         console.log('FELICITATION !!! Parcours terminé');
     }
 
-  test()
-  {
-
-  }
+    goLogin()
+    {
+        this.navCtrl.push(LoginPage,{returnToBack:true})
+    }
 
 
 }

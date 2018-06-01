@@ -56,6 +56,10 @@ export class LoginPage {
                         if (result['code'] === 1) {
                             this.storage.set("isConnected",true)
                             this.storage.set("user",result)
+
+                            if(this.navParams.get('returnToBack')===true)
+                                this.navCtrl.pop()
+                            else
                             this.navCtrl.push(AddCardPage);
                         }
                         else {

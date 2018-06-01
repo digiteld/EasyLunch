@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Tabs} from 'ionic-angular';
+import {App, IonicPage, NavController, NavParams, Tabs} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {HomePage} from '../home/home';
 import {RestProvider} from "../../providers/rest/rest";
@@ -35,9 +35,11 @@ export class ConfirmPage {
     user:any;
     restaurantId:any
 
-    @ViewChild('myTabs') tabRef: Tabs;
+    @ViewChild('tabs') tabs: Tabs;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage,) {
+
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage,private app: App) {
         this.code = "";
         this.mealId = this.mealId || [];
         this.init()
@@ -205,9 +207,20 @@ export class ConfirmPage {
     goHome() {
 
         // this.tabRef.select(0)
-        console.log(this.navCtrl.length())
+        console.log(this.navCtrl.parent.selectedIndex)
 
-        this.navCtrl.popToRoot();
+        if(this.app.getRootNav().getActiveChildNav().selectedIndex!==0)
+        {
+            this.app.getRootNav().getActiveChildNav().select(1);
+
+            this.navCtrl.parent.select(0)
+        }
+
+        else
+        {
+            this.navCtrl.popToRoot()
+        }
+
         console.log('FELICITATION !!! Parcours terminé');
     }
 

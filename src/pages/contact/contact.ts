@@ -7,6 +7,8 @@ import { CgPage } from "../cg/cg";
 import {FaqPage} from "../faq/faq";
 import {ConfidentialPolicyPage} from "../confidential-policy/confidential-policy";
 import {Storage} from '@ionic/storage';
+import {LoginPage} from "../login/login";
+import {InformationPage} from "../information/information";
 
 @Component({
   selector: 'page-contact',
@@ -33,6 +35,22 @@ export class ContactPage {
     })
 
   }
+
+    ionViewDidEnter() {
+        this.storage.get('isConnected').then(data =>{
+
+            console.log("IS CONNECTED --> "+data)
+            if(data===true)
+                this.isConnected=true
+
+            else this.isConnected=false
+
+
+        })
+
+    }
+
+
 
   // openAddCard() {
   //   this.navCtrl.push(AddCardPage, {
@@ -68,5 +86,16 @@ export class ContactPage {
     openPolicy(){
         this.navCtrl.push(ConfidentialPolicyPage)
     }
+
+    openLogin()
+    {
+        this.navCtrl.push(LoginPage,{returnToBack:true})
+    }
+
+    openInfo()
+    {
+        this.navCtrl.push(InformationPage)
+    }
+
 
 }

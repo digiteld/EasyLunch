@@ -51,6 +51,8 @@ import {FaqPage} from "../pages/faq/faq";
 import {FaqPageModule} from "../pages/faq/faq.module";
 import { ConfidentialPolicyPage } from '../pages/confidential-policy/confidential-policy';
 import { ConfidentialPolicyPageModule } from '../pages/confidential-policy/confidential-policy.module';
+import {InformationPageModule} from "../pages/information/information.module";
+import {InformationPage} from "../pages/information/information";
 
 @NgModule({
   declarations: [
@@ -78,6 +80,7 @@ import { ConfidentialPolicyPageModule } from '../pages/confidential-policy/confi
     CgPageModule,
     FaqPageModule,
     ConfidentialPolicyPageModule,
+      InformationPageModule,
 
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
@@ -109,6 +112,7 @@ import { ConfidentialPolicyPageModule } from '../pages/confidential-policy/confi
     CgPage,
     FaqPage,
     ConfidentialPolicyPage,
+      InformationPage
 
   ],
   providers: [

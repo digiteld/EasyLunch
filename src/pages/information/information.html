@@ -1,0 +1,44 @@
+<ion-navbar hideBackButton>
+  <ion-title> Mes Informations</ion-title>
+  <div class="arrow">
+    <button (click)="goBack()"><img src="assets/icon/arrow-left-grey.svg"></button>
+  </div>
+</ion-navbar>
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Mes Information</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      Name
+    </ion-card-header>
+    <ion-card-content>
+      {{name}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Numéro de Téléphone
+    </ion-card-header>
+    <ion-card-content>
+      {{phone}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Email
+    </ion-card-header>
+    <ion-card-content>
+      {{mail}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

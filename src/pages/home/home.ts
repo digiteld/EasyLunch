@@ -390,15 +390,22 @@ export class HomePage {
         this.nbPersBtText = this.NbPers.substring(0, 2)
         console.log("NbPERS --> " + this.nbPersBtText)
         let index = 0
+        console.log("DATA NB COVER --> "+JSON.stringify(this.dataNbCover))
         this.restaurant.map(r => {
 
             let nbCover = 0
 
             this.dataNbCover.map(nb => {
 
-                if (nb.restaurant_id == r.id) {
+
+
+                if (nb.id == r.id) {
                     nbCover = parseInt(nb.sum) + parseInt(this.nbPersBtText);
-                    console.log("nbCOVER --> " + nbCover)
+                    if(nb.id==34)
+                    {
+                        console.log("nbCOVER --> " + nbCover)
+                    }
+                    // console.log("nbCOVER --> " + nbCover)
                 }
 
             })
@@ -510,7 +517,7 @@ export class HomePage {
 
                     this.dataNbCover.map(n => {
 
-                        if (n.restaurant_id === this.restaurant[i].id) {
+                        if (n.id === this.restaurant[i].id) {
                             console.log("NB SUM --> " + n.sum)
                             console.log(this.restaurant[i].person_capacity)
 

@@ -15,6 +15,26 @@ page-participate {
     overflow: hidden;
   }
 
+  .full {
+    background-color: #F2F2F2;
+    padding: 25px;
+  }
+  .full2
+  {
+    width: 100%;
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  }
+  .new button {
+    width: 100%;
+    background-image: linear-gradient(#F1C40F, #FFA300);
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
   .img-table {
     height: 56vh;
     min-width: 100%;

@@ -28,6 +28,18 @@ page-book {
     font-weight: 600;
   }
 
+  .full2
+  {
+    width: 100%;
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  }
+
+  .scroll-content{
+   overflow: auto;
+  }
+
   .old p {
     font-size: 20px;
     font-weight: 600;

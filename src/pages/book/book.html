@@ -1,5 +1,5 @@
 <ion-content>
-    <div class="full" *ngIf="storage.get('user')!=null">
+    <div class="full" *ngIf="user!==null">
         <div class="new">
             <h2> Mes réservations en cours </h2>
             <ng-container *ngIf="!commandeEncour">
@@ -61,4 +61,18 @@
                     </ng-container>
         </div>
     </div>
+
+    <div *ngIf="user===null" class="full full2">
+        <div class="new">
+        <div style="padding-bottom: 25px">
+            Pour voir vos réservations, connectez vous
+        </div>
+        <button ion-button round (click)="goLogin()">
+            Se Connecter
+
+        </button>
+
+    </div>
+    </div>
+
 </ion-content>

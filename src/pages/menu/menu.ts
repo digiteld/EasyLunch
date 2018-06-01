@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Content, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {Content, IonicPage, NavController, NavParams, Toast, ToastController} from 'ionic-angular';
 
 import {DetailsPage} from '../details/details';
 import {RecapPage} from '../recap/recap';
@@ -81,6 +81,7 @@ export class MenuPage {
     menuOfDayTwo: boolean
     menuOfDayThree: boolean
 
+    toast:Toast;
 
     test: any;
 
@@ -186,14 +187,18 @@ export class MenuPage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad MenuPage');
 
-        let toast = this.toastCtrl.create({
-            message: 'Merçi d\'effectuer uniquement votre commande. A la fin de celle-ci, vous recevrez un code que vous transmettrez à vos collègues pour qu\'ils effectuent eux-mêmes leur commande',
-            showCloseButton: true,
-            closeButtonText: "X",
-            dismissOnPageChange: false,
-            position: 'middle'
-        });
-        toast.present();
+        if(!this.participate) {
+
+
+            this.toast = this.toastCtrl.create({
+                message: 'Merci d\'effectuer uniquement votre commande. Vous recevrez ensuite un code que vous transmettrez à vos collègues afin qu\'ils effectuent eux-mêmes la leur.',
+                showCloseButton: true,
+                closeButtonText: "X",
+                dismissOnPageChange: false,
+                position: 'middle'
+            });
+            this.toast.present();
+        }
     }
 
 
@@ -263,6 +268,8 @@ export class MenuPage {
     }
 
     openDetail(plat, index) {
+        if(!this.participate)
+        this.toast.dismissAll()
 
         if ((this.schedule && this.nbPers) || this.participate) {
 
@@ -329,6 +336,8 @@ export class MenuPage {
 
 
     openDetailMenu(id, mod) {
+        if(!this.participate)
+        this.toast.dismissAll()
         if ( this.participate || this.choosenMenuID===null ) {
             console.log("ID MEAL --> " + id)
             let _entree = []
@@ -452,16 +461,17 @@ export class MenuPage {
         else
         {
 
-            let toast = this.toastCtrl.create({
-                message: 'Vous ne pouvez commander qu\'un menu ou qu\'une formule par commande' ,
+            this.toast = this.toastCtrl.create({
+                message: 'Vous ne pouvez commander qu\'un menu ou qu\'une formule par commande.' ,
                 showCloseButton: true,
                 closeButtonText: "X",
                 dismissOnPageChange: false,
                 position: 'middle'
             });
-            toast.present();
+            this.toast.present();
         }
     }
+
 
 
     openRecap() {
@@ -469,6 +479,8 @@ export class MenuPage {
 
         if ((this.schedule && this.nbPers) || this.participate) {
 
+            if(!this.participate)
+            this.toast.dismissAll()
 
             this.storage.set('idMeals', this.choosenId)
             this.navCtrl.push(RecapPage, {
@@ -576,6 +588,7 @@ export class MenuPage {
 
 
     private formatData() {
+        let date=new Date()
         this.meals.map(meal => {
 
 
@@ -598,16 +611,24 @@ export class MenuPage {
                     this.mapBoisson.set(meal.id, meal)
                     break;
                 case 4:
-                    this.entree.push(meal)
-                    this.mapEntree.set(meal.id, meal);
+                    if(this.verifyDate(date,meal.created_date))
+                    {this.entree.push(meal)
+                        this.mapEntree.set(meal.id, meal);
+
+                    }
+
                     break;
                 case 5:
-                    this.plat.push(meal)
-                    this.mapPlat.set(meal.id, meal);
+                    if(this.verifyDate(date,meal.created_date)) {
+                        this.plat.push(meal)
+                        this.mapPlat.set(meal.id, meal);
+                    }
                     break;
                 case 6:
-                    this.mapDessert.set(meal.id, meal)
-                    this.dessert.push(meal)
+                    if(this.verifyDate(date,meal.created_date)) {
+                        this.mapDessert.set(meal.id, meal)
+                        this.dessert.push(meal)
+                    }
                     break;
 
 
@@ -651,6 +672,8 @@ export class MenuPage {
     }
 
     goBack() {
+
+        this.toast.dismissAll()
         this.navCtrl.pop();
     }
 

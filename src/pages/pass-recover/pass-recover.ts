@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {RestProvider} from "../../providers/rest/rest";
 
 
 /**
@@ -16,8 +17,15 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 })
 export class PassRecoverPage {
 
+    mail:any;
+    errorMessage:any;
+    errorResult:boolean
+    successResult:boolean
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest:RestProvider) {
+    this.errorResult=false;
+    this.successResult=false
 
 
     }
@@ -29,6 +37,34 @@ export class PassRecoverPage {
 
     goBack() {
         this.navCtrl.pop()
+    }
+
+    sendPasswordRecoveryMail()
+    {
+
+        console.log(this.mail)
+        this.rest.postRecoveryPassword({user:this.mail})
+
+            .subscribe(
+                data => {
+                console.log(data)
+
+                    if(data.code===0)
+                    {
+                        this.errorResult=true
+                        this.successResult=false
+                    }
+                    else if(data.code===1)
+                    {
+                        this.successResult=true
+                        this.errorResult=false
+                    }
+
+                },
+                error =>
+                {
+                    console.log(error)
+                    this.errorMessage = <any>error});
     }
 
 }

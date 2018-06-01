@@ -1,6 +1,6 @@
 <ion-content>
 
-    <div class="all">
+    <div class="all" *ngIf="user!==null">
 
         <div class="img-table">
             <!--<ion-img width="100%" height="100%" style="background: transparent !important;" src="assets/imgs/code-empty.png"></ion-img>
@@ -43,6 +43,23 @@
 
         </div>
     </div>
+    </div>
+
+    <div *ngIf="user===null" class="full full2">
+        <div class="new">
+
+
+                <div style="padding-bottom: 25px">
+                    Pour voir vos réservations, connectez vous
+                </div>
+                <button ion-button round (click)="goLogin()">
+                    Se Connecter
+
+                </button>
+
+
+
+        </div>
     </div>
 
 </ion-content>

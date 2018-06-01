@@ -14,6 +14,15 @@
             </ion-item>
         </div>
 
-        <button id="btnco" ion-button>Envoyer</button>
+        <div *ngIf="errorResult" class="danger">
+            Aucun compte associé à cette addresse mail !
+        </div>
+
+        <div *ngIf="successResult" class="success">
+            Un mail vous a été envoyé
+        </div>
+
+
+        <button id="btnco" ion-button (click)="sendPasswordRecoveryMail()">Envoyer</button>
     </div>
 </ion-content>
