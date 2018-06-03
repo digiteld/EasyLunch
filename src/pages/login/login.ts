@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-
+import CryptoJS from 'crypto-js';
 import {AddCardPage} from '../add-card/add-card';
 import {AccountCreaPage} from '../account-crea/account-crea';
 import {RestProvider} from "../../providers/rest/rest";
@@ -48,8 +48,8 @@ export class LoginPage {
 
         console.log('ajoutes ta CB');
         if (!this.errorMail && !this.errorPass) {
-
-            this.rest.getUser("?mail=" + this.mail + "&pass=" + this.password)
+            var hash= CryptoJS.SHA256(this.password);
+            this.rest.getUser("?mail=" + this.mail + "&pass=" + hash)
                 .subscribe(
                     result => {
                         console.log("RESULT --> " + JSON.stringify(result))

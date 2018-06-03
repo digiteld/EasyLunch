@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-
+import CryptoJS from 'crypto-js';
 import {LoginPage} from '../login/login';
 import {AddCardPage} from '../add-card/add-card';
 import {RestProvider} from "../../providers/rest/rest";
@@ -69,7 +69,7 @@ export class AccountCreaPage {
             this.rest.createUser(
                 {
                     name: this.name,
-                    password: this.password,
+                    password:  CryptoJS.SHA256(this.password),
                     mail: this.email,
                     phone: this.phone,
                 }
