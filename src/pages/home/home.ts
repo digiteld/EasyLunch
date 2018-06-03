@@ -59,7 +59,10 @@ export class HomePage {
 
     dateTime: any;
     timeOut: boolean;
-    listAvailable: boolean[];
+
+    // 1 --> dispo 2 --> plus de place 0 --> Restaurant fermé
+
+    listAvailable: number[];
     nbTryLocation: number
     dataNbCover: any;
 
@@ -73,8 +76,8 @@ export class HomePage {
         private androidPermissions: AndroidPermissions,
         private geolocation: Geolocation,
         private toastCtrl: ToastController,
-        private splash:SplashScreen
-                ) {
+        private splash: SplashScreen
+    ) {
         this.cleanStorage()
         this.nbTryLocation = 0;
         this.mapPin = this.mapPin || [];
@@ -131,18 +134,17 @@ export class HomePage {
 
     slideChanged() {
 
-        if(this.slides.getActiveIndex()!==this.slides.length())
-        {
+        if (this.slides.getActiveIndex() !== this.slides.length()) {
 
-        this.currentIndex = this.slides.getActiveIndex();
+            this.currentIndex = this.slides.getActiveIndex();
 
-        let marker = this.mapPin[this.currentIndex]
-        console.log("MARKER --> "+marker)
-        this.moveMarker(marker)
+            let marker = this.mapPin[this.currentIndex]
+            console.log("MARKER --> " + marker)
+            this.moveMarker(marker)
 
-        console.log("Current index is ", this.currentIndex)
+            console.log("Current index is ", this.currentIndex)
 
-        console.log("SIZE SLIDE --> " + this.slides.length())
+            console.log("SIZE SLIDE --> " + this.slides.length())
 
         }
 
@@ -171,23 +173,21 @@ export class HomePage {
         }
 
 
-        if(this.Schedule!=null && this.NbPers!=null)
-        {
+        if (this.Schedule != null && this.NbPers != null) {
 
-        this.navCtrl.push(MenuPage, {
+            this.navCtrl.push(MenuPage, {
 
-            img: obj.picture,
-            address: obj.address,
-            name: obj.name,
-            desc: obj.description,
-            city: obj.city
+                img: obj.picture,
+                address: obj.address,
+                name: obj.name,
+                desc: obj.description,
+                city: obj.city
 
 
-        });
+            });
 
         }
-        else
-        {
+        else {
             let toast = this.toastCtrl.create({
                 message: 'Merci de renseigner le nombre de personnes et l\'heure d\'arrivée pour accéder à la carte du restaurant',
                 showCloseButton: true,
@@ -224,8 +224,8 @@ export class HomePage {
             console.log("Previous INDEX --> " + this.slides.getPreviousIndex())
 
 
-            let previousIndex=this.slides.getPreviousIndex()
-            if(previousIndex===this.slides.length())
+            let previousIndex = this.slides.getPreviousIndex()
+            if (previousIndex === this.slides.length())
                 previousIndex--
             this.mapPin[previousIndex].setIcon(forkIcon);
 
@@ -356,41 +356,40 @@ export class HomePage {
         console.log("SCHEDULE")
         console.log(typeof this.Schedule)
         let scheduleIntervale
-        if(parseInt(this.Schedule.substring(3,5))>=45)
-        {
-            console.log("PARSE --> "+this.Schedule.substring(3,5))
-            let diff=parseInt(this.Schedule.substring(3,5))+15-60
-            console.log("DIFF --> "+diff)
-            if(diff<10)
-            {
-                let dif=diff.toString()
-                dif="0"+diff
-                scheduleIntervale=(parseInt(this.Schedule.substring(0,2))+1)+":"+dif
+        if (parseInt(this.Schedule.substring(3, 5)) >= 45) {
+            console.log("PARSE --> " + this.Schedule.substring(3, 5))
+            let diff = parseInt(this.Schedule.substring(3, 5)) + 15 - 60
+            console.log("DIFF --> " + diff)
+            if (diff < 10) {
+                let dif = diff.toString()
+                dif = "0" + diff
+                scheduleIntervale = (parseInt(this.Schedule.substring(0, 2)) + 1) + ":" + dif
 
             }
-            else
-            {
-                scheduleIntervale=(parseInt(this.Schedule.substring(0,2))+1)+":"+diff
+            else {
+                scheduleIntervale = (parseInt(this.Schedule.substring(0, 2)) + 1) + ":" + diff
             }
 
 
         }
-        else
-        {
-            scheduleIntervale=this.Schedule.substring(0,3)+(parseInt(this.Schedule.substring(3,5))+15).toString()
+        else {
+            scheduleIntervale = this.Schedule.substring(0, 3) + (parseInt(this.Schedule.substring(3, 5)) + 15).toString()
         }
 
-        this.scheduleBtText = this.Schedule +" "+scheduleIntervale
+        this.scheduleBtText = this.Schedule + " " + scheduleIntervale
 
 
     }
+
+
+    // 1 --> dispo 2 --> plus de place 0 --> Restaurant fermé
 
     validateNbPers() {
 
         this.nbPersBtText = this.NbPers.substring(0, 2)
         console.log("NbPERS --> " + this.nbPersBtText)
         let index = 0
-        console.log("DATA NB COVER --> "+JSON.stringify(this.dataNbCover))
+        console.log("DATA NB COVER --> " + JSON.stringify(this.dataNbCover))
         this.restaurant.map(r => {
 
             let nbCover = 0
@@ -398,30 +397,32 @@ export class HomePage {
             this.dataNbCover.map(nb => {
 
 
-
                 if (nb.id == r.id) {
+
                     nbCover = parseInt(nb.sum) + parseInt(this.nbPersBtText);
-                    if(nb.id==34)
-                    {
-                        console.log("nbCOVER --> " + nbCover)
-                    }
-                    // console.log("nbCOVER --> " + nbCover)
+
                 }
 
             })
 
-            if (nbCover > r.person_capacity)
-                this.listAvailable[index] = false
+            if (nbCover > r.person_capacity || r.max_table === null || r.max_table < this.nbPersBtText)
+                this.listAvailable[index] = 2
+
+
             else {
                 if (r.schedule !== null) {
                     if (r.available && r.schedule.indexOf(this.dateTime.getDay()) !== -1)
-                        this.listAvailable[index] = true
+                        this.listAvailable[index] = 1
 
                 }
             }
 
 
             index++;
+
+            if (r.id === 1) {
+                console.log("AVAILABLE ON CHANGE --> " + this.listAvailable[index])
+            }
         })
 
 
@@ -478,8 +479,8 @@ export class HomePage {
             }
 
             console.log(this.restaurant[i].name)
-            console.log('INDEX --> '+i)
-            console.log(this.restaurant[i].lat )
+            console.log('INDEX --> ' + i)
+            console.log(this.restaurant[i].lat)
             console.log(this.restaurant[i].lon)
             let pin = L.marker([this.restaurant[i].lat, this.restaurant[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
@@ -507,46 +508,44 @@ export class HomePage {
             console.log("SCHEDULE --> " + this.restaurant[i].schedule)
             if (this.restaurant[i].schedule !== null) {
                 if (this.restaurant[i].available === true) {
-
-
                     console.log("CONDITION --> " + this.restaurant[i].schedule.indexOf(this.dateTime.getDay()))
                     let availableToDay = this.restaurant[i].schedule.indexOf(this.dateTime.getDay()) !== -1
                     let result
                     let nbCover = true
-
-
                     this.dataNbCover.map(n => {
-
                         if (n.id === this.restaurant[i].id) {
                             console.log("NB SUM --> " + n.sum)
                             console.log(this.restaurant[i].person_capacity)
-
                             if (n.sum == this.restaurant[i].person_capacity) {
                                 console.log("NB COVER ATTEINT")
                                 nbCover = false
                             }
                         }
-
                     })
 
-
                     if (availableToDay && nbCover) {
-                        result = true
+                        result = 1
                     }
+                    else if (availableToDay && !nbCover)
+                        result = 2
 
-                    else result = false
+                    else result = 0
 
 
                     this.listAvailable.push(result)
                 }
-                else this.listAvailable.push(false)
+                else this.listAvailable.push(0)
 
 
             }
 
             else
-                this.listAvailable.push(true)
+                this.listAvailable.push(1)
 
+
+            if (this.restaurant[i].id === 1) {
+                console.log("AVAILABLE ON START --> " + this.listAvailable[i])
+            }
         })
 
 
@@ -608,15 +607,32 @@ export class HomePage {
     }
 
 
-    openErrorAvailable() {
-        let toast = this.toastCtrl.create({
-            message: 'Le Restaurant est complet ou indisponible ',
-            showCloseButton: true,
-            closeButtonText: "X",
-            dismissOnPageChange: true,
-            position: 'middle'
-        });
-        toast.present();
+    openErrorAvailable(index) {
+
+
+        if (this.listAvailable[index] === 0) {
+            let toast = this.toastCtrl.create({
+                message: 'Ce restaurant est fermé aujourd\'hui. Choisissez un autre restaurant :)',
+                showCloseButton: true,
+                closeButtonText: "X",
+                dismissOnPageChange: true,
+                position: 'middle'
+            });
+            toast.present();
+        }
+
+        else if (this.listAvailable[index] === 2) {
+            let toast = this.toastCtrl.create({
+                message: ' Oops, ce restaurant est victime de son succès et n\'est plus disponible aujourdhui. Choisissez un autre restaurant :)',
+                showCloseButton: true,
+                closeButtonText: "X",
+                dismissOnPageChange: true,
+                position: 'middle'
+            });
+            toast.present();
+        }
+
+
     }
 
     displayError() {
@@ -629,5 +645,6 @@ export class HomePage {
         });
         toast.present();
     }
+
 
 }

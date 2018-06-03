@@ -119,6 +119,7 @@ export class RecapPage {
         console.log("ok commande validé !");
         let s=[]
         s.push(this.special)
+        this.storage.set('total',this.total)
         this.storage.set('special',s)
         this.storage.get("isConnected").then(
             data => {

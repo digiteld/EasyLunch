@@ -2,10 +2,10 @@
     <div id="map">
 
         <ion-grid class="btn" id="btn-container">
-            <ion-row flex-wrap: nowrap class="z-index">
+            <ion-row flex-wrap:nowrap class="z-index">
                 <ion-col class="stylecol">
                     <button class="stylebtn" ion-button full icon-start (click)="nbpicker.open()" [disabled]="timeOut">
-                        <ion-datetime #nbpicker pickerFormat="hh" hourValues="1,2,3,4,5,6,7,8,9,10,11,12"
+                        <ion-datetime #nbpicker pickerFormat="HH"
                                       displayFormat={{formatnbPers}} doneText="Valider"
                                       cancelText="Annuler" [(ngModel)]="NbPers"
                                       (ionChange)="validateNbPers()">
@@ -39,7 +39,7 @@
                     <ion-slide *ngFor="let r of restaurant; let i = index">
 
                         <ion-card
-                                (click)="listAvailable[i]?openMenu(i):openErrorAvailable()"    [class.restoNotAvailable]="!listAvailable[i]"
+                                (click)="listAvailable[i]===1?openMenu(i):openErrorAvailable(i)"    [class.restoNotAvailable]="!(listAvailable[i]===1)"
 
                         >
                             <!---->
