@@ -37,6 +37,8 @@ export class LoginPage {
         this.password = "";
     }
 
+
+
     ionViewDidLoad() {
 
         console.log('ionViewDidLoad LoginPage');
