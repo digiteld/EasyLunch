@@ -50,7 +50,7 @@ export class LoginPage {
 
         console.log('ajoutes ta CB');
         if (!this.errorMail && !this.errorPass) {
-            var hash= CryptoJS.SHA256(this.password);
+            var hash= CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex);
             this.rest.getUser("?mail=" + this.mail + "&pass=" + hash)
                 .subscribe(
                     result => {

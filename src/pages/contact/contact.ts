@@ -76,8 +76,15 @@ export class ContactPage {
   {
     console.log("Je vais bien là ")
         this.isConnected=false
-      this.storage.remove("isConnected")
-      this.storage.remove("user")
+      this.storage.remove("isConnected").then(data=>
+      {
+          this.storage.forEach(a=>{
+              console.log(a)
+          })
+          console.log("J'ai remove")}).catch(err=>{
+              console.log(err)})
+      this.storage.remove("user").then(data=>console.log("J'ai remove")).catch(err=>{console.log(err)})
+
   }
     openFaq(){
         this.navCtrl.push(FaqPage)

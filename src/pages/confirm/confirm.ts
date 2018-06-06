@@ -31,15 +31,15 @@ export class ConfirmPage {
     menuID: any;
     menuMealID: any;
     total: number;
-    special:any
-    user:any;
-    restaurantId:any
+    special: any
+    user: any;
+    restaurantId: any
+    booking: boolean;
 
     @ViewChild('tabs') tabs: Tabs;
 
 
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage,private app: App) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, private storage: Storage, private app: App) {
         this.code = "";
         this.mealId = this.mealId || [];
         this.init()
@@ -47,7 +47,8 @@ export class ConfirmPage {
         this.create = null;
         this.nbPers = null;
         this.schedule = null;
-        this.special=null
+        this.special = null
+        this.booking = false;
 
 
     }
@@ -59,18 +60,18 @@ export class ConfirmPage {
     }
 
     init() {
-        this.storage.get('user').then(data=>{
-            if(data!=null)this.user=data
-        }, error=>console.log("ERR on get USER IN STORAGE"))
-        this.storage.get('special').then(data=>{
+        this.storage.get('user').then(data => {
+            if (data != null) this.user = data
+        }, error => console.log("ERR on get USER IN STORAGE"))
+        this.storage.get('special').then(data => {
 
-                this.special=data
+                this.special = data
 
             },
             error => console.error(error))
-        this.storage.get('id_restaurant').then(data =>{
+        this.storage.get('id_restaurant').then(data => {
 
-            this.restaurantId=data
+            this.restaurantId = data
         })
 
         this.storage.get('menuID').then(data => {
@@ -95,8 +96,8 @@ export class ConfirmPage {
         }, error => console.error(error))
 
         this.storage.get('schedule').then(data => {
-            if(data!=null)
-            this.schedule = data.replace(':', '')
+            if (data != null)
+                this.schedule = data.replace(':', '')
             console.log("DATA SCHEDULE --> " + data)
             this.post()
         }, error => console.error(error))
@@ -134,7 +135,6 @@ export class ConfirmPage {
             error => console.error(error))
 
 
-
     }
 
     post() {
@@ -142,49 +142,50 @@ export class ConfirmPage {
         if (this.create != null && this.mealId != null) {
             let menu;
             let meal;
-            if(this.menuID===null)
-                menu=null
+            if (this.menuID === null)
+                menu = null
             else
-                menu='{\"' + this.menuID + '\":[' + this.menuMealID + ']}'
+                menu = '{\"' + this.menuID + '\":[' + this.menuMealID + ']}'
 
-            if(this.mealId.length===0)
-                meal=null
+            if (this.mealId.length === 0)
+                meal = null
             else
-                meal=this.mealId
+                meal = this.mealId
 
 
             let today = new Date();
-            let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            let dateTime = date+' '+time;
+            let dateTime = date + ' ' + time;
+            console.log("NB USERS SEND --> "+this.nbPers)
 
             if (this.create) {
 
-                if (this.nbPers != null && this.schedule != null ) {
+                if (this.nbPers != null && this.schedule != null) {
                     this.cleanStorage()
 
                     console.log("MEAL ID  --> " + this.mealId)
 
                     console.log("!!! JE CREE UNE RESERVATION !!!")
-                    console.log("USER --> "+JSON.stringify(this.user))
+                    console.log("USER --> " + JSON.stringify(this.user))
                     this.postBooking({
                         master_user_id: this.user.data.id,
                         restaurant_id: this.restaurantId,
-                        nb_users: this.nbPers,
+                        nb_users: this.nbPers.substring(11,13),
                         schedule: this.schedule,
                         meal_id: meal,
-                        date:dateTime,
+                        date: dateTime,
                         payment_id: this.navParams.get('idPayment'),
                         menu: menu,
                         total: this.total,
-                        special:this.special
+                        special: this.special
                     })
                 }
             }
             else {
-                if (this.idCommand != null ) {
+                if (this.idCommand != null) {
 
-                    console.log("TOTAL --> "+this.total)
+                    console.log("TOTAL --> " + this.total)
                     this.cleanStorage()
                     console.log("AT INSTANT T --> " + this.idCommand)
                     this.postCommand({
@@ -195,8 +196,8 @@ export class ConfirmPage {
                         booking_id: this.idCommand,
                         menu: menu,
                         total: this.total,
-                        date:dateTime,
-                        special:this.special
+                        date: dateTime,
+                        special: this.special
 
                     })
                 }
@@ -207,20 +208,15 @@ export class ConfirmPage {
     goHome() {
 
         // this.tabRef.select(0)
-        console.log(this.navCtrl.parent.selectedIndex)
+        console.log("INDEX --> " + this.app.getRootNav().getActiveChildNav().selected)
 
-        if(this.app.getRootNav().getActiveChildNav().selectedIndex!==0)
-        {
+        if (!this.booking) {
             this.app.getRootNav().getActiveChildNav().select(1);
 
-            this.navCtrl.parent.select(0)
         }
-
-        else
-        {
+        else {
             this.navCtrl.popToRoot()
         }
-
         console.log('FELICITATION !!! Parcours terminé');
     }
 
@@ -229,7 +225,7 @@ export class ConfirmPage {
         this.rest.postCommand(arg)
             .subscribe(
                 result => {
-
+                    this.booking = false
                     console.log("APAPAPAP --> " + result);
 
 
@@ -241,6 +237,7 @@ export class ConfirmPage {
         this.rest.postBooking(arg)
             .subscribe(
                 code => {
+                    this.booking = true;
                     this.code = <string>code;
                     console.log(this.code);
 

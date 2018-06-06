@@ -69,7 +69,7 @@ export class AccountCreaPage {
             this.rest.createUser(
                 {
                     name: this.name,
-                    password:  CryptoJS.SHA256(this.password),
+                    password:  CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex),
                     mail: this.email,
                     phone: this.phone,
                 }

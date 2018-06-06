@@ -673,7 +673,7 @@ export class MenuPage {
 
     goBack() {
 
-        this.toast.dismissAll()
+
         this.navCtrl.pop();
     }
 

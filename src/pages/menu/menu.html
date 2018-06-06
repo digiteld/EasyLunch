@@ -101,7 +101,7 @@
                                 </h3>
                                 <ng-container *ngIf="item.nbmeals===2">
                                     <p>
-                                        Entrée / Plat ou Plat / Dessert
+                                        Entrée / Plat ou<br/> Plat / Dessert
                                     </p>
                                 </ng-container>
                                 <ng-container *ngIf="item.nbmeals===3">
@@ -131,6 +131,7 @@
                     <h2>Entrées</h2>
                 </div>
                 <ng-container *ngFor="let item of entree;index as i">
+                    <ng-container *ngIf="item.plat===0">
                     <ion-card (click)="openDetail(0,i)">
                         <ion-card-content>
                             <div class="choix">
@@ -152,6 +153,7 @@
                         </ion-card-content>
                     </ion-card>
                 </ng-container>
+                </ng-container>
             </div>
         </div>
         <!--       Plats      -->
@@ -160,6 +162,7 @@
                 <h2>Plats</h2>
             </div>
             <ng-container *ngFor="let item of plat;index as i">
+                <ng-container *ngIf="item.plat===1">
                 <ion-card (click)="openDetail(1,i)">
                     <ion-card-content>
                         <div class="choix">
@@ -176,6 +179,7 @@
                         </div>
                     </ion-card-content>
                 </ion-card>
+                </ng-container>
             </ng-container>
         </div>
 
@@ -186,6 +190,7 @@
                 <h2>Desserts</h2>
             </div>
             <ng-container *ngFor="let item of dessert;index as i">
+                <ng-container *ngIf="item.plat===0">
                 <ion-card (click)="openDetail(2,i)">
                     <ion-card-content>
                         <div class="choix">
@@ -202,6 +207,7 @@
                         </div>
                     </ion-card-content>
                 </ion-card>
+                </ng-container>
             </ng-container>
         </div>
 

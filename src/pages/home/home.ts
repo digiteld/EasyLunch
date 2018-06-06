@@ -78,12 +78,19 @@ export class HomePage {
         private toastCtrl: ToastController,
         private splash: SplashScreen
     ) {
+
+
+        this.restaurant = this.restaurant || [];
         this.cleanStorage()
         this.nbTryLocation = 0;
         this.mapPin = this.mapPin || [];
         this.pinID = this.pinID || [];
         this.markerArray = this.markerArray || []
-        this.NbPers = null;
+        let date = new Date()
+        date.setHours(3)
+
+        this.NbPers = date.toISOString();
+        console.log("NB PERS --> " + this.NbPers)
         this.Schedule = null;
         this.sliding = false;
         this.formatnbPers = "none"
@@ -128,7 +135,8 @@ export class HomePage {
         if (!this.map)
             this.loadmap();
         console.log("JE passe bien par IONDIDENTER")
-        //this.getRestaurants();
+
+
     }
 
 
@@ -189,7 +197,7 @@ export class HomePage {
         }
         else {
             let toast = this.toastCtrl.create({
-                message: 'Merci de renseigner le nombre de personnes et l\'heure d\'arrivée pour accéder à la carte du restaurant',
+                message: 'Merci de renseigner le nombre de personnes et l\'heure d\'arrivée pour accéder à la carte du restaurant.',
                 showCloseButton: true,
                 closeButtonText: "X",
                 dismissOnPageChange: true,
@@ -240,7 +248,12 @@ export class HomePage {
     ////     Function to initialize map   -   we using leaflet with mapbox
 
     loadmap() {
-        this.map = L.map("map", {zoomControl: false});
+        this.map = L.map("map",
+            {
+                zoomControl: false,
+                center: L.latLng(44.840585, -0.574231)
+
+            });
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
@@ -265,10 +278,11 @@ export class HomePage {
     }
 
     tryLocate() {
+        console.log("J'essaye de te localiser")
         this.map.locate({
             setView: true,
             maxZoom: 10,
-            timeout: 2000
+            timeout: 200
         })
 
     }
@@ -386,7 +400,9 @@ export class HomePage {
 
     validateNbPers() {
 
-        this.nbPersBtText = this.NbPers.substring(0, 2)
+        console.log("NB PERS --> " + this.NbPers)
+
+        this.nbPersBtText = this.NbPers.substring(11, 13)
         console.log("NbPERS --> " + this.nbPersBtText)
         let index = 0
         console.log("DATA NB COVER --> " + JSON.stringify(this.dataNbCover))
@@ -395,12 +411,8 @@ export class HomePage {
             let nbCover = 0
 
             this.dataNbCover.map(nb => {
-
-
                 if (nb.id == r.id) {
-
                     nbCover = parseInt(nb.sum) + parseInt(this.nbPersBtText);
-
                 }
 
             })

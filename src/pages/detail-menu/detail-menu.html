@@ -18,7 +18,7 @@
     <ion-card style="height: 100px">
 
       <div style="margin-top: 40px;    text-align: center;">
-        Plat du jour non renseignée
+        Plat du jour non renseigné
       </div>
 
     </ion-card>
@@ -44,11 +44,12 @@
     </ion-list>
   </ng-container>
 
-
+  <ng-container *ngIf="navParams.get('plat').length>0">
+  <p>Plat</p>
   <ion-list radio-group [(ngModel)]="plat">
 
     <ng-container *ngFor="let item of navParams.get('plat')">
-      <p>Plat</p>
+
       <ion-card *ngIf="item.available">
 
         <ion-item>
@@ -63,6 +64,9 @@
     </ng-container>
 
   </ion-list>
+
+  </ng-container>
+
   <ng-container *ngIf="navParams.get('dessert').length>0">
     <p>Dessert</p>
     <ng-container *ngIf="navParams.get('nbMeal')===3">
