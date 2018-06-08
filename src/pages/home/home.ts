@@ -248,12 +248,7 @@ export class HomePage {
     ////     Function to initialize map   -   we using leaflet with mapbox
 
     loadmap() {
-        this.map = L.map("map",
-            {
-                zoomControl: false,
-                center: L.latLng(44.840585, -0.574231)
-
-            });
+        this.map = L.map("map", {zoomControl: false});
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2Frb3UiLCJhIjoiY2pkMXNjamlxMGNvazM0cXF5d2FnazM1MiJ9.7CivBv0jVrL9YJem_YZ1AQ', {
             attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
@@ -282,7 +277,7 @@ export class HomePage {
         this.map.locate({
             setView: true,
             maxZoom: 10,
-            timeout: 200
+            timeout: 2000
         })
 
     }
@@ -351,7 +346,6 @@ export class HomePage {
                     this.restaurant = restaurant['restaurant'];
                     this.dataNbCover = restaurant['nbCover']
 
-                    console.log("DATA NB COVER --> " + JSON.stringify(this.dataNbCover))
 
                     this.formatData();
                 },
@@ -367,13 +361,12 @@ export class HomePage {
     }
 
     validateSchedule() {
-        console.log("SCHEDULE")
-        console.log(typeof this.Schedule)
+
         let scheduleIntervale
         if (parseInt(this.Schedule.substring(3, 5)) >= 45) {
-            console.log("PARSE --> " + this.Schedule.substring(3, 5))
+
             let diff = parseInt(this.Schedule.substring(3, 5)) + 15 - 60
-            console.log("DIFF --> " + diff)
+
             if (diff < 10) {
                 let dif = diff.toString()
                 dif = "0" + diff
@@ -400,12 +393,9 @@ export class HomePage {
 
     validateNbPers() {
 
-        console.log("NB PERS --> " + this.NbPers)
 
         this.nbPersBtText = this.NbPers.substring(11, 13)
-        console.log("NbPERS --> " + this.nbPersBtText)
         let index = 0
-        console.log("DATA NB COVER --> " + JSON.stringify(this.dataNbCover))
         this.restaurant.map(r => {
 
             let nbCover = 0
@@ -414,27 +404,19 @@ export class HomePage {
                 if (nb.id == r.id) {
                     nbCover = parseInt(nb.sum) + parseInt(this.nbPersBtText);
                 }
-
             })
 
             if (nbCover > r.person_capacity || r.max_table === null || r.max_table < this.nbPersBtText)
                 this.listAvailable[index] = 2
 
-
             else {
                 if (r.schedule !== null) {
                     if (r.available && r.schedule.indexOf(this.dateTime.getDay()) !== -1)
                         this.listAvailable[index] = 1
-
                 }
             }
-
-
             index++;
 
-            if (r.id === 1) {
-                console.log("AVAILABLE ON CHANGE --> " + this.listAvailable[index])
-            }
         })
 
 
@@ -455,7 +437,7 @@ export class HomePage {
 
 
     formatData() {
-        console.log("formatData")
+
         ///  Create custom icon
 
         var forkIcon = L.icon({
@@ -490,74 +472,72 @@ export class HomePage {
                 return false;
             }
 
-            console.log(this.restaurant[i].name)
-            console.log('INDEX --> ' + i)
-            console.log(this.restaurant[i].lat)
-            console.log(this.restaurant[i].lon)
-            let pin = L.marker([this.restaurant[i].lat, this.restaurant[i].lon], {
+            if(this.restaurant[i].lat!==null && this.restaurant[i].lon!==null)
+            {  let pin = L.marker([this.restaurant[i].lat, this.restaurant[i].lon], {
                 icon: i == 0 ? newIcon : forkIcon
                 , bounceOnAdd: true, bounceOnAddOptions: {duration: 800, height: 200}
             })
 
-            pin.on('add', event => {
-                this.onAddLayer(event)
-            })
+                pin.on('add', event => {
+                    this.onAddLayer(event)
+                })
 
-            pin.addTo(this.map);
+                pin.addTo(this.map);
 
-            pin.on('click', event => {
-                this.onClickLayer(event)
-            });
+                pin.on('click', event => {
+                    this.onClickLayer(event)
+                });
 
-            if (i === 0) {
-                console.log("JE ZOOM ON FIRST RESTO " + this.restaurant[i].name)
-                this.markerArray.push(pin)
-                // this.zoomOnNearestResto()
-            }
-
-            this.mapPin.push(pin);
-
-            console.log("SCHEDULE --> " + this.restaurant[i].schedule)
-            if (this.restaurant[i].schedule !== null) {
-                if (this.restaurant[i].available === true) {
-                    console.log("CONDITION --> " + this.restaurant[i].schedule.indexOf(this.dateTime.getDay()))
-                    let availableToDay = this.restaurant[i].schedule.indexOf(this.dateTime.getDay()) !== -1
-                    let result
-                    let nbCover = true
-                    this.dataNbCover.map(n => {
-                        if (n.id === this.restaurant[i].id) {
-                            console.log("NB SUM --> " + n.sum)
-                            console.log(this.restaurant[i].person_capacity)
-                            if (n.sum == this.restaurant[i].person_capacity) {
-                                console.log("NB COVER ATTEINT")
-                                nbCover = false
-                            }
-                        }
-                    })
-
-                    if (availableToDay && nbCover) {
-                        result = 1
-                    }
-                    else if (availableToDay && !nbCover)
-                        result = 2
-
-                    else result = 0
-
-
-                    this.listAvailable.push(result)
+                if (i === 0) {
+                    console.log("JE ZOOM ON FIRST RESTO " + this.restaurant[i].name)
+                    this.markerArray.push(pin)
+                    // this.zoomOnNearestResto()
                 }
-                else this.listAvailable.push(0)
+
+                this.mapPin.push(pin);
+
+
+                if (this.restaurant[i].schedule !== null) {
+                    if (this.restaurant[i].available === true) {
+
+                        let availableToDay = this.restaurant[i].schedule.indexOf(this.dateTime.getDay()) !== -1
+                        let result
+                        let nbCover = true
+                        this.dataNbCover.map(n => {
+                            if (n.id === this.restaurant[i].id) {
+
+                                console.log(this.restaurant[i].person_capacity)
+                                if (n.sum == this.restaurant[i].person_capacity) {
+
+                                    nbCover = false
+                                }
+                            }
+                        })
+
+                        if (availableToDay && nbCover) {
+                            result = 1
+                        }
+                        else if (availableToDay && !nbCover)
+                            result = 2
+
+                        else result = 0
+
+
+                        this.listAvailable.push(result)
+                    }
+                    else this.listAvailable.push(0)
+
+
+                }
+
+                else
+                    this.listAvailable.push(1)
+
+
 
 
             }
 
-            else
-                this.listAvailable.push(1)
-
-
-            if (this.restaurant[i].id === 1) {
-                console.log("AVAILABLE ON START --> " + this.listAvailable[i])
-            }
         })
 
 
