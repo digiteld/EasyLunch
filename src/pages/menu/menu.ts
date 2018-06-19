@@ -639,7 +639,7 @@ export class MenuPage {
         this.menus.map(m => {
             this.mapMenu.set(m.id, m)
             console.log("MENU --> " + JSON.stringify(m))
-            if (m.mod) {
+            if (m.mod && !m.hide) {
 
                 console.log("MOD --> " + JSON.stringify(m))
                 switch (m.nbmeals) {
@@ -659,13 +659,16 @@ export class MenuPage {
                 }
             }
 
-            else {
+            else if(!m.hide){
                 this.formule.push(m)
 
                 console.log(m.name)
                 console.log(m.nbmeals)
 
             }
+
+            else
+                console.log("JE SUIS PAS GOOD --> "+m.name)
         })
 
 

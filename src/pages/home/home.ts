@@ -175,8 +175,8 @@ this.endPrintResto=false;
         }
         if (this.NbPers != null) {
             console.log("JE SET NBPERS " + this.NbPers)
-            let nbpers = this.NbPers.substring(0, this.NbPers.length - 3)
-            this.storage.set('nbPers', nbpers)
+            // let nbpers = this.NbPers.substring(0, this.NbPers.length - 3)
+            this.storage.set('nbPers', this.NbPers.substring(11, 13))
 
         }
 
