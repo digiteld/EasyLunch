@@ -65,7 +65,7 @@ export class HomePage {
     listAvailable: number[];
     nbTryLocation: number
     dataNbCover: any;
-
+    endPrintResto:boolean
     @ViewChild(Slides) slides: Slides;
 
 
@@ -79,7 +79,7 @@ export class HomePage {
         private splash: SplashScreen
     ) {
 
-
+this.endPrintResto=false;
         this.restaurant = this.restaurant || [];
         this.cleanStorage()
         this.nbTryLocation = 0;
@@ -274,11 +274,20 @@ export class HomePage {
 
     tryLocate() {
         console.log("J'essaye de te localiser")
-        this.map.locate({
-            setView: true,
-            maxZoom: 10,
-            timeout: 2000
-        })
+        if (this.nbTryLocation > 2)
+            this.initMarkerOffLine();
+        else {
+
+
+
+            this.map.locate({
+                setView: true,
+                maxZoom: 10,
+                timeout: 2000
+            })
+            this.nbTryLocation++
+        }
+
 
     }
 
@@ -309,13 +318,7 @@ export class HomePage {
             console.log("this map --> " + this.map)
             console.log("mapload --> " + this.mapLoad)
             this.map.addLayer(marker);
-            // this.zoomOnNearestResto()
-
-        } else if (!this.positionFound) {
-            if (this.nbTryLocation > 1)
-                this.initMarkerOffLine();
-            else
-                this.nbTryLocation++
+            this.zoomOnNearestResto()
 
         }
     }
@@ -466,6 +469,8 @@ export class HomePage {
                     this.observable.unsubscribe();
                 }
                 // setTimeout(() => {
+                this.endPrintResto=true;
+                console.log("NB MARKER --> "+this.markerArray.length)
                 this.zoomOnNearestResto()
                 // },800)
 
@@ -490,10 +495,10 @@ export class HomePage {
 
                 if (i === 0) {
                     console.log("JE ZOOM ON FIRST RESTO " + this.restaurant[i].name)
-                    this.markerArray.push(pin)
+
                     // this.zoomOnNearestResto()
                 }
-
+                this.markerArray.push(pin)
                 this.mapPin.push(pin);
 
 
@@ -545,9 +550,13 @@ export class HomePage {
 
     private zoomOnNearestResto() {
 
+        if(this.endPrintResto && this.mapLoad && this.positionFound)
+        {
+
+
         console.log("ZOOM ON NEAREST --> " + this.markerArray.length)
         // if (this.markerArray.length == 2) {
-        console.log(this.markerArray.length)
+        console.log("LENGTH RESTO -->"+this.restaurant.length)
         setTimeout(() => {
                 var group = L.featureGroup(this.markerArray); //add markers array to featureGroup
 
@@ -563,12 +572,14 @@ export class HomePage {
                 );
 
 //                    this.map.setZoom(this.map.getZoom()-1);
-                this.map.zoomOut(25)
+//                 this.map.zoomOut(25)
             }
 
             , 1000);
 
         // }
+
+        }
 
     }
 
