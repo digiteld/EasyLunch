@@ -37,6 +37,11 @@ this.mail=data.data.mail
 
   }
 
+  goBack()
+  {
+      this.navCtrl.pop();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad InformationPage');
   }

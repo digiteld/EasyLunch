@@ -14,21 +14,20 @@ import { LoaderProvider } from './loader';
 @Injectable()
 export class RestProvider {
     private prod = 'https://easy-lunch-tmp.herokuapp.com';
-    private test = 'http://192.168.1.108:5000';
-    private apiUrl = this.prod+'/api/1/restaurants';
-    private apiUrlMeal = this.prod + '/api/meal?id=';
-    private apiUrlPostBooking = this.prod + '/api/booking';
-    private apiUrlPostCommand = this.prod + '/api/command';
-    private apiUtlGetSingleResto = this.prod + '/api/v1/restaurants/';
-    private apiUrlGetAllBookingUser = this.prod + '/api/1/command?iduser=';
-    private apiUrlGetCodeByBooking = this.prod + '/api/code/';
-    private apiAydenPayment=this.prod+'/api/adyen/payment';
-    private apiCreateUSer=this.prod+'/api/user/app';
-
-    private apiRecoveryPassword=this.prod+'/api/user/app/reset'
+    private test = 'http://192.168.1.120:5000';
+    private apiUrl = this.test+'/api/1/restaurants';
+    private apiUrlMeal = this.test + '/api/meal?id=';
+    private apiUrlPostBooking = this.test + '/api/booking';
+    private apiUrlPostCommand = this.test + '/api/command';
+    private apiUtlGetSingleResto = this.test + '/api/v1/restaurants/';
+    private apiUrlGetAllBookingUser = this.test + '/api/1/command?iduser=';
+    private apiUrlGetCodeByBooking = this.test + '/api/code/';
+    private apiAydenPayment=this.test+'/api/adyen/payment';
+    private apiCreateUSer=this.test+'/api/user/app';
+    private apiRecoveryPassword=this.test+'/api/user/app/reset'
 
         // private apiUrl = 'http://192.168.1.15:5000/api/restaurants?lat=44.880630&lon=-0.687052&meter=100000';
-    
+
     constructor(public http: HttpClient,private loader: LoaderProvider) {
         console.log('Hello RestProvider Provider');
     }

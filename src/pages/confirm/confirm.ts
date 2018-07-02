@@ -142,6 +142,10 @@ export class ConfirmPage {
         if (this.create != null && this.mealId != null) {
             let menu;
             let meal;
+            console.log("MENUMEALID --> "+this.menuMealID.length)
+            console.log("MENUMEALID --> "+this.menuMealID)
+
+
             if (this.menuID === null)
                 menu = null
             else
@@ -167,11 +171,16 @@ export class ConfirmPage {
                     console.log("MEAL ID  --> " + this.mealId)
 
                     console.log("!!! JE CREE UNE RESERVATION !!!")
+                    console.log("NB USERs --> "+this.nbPers)
+                    console.log("NB USERs format --> "+ this.nbPers.substring(11,13),)
+
                     console.log("USER --> " + JSON.stringify(this.user))
+
+
                     this.postBooking({
                         master_user_id: this.user.data.id,
                         restaurant_id: this.restaurantId,
-                        nb_users: this.nbPers.substring(11,13),
+                        nb_users: this.nbPers,
                         schedule: this.schedule,
                         meal_id: meal,
                         date: dateTime,

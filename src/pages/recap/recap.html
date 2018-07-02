@@ -80,8 +80,10 @@
       <ng-container *ngFor="let item of entreeList;">
         <ion-card>
           <ion-card-content>
+            <ng-container *ngIf="printCode">
             <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(1,item.id)"></ion-img>
-            <h4>Entrée</h4>
+            </ng-container>
+              <h4>Entrée</h4>
 
             <div class="choix">
               <div class="choice">
@@ -104,8 +106,10 @@
       <ng-container *ngFor="let item of platList;">
         <ion-card>
           <ion-card-content>
+            <ng-container *ngIf="printCode">
             <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(2,item.id)"></ion-img>
-            <h4>Plat</h4>
+            </ng-container>
+              <h4>Plat</h4>
 
             <div class="choix">
               <div class="choice">
@@ -129,8 +133,10 @@
 
         <ion-card>
           <ion-card-content>
+            <ng-container *ngIf="printCode">
             <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(3,item.id)"></ion-img>
-            <h4>Dessert</h4>
+            </ng-container>
+              <h4>Dessert</h4>
 
             <div class="choix">
               <div class="choice">
@@ -152,7 +158,9 @@
 
         <ion-card>
           <ion-card-content>
+            <ng-container *ngIf="printCode">
             <ion-img width="15" height="15" src="assets/icon/_ionicons_svg_ios-trash.svg" float-right (click)="deleteItem(4,item.id)"></ion-img>
+            </ng-container>
             <h4>Boisson</h4>
 
             <div class="choix">
@@ -199,7 +207,7 @@
 <ion-footer>
 
 
-  <ng-container *ngIf="total!==0">
+  <ng-container *ngIf="total!==0 && !navParams.get('book')">
     <div id="payer">
       <p>En passant commande vous acceptez automatiquement les CGS de Easy Lunch
         <br> Commande préparée par {{ name }}

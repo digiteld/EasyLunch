@@ -114,6 +114,7 @@ export class BookPage {
 
 
 
+
         this.navCtrl.push(RecapPage,
             {
                 book:true,

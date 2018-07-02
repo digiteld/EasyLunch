@@ -89,6 +89,8 @@ export class RecapPage {
 
             this.nbPers = navParams.get('nbPers')
 
+            this.total= this.navParams.get('total')
+
             let scheduleString = (navParams.get('schedule')).toString()
 
             let scheduleFormat = "";

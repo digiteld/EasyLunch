@@ -54,6 +54,8 @@ import { ConfidentialPolicyPageModule } from '../pages/confidential-policy/confi
 import {InformationPageModule} from "../pages/information/information.module";
 import {InformationPage} from "../pages/information/information";
 
+import {Stripe} from "@ionic-native/stripe";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -122,7 +124,8 @@ import {InformationPage} from "../pages/information/information";
     AndroidPermissions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider,
-    LoaderProvider
+    LoaderProvider,
+      Stripe
 
   ]
 })

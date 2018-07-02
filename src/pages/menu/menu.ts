@@ -322,12 +322,20 @@ export class MenuPage {
 
     verifyDate(dateToday,dateCompare)
     {
+        console.log("date COMAPRE --> "+dateCompare)
 
 
         let splitedDate=dateCompare.substring(0,10).split("-")
 
-        if(dateToday.getFullYear()==splitedDate[0] && dateToday.getMonth()+1==splitedDate[1] && dateToday.getDate()==splitedDate[2])
+
+
+        if(dateToday.getFullYear()==splitedDate[0] && dateToday.getMonth()+1==splitedDate[1] && dateToday.getDate()==parseInt(splitedDate[2])+1)
+        {
+            console.log("It's good ")
             return true
+        }
+
+
         else return false
 
 
@@ -362,7 +370,7 @@ export class MenuPage {
                 this.plat.map(plat =>{
                     if(plat.plat===5)
                     {
-                        if(this.verifyDate(date,plat.created_date))
+
                             _plat.push(plat)
                     }
                 })
@@ -370,22 +378,21 @@ export class MenuPage {
                 if(nbMeal>1)
                 {
                     this.entree.map(plat =>{
-                        console.log("PLAT --> "+JSON.stringify(plat))
+
                         if(plat.plat===4)
                         {
                             console.log("Je suis une entrée du jour")
-                            if(this.verifyDate(date,plat.created_date))
-                            {
+
                                 console.log("Je dois add entree")
                                 _entree.push(plat)
-                            }
+
 
                         }
                     })
                     this.dessert.map(plat =>{
                         if(plat.plat===6)
                         {
-                            if(this.verifyDate(date,plat.created_date))
+
                                 _dessert.push(plat)
                         }
                     })
@@ -592,6 +599,7 @@ export class MenuPage {
         this.meals.map(meal => {
 
 
+
             switch (meal.plat) {
                 case 0:
                     this.entree.push(meal)
@@ -611,8 +619,11 @@ export class MenuPage {
                     this.mapBoisson.set(meal.id, meal)
                     break;
                 case 4:
+
                     if(this.verifyDate(date,meal.created_date))
-                    {this.entree.push(meal)
+                    {
+                        console.log("J'ai trouvé un plat du jour")
+                        this.entree.push(meal)
                         this.mapEntree.set(meal.id, meal);
 
                     }
@@ -635,6 +646,16 @@ export class MenuPage {
             }
 
         })
+
+        this.entree.map(m=>{
+            if(m.plat===4)
+            {
+                console.log("M OF DAY")
+                console.log(m)
+            }
+        })
+
+
 
         this.menus.map(m => {
             this.mapMenu.set(m.id, m)

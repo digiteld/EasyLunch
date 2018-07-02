@@ -58,6 +58,17 @@
                 </ion-card>
             </ng-container>
 
+            <ng-container *ngIf="menuOfDayTwo">
+                <ion-card (click)="openDetailMenu(menuOfDayObjectTwo.id, true)" [ngClass]="{'cardBlock' : choosenMenuID!==null && choosenMenuID!==menuOfDayObjectTwo.id}">
+                    <ion-card-content>
+                        <div class="menu-choice">
+                            <p> Entrée / Plat ou <br/> Plat / Dessert </p>
+                            <p class="price"> {{menuOfDayObjectTwo.price.toFixed(2)}}€ </p>
+                            <img *ngIf="choosenMenuID===menuOfDayObjectTwo.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </ng-container>
 
             <ng-container *ngIf="menuOfDayThree">
                 <ion-card (click)="openDetailMenu(menuOfDayObjectThree.id, true)" [ngClass]="{'cardBlock' : choosenMenuID!==null && choosenMenuID!==menuOfDayObjectThree.id}">
@@ -72,17 +83,7 @@
                 </ion-card>
             </ng-container>
 
-            <ng-container *ngIf="menuOfDayTwo">
-                <ion-card (click)="openDetailMenu(menuOfDayObjectTwo.id, true)" [ngClass]="{'cardBlock' : choosenMenuID!==null && choosenMenuID!==menuOfDayObjectTwo.id}">
-                    <ion-card-content>
-                        <div class="menu-choice">
-                            <p> Entrée / Plat ou <br/> Plat / Dessert </p>
-                            <p class="price"> {{menuOfDayObjectTwo.price.toFixed(2)}}€ </p>
-                            <img *ngIf="choosenMenuID===menuOfDayObjectTwo.id" src="assets/icon/check-sign-in-a-rounded-black-square.svg" class="iconCheckMenu" />
-                        </div>
-                    </ion-card-content>
-                </ion-card>
-            </ng-container>
+
         </div>
 
         <!--        Formules      -->
@@ -195,7 +196,7 @@
                 <h2>Desserts</h2>
             </div>
             <ng-container *ngFor="let item of dessert;index as i">
-                <ng-container *ngIf="item.plat===0">
+                <ng-container *ngIf="item.plat===2">
                 <ion-card (click)="openDetail(2,i)">
                     <ion-card-content>
                         <div class="choix">

@@ -8,6 +8,7 @@ import {RestProvider} from "../../providers/rest/rest";
 import { LoginPage } from '../login/login';
 
 import adyenEncrypt from 'adyen-encryption';
+import {Stripe} from "@ionic-native/stripe";
 
 
 @IonicPage()
@@ -29,7 +30,7 @@ export class AddCardPage {
     Expire: string;
     cryptedCard:any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public rest:RestProvider,private toastCtrl: ToastController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public rest:RestProvider,private toastCtrl: ToastController,private stripe: Stripe) {
 
         this.init()
 
@@ -145,22 +146,19 @@ export class AddCardPage {
             }
         ).subscribe(data =>{
                 console.log("DATA --> "+JSON.stringify(data))
-                if(data.data.resultCode==="Error")
-                {
-                    console.log("Payment Refused")
-                    this.displayError();
-                }
-                if(data.data.resultCode==="Authorised")
+
+                if(data.data.type==="authorized")
                 {
                     console.log("Payment Accepted")
                     this.navCtrl.push(ConfirmPage, {idPayment:data.idPayment});
 
                 }
-                if(data.data.resultCode==="Refused")
+                else
                 {
                     console.log("Payment Refused")
                     this.displayError();
                 }
+
             },
             error => console.log("ERR in request Payment --> "+<any>error))
     }
@@ -197,22 +195,54 @@ export class AddCardPage {
 
     testCrypt() {
 
-        var key = "10001|AABEDA463F453CF0263D1181B1F3835C2F23A264F5589995CA0D86EC9AF5E0BFA55E758C7B7D73F3E31E96FBB4E4D09AE1C1B3A723CB2F9338CA82204879203F400AC5BC8639E4ABEA9EA45EA78596CDA7EC4520779ADD441E3B7A9BDC0BCD5A1AB8A9CB96955745269E33D5EFE72D234F608C6E4E20DC4FC35FE81B890923F2591E26A24908532C8900468705E510832EDD03B4F616C40B2EE29B9844653CF504531087ECAFE9E5F8A35848BCFCE911769928AB02BBD290041AE0336E14EF31115C96427A07CC1A1317BF6E382D7393C01725F87529483C996730DD36DF060693385579A1F6DB998A420C4EE98DA78719F8EE2EE12FE4195FFD5BDEA01A8C87";
 
-        var cardData = {
-            number: this.nbCarte,
-            cvc: this.ccv,
-            holderName: this.nameCard,
-            expiryMonth: this.Expire.split('-')[1],
-            expiryYear:this.Expire.split('-')[0],
+        // pk_test_OroJxJDVZvIhdaAL8Oc2ODV9
 
-        }
-        adyenEncrypt.encrypt(key, cardData)
-            .then((dataEncrypted)=>{
-                console.log("DATAENCRYPTED --> "+dataEncrypted)
-                this.cryptedCard=dataEncrypted
-                this.sendRequestPayment()
+        this.stripe.setPublishableKey('pk_test_OroJxJDVZvIhdaAL8Oc2ODV9');
+
+        let card = {
+            number: this.nbCarte.toString(),
+            expMonth: parseInt(this.Expire.split('-')[1]),
+            expYear: parseInt(this.Expire.split('-')[0]),
+            cvc: this.ccv.toString()
+        };
+
+        this.stripe.createCardToken(card)
+            .then(token =>
+            {
+                console.log(token.id)
+                this.cryptedCard=token.id
+                        this.sendRequestPayment()
+            })
+            .catch(error =>
+            {console.error(error)
+
+                let toast = this.toastCtrl.create({
+                    message: error.message,
+                    duration: 3000
+                });
+                toast.present();
             });
+
+        // var key = "10001|AABEDA463F453CF0263D1181B1F3835C2F23A264F5589995CA0D86EC9AF5E0BFA55E758C7B7D73F3E31E96FBB4E4D09AE1C1B3A723CB2F9338CA82204879203F400AC5BC8639E4ABEA9EA45EA78596CDA7EC4520779ADD441E3B7A9BDC0BCD5A1AB8A9CB96955745269E33D5EFE72D234F608C6E4E20DC4FC35FE81B890923F2591E26A24908532C8900468705E510832EDD03B4F616C40B2EE29B9844653CF504531087ECAFE9E5F8A35848BCFCE911769928AB02BBD290041AE0336E14EF31115C96427A07CC1A1317BF6E382D7393C01725F87529483C996730DD36DF060693385579A1F6DB998A420C4EE98DA78719F8EE2EE12FE4195FFD5BDEA01A8C87";
+        //
+        // var cardData = {
+        //     number: this.nbCarte,
+        //     cvc: this.ccv,
+        //     holderName: this.nameCard,
+        //     expiryMonth: this.Expire.split('-')[1],
+        //     expiryYear:this.Expire.split('-')[0],
+        //
+        // }
+        // adyenEncrypt.encrypt(key, cardData)
+        //     .then((dataEncrypted)=>{
+        //         console.log("DATAENCRYPTED --> "+dataEncrypted)
+        //         this.cryptedCard=dataEncrypted
+        //         this.sendRequestPayment()
+        //     });
+
+
+
 
     }
 
