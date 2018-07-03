@@ -1,27 +1,31 @@
 page-information {
+
   .arrow button {
     position: absolute;
     background-color: transparent;
     transform: translateY(-50%);
     left: 12px;
+    top:28px;
   }
-  //
-  //.arrow img {
-  //  width: 10px;
-  //}
-  #img .arrow {
-    width: 22px;
-    height: 20px;
-    position: absolute;
-    background-color: transparent;
-    transform: translateY(-50%);
-    left: 12px;
+
+  ion-icon::before{
+    visibility: hidden;
+  }
+
+  .toolbar-title-md {
+    text-align: center;
+    margin-left: -30px;
+  }
+
+  .arrow img {
+    width: 10px;
   }
 
   .card
   {
     margin-bottom: 30px;
   }
+
   .scroll-content
   {
     background-color: #F2F2F2;

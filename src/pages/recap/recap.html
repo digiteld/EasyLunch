@@ -183,10 +183,12 @@
 
 
 <ng-container *ngIf="!navParams.get('book')">
+    <ion-card class="titleInfos">
+        <p>Instructions spéciales <br />(cuisson, accompagnements ...)</p>
+    </ion-card>
     <ion-card>
       <ion-content class="special-content">
-        <h4>Instructions spéciales (cuisson, accompagnements ...)</h4>
-        <ion-item>
+        <ion-item class="content">
           <ion-textarea class="size" type="text" placeholder="Rentrez ici vos commentaires sur la commande"
             [(ngModel)]="special"> </ion-textarea>
         </ion-item>

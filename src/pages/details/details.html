@@ -15,11 +15,11 @@
 
 
 <ion-content>
-  
+
     <div class="name"> {{navParams.get('meal').name}} </div>
 
     <div class="description"> {{navParams.get('meal').description}} </div>
-    
+
     <div class="number-picker">
 
       <div class="left" (click)="decremente()"> <p> <img src="assets/icon/remove.svg"> </p> </div>
@@ -29,11 +29,11 @@
     </div>
 
       <ion-card>
-          <ion-content> 
+          <ion-content>
               Instructions spéciales
-          <ion-item>
-            <ion-textarea class="size" type="text" placeholder="Rentrez ici vos commentaires sur la commande (cuisson de la viande, pas de champignons, etc...)" [(ngModel)]="special">  </ion-textarea>
-          </ion-item>
+            <ion-item>
+                <ion-textarea class="size" type="text" placeholder="Rentrez ici vos commentaires sur la commande (cuisson de la viande, pas de champignons, etc...)" [(ngModel)]="special">  </ion-textarea>
+            </ion-item>
           </ion-content>
       </ion-card>
 
@@ -41,7 +41,7 @@
 
 <ion-footer>
 
-    <div id="commander"> 
+    <div id="commander">
         <button ion-button round (click)="openMenu()">
             COMMANDER  &nbsp;&nbsp;&nbsp;&nbsp; x{{valeur}} &nbsp;&nbsp;&nbsp;&nbsp; {{((valeur)*(navParams.get('meal').price*100))/100}} €
         </button>

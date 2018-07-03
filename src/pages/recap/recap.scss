@@ -4,7 +4,7 @@ page-recap {
     background-color: #F2F2F2;
   }
   .size {
-    height: 20vh;
+    max-height: 20vh;
   }
 
   .choix{
@@ -223,15 +223,29 @@ page-recap {
       margin-top: 20px;
     }
 
+    ion-card.titleInfos.card.card-md{
+      background-color: transparent !important;
+      border: 1px solid #f2f2f2 !important;
+      margin-bottom:-10px;
+      p{
+        font-weight: bolder !important;
+      }
+    }
 
     .special-content{
       min-height: 100px;
-      height: 20vh;
+      max-height: 20vh;
+
+      .content{
+        height:100%;
+        background-color:#fff;
+      }
     }
 
     .special-content h4{
       margin-bottom: 10px;
     }
+
 
       ////    FOOTER
 
